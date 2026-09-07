@@ -1,0 +1,484 @@
+/* 共享内容面板：题目、结果与关于页面共同使用。 */
+.content-surface {
+  position: absolute;
+  z-index: 2;
+  isolation: isolate;
+  top: 10%;
+  left: 50%;
+  display: grid;
+  width: 88%;
+  height: 78%;
+  padding: clamp(20px, 4.2vw, 42px);
+  border: 0;
+  border-radius: var(--radius-panel);
+  background: transparent;
+  box-shadow: none;
+  transform: translateX(-50%);
+}
+
+.content-surface::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--line);
+  content: "";
+  pointer-events: none;
+}
+
+.content-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 题目与选项组件。 */
+.quiz-panel {
+  --quiz-inner-width: min(94%, 720px);
+  top: 4%;
+  height: auto;
+  padding: clamp(18px, 3vw, 28px);
+  grid-template-rows: auto auto auto auto;
+  gap: clamp(15px, 1.9svh, 21px);
+  align-content: start;
+  justify-items: center;
+}
+
+.quiz-rule,
+.quiz-progress,
+.question-slot,
+.options-grid {
+  width: var(--quiz-inner-width);
+}
+
+.quiz-panel::before {
+  display: none;
+}
+
+.quiz-rule {
+  height: 1px;
+  background: var(--line);
+}
+
+.quiz-progress {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 1fr);
+  gap: clamp(12px, 2vw, 20px);
+  padding-block: clamp(12px, 1.6svh, 16px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: #596174;
+  font-size: clamp(0.8125rem, 1.6vw, 0.9375rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  line-height: 1.55;
+  align-items: center;
+}
+
+.quiz-progress progress {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: #edf1f8;
+  accent-color: var(--blue-gray-strong);
+}
+
+.quiz-progress progress::-webkit-progress-bar {
+  border-radius: 999px;
+  background: #edf1f8;
+}
+
+.quiz-progress progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: var(--blue-gray-strong);
+}
+
+.quiz-progress progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: var(--blue-gray-strong);
+}
+
+.question-slot {
+  display: block;
+  height: 216px;
+  min-height: 0;
+  padding: 22px 20px 20px 22px;
+  overflow: hidden;
+  border: 1px solid #f6bfd2;
+  border-radius: var(--radius-control);
+  background: var(--soft-pink);
+  box-shadow: none;
+  font-size: clamp(1.2375rem, 3.08vw, 1.925rem);
+  font-weight: 650;
+  letter-spacing: 0.072em;
+  line-height: 1.52;
+  overflow-wrap: anywhere;
+  text-align: left;
+  text-wrap: wrap;
+  transition:
+    border-color 140ms var(--ease-out),
+    background-color 140ms var(--ease-out),
+    color 120ms ease-out;
+}
+
+.question-slot.is-muted {
+  border-color: #d8dce5;
+  background: #f7f8fa;
+  color: #8a909d;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(10px, 1.4svh, 12px);
+}
+
+.option-slot {
+  width: 100%;
+  min-height: clamp(52px, 6.5svh, 60px);
+  padding: clamp(12px, 2vw, 20px);
+  border: 2px solid #f2b3c8;
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  box-shadow: none;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.65;
+  transition:
+    border-color 140ms var(--ease-out),
+    background-color 140ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    color 120ms ease-out,
+    transform 220ms var(--ease-out);
+}
+
+.option-slot:nth-child(n + 3) {
+  border-color: var(--blue-gray);
+}
+
+/* 结果页只保留外层渐变框和底部操作框。 */
+.result-frame {
+  background: linear-gradient(
+    180deg,
+    #dbeaff 0%,
+    #f2f7ff 38%,
+    var(--surface) 76%
+  );
+}
+
+.result-content,
+.result-empty {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: min(78%, 680px);
+  margin: 0;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.result-content h1,
+.result-empty h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+.result-content p,
+.result-empty p {
+  max-width: 42em;
+  margin: 1.25em auto 0;
+  color: #596174;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.8;
+}
+
+.result-frame::before {
+  display: none;
+}
+
+.result-actions {
+  position: absolute;
+  right: 0;
+  bottom: clamp(28px, 6%, 64px);
+  left: 0;
+  display: grid;
+  width: 100%;
+  gap: clamp(12px, 2svh, 20px);
+  justify-items: center;
+}
+
+.result-action {
+  width: min(58%, 360px);
+}
+
+/* 内容页面公共操作控件。 */
+.info-action {
+  display: flex;
+  width: min(62%, 360px);
+  min-height: clamp(50px, 7svh, 76px);
+  border: var(--stroke-soft) solid var(--blue-gray);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  box-shadow: none;
+  color: var(--ink);
+  font-weight: 650;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 220ms var(--ease-out),
+    background-color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.option-slot:focus-visible,
+.info-action:focus-visible {
+  outline: 3px solid rgb(145 176 226 / 55%);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .option-slot:hover {
+    border-color: var(--blue-gray-strong);
+    background: var(--soft-pink-strong);
+    box-shadow: none;
+    transform: translateY(-1px);
+  }
+
+  .info-action:hover {
+    border-color: var(--blue-gray-strong);
+    background: var(--soft-pink);
+    box-shadow: none;
+    transform: translateY(-1px);
+  }
+}
+
+.option-slot:active,
+.info-action:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.option-slot:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  transform: none;
+}
+
+.options-grid.is-answering .option-slot:not(.is-selected):disabled {
+  border-color: #d8dce5;
+  background: #f7f8fa;
+  color: #8a909d;
+}
+
+.option-slot.is-selected:disabled {
+  border-color: var(--blue-gray);
+  background: var(--blue-gray);
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* 较宽竖屏布局。 */
+@media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) {
+  .content-surface {
+    width: 86%;
+    padding: clamp(26px, 4.5vw, 40px);
+  }
+
+  .quiz-panel {
+    --quiz-inner-width: min(86%, 520px);
+    padding: clamp(20px, 3vw, 28px);
+  }
+
+}
+
+/* PC横屏布局。 */
+@media (min-width: 900px) {
+  .content-surface {
+    top: 11%;
+    width: min(84%, 1080px);
+    height: 76%;
+    padding: clamp(36px, 3.4vw, 58px);
+    border-radius: var(--radius-frame);
+  }
+
+  .quiz-panel {
+    --quiz-inner-width: min(86%, 760px);
+    top: 1%;
+    height: 98%;
+    padding: clamp(22px, 2.2vw, 32px);
+    grid-template-rows: auto auto auto;
+    gap: clamp(15px, 1.8svh, 19px);
+  }
+
+  .question-slot {
+    width: min(78%, 680px);
+    height: 180px;
+    padding: 22px 20px 20px 22px;
+    border-radius: var(--radius-panel);
+  }
+
+  .options-grid {
+    width: min(78%, 680px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .quiz-progress {
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    margin-top: 0;
+    transform: translateX(-50%);
+  }
+
+  .option-slot {
+    min-height: 60px;
+  }
+
+  .result-action {
+    width: min(28%, 380px);
+    min-height: clamp(64px, 8svh, 92px);
+  }
+
+}
+
+/* 近方形窗口：给长题干更多横向与纵向空间，避免 PC 规则在临界比例裁字。 */
+@media (min-width: 900px) and (min-aspect-ratio: 4 / 5) and (max-aspect-ratio: 4 / 3) {
+  .quiz-panel {
+    --quiz-inner-width: min(88%, 720px);
+    padding: 18px 22px;
+    gap: 12px;
+  }
+
+  .question-slot {
+    width: min(86%, 720px);
+    height: 200px;
+    font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+    line-height: 1.48;
+  }
+
+  .options-grid {
+    width: min(86%, 720px);
+  }
+}
+
+/* PC 横屏：收紧主体宽度，同时保持宽竖屏的题干字号与底部节奏。 */
+@media (min-width: 900px) and (orientation: landscape) {
+  .question-slot,
+  .options-grid {
+    position: relative;
+    top: 9px;
+  }
+
+  .question-slot {
+    width: min(62.4%, 544px);
+    padding: 24.2px 22px 22px 24.2px;
+    font-size: clamp(0.97rem, 2.1vw, 1.335rem);
+    transform: translateY(2%);
+  }
+
+  .options-grid {
+    width: min(62.4%, 544px);
+    transform: translateY(8%);
+  }
+
+  .quiz-progress {
+    top: 88%;
+  }
+}
+
+/* 近方形横屏以该比例下原有宽度为基准收窄 20%。 */
+@media (min-width: 900px) and (orientation: landscape) and (max-aspect-ratio: 4 / 3) {
+  .question-slot,
+  .options-grid {
+    top: 10px;
+    width: min(68.8%, 576px);
+  }
+}
+
+/* 常见笔记本高度：压缩控件留白，确保进度条完整留在蓝色外框内。 */
+@media (min-width: 900px) and (orientation: landscape) and (max-height: 820px) {
+  .quiz-panel {
+    padding: 18px 22px;
+    gap: 12px;
+  }
+
+  .option-slot {
+    min-height: 52px;
+    padding: 10px 16px;
+  }
+
+  .quiz-progress {
+    margin-top: 0;
+    padding-block: 10px;
+  }
+}
+
+/* 低高度与减少动态效果。 */
+@media (max-height: 650px) {
+  .content-surface {
+    top: 6%;
+    height: 82%;
+    padding: 18px;
+  }
+
+  .option-slot {
+    min-height: 46px;
+  }
+
+  .quiz-panel {
+    top: 3%;
+    height: auto;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .question-slot {
+    height: 180px;
+    padding: 22px 20px 20px 22px;
+  }
+
+  .quiz-progress {
+    padding-bottom: 10px;
+  }
+}
+
+@media (min-width: 900px) and (orientation: landscape) and (max-height: 650px) {
+  .quiz-panel {
+    top: 1%;
+    height: 98%;
+  }
+
+  .options-grid {
+    gap: 8px;
+  }
+
+  .question-slot {
+    padding: 24.2px 22px 22px 24.2px;
+  }
+
+  .option-slot {
+    min-height: 44px;
+    padding: 5px 12px;
+  }
+
+  .quiz-progress {
+    top: 88%;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option-slot,
+  .info-action {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>情感被骗指数测试结果</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/content.css" />
+  </head>
+  <body>
+    <main class="home info-page result-page" data-page="result">
+      <div class="heart-field" aria-hidden="true">
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+        <span class="heart"></span><span class="heart"></span>
+      </div>
+
+      <nav class="top-actions" aria-label="结果页导航">
+        <a class="image-slot" href="about.html?view=project&amp;from=result.html" data-route="about-project" aria-label="查看关于这个测试"></a>
+        <a class="image-slot" href="about.html?view=result&amp;from=result.html" data-route="about-result" aria-label="查看关于测试结果"></a>
+      </nav>
+
+      <section class="content-frame result-frame" aria-label="测试结果区域">
+        <div class="result-content" hidden>
+          <h1 id="result-title"></h1>
+          <p id="result-summary"></p>
+        </div>
+        <div class="result-empty" hidden>
+          <h1>还没有完成测试</h1>
+          <p>完成 28 道随机题目后，这里会显示测试状态。</p>
+        </div>
+        <div class="result-actions">
+          <a class="info-action result-action" href="text.html?restart=1">再随机一次</a>
+          <a class="info-action result-action" href="index.html" data-route="restart">返回首页</a>
+        </div>
+      </section>
+    </main>
+    <script src="../js/result.js"></script>
+    <script src="../js/about-navigation-stack.js"></script>
+    <script src="../js/page-transition.js"></script>
+  </body>
+</html>

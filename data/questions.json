@@ -1,0 +1,2775 @@
+{
+  "version": 3,
+  "title": "情感被骗指数测试",
+  "scoringStatus": "placeholder",
+  "dimensions": [
+    {
+      "key": "recognition",
+      "code": "认",
+      "label": "人格认可敏感",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "needed",
+      "code": "需",
+      "label": "被需要敏感",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "specialness",
+      "code": "特",
+      "label": "特殊性放大",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "scarcity",
+      "code": "稀",
+      "label": "稀缺性判断",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "calibration",
+      "code": "校",
+      "label": "关系校准",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "evidence",
+      "code": "证",
+      "label": "行为证据意识",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "manipulation",
+      "code": "操",
+      "label": "操纵识别",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "rationalization",
+      "code": "合",
+      "label": "现实回避/合理化",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "boundaries",
+      "code": "边",
+      "label": "投入边界",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "stopLoss",
+      "code": "止",
+      "label": "止损能力",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "differentiation",
+      "code": "分",
+      "label": "心理分化能力",
+      "scoringStatus": "placeholder"
+    },
+    {
+      "key": "selfCalibration",
+      "code": "自",
+      "label": "自我校准能力",
+      "scoringStatus": "placeholder"
+    }
+  ],
+  "strata": [
+    {
+      "key": "A",
+      "label": "程度自陈题",
+      "type": "self-report",
+      "questionCount": 39
+    },
+    {
+      "key": "B",
+      "label": "真实经历 / 日常行为题",
+      "type": "experience",
+      "questionCount": 21
+    },
+    {
+      "key": "C",
+      "label": "短投射题",
+      "type": "projection",
+      "questionCount": 21
+    },
+    {
+      "key": "D",
+      "label": "元认知 / 自我校准题",
+      "type": "metacognition",
+      "questionCount": 11
+    }
+  ],
+  "questions": [
+    {
+      "id": "A01",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果一个人能很快理解我平时很少和别人聊的想法，我会更想了解TA。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A02",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以越来越喜欢一个人，同时减少对TA的信任。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A03",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "一个人记得我很久以前随口提过的小事，会让我对TA非常有好感。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A04",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以理解一个人的难处，但也不会忽略这件事对我的影响。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A05",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "遇到一个真正聊得来的人时，我会觉得这样的机会并不常有。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A06",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果一个人愿意和我聊很私人的事情，我会自然地提高对TA的信任。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A07",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我觉得人与人之间是否契合，有时几次深入交流就能感觉出来。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A08",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果一个平时很独立的人只愿意向我展示脆弱的一面，我会很重视这种特殊性。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A09",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我感觉对方是真的懂我，我对一些形式上的要求会放宽些。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A10",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以一面接受一个人的解释，一面保留对这件事的疑问。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A11",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果一个人平时对别人比较疏离，却唯独愿意和我亲近，我会觉得这段关系和普通关系不太一样。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A12",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我认为关系里偶尔失衡很正常，只要这种状态会不会长期持续。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A13",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A14",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以一面理解一个人的行为原因，一面认为这种行为不能接受。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A15",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我欣赏一个人，我通常会给TA比普通人更多解释的机会。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A16",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我通常愿意先按善意理解一个人，除非后来出现值得重新判断的信息。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A17",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以很享受一段关系，同时不急着判断它最终会走到哪里。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A18",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "当一个人的言语和长期行为不太一致时，我更看重行为。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A19",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果一个人总能说到我心里，我可能不会很介意TA身上一些让我不舒服的地方。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A20",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以对一个人很好，但不一定因此觉得我们之间有特殊关系。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A21",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我一般不会先往坏处想，但反复出现的异常会改变我的判断。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A22",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我已经很在意一段关系，我会更愿意把一些反常理解成暂时的问题。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A23",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以原谅一个人，但不恢复原来的信任。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A24",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "比起认识时间长短，我更看重两个人交流的深度。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A25",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "别人愿意依赖我，通常会让我更愿意为这段关系投入。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A26",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "当我帮助一个人很多，我会自然把这种帮助理解成关系正在升级。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A27",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果一个人说“我平时很少和别人讲这些”，我会觉得我们的关系确实有些不同。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A28",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我觉得信任总要有一方先迈出一步。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A29",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "在没有足够证据前，我不喜欢轻易怀疑一个人的动机。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A30",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我觉得一段关系很难得，我会更能接受其中的不确定。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A31",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "喜欢一个人以后，我通常不太介意自己先多做一点。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A32",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "即使我很珍惜一段关系，我仍然愿意去确认那些可能让我失望的问题。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A33",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以因为善意帮助一个人，而不期待这种帮助换来亲密关系。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A34",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我觉得一段关系未来可能很好，我可以接受现在暂时不太对等。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A35",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "只要对方没有明确拒绝，我一般不会因为一些模糊信号太早退出。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A36",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我发现自己喜欢的是“这段关系可能成为的样子”，我会不留情地重新看它现在实际是什么样。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A37",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "如果我发现一段关系主要靠自己刻意的付出来维持，我会重新判断这段关系本身还剩下什么。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A38",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "我可以很需要一个人的陪伴，同时承认TA给不了我想要的关系。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "A39",
+      "stratum": "A",
+      "type": "self-report",
+      "prompt": "即使我仍然舍不得一段关系，我也能先停止继续投入。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B01",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为不想破坏关系，把本来想问清楚的事拖到后面。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B02",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我发现过某个朋友只在需要帮助时明显热情。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B03",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我在明知关系不太对等时，仍继续维持过原来的投入。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B04",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为别人很懂我，而很快把TA当成特别的人。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B05",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为别人向我倾诉很多，而明显提高过对TA的信任。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B06",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我替一个反复让我失望的人找过不少理由。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B07",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为舍不得一段关系，而延后过本来想做的决定。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B08",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我在帮一个人很多之后，发现自己更难降低投入。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B09",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我在对方反复失约后，仍按原来的方式继续主动。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B10",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为对方确实处境很难，而承担过原本不该长期由我承担的事。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B11",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我在一段明显不对等的关系里主动减少过投入。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B12",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为一个人长期忽冷忽热而感到过困惑。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B13",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我用 “TA最近可能很忙” 解释过持续一段时间的冷淡。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B14",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为别人认可了自己很少被看到的一面，而很快与TA亲近起来。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B15",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为已经投入很多，而不愿承认某段关系可能没有结果。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B16",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我帮助一个人很多，但没有把这种帮助当成关系升级。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B17",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为一个人说得很真诚，而忽略过TA长期行为里的不一致。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B18",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我因为怕显得冷漠，而答应过自己其实不太想答应的请求。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B19",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我在关系失衡后主动停止过继续加码。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B20",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我在对一个人失望后，仍能正常关心TA，但不再继续投入。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "B21",
+      "stratum": "B",
+      "type": "experience",
+      "prompt": "过去一年里，我发现过自己只愿意听支持某段关系的意见。",
+      "options": [
+        {
+          "id": "A",
+          "text": "从未",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "偶尔",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "有过几次",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "经常如此",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C01",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友说：“TA只是最近太忙。”你更倾向于把这理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "基本可以相信",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "暂时可以相信",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "更像自我安慰",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "目前依据不足",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C02",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人总替喜欢的人找理由，你更觉得主要是因为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "出于善意理解",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "因为过于在意",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "接近无条件信任",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "有些回避现实",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C03",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友说：“这种人我几年都遇不到第二个。”你更觉得这更像：",
+      "options": [
+        {
+          "id": "A",
+          "text": "基于过往经验判断",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "带有明显理想化",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "受到稀缺感影响",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "被当下情绪放大",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C04",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "有人只在需要帮忙时明显热情，你更倾向于理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是个人社交习惯",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "更像功能上的依赖",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "带有明显利益导向",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "已经出现关系失衡",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C05",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "有人明知关系不对等却不退出，你更觉得主要是因为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "主要是依恋与不舍",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "仍在期待关系转机",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "已经习惯关系不对等",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "害怕面对真实结果",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C06",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友被一个很懂TA的人迅速打动，你更觉得动机更像：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是正常产生好感",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "认为彼此确实契合",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "把稀缺感进一步放大",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "把期待投射到关系里",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C07",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人愿意听你聊很久，你更倾向于把这理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "可能只是单纯善意",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "可能只是普通好感",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "确实有明显重视",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "已经有情感投入",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C08",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友说“TA只是不太会表达”，你更倾向于把这理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是表达方式不同",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "只是阶段性冷淡",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "关系本身正在降温",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "在替对方寻找解释",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C09",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人总在别人需要时出现，你更觉得这更像：",
+      "options": [
+        {
+          "id": "A",
+          "text": "本身比较乐于助人",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "对别人责任感较强",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "容易主动接管需求",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "个人投入边界较松",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C10",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "有人因为对方过去受过伤而反复包容，你更觉得主要是：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是理解对方经历",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "担心拒绝伤害对方",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "把责任感背得太重",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "因对方经历放松边界",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C11",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人已经明显失望，却还不愿问清楚，你更觉得主要是：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是需要一些缓冲",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "主要还是害怕失去",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "还想等待新的转机",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "不愿面对明确答案",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C12",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友一直主动维持一段关系，你更倾向于理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "本来就是主动型相处",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "确实很重视这段关系",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "已经变成单向维系",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "主要还是害怕失去",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C13",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人花很多时间帮喜欢的人，你更觉得主要是在：",
+      "options": [
+        {
+          "id": "A",
+          "text": "主要是在表达喜欢",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "本身习惯照顾别人",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "在用持续付出维系关系",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "期待付出推动关系进展",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C14",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "有人说“感情不能算太清楚”，你更倾向于理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "更重视相处感受",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "能够接受关系波动",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "在淡化关系失衡",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "不愿讨论关系对等",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C15",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友长期被忽冷忽热，你更觉得最值得参考的是：",
+      "options": [
+        {
+          "id": "A",
+          "text": "自己长期真实感受",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "对方给出的解释",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "对方长期实际行为",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "关系最终实际结果",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C16",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人总觉得“再等等会变好”，你更觉得主要是：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是愿意耐心等待",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "还想继续保留希望",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "主要还是不舍退出",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "不愿面对明确结论",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C17",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "有人很享受被需要的感觉，你更觉得这种满足更接近：",
+      "options": [
+        {
+          "id": "A",
+          "text": "来自关系中的亲密感",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "来自被需要的价值感",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "来自照顾对方的责任感",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "来自影响局面的掌控感",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C18",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友说“TA对我很好，只是没法给承诺”，你更倾向于把这段关系理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "双方只是各取所需",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "双方真实需求错位",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "关系一直靠暧昧维持",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "主要是单方面期待",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C19",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人很难承认自己看错人，你更觉得主要是：",
+      "options": [
+        {
+          "id": "A",
+          "text": "想维护原来的自我判断",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "情感上仍然舍不得",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "已经被过去投入绑住",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "不断替自己合理化",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C20",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "朋友说“别人不了解TA”，你更觉得这更像：",
+      "options": [
+        {
+          "id": "A",
+          "text": "可能只是基于事实判断",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "更像一种防御反应",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "明显在替关系护短",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "正在排斥外部意见",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C21",
+      "stratum": "C",
+      "type": "projection",
+      "prompt": "一个人仍喜欢对方，却已经不再信任对方，你更倾向于理解为：",
+      "options": [
+        {
+          "id": "A",
+          "text": "只是感情还没退去",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "已经把喜欢和判断分开",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "主要是原有信任受损",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "关系已经实际降级",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D01",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我觉得自己在非常喜欢一个人时，原本的判断标准可能会发生变化。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D02",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我认为真正进入一段关系后，自己的想法可能和现在预测的不一样。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D03",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我觉得很多人会因为感情失去判断，但这种事不太容易发生在我身上。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D04",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我认为自己目前对恋爱的理解，和真正经历一段关系后的理解可能会有较大差距。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D05",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我会把“我现在还没有遇到过这种情况”与“我以后不会这样”区分开。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D06",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我不认为聪明、逻辑好，就意味着一个人在感情里也能保持同样准确的判断。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D07",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "如果我从没经历过某种关系，我通常不会太确定自己到时候一定会怎么做。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D08",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我会提前想清楚哪些边界即使恋爱后也不希望改变。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D09",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我觉得熟悉我的朋友，可能会看到一些我自己没注意到的关系模式。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D10",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "如果朋友认为我比自己想象中更容易被打动，我会认真考虑这种可能。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "D11",
+      "stratum": "D",
+      "type": "metacognition",
+      "prompt": "我觉得自己在问卷里给出的答案，可能比真实情境中的自己更理性。",
+      "options": [
+        {
+          "id": "A",
+          "text": "80%–90%",
+          "scores": null
+        },
+        {
+          "id": "B",
+          "text": "60%–70%",
+          "scores": null
+        },
+        {
+          "id": "C",
+          "text": "30%–40%",
+          "scores": null
+        },
+        {
+          "id": "D",
+          "text": "10%–20%",
+          "scores": null
+        }
+      ],
+      "dimensionJudgement": null
+    }
+  ]
+}
