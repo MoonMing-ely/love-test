@@ -26,6 +26,7 @@
   let questions = [];
   let currentQuestionIndex = 0;
   let answers = [];
+  let dimensionVector = window.DimensionVector.create();
   let savedQuestionIds = [];
   let isChangingQuestion = false;
 
@@ -63,6 +64,7 @@
       JSON.stringify({
         currentQuestionIndex,
         answers,
+        dimensionVector,
         questionIds: questions.map((question) => question.id),
       }),
     );
@@ -77,7 +79,7 @@
 
     /*
      * scores 是稀疏的 12 维分值向量，例如 { recognition: 2 }。
-     * null 表示该选项目前还没有配置分数；未出现的维度按 0 理解。
+     * null 用于兼容未配置分数；未出现的维度按 0 理解。
      */
     const hasValidScores = (scores) =>
       scores === null ||
@@ -174,6 +176,15 @@
   }
 
   function finishQuiz() {
+    const normalizedDimensions = window.DimensionNormalizer.normalize({
+      rawVector: dimensionVector,
+      dimensions: dimensionDefinitions,
+      questions,
+    });
+    const layer3Structures =
+      window.HigherOrderStructure.aggregate(normalizedDimensions);
+    const layer4Evidence = window.Layer4Evidence.fromLayer3(layer3Structures);
+    const layer5Mechanisms = window.Layer5Mechanisms.calculate(layer4Evidence);
     /*
      * 这里是答题流程调用评分模块的唯一位置。
      * calculateResult 不读取 DOM，也不重新查询题库，只依赖明确传入的数据。
@@ -184,13 +195,18 @@
     });
     /*
      * result 是写入 sessionStorage 的结果信封：
-     * answers 保留原始选择，outcome 保存算法派生结果，两者不要混为一份数据。
+     * answers 保留原始选择；各层算法数据和 outcome 分字段保存，便于追踪。
      */
     const result = {
       completed: true,
       questionCount: questions.length,
       questionIds: questions.map((question) => question.id),
       answers,
+      dimensionVector: [...dimensionVector],
+      normalizedDimensions,
+      layer3Structures,
+      layer4Evidence,
+      layer5Mechanisms,
       outcome,
       completedAt: new Date().toISOString(),
     };
@@ -224,12 +240,18 @@
       window.setTimeout(resolve, selectionFeedbackDuration);
     });
 
-    answers[currentQuestionIndex] = {
+    const answer = {
       questionId: question.id,
       option: option.id,
-      /* 保存所选分值的快照；现在是 null，以后填题库分数后会自动传给评分函数。 */
+      /* 保存所选分值的快照，避免题库变化影响本轮结果。 */
       scores: option.scores === null ? null : { ...option.scores },
     };
+    answers[currentQuestionIndex] = answer;
+    window.DimensionVector.addOption(
+      dimensionVector,
+      answer.scores,
+      dimensionDefinitions,
+    );
     currentQuestionIndex += 1;
     saveState();
 
@@ -270,6 +292,12 @@
       questionBank = data.questions;
       dimensionDefinitions = data.dimensions;
       restoreOrSampleQuestions();
+      /* 刷新页面后，根据已保存的答案重新建立第一层 12 维累计数据。 */
+      dimensionVector = window.DimensionVector.fromAnswers(
+        answers,
+        dimensionDefinitions,
+      );
+      saveState();
 
       if (currentQuestionIndex >= questions.length) {
         finishQuiz();

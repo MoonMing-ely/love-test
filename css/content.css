@@ -218,6 +218,10 @@
   width: min(58%, 360px);
 }
 
+button.result-action {
+  cursor: pointer;
+}
+
 /* 内容页面公共操作控件。 */
 .info-action {
   display: flex;

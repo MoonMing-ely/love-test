@@ -1,19 +1,24 @@
 # 评分接口说明（初学者版）
 
-这份文档只定义“数据怎样交给评分算法”。具体加多少分、是否反向计分、怎样归一化，由你自己决定。
+这份文档主要定义“数据怎样交给评分算法”。选项原始分、第二层 `Raw / Capacity` 标准化、第三层高层结构、第四层结构证据和第五层元机制已经确定；第六层最终结果仍未设计。
 
 ## 1. 数据流
 
 ```text
 questions.json 题库
       ↓ 随机抽取 28 题
-quiz.js 记录用户选择
-      ↓ calculateResult({ answers, dimensions })
-scoring.js 你的评分算法入口
-      ↓ ScoringResult
-sessionStorage 暂存完整结果
+js/interactions/quiz.js 记录用户选择
+      ↓ 第一层累计 Raw、第二层按 Capacity 标准化
+normalizedDimensions
+      ↓ 第三层转换并归纳 E/J/B/H/F/M/R
+layer3Structures
+      ↓ 第四层结构证据 → 第五层 P1/P2/P3/P4 ┐
+layer4Evidence + layer5Mechanisms          ├→ sessionStorage 暂存完整结果
+calculateResult({ answers, dimensions })   │
+      ↓ 第六层尚未实现                      │
+scoring.js 生成占位 outcome ────────────────┘
       ↓
-result.js 显示 title 和 summary
+js/interactions/result.js 显示 title 和 summary
 ```
 
 “接口”可以理解为两个模块之间约定好的数据形状。只要输入和输出继续符合约定，你可以自由改写评分函数内部。
@@ -24,11 +29,11 @@ result.js 显示 title 和 summary
 - 共有 12 个评分维度；每个维度使用唯一的英文 `key` 连接题库和算法。
 - 题目分为 A、B、C、D 四个题型层（`stratum`），不是分数等级。
 - 每题也有 A、B、C、D 四个选项。选项字母和题型字母长得相同，但含义不同。
-- 当前所有 `scores` 和 `dimensionJudgement` 都是占位符，尚未决定实际分数。
+- 当前 92 道题的四个选项都已配置 12 维原始分；`dimensionJudgement` 仍是占位字段。
 
 ## 3. 题库中的分值向量
 
-每个选项的 `scores` 可以保持 `null`，也可以写成对象：
+每个选项的 `scores` 是一个对象；接口仍允许 `null`，用于兼容尚未配置分值的旧数据：
 
 ```json
 {
@@ -114,7 +119,7 @@ QuizScoring.calculateResult({ answers, dimensions });
 
 ### 6.2 用户选择后，页面自动生成答案记录
 
-用户点击这个 B 选项后，`quiz.js` 会自动保存：
+用户点击这个 B 选项后，`js/interactions/quiz.js` 会自动保存：
 
 ```js
 {
@@ -127,7 +132,7 @@ QuizScoring.calculateResult({ answers, dimensions });
 }
 ```
 
-你不需要自己编写按钮取值代码。`quiz.js` 已经负责读取被选中的选项，并把分值复制到 `answers` 数组。
+你不需要自己编写按钮取值代码。`js/interactions/quiz.js` 已经负责读取被选中的选项，并把分值复制到 `answers` 数组。
 
 真实测试会得到 28 条答案。下面只截取两条，方便观察结构：
 
@@ -148,7 +153,7 @@ const answers = [
 
 ### 6.3 完成 28 题后，页面自动调用接口
 
-`quiz.js` 已经写好了调用代码：
+`js/interactions/quiz.js` 已经写好了调用代码：
 
 ```js
 const outcome = QuizScoring.calculateResult({
@@ -225,7 +230,7 @@ function calculateResult(input) {
 
 ### 6.5 返回结果之后发生什么
 
-`quiz.js` 会把接口返回值放进 `outcome`：
+`js/interactions/quiz.js` 会把接口返回值放进 `outcome`：
 
 ```js
 {
@@ -248,24 +253,82 @@ function calculateResult(input) {
 
 上面只展示了非 0 维度，实际示例代码返回的 `dimensionScores` 会包含全部 12 个维度。随后数据会被写入 `sessionStorage`，结果页读取并显示 `outcome.title` 和 `outcome.summary`。
 
-目前结果页还不会自动显示 12 维明细。如果以后要显示雷达图或维度列表，应修改 `result.html` 和 `result.js`，而不是把页面显示代码写进 `calculateResult()`。
+目前结果页还不会自动显示 12 维明细。如果以后要显示雷达图或维度列表，应修改 `html/result.html` 和 `js/interactions/result.js`，而不是把页面显示代码写进 `calculateResult()`。
 
-## 7. 建议的第一版算法步骤
+## 7. 当前数据处理层次
 
-1. 建立一个以 12 个维度 key 为键、初始值全为 0 的对象。
-2. 遍历 28 条 `answers`。
-3. 遇到 `scores === null` 时明确决定跳过还是报错，不要默默产生 `NaN`。
-4. 遍历每条答案的 `scores`，累加到对应维度。
-5. 再处理反向计分、题型权重或归一化；这些规则不要混入页面代码。
-6. 根据最终分数生成 `title` 和 `summary`，返回统一结果对象。
+1. `dimension-vector.js` 把所选选项分值累加成 12 维 Raw 数组。
+2. `second-layer-normalizer.js` 根据本轮题目逐题计算 Capacity。
+3. 第二层使用 `Value = Raw / Capacity` 生成 `normalizedDimensions`。
+4. `third-layer-aggregator.js` 将第二层值从 `0～1` 转换到 `0～100`，但不修改 `normalizedDimensions`。
+5. E 保存主值、细维度、峰值、峰值差和离散程度。
+6. J 保存主值、细维度、最弱项、短板差和离散程度。
+7. B 保存主值、边/止、最弱项和两项不均衡程度。
+8. H/F/M 分别透传合、分、自；当前不能可靠计算关系经验，因此 R 为 `null`。
+9. 第四层将第三层数据适配回 `0～1`，并提取 High/Low、E 峰值、J 短板、B/T 差异和可选一致性。
+10. 第五层分别生成 P1 关系价值放大、P2 判断偏移、P3 行动失守、P4 退出困难，同时独立输出 M/一致性 Protection。
+11. 第六层最终分数、阶段、标题和说明尚未实现；`outcome` 继续保持占位状态。
+
+第三层公开入口为：
+
+```js
+HigherOrderStructure.aggregate(normalizedDimensions);
+```
+
+输出结构版本为字符串 `"1.1"`，主要形状为：
+
+```js
+{
+  version: "1.1",
+  E: {
+    summary,
+    subScores: { recognition, need, specialness, scarcity },
+    peak: { value, sources, gap },
+    dispersion
+  },
+  J: {
+    summary,
+    subScores: { calibration, evidence, manipulation },
+    weak: { value, sources, gap },
+    dispersion
+  },
+  B: {
+    summary,
+    subScores: { boundary, stopLoss },
+    weak: { value, sources },
+    imbalance
+  },
+  H,
+  F,
+  M,
+  R: null
+}
+```
+
+`sources` 使用稳定英文维度 key 的数组，因此并列峰值或并列短板不会丢失。某组只要有一个细维度为 `null`，该组的派生字段就返回 `null`，但 `subScores` 中已有的观测值继续保留。第三层不再生成 `warnings` 或 `diagnostics`。
+
+第四、第五层公开入口为：
+
+```js
+const layer4Evidence = Layer4Evidence.fromLayer3(layer3Structures);
+const layer5Mechanisms = Layer5Mechanisms.calculate(layer4Evidence);
+```
+
+第三层 V1.1 保持 `0～100` 接口；第四层适配器统一除以 100 后运行冻结公式。新定义中的 B 只取 `boundary`，T 独立取 `stopLoss`，不会沿用第三层 B 组的平均值。第五层输出四个互相独立的 `0～1` 机制强度，不生成它们的总和。
+
+若本轮题组使任一底层维度无法计算，第四、第五层会返回 `status: "insufficient_data"`，不会把缺失值当成 0。当前随机抽题只约束题型比例，尚未保证 12 维覆盖；在第五层结果进入正式结果页前，需要另行确定抽样覆盖规则。
 
 算法只做“纯计算”最容易测试：不要在评分函数里读取按钮、修改页面或重新请求题库。
 
 ## 8. 修改时的注意事项
 
 - `data/questions.json` 是浏览器实际读取的题库；JSON 格式本身不允许写注释。
-- `scripts/build-question-bank.mjs` 会从 Markdown 重新生成题库，并把评分字段恢复为占位值。开始手工配置分数后，不要直接运行它覆盖题库，除非你也同步扩展生成脚本。
+- `scripts/build-question-bank.mjs` 会从 Markdown 的 `〔维度+分值〕` 标注重新生成题库；修改分值时应先修改维护源，再运行生成脚本。
 - 修改算法后运行 `node tests/scoring-interface.test.mjs`，检查评分入口和页面传参。
+- 修改第二层算法后运行 `node tests/second-layer-normalizer.test.mjs`。
+- 修改第三层算法后运行 `node tests/third-layer-aggregator.test.mjs`。
+- 修改第四层算法后运行 `node tests/fourth-layer-evidence.test.mjs`。
+- 修改第五层算法或参数后运行 `node tests/fifth-layer-mechanisms.test.mjs`。
 - 修改题库分值后运行 `node tests/question-bank.test.mjs`，检查维度 key 和分数类型。
 - 完整运行、目录结构和其余测试说明见 `docs/technical-guide.md`。
 

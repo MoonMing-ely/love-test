@@ -7,7 +7,31 @@ const scoringSource = await readFile(
   "utf8",
 );
 const quizSource = await readFile(
-  new URL("../js/quiz.js", import.meta.url),
+  new URL("../js/interactions/quiz.js", import.meta.url),
+  "utf8",
+);
+const dimensionVectorSource = await readFile(
+  new URL("../js/core-algorithm/dimension-vector.js", import.meta.url),
+  "utf8",
+);
+const dimensionNormalizerSource = await readFile(
+  new URL("../js/core-algorithm/second-layer-normalizer.js", import.meta.url),
+  "utf8",
+);
+const higherOrderStructureSource = await readFile(
+  new URL("../js/core-algorithm/third-layer-aggregator.js", import.meta.url),
+  "utf8",
+);
+const algorithmConfigSource = await readFile(
+  new URL("../js/core-algorithm/algorithm-config.js", import.meta.url),
+  "utf8",
+);
+const layer4EvidenceSource = await readFile(
+  new URL("../js/core-algorithm/fourth-layer-evidence.js", import.meta.url),
+  "utf8",
+);
+const layer5MechanismsSource = await readFile(
+  new URL("../js/core-algorithm/fifth-layer-mechanisms.js", import.meta.url),
   "utf8",
 );
 const questionData = JSON.parse(
@@ -72,6 +96,11 @@ function createElement(dataset = {}) {
 
 async function testQuizToScoringBoundary() {
   const data = structuredClone(questionData);
+  data.questions.forEach((question) => {
+    question.options.forEach((option) => {
+      option.scores = null;
+    });
+  });
   data.questions[0].options[0].scores = { recognition: 2 };
 
   const quizPanel = createElement({ resultPage: "result.html" });
@@ -143,6 +172,12 @@ async function testQuizToScoringBoundary() {
   });
   context.window = context;
 
+  vm.runInContext(dimensionVectorSource, context);
+  vm.runInContext(dimensionNormalizerSource, context);
+  vm.runInContext(higherOrderStructureSource, context);
+  vm.runInContext(algorithmConfigSource, context);
+  vm.runInContext(layer4EvidenceSource, context);
+  vm.runInContext(layer5MechanismsSource, context);
   vm.runInContext(quizSource, context);
 
   async function flushPromises() {
@@ -163,6 +198,30 @@ async function testQuizToScoringBoundary() {
   assert.deepEqual(
     JSON.parse(JSON.stringify(scoringInput.answers[0].scores)),
     { recognition: 2 },
+  );
+  const storedResult = JSON.parse(storage.get("deceptionIndexQuizResultV3"));
+  assert.equal(storedResult.dimensionVector.length, 12);
+  assert.deepEqual(storedResult.dimensionVector, [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  assert.equal(storedResult.normalizedDimensions.traits.recognition, 1);
+  assert.equal(storedResult.normalizedDimensions.special.differentiation, null);
+  assert.equal(storedResult.normalizedDimensions.exposure.boundary, null);
+  assert.equal(storedResult.layer3Structures.version, "1.1");
+  assert.equal(storedResult.layer3Structures.E.summary, null);
+  assert.equal(storedResult.layer3Structures.E.subScores.recognition, 100);
+  assert.equal(storedResult.layer3Structures.E.subScores.need, null);
+  assert.equal(storedResult.layer3Structures.E.peak, null);
+  assert.equal(storedResult.layer3Structures.R, null);
+  assert.equal("diagnostics" in storedResult.layer3Structures, false);
+  assert.equal("totalScore" in storedResult.layer3Structures, false);
+  assert.equal(storedResult.layer4Evidence.version, "1.0");
+  assert.equal(storedResult.layer4Evidence.status, "insufficient_data");
+  assert.equal(storedResult.layer4Evidence.recognition, 1);
+  assert.equal(storedResult.layer4Evidence.need, null);
+  assert.equal(storedResult.layer5Mechanisms.version, "1.0");
+  assert.equal(storedResult.layer5Mechanisms.status, "insufficient_data");
+  assert.equal(
+    storedResult.layer5Mechanisms.P1_relation_value_amplification,
+    null,
   );
   assert.equal(context.location.href, "result.html");
 }

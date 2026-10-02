@@ -23,7 +23,7 @@
    * 一个选项对各维度产生的原始分值。
    *
    * 这是“稀疏向量”：只写受到该选项影响的维度，没写的维度按 0 理解。
-   * 当前题库尚未配置分数，所以值允许为 null。
+   * 运行题库已经配置原始分；接口仍允许 null，以兼容未配置的旧答案。
    *
    * @typedef {Object.<string, number>|null} ScoreVector
    * @example { recognition: 2, evidence: -1 }

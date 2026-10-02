@@ -3,7 +3,7 @@ import fs from "node:fs";
 import vm from "node:vm";
 
 const source = fs.readFileSync(
-  new URL("../js/about-navigation-stack.js", import.meta.url),
+  new URL("../js/interactions/about-navigation-stack.js", import.meta.url),
   "utf8",
 );
 const context = vm.createContext({ URL });

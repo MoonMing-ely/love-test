@@ -1,79 +1,79 @@
 {
   "version": 3,
   "title": "情感被骗指数测试",
-  "scoringStatus": "placeholder",
+  "scoringStatus": "configured",
   "dimensions": [
     {
       "key": "recognition",
       "code": "认",
       "label": "人格认可敏感",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "needed",
       "code": "需",
       "label": "被需要敏感",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "specialness",
       "code": "特",
       "label": "特殊性放大",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "scarcity",
       "code": "稀",
       "label": "稀缺性判断",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "calibration",
       "code": "校",
       "label": "关系校准",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "evidence",
       "code": "证",
       "label": "行为证据意识",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "manipulation",
       "code": "操",
       "label": "操纵识别",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "rationalization",
       "code": "合",
       "label": "现实回避/合理化",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "boundaries",
       "code": "边",
       "label": "投入边界",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "stopLoss",
       "code": "止",
       "label": "止损能力",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "differentiation",
       "code": "分",
       "label": "心理分化能力",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     },
     {
       "key": "selfCalibration",
       "code": "自",
       "label": "自我校准能力",
-      "scoringStatus": "placeholder"
+      "scoringStatus": "configured"
     }
   ],
   "strata": [
@@ -112,22 +112,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "recognition": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "recognition": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "recognition": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "recognition": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -141,22 +149,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3,
+            "stopLoss": 1
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2,
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1,
+            "stopLoss": 0
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0,
+            "stopLoss": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -170,22 +190,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "recognition": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "recognition": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "recognition": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "recognition": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -199,22 +227,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3,
+            "boundaries": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2,
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1,
+            "boundaries": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0,
+            "boundaries": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -228,22 +268,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "scarcity": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "scarcity": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "scarcity": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "scarcity": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -257,22 +305,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "calibration": 0,
+            "specialness": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "calibration": 1,
+            "specialness": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "calibration": 2,
+            "specialness": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "calibration": 3,
+            "specialness": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -286,22 +346,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "specialness": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "specialness": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "specialness": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "specialness": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -315,22 +383,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "recognition": 3,
+            "specialness": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "recognition": 2,
+            "specialness": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "recognition": 1,
+            "specialness": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "recognition": 0,
+            "specialness": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -344,22 +424,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "calibration": 0,
+            "differentiation": 0
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "calibration": 1,
+            "differentiation": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "calibration": 2,
+            "differentiation": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "calibration": 3,
+            "differentiation": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -373,22 +465,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3,
+            "evidence": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2,
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1,
+            "evidence": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0,
+            "evidence": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -402,22 +506,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "specialness": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "specialness": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "specialness": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "specialness": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -431,22 +543,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "calibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "calibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -460,22 +580,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "recognition": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "recognition": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "recognition": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "recognition": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -489,22 +617,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -518,22 +654,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -547,22 +691,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "evidence": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "evidence": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -576,22 +728,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -605,22 +765,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "evidence": 3,
+            "calibration": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "evidence": 2,
+            "calibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "evidence": 1,
+            "calibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "evidence": 0,
+            "calibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -634,22 +806,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -663,22 +843,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -692,22 +880,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "evidence": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "evidence": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -721,22 +917,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -750,22 +954,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -779,22 +991,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "specialness": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "specialness": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "specialness": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "specialness": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -808,22 +1028,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "needed": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "needed": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "needed": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "needed": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -837,22 +1065,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "calibration": 0,
+            "differentiation": 0
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "calibration": 1,
+            "differentiation": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "calibration": 2,
+            "differentiation": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "calibration": 3,
+            "differentiation": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -866,22 +1106,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "specialness": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "specialness": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "specialness": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "specialness": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -895,22 +1143,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "calibration": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -924,22 +1180,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "manipulation": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "manipulation": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "manipulation": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "manipulation": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -953,22 +1217,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -982,22 +1254,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1011,22 +1291,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "stopLoss": 3,
+            "differentiation": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "stopLoss": 2,
+            "differentiation": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "stopLoss": 1,
+            "differentiation": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "stopLoss": 0,
+            "differentiation": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1040,22 +1332,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3,
+            "boundaries": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2,
+            "boundaries": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1,
+            "boundaries": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0,
+            "boundaries": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1069,22 +1373,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1098,22 +1410,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1127,22 +1447,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "calibration": 3,
+            "evidence": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "calibration": 2,
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "calibration": 1,
+            "evidence": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "calibration": 0,
+            "evidence": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1156,22 +1488,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1185,22 +1525,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "differentiation": 3,
+            "stopLoss": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "differentiation": 2,
+            "stopLoss": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "differentiation": 1,
+            "stopLoss": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "differentiation": 0,
+            "stopLoss": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1214,22 +1566,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1243,22 +1603,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1272,22 +1640,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "evidence": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "evidence": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "evidence": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1301,22 +1677,34 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "boundaries": 3,
+            "stopLoss": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "boundaries": 2,
+            "stopLoss": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "boundaries": 1,
+            "stopLoss": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "boundaries": 0,
+            "stopLoss": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1330,22 +1718,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "specialness": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "specialness": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "specialness": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "specialness": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1359,22 +1755,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "calibration": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "calibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1388,22 +1792,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1417,22 +1829,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1446,22 +1866,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1475,22 +1903,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1504,22 +1940,34 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "needed": 0,
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "needed": 1,
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "needed": 2,
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "needed": 3,
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1533,22 +1981,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1562,22 +2018,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1591,22 +2055,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1620,22 +2092,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "recognition": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "recognition": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "recognition": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "recognition": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1649,22 +2129,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1678,22 +2166,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "differentiation": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "differentiation": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "differentiation": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "differentiation": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1707,22 +2203,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "evidence": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "evidence": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1736,22 +2240,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1765,22 +2277,30 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1794,22 +2314,34 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "differentiation": 0,
+            "stopLoss": 0
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "differentiation": 1,
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "differentiation": 2,
+            "stopLoss": 2
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "differentiation": 3,
+            "stopLoss": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1823,22 +2355,34 @@
         {
           "id": "A",
           "text": "从未",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3,
+            "evidence": 3
+          }
         },
         {
           "id": "B",
           "text": "偶尔",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2,
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "有过几次",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1,
+            "evidence": 1
+          }
         },
         {
           "id": "D",
           "text": "经常如此",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0,
+            "evidence": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1852,22 +2396,30 @@
         {
           "id": "A",
           "text": "基本可以相信",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "暂时可以相信",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "更像自我安慰",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         },
         {
           "id": "D",
           "text": "目前依据不足",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1881,22 +2433,30 @@
         {
           "id": "A",
           "text": "出于善意理解",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "因为过于在意",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "接近无条件信任",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "D",
           "text": "有些回避现实",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1910,22 +2470,30 @@
         {
           "id": "A",
           "text": "基于过往经验判断",
-          "scores": null
+          "scores": {
+            "scarcity": 0
+          }
         },
         {
           "id": "B",
           "text": "带有明显理想化",
-          "scores": null
+          "scores": {
+            "scarcity": 2
+          }
         },
         {
           "id": "C",
           "text": "受到稀缺感影响",
-          "scores": null
+          "scores": {
+            "scarcity": 3
+          }
         },
         {
           "id": "D",
           "text": "被当下情绪放大",
-          "scores": null
+          "scores": {
+            "scarcity": 2
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1939,22 +2507,30 @@
         {
           "id": "A",
           "text": "只是个人社交习惯",
-          "scores": null
+          "scores": {
+            "evidence": 0
+          }
         },
         {
           "id": "B",
           "text": "更像功能上的依赖",
-          "scores": null
+          "scores": {
+            "evidence": 2
+          }
         },
         {
           "id": "C",
           "text": "带有明显利益导向",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         },
         {
           "id": "D",
           "text": "已经出现关系失衡",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1968,22 +2544,30 @@
         {
           "id": "A",
           "text": "主要是依恋与不舍",
-          "scores": null
+          "scores": {
+            "manipulation": 0
+          }
         },
         {
           "id": "B",
           "text": "仍在期待关系转机",
-          "scores": null
+          "scores": {
+            "manipulation": 1
+          }
         },
         {
           "id": "C",
           "text": "已经习惯关系不对等",
-          "scores": null
+          "scores": {
+            "manipulation": 2
+          }
         },
         {
           "id": "D",
           "text": "害怕面对真实结果",
-          "scores": null
+          "scores": {
+            "manipulation": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -1997,22 +2581,30 @@
         {
           "id": "A",
           "text": "只是正常产生好感",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         },
         {
           "id": "B",
           "text": "认为彼此确实契合",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "把稀缺感进一步放大",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "D",
           "text": "把期待投射到关系里",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2026,22 +2618,30 @@
         {
           "id": "A",
           "text": "可能只是单纯善意",
-          "scores": null
+          "scores": {
+            "specialness": 0
+          }
         },
         {
           "id": "B",
           "text": "可能只是普通好感",
-          "scores": null
+          "scores": {
+            "specialness": 1
+          }
         },
         {
           "id": "C",
           "text": "确实有明显重视",
-          "scores": null
+          "scores": {
+            "specialness": 2
+          }
         },
         {
           "id": "D",
           "text": "已经有情感投入",
-          "scores": null
+          "scores": {
+            "specialness": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2055,22 +2655,30 @@
         {
           "id": "A",
           "text": "只是表达方式不同",
-          "scores": null
+          "scores": {
+            "calibration": 0
+          }
         },
         {
           "id": "B",
           "text": "只是阶段性冷淡",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "C",
           "text": "关系本身正在降温",
-          "scores": null
+          "scores": {
+            "calibration": 2
+          }
         },
         {
           "id": "D",
           "text": "在替对方寻找解释",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2084,22 +2692,30 @@
         {
           "id": "A",
           "text": "本身比较乐于助人",
-          "scores": null
+          "scores": {
+            "evidence": 0
+          }
         },
         {
           "id": "B",
           "text": "对别人责任感较强",
-          "scores": null
+          "scores": {
+            "evidence": 1
+          }
         },
         {
           "id": "C",
           "text": "容易主动接管需求",
-          "scores": null
+          "scores": {
+            "evidence": 2
+          }
         },
         {
           "id": "D",
           "text": "个人投入边界较松",
-          "scores": null
+          "scores": {
+            "evidence": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2113,22 +2729,30 @@
         {
           "id": "A",
           "text": "只是理解对方经历",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "担心拒绝伤害对方",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "把责任感背得太重",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "因对方经历放松边界",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2142,22 +2766,30 @@
         {
           "id": "A",
           "text": "只是需要一些缓冲",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "主要还是害怕失去",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "还想等待新的转机",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "不愿面对明确答案",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2171,22 +2803,30 @@
         {
           "id": "A",
           "text": "本来就是主动型相处",
-          "scores": null
+          "scores": {
+            "rationalization": 0
+          }
         },
         {
           "id": "B",
           "text": "确实很重视这段关系",
-          "scores": null
+          "scores": {
+            "rationalization": 1
+          }
         },
         {
           "id": "C",
           "text": "已经变成单向维系",
-          "scores": null
+          "scores": {
+            "rationalization": 2
+          }
         },
         {
           "id": "D",
           "text": "主要还是害怕失去",
-          "scores": null
+          "scores": {
+            "rationalization": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2200,22 +2840,30 @@
         {
           "id": "A",
           "text": "主要是在表达喜欢",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "本身习惯照顾别人",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "在用持续付出维系关系",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "期待付出推动关系进展",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2229,22 +2877,30 @@
         {
           "id": "A",
           "text": "更重视相处感受",
-          "scores": null
+          "scores": {
+            "boundaries": 0
+          }
         },
         {
           "id": "B",
           "text": "能够接受关系波动",
-          "scores": null
+          "scores": {
+            "boundaries": 1
+          }
         },
         {
           "id": "C",
           "text": "在淡化关系失衡",
-          "scores": null
+          "scores": {
+            "boundaries": 2
+          }
         },
         {
           "id": "D",
           "text": "不愿讨论关系对等",
-          "scores": null
+          "scores": {
+            "boundaries": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2258,22 +2914,30 @@
         {
           "id": "A",
           "text": "自己长期真实感受",
-          "scores": null
+          "scores": {
+            "calibration": 0
+          }
         },
         {
           "id": "B",
           "text": "对方给出的解释",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "C",
           "text": "对方长期实际行为",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         },
         {
           "id": "D",
           "text": "关系最终实际结果",
-          "scores": null
+          "scores": {
+            "calibration": 2
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2287,22 +2951,30 @@
         {
           "id": "A",
           "text": "只是愿意耐心等待",
-          "scores": null
+          "scores": {
+            "stopLoss": 0
+          }
         },
         {
           "id": "B",
           "text": "还想继续保留希望",
-          "scores": null
+          "scores": {
+            "stopLoss": 1
+          }
         },
         {
           "id": "C",
           "text": "主要还是不舍退出",
-          "scores": null
+          "scores": {
+            "stopLoss": 2
+          }
         },
         {
           "id": "D",
           "text": "不愿面对明确结论",
-          "scores": null
+          "scores": {
+            "stopLoss": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2316,22 +2988,30 @@
         {
           "id": "A",
           "text": "来自关系中的亲密感",
-          "scores": null
+          "scores": {
+            "needed": 1
+          }
         },
         {
           "id": "B",
           "text": "来自被需要的价值感",
-          "scores": null
+          "scores": {
+            "needed": 2
+          }
         },
         {
           "id": "C",
           "text": "来自照顾对方的责任感",
-          "scores": null
+          "scores": {
+            "needed": 2
+          }
         },
         {
           "id": "D",
           "text": "来自影响局面的掌控感",
-          "scores": null
+          "scores": {
+            "needed": 1
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2345,22 +3025,30 @@
         {
           "id": "A",
           "text": "双方只是各取所需",
-          "scores": null
+          "scores": {
+            "calibration": 1
+          }
         },
         {
           "id": "B",
           "text": "双方真实需求错位",
-          "scores": null
+          "scores": {
+            "calibration": 2
+          }
         },
         {
           "id": "C",
           "text": "关系一直靠暧昧维持",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         },
         {
           "id": "D",
           "text": "主要是单方面期待",
-          "scores": null
+          "scores": {
+            "calibration": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2374,22 +3062,30 @@
         {
           "id": "A",
           "text": "想维护原来的自我判断",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         },
         {
           "id": "B",
           "text": "情感上仍然舍不得",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "C",
           "text": "已经被过去投入绑住",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "D",
           "text": "不断替自己合理化",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2403,22 +3099,30 @@
         {
           "id": "A",
           "text": "可能只是基于事实判断",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         },
         {
           "id": "B",
           "text": "更像一种防御反应",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "C",
           "text": "明显在替关系护短",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "D",
           "text": "正在排斥外部意见",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2432,22 +3136,30 @@
         {
           "id": "A",
           "text": "只是感情还没退去",
-          "scores": null
+          "scores": {
+            "differentiation": 1
+          }
         },
         {
           "id": "B",
           "text": "已经把喜欢和判断分开",
-          "scores": null
+          "scores": {
+            "differentiation": 3
+          }
         },
         {
           "id": "C",
           "text": "主要是原有信任受损",
-          "scores": null
+          "scores": {
+            "differentiation": 2
+          }
         },
         {
           "id": "D",
           "text": "关系已经实际降级",
-          "scores": null
+          "scores": {
+            "differentiation": 2
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2461,22 +3173,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2490,22 +3210,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2519,22 +3247,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2548,22 +3284,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2577,22 +3321,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2606,22 +3358,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2635,22 +3395,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2664,22 +3432,34 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3,
+            "boundaries": 2
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2,
+            "boundaries": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1,
+            "boundaries": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0,
+            "boundaries": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2693,22 +3473,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2722,22 +3510,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null
@@ -2751,22 +3547,30 @@
         {
           "id": "A",
           "text": "80%–90%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 3
+          }
         },
         {
           "id": "B",
           "text": "60%–70%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 2
+          }
         },
         {
           "id": "C",
           "text": "30%–40%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 1
+          }
         },
         {
           "id": "D",
           "text": "10%–20%",
-          "scores": null
+          "scores": {
+            "selfCalibration": 0
+          }
         }
       ],
       "dimensionJudgement": null

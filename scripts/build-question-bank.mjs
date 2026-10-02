@@ -27,8 +27,12 @@ const DIMENSIONS = [
   key,
   code,
   label,
-  scoringStatus: "placeholder",
+  scoringStatus: "configured",
 }));
+
+const DIMENSION_KEY_BY_CODE = new Map(
+  DIMENSIONS.map(({ key, code }) => [code, key]),
+);
 
 function nextContentLine(lines, startIndex) {
   for (let index = startIndex; index < lines.length; index += 1) {
@@ -46,13 +50,27 @@ function parseOptions(line, questionId) {
   }
 
   return parts.map((part, index) => {
-    const match = part.match(/^\*\*(.+?)\*\*\s*〔.+〕$/u);
+    const match = part.match(/^\*\*(.+?)\*\*\s*〔(.+)〕$/u);
     if (!match) throw new Error(`${questionId} 的第 ${index + 1} 个选项格式无效。`);
+
+    const scores = {};
+    match[2].split("｜").forEach((scoreExpression) => {
+      const scoreMatch = scoreExpression.trim().match(/^(.+?)\+([0-4])$/u);
+      const dimensionCode = scoreMatch?.[1];
+      const dimensionKey = DIMENSION_KEY_BY_CODE.get(dimensionCode);
+
+      if (!scoreMatch || !dimensionKey || dimensionKey in scores) {
+        throw new Error(
+          `${questionId} 的第 ${index + 1} 个选项分值格式无效：${scoreExpression}`,
+        );
+      }
+      scores[dimensionKey] = Number(scoreMatch[2]);
+    });
 
     return {
       id: ["A", "B", "C", "D"][index],
       text: match[1],
-      scores: null,
+      scores,
     };
   });
 }
@@ -112,7 +130,7 @@ validateQuestionBank(questions);
 const questionBank = {
   version: 3,
   title: "情感被骗指数测试",
-  scoringStatus: "placeholder",
+  scoringStatus: "configured",
   dimensions: DIMENSIONS,
   strata: Object.entries(STRATA).map(([key, value]) => ({
     key,

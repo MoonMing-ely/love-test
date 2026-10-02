@@ -5,14 +5,12 @@ const questionBank = JSON.parse(
   await readFile(new URL("../data/questions.json", import.meta.url), "utf8"),
 );
 const expectedCounts = { A: 39, B: 21, C: 21, D: 11 };
-const supportedScoringStatuses = new Set(["placeholder", "configured"]);
-
 assert.equal(questionBank.version, 3);
-assert.ok(supportedScoringStatuses.has(questionBank.scoringStatus));
+assert.equal(questionBank.scoringStatus, "configured");
 assert.equal(questionBank.dimensions.length, 12);
 assert.ok(
   questionBank.dimensions.every(
-    (dimension) => supportedScoringStatuses.has(dimension.scoringStatus),
+    (dimension) => dimension.scoringStatus === "configured",
   ),
 );
 const dimensionKeys = new Set(questionBank.dimensions.map(({ key }) => key));
@@ -40,17 +38,38 @@ for (const question of questionBank.questions) {
   assert.ok(
     question.options.every(
       (option) =>
-        option.scores === null ||
-        (option.scores &&
-          typeof option.scores === "object" &&
-          !Array.isArray(option.scores) &&
-          Object.entries(option.scores).every(
-            ([dimensionKey, score]) =>
-              dimensionKeys.has(dimensionKey) && Number.isFinite(score),
-          )),
+        option.scores &&
+        typeof option.scores === "object" &&
+        !Array.isArray(option.scores) &&
+        Object.keys(option.scores).length > 0 &&
+        Object.entries(option.scores).every(
+          ([dimensionKey, score]) =>
+            dimensionKeys.has(dimensionKey) &&
+            Number.isInteger(score) &&
+            score >= 0 &&
+            score <= 4,
+        ),
     ),
   );
   assert.ok(question.options.every((option) => option.text.length > 0));
 }
+
+const questionsById = new Map(
+  questionBank.questions.map((question) => [question.id, question]),
+);
+assert.deepEqual(questionsById.get("A01").options[0].scores, {
+  recognition: 3,
+});
+assert.deepEqual(questionsById.get("A02").options[0].scores, {
+  differentiation: 3,
+  stopLoss: 1,
+});
+assert.deepEqual(questionsById.get("C03").options[2].scores, {
+  scarcity: 3,
+});
+assert.deepEqual(questionsById.get("D08").options[0].scores, {
+  selfCalibration: 3,
+  boundaries: 2,
+});
 
 console.log("Question bank tests passed.");

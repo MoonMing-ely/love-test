@@ -241,12 +241,20 @@ html.is-page-transitioning-out body > .home {
     box-shadow 220ms var(--ease-out),
     transform 220ms var(--ease-out);
   display: flex;
-  color: #263754;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #ffffff;
+  font-size: clamp(1.69rem, 3.38vw, 2.028rem);
   font-weight: 700;
+  letter-spacing: 0.088em;
+  -webkit-text-stroke: 3px #aa8994;
+  paint-order: stroke fill;
   text-decoration: none;
   align-items: center;
   justify-content: center;
+}
+
+.primary-action span {
+  line-height: 1;
+  transform: translateY(-10%);
 }
 
 @media (hover: hover) and (pointer: fine) {
