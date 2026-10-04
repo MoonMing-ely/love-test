@@ -486,3 +486,7 @@ button.result-action {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* 恢复或失败提示独立于题干，避免首题渲染覆盖提示。 */
+#quiz-status:empty { display: none; }
+#quiz-status { margin: 0.75rem 0; color: inherit; font-size: 0.875rem; line-height: 1.5; }

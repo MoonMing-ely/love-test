@@ -1,5 +1,6 @@
 {
-  "version": 3,
+  "version": 4,
+  "bankRevision": "03d69e3060800e9831193426bc8ab2941056713c9cb8f052d8cde9a3511af2f9",
   "title": "情感被骗指数测试",
   "scoringStatus": "configured",
   "dimensions": [
@@ -107,6 +108,11 @@
       "id": "A01",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "recognition"
+      ],
+      "status": "valid",
+      "semantic_group": "being_understood",
       "prompt": "如果一个人能很快理解我平时很少和别人聊的想法，我会更想了解TA。",
       "options": [
         {
@@ -144,6 +150,12 @@
       "id": "A02",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation",
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "affection_trust_separation",
       "prompt": "我可以越来越喜欢一个人，同时减少对TA的信任。",
       "options": [
         {
@@ -185,6 +197,11 @@
       "id": "A03",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "recognition"
+      ],
+      "status": "valid",
+      "semantic_group": "remembered_details",
       "prompt": "一个人记得我很久以前随口提过的小事，会让我对TA非常有好感。",
       "options": [
         {
@@ -222,6 +239,12 @@
       "id": "A04",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation",
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "understanding_acceptance_separation",
       "prompt": "我可以理解一个人的难处，但也不会忽略这件事对我的影响。",
       "options": [
         {
@@ -263,6 +286,11 @@
       "id": "A05",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "scarcity"
+      ],
+      "status": "valid",
+      "semantic_group": "scarcity",
       "prompt": "遇到一个真正聊得来的人时，我会觉得这样的机会并不常有。",
       "options": [
         {
@@ -300,6 +328,12 @@
       "id": "A06",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "calibration",
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "private_disclosure_trust",
       "prompt": "如果一个人愿意和我聊很私人的事情，我会自然地提高对TA的信任。",
       "options": [
         {
@@ -341,6 +375,11 @@
       "id": "A07",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "rapid_connection",
       "prompt": "我觉得人与人之间是否契合，有时几次深入交流就能感觉出来。",
       "options": [
         {
@@ -378,6 +417,12 @@
       "id": "A08",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "recognition",
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "exclusive_vulnerability",
       "prompt": "如果一个平时很独立的人只愿意向我展示脆弱的一面，我会很重视这种特殊性。",
       "options": [
         {
@@ -419,6 +464,12 @@
       "id": "A09",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "calibration",
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "understanding_relaxes_standards",
       "prompt": "如果我感觉对方是真的懂我，我对一些形式上的要求会放宽些。",
       "options": [
         {
@@ -460,6 +511,12 @@
       "id": "A10",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation",
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "explanation_evidence_separation",
       "prompt": "我可以一面接受一个人的解释，一面保留对这件事的疑问。",
       "options": [
         {
@@ -501,6 +558,11 @@
       "id": "A11",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "special_treatment",
       "prompt": "如果一个人平时对别人比较疏离，却唯独愿意和我亲近，我会觉得这段关系和普通关系不太一样。",
       "options": [
         {
@@ -538,6 +600,11 @@
       "id": "A12",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "calibration"
+      ],
+      "status": "review",
+      "semantic_group": "relationship_imbalance",
       "prompt": "我认为关系里偶尔失衡很正常，只要这种状态会不会长期持续。",
       "options": [
         {
@@ -575,6 +642,11 @@
       "id": "A13",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "recognition"
+      ],
+      "status": "valid",
+      "semantic_group": "listening_interest",
       "prompt": "一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。",
       "options": [
         {
@@ -612,6 +684,11 @@
       "id": "A14",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "understanding_acceptance_separation",
       "prompt": "我可以一面理解一个人的行为原因，一面认为这种行为不能接受。",
       "options": [
         {
@@ -649,6 +726,11 @@
       "id": "A15",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "giving_explanations",
       "prompt": "如果我欣赏一个人，我通常会给TA比普通人更多解释的机会。",
       "options": [
         {
@@ -686,6 +768,11 @@
       "id": "A16",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "updating_with_evidence",
       "prompt": "我通常愿意先按善意理解一个人，除非后来出现值得重新判断的信息。",
       "options": [
         {
@@ -723,6 +810,11 @@
       "id": "A17",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "review",
+      "semantic_group": "uncertain_future",
       "prompt": "我可以很享受一段关系，同时不急着判断它最终会走到哪里。",
       "options": [
         {
@@ -760,6 +852,12 @@
       "id": "A18",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "evidence",
+        "calibration"
+      ],
+      "status": "valid",
+      "semantic_group": "behavior_inconsistency",
       "prompt": "当一个人的言语和长期行为不太一致时，我更看重行为。",
       "options": [
         {
@@ -801,6 +899,11 @@
       "id": "A19",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "affinity_excusing_discomfort",
       "prompt": "如果一个人总能说到我心里，我可能不会很介意TA身上一些让我不舒服的地方。",
       "options": [
         {
@@ -838,6 +941,11 @@
       "id": "A20",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "help_relationship_separation",
       "prompt": "我可以对一个人很好，但不一定因此觉得我们之间有特殊关系。",
       "options": [
         {
@@ -875,6 +983,11 @@
       "id": "A21",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "updating_with_evidence",
       "prompt": "我一般不会先往坏处想，但反复出现的异常会改变我的判断。",
       "options": [
         {
@@ -912,6 +1025,11 @@
       "id": "A22",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "excusing_anomalies",
       "prompt": "如果我已经很在意一段关系，我会更愿意把一些反常理解成暂时的问题。",
       "options": [
         {
@@ -949,6 +1067,11 @@
       "id": "A23",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "forgiveness_trust_separation",
       "prompt": "我可以原谅一个人，但不恢复原来的信任。",
       "options": [
         {
@@ -986,6 +1109,11 @@
       "id": "A24",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "specialness"
+      ],
+      "status": "review",
+      "semantic_group": "rapid_connection",
       "prompt": "比起认识时间长短，我更看重两个人交流的深度。",
       "options": [
         {
@@ -1023,6 +1151,11 @@
       "id": "A25",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "needed"
+      ],
+      "status": "valid",
+      "semantic_group": "being_needed",
       "prompt": "别人愿意依赖我，通常会让我更愿意为这段关系投入。",
       "options": [
         {
@@ -1060,6 +1193,12 @@
       "id": "A26",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "calibration",
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "help_relationship_upgrade",
       "prompt": "当我帮助一个人很多，我会自然把这种帮助理解成关系正在升级。",
       "options": [
         {
@@ -1101,6 +1240,11 @@
       "id": "A27",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "exclusive_disclosure",
       "prompt": "如果一个人说“我平时很少和别人讲这些”，我会觉得我们的关系确实有些不同。",
       "options": [
         {
@@ -1138,6 +1282,11 @@
       "id": "A28",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "calibration"
+      ],
+      "status": "review",
+      "semantic_group": "trust_first_step",
       "prompt": "我觉得信任总要有一方先迈出一步。",
       "options": [
         {
@@ -1175,6 +1324,11 @@
       "id": "A29",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "manipulation"
+      ],
+      "status": "review",
+      "semantic_group": "motive_suspicion",
       "prompt": "在没有足够证据前，我不喜欢轻易怀疑一个人的动机。",
       "options": [
         {
@@ -1212,6 +1366,11 @@
       "id": "A30",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "scarcity",
       "prompt": "如果我觉得一段关系很难得，我会更能接受其中的不确定。",
       "options": [
         {
@@ -1249,6 +1408,11 @@
       "id": "A31",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "initial_overinvestment",
       "prompt": "喜欢一个人以后，我通常不太介意自己先多做一点。",
       "options": [
         {
@@ -1286,6 +1450,12 @@
       "id": "A32",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "stopLoss",
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "confirming_hard_truth",
       "prompt": "即使我很珍惜一段关系，我仍然愿意去确认那些可能让我失望的问题。",
       "options": [
         {
@@ -1327,6 +1497,12 @@
       "id": "A33",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation",
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "help_relationship_separation",
       "prompt": "我可以因为善意帮助一个人，而不期待这种帮助换来亲密关系。",
       "options": [
         {
@@ -1368,6 +1544,11 @@
       "id": "A34",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "future_justifies_imbalance",
       "prompt": "如果我觉得一段关系未来可能很好，我可以接受现在暂时不太对等。",
       "options": [
         {
@@ -1405,6 +1586,11 @@
       "id": "A35",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "ambiguous_exit",
       "prompt": "只要对方没有明确拒绝，我一般不会因为一些模糊信号太早退出。",
       "options": [
         {
@@ -1442,6 +1628,12 @@
       "id": "A36",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "calibration",
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "expectation_reality_gap",
       "prompt": "如果我发现自己喜欢的是“这段关系可能成为的样子”，我会不留情地重新看它现在实际是什么样。",
       "options": [
         {
@@ -1483,6 +1675,11 @@
       "id": "A37",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "one_sided_maintenance",
       "prompt": "如果我发现一段关系主要靠自己刻意的付出来维持，我会重新判断这段关系本身还剩下什么。",
       "options": [
         {
@@ -1520,6 +1717,12 @@
       "id": "A38",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "differentiation",
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "companionship_relationship_separation",
       "prompt": "我可以很需要一个人的陪伴，同时承认TA给不了我想要的关系。",
       "options": [
         {
@@ -1561,6 +1764,11 @@
       "id": "A39",
       "stratum": "A",
       "type": "self-report",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "exit_despite_attachment",
       "prompt": "即使我仍然舍不得一段关系，我也能先停止继续投入。",
       "options": [
         {
@@ -1598,6 +1806,11 @@
       "id": "B01",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "delaying_clarification",
       "prompt": "过去一年里，我因为不想破坏关系，把本来想问清楚的事拖到后面。",
       "options": [
         {
@@ -1635,6 +1848,11 @@
       "id": "B02",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "conditional_warmth",
       "prompt": "过去一年里，我发现过某个朋友只在需要帮助时明显热情。",
       "options": [
         {
@@ -1672,6 +1890,12 @@
       "id": "B03",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "boundaries",
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "relationship_imbalance",
       "prompt": "过去一年里，我在明知关系不太对等时，仍继续维持过原来的投入。",
       "options": [
         {
@@ -1713,6 +1937,11 @@
       "id": "B04",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "being_understood",
       "prompt": "过去一年里，我因为别人很懂我，而很快把TA当成特别的人。",
       "options": [
         {
@@ -1750,6 +1979,11 @@
       "id": "B05",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "calibration"
+      ],
+      "status": "valid",
+      "semantic_group": "private_disclosure_trust",
       "prompt": "过去一年里，我因为别人向我倾诉很多，而明显提高过对TA的信任。",
       "options": [
         {
@@ -1787,6 +2021,11 @@
       "id": "B06",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "giving_explanations",
       "prompt": "过去一年里，我替一个反复让我失望的人找过不少理由。",
       "options": [
         {
@@ -1824,6 +2063,11 @@
       "id": "B07",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "review",
+      "semantic_group": "delaying_exit",
       "prompt": "过去一年里，我因为舍不得一段关系，而延后过本来想做的决定。",
       "options": [
         {
@@ -1861,6 +2105,11 @@
       "id": "B08",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "review",
+      "semantic_group": "sunk_cost",
       "prompt": "过去一年里，我在帮一个人很多之后，发现自己更难降低投入。",
       "options": [
         {
@@ -1898,6 +2147,11 @@
       "id": "B09",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "broken_promises",
       "prompt": "过去一年里，我在对方反复失约后，仍按原来的方式继续主动。",
       "options": [
         {
@@ -1935,6 +2189,12 @@
       "id": "B10",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "needed",
+        "boundaries"
+      ],
+      "status": "review",
+      "semantic_group": "need_driven_overresponsibility",
       "prompt": "过去一年里，我因为对方确实处境很难，而承担过原本不该长期由我承担的事。",
       "options": [
         {
@@ -1976,6 +2236,11 @@
       "id": "B11",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "reducing_unequal_investment",
       "prompt": "过去一年里，我在一段明显不对等的关系里主动减少过投入。",
       "options": [
         {
@@ -2013,6 +2278,11 @@
       "id": "B12",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "review",
+      "semantic_group": "hot_cold_confusion",
       "prompt": "过去一年里，我因为一个人长期忽冷忽热而感到过困惑。",
       "options": [
         {
@@ -2050,6 +2320,11 @@
       "id": "B13",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "valid",
+      "semantic_group": "excusing_distance",
       "prompt": "过去一年里，我用 “TA最近可能很忙” 解释过持续一段时间的冷淡。",
       "options": [
         {
@@ -2087,6 +2362,11 @@
       "id": "B14",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "recognition"
+      ],
+      "status": "valid",
+      "semantic_group": "being_recognized",
       "prompt": "过去一年里，我因为别人认可了自己很少被看到的一面，而很快与TA亲近起来。",
       "options": [
         {
@@ -2124,6 +2404,11 @@
       "id": "B15",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "sunk_cost",
       "prompt": "过去一年里，我因为已经投入很多，而不愿承认某段关系可能没有结果。",
       "options": [
         {
@@ -2161,6 +2446,11 @@
       "id": "B16",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "help_relationship_separation",
       "prompt": "过去一年里，我帮助一个人很多，但没有把这种帮助当成关系升级。",
       "options": [
         {
@@ -2198,6 +2488,11 @@
       "id": "B17",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "behavior_inconsistency",
       "prompt": "过去一年里，我因为一个人说得很真诚，而忽略过TA长期行为里的不一致。",
       "options": [
         {
@@ -2235,6 +2530,11 @@
       "id": "B18",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "boundary_request",
       "prompt": "过去一年里，我因为怕显得冷漠，而答应过自己其实不太想答应的请求。",
       "options": [
         {
@@ -2272,6 +2572,11 @@
       "id": "B19",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "stopping_escalation",
       "prompt": "过去一年里，我在关系失衡后主动停止过继续加码。",
       "options": [
         {
@@ -2309,6 +2614,12 @@
       "id": "B20",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "differentiation",
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "care_investment_separation",
       "prompt": "过去一年里，我在对一个人失望后，仍能正常关心TA，但不再继续投入。",
       "options": [
         {
@@ -2350,6 +2661,12 @@
       "id": "B21",
       "stratum": "B",
       "type": "experience",
+      "dimensions": [
+        "selfCalibration",
+        "evidence"
+      ],
+      "status": "review",
+      "semantic_group": "confirmation_bias",
       "prompt": "过去一年里，我发现过自己只愿意听支持某段关系的意见。",
       "options": [
         {
@@ -2391,6 +2708,11 @@
       "id": "C01",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "review",
+      "semantic_group": "excusing_distance",
       "prompt": "朋友说：“TA只是最近太忙。”你更倾向于把这理解为：",
       "options": [
         {
@@ -2428,6 +2750,11 @@
       "id": "C02",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "review",
+      "semantic_group": "giving_explanations",
       "prompt": "一个人总替喜欢的人找理由，你更觉得主要是因为：",
       "options": [
         {
@@ -2465,6 +2792,11 @@
       "id": "C03",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "scarcity"
+      ],
+      "status": "valid",
+      "semantic_group": "scarcity",
       "prompt": "朋友说：“这种人我几年都遇不到第二个。”你更觉得这更像：",
       "options": [
         {
@@ -2502,6 +2834,11 @@
       "id": "C04",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "evidence"
+      ],
+      "status": "valid",
+      "semantic_group": "conditional_warmth",
       "prompt": "有人只在需要帮忙时明显热情，你更倾向于理解为：",
       "options": [
         {
@@ -2539,6 +2876,11 @@
       "id": "C05",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "manipulation"
+      ],
+      "status": "review",
+      "semantic_group": "delaying_exit",
       "prompt": "有人明知关系不对等却不退出，你更觉得主要是因为：",
       "options": [
         {
@@ -2576,6 +2918,11 @@
       "id": "C06",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "review",
+      "semantic_group": "rapid_connection",
       "prompt": "朋友被一个很懂TA的人迅速打动，你更觉得动机更像：",
       "options": [
         {
@@ -2613,6 +2960,11 @@
       "id": "C07",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "specialness"
+      ],
+      "status": "valid",
+      "semantic_group": "listening_interest",
       "prompt": "一个人愿意听你聊很久，你更倾向于把这理解为：",
       "options": [
         {
@@ -2650,6 +3002,11 @@
       "id": "C08",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "calibration"
+      ],
+      "status": "valid",
+      "semantic_group": "excusing_distance",
       "prompt": "朋友说“TA只是不太会表达”，你更倾向于把这理解为：",
       "options": [
         {
@@ -2687,6 +3044,11 @@
       "id": "C09",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "evidence"
+      ],
+      "status": "review",
+      "semantic_group": "overresponsibility",
       "prompt": "一个人总在别人需要时出现，你更觉得这更像：",
       "options": [
         {
@@ -2724,6 +3086,11 @@
       "id": "C10",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "past_hurt_boundary",
       "prompt": "有人因为对方过去受过伤而反复包容，你更觉得主要是：",
       "options": [
         {
@@ -2761,6 +3128,11 @@
       "id": "C11",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "review",
+      "semantic_group": "delaying_clarification",
       "prompt": "一个人已经明显失望，却还不愿问清楚，你更觉得主要是：",
       "options": [
         {
@@ -2798,6 +3170,11 @@
       "id": "C12",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "rationalization"
+      ],
+      "status": "review",
+      "semantic_group": "one_sided_maintenance",
       "prompt": "朋友一直主动维持一段关系，你更倾向于理解为：",
       "options": [
         {
@@ -2835,6 +3212,11 @@
       "id": "C13",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "help_relationship_upgrade",
       "prompt": "一个人花很多时间帮喜欢的人，你更觉得主要是在：",
       "options": [
         {
@@ -2872,6 +3254,11 @@
       "id": "C14",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "relationship_imbalance",
       "prompt": "有人说“感情不能算太清楚”，你更倾向于理解为：",
       "options": [
         {
@@ -2909,6 +3296,11 @@
       "id": "C15",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "calibration"
+      ],
+      "status": "valid",
+      "semantic_group": "behavior_inconsistency",
       "prompt": "朋友长期被忽冷忽热，你更觉得最值得参考的是：",
       "options": [
         {
@@ -2946,6 +3338,11 @@
       "id": "C16",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "ambiguous_exit",
       "prompt": "一个人总觉得“再等等会变好”，你更觉得主要是：",
       "options": [
         {
@@ -2983,6 +3380,11 @@
       "id": "C17",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "needed"
+      ],
+      "status": "valid",
+      "semantic_group": "being_needed",
       "prompt": "有人很享受被需要的感觉，你更觉得这种满足更接近：",
       "options": [
         {
@@ -3020,6 +3422,11 @@
       "id": "C18",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "calibration"
+      ],
+      "status": "valid",
+      "semantic_group": "commitment_mismatch",
       "prompt": "朋友说“TA对我很好，只是没法给承诺”，你更倾向于把这段关系理解为：",
       "options": [
         {
@@ -3057,6 +3464,11 @@
       "id": "C19",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "review",
+      "semantic_group": "admitting_misjudgment",
       "prompt": "一个人很难承认自己看错人，你更觉得主要是：",
       "options": [
         {
@@ -3094,6 +3506,11 @@
       "id": "C20",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "review",
+      "semantic_group": "external_feedback",
       "prompt": "朋友说“别人不了解TA”，你更觉得这更像：",
       "options": [
         {
@@ -3131,6 +3548,11 @@
       "id": "C21",
       "stratum": "C",
       "type": "projection",
+      "dimensions": [
+        "differentiation"
+      ],
+      "status": "valid",
+      "semantic_group": "affection_trust_separation",
       "prompt": "一个人仍喜欢对方，却已经不再信任对方，你更倾向于理解为：",
       "options": [
         {
@@ -3168,6 +3590,11 @@
       "id": "D01",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "emotion_changes_standards",
       "prompt": "我觉得自己在非常喜欢一个人时，原本的判断标准可能会发生变化。",
       "options": [
         {
@@ -3205,6 +3632,11 @@
       "id": "D02",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "experience_prediction_gap",
       "prompt": "我认为真正进入一段关系后，自己的想法可能和现在预测的不一样。",
       "options": [
         {
@@ -3242,6 +3674,11 @@
       "id": "D03",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "self_overconfidence",
       "prompt": "我觉得很多人会因为感情失去判断，但这种事不太容易发生在我身上。",
       "options": [
         {
@@ -3279,6 +3716,11 @@
       "id": "D04",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "experience_prediction_gap",
       "prompt": "我认为自己目前对恋爱的理解，和真正经历一段关系后的理解可能会有较大差距。",
       "options": [
         {
@@ -3316,6 +3758,11 @@
       "id": "D05",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "absence_of_experience",
       "prompt": "我会把“我现在还没有遇到过这种情况”与“我以后不会这样”区分开。",
       "options": [
         {
@@ -3353,6 +3800,11 @@
       "id": "D06",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "intelligence_overconfidence",
       "prompt": "我不认为聪明、逻辑好，就意味着一个人在感情里也能保持同样准确的判断。",
       "options": [
         {
@@ -3390,6 +3842,11 @@
       "id": "D07",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "experience_prediction_gap",
       "prompt": "如果我从没经历过某种关系，我通常不会太确定自己到时候一定会怎么做。",
       "options": [
         {
@@ -3427,6 +3884,12 @@
       "id": "D08",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration",
+        "boundaries"
+      ],
+      "status": "valid",
+      "semantic_group": "planned_boundaries",
       "prompt": "我会提前想清楚哪些边界即使恋爱后也不希望改变。",
       "options": [
         {
@@ -3468,6 +3931,11 @@
       "id": "D09",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "external_feedback",
       "prompt": "我觉得熟悉我的朋友，可能会看到一些我自己没注意到的关系模式。",
       "options": [
         {
@@ -3505,6 +3973,11 @@
       "id": "D10",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "external_feedback",
       "prompt": "如果朋友认为我比自己想象中更容易被打动，我会认真考虑这种可能。",
       "options": [
         {
@@ -3542,6 +4015,11 @@
       "id": "D11",
       "stratum": "D",
       "type": "metacognition",
+      "dimensions": [
+        "selfCalibration"
+      ],
+      "status": "valid",
+      "semantic_group": "survey_reality_gap",
       "prompt": "我觉得自己在问卷里给出的答案，可能比真实情境中的自己更理性。",
       "options": [
         {

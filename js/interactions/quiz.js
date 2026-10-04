@@ -10,11 +10,9 @@
   const resultPage = quizPanel?.dataset.resultPage || "result.html";
   const progressLabel = document.querySelector("#progress-label");
   const progressBar = document.querySelector("#quiz-progress");
+  const statusLabel = document.querySelector("#quiz-status");
   /* 测试的固定特征量。修改这些值时，需要同步检查题库校验和结果页。 */
-  const QUESTION_BANK_SIZE = 92;
   const SAMPLE_SIZE = 28;
-  const DIMENSION_COUNT = 12;
-  const OPTION_IDS = Object.freeze(["A", "B", "C", "D"]);
   const QUIZ_STATE_KEY = "deceptionIndexQuizStateV3";
   const QUIZ_RESULT_KEY = "deceptionIndexQuizResultV3";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -27,7 +25,7 @@
   let currentQuestionIndex = 0;
   let answers = [];
   let dimensionVector = window.DimensionVector.create();
-  let savedQuestionIds = [];
+  let bankRevision = "";
   let isChangingQuestion = false;
 
   function setOptionsDisabled(disabled) {
@@ -36,110 +34,79 @@
     });
   }
 
-  function readSavedState() {
+  function useStorage(action, key, value) {
     try {
-      const savedState = JSON.parse(sessionStorage.getItem(QUIZ_STATE_KEY));
-
-      if (
-        savedState &&
-        Number.isInteger(savedState.currentQuestionIndex) &&
-        savedState.currentQuestionIndex >= 0 &&
-        savedState.currentQuestionIndex <= SAMPLE_SIZE &&
-        Array.isArray(savedState.answers) &&
-        savedState.answers.length === savedState.currentQuestionIndex &&
-        Array.isArray(savedState.questionIds)
-      ) {
-        currentQuestionIndex = savedState.currentQuestionIndex;
-        answers = savedState.answers;
-        savedQuestionIds = savedState.questionIds;
-      }
-    } catch {
-      sessionStorage.removeItem(QUIZ_STATE_KEY);
+      return sessionStorage[action](key, value);
+    } catch (cause) {
+      const error = new Error("浏览器无法读取或保存测试进度。", { cause });
+      error.reason = "storage_unavailable";
+      throw error;
     }
   }
 
-  function saveState() {
-    sessionStorage.setItem(
-      QUIZ_STATE_KEY,
-      JSON.stringify({
-        currentQuestionIndex,
-        answers,
-        dimensionVector,
-        questionIds: questions.map((question) => question.id),
-      }),
-    );
+  function showError(error, phase) {
+    setOptionsDisabled(true);
+    isChangingQuestion = true;
+    quizPanel.dataset.loadState = "error";
+    let message = "测试暂时无法继续，请重新打开页面。";
+    if (error.reason === "storage_unavailable") message = "无法读取或保存测试进度，请检查浏览器存储设置后重试。";
+    else if (error.reason === "pool_insufficient") message = "有效题目尚未满足测试要求，暂时无法开始测试。";
+    else if (error.reason === "attempts_exhausted") message = "暂时无法生成问卷，请重新开始。";
+    else if (phase === "load") message = "题库加载失败，请检查网络并通过本地服务器打开页面。";
+    else if (phase === "data") message = "题库数据无效，暂时无法开始测试。";
+    statusLabel.textContent = message;
+    progressLabel.textContent = "测试已暂停";
+    console.error(error);
   }
 
-  function validateQuestionBank(data) {
-    const questionsToValidate = data?.questions;
-    const ids = new Set(questionsToValidate?.map((question) => question.id));
-    const dimensionKeys = new Set(
-      data?.dimensions?.map((dimension) => dimension.key),
-    );
-
-    /*
-     * scores 是稀疏的 12 维分值向量，例如 { recognition: 2 }。
-     * null 用于兼容未配置分数；未出现的维度按 0 理解。
-     */
-    const hasValidScores = (scores) =>
-      scores === null ||
-      (scores &&
-        typeof scores === "object" &&
-        !Array.isArray(scores) &&
-        Object.entries(scores).every(
-          ([dimensionKey, score]) =>
-            dimensionKeys.has(dimensionKey) && Number.isFinite(score),
-        ));
-
-    return (
-      data?.version === 3 &&
-      ["placeholder", "configured"].includes(data?.scoringStatus) &&
-      Array.isArray(data?.dimensions) &&
-      data.dimensions.length === DIMENSION_COUNT &&
-      dimensionKeys.size === DIMENSION_COUNT &&
-      Array.isArray(questionsToValidate) &&
-      questionsToValidate.length === QUESTION_BANK_SIZE &&
-      ids.size === QUESTION_BANK_SIZE &&
-      questionsToValidate.every(
-        (question) =>
-          /^[A-D]\d{2}$/u.test(question.id) &&
-          question.stratum === question.id[0] &&
-          typeof question.prompt === "string" &&
-          Array.isArray(question.options) &&
-          question.options.length === 4 &&
-          question.options.every(
-            (option, optionIndex) =>
-              option.id === OPTION_IDS[optionIndex] &&
-              typeof option.text === "string" &&
-              hasValidScores(option.scores),
-          ),
-      )
-    );
+  function readSavedState() {
+    const raw = useStorage("getItem", QUIZ_STATE_KEY);
+    if (raw === null) return null;
+    try { return JSON.parse(raw) ?? { invalid: true }; }
+    catch { return { invalid: true }; }
   }
 
-  function restoreOrSampleQuestions() {
-    if (savedQuestionIds.length === SAMPLE_SIZE) {
-      const questionMap = new Map(
-        questionBank.map((question) => [question.id, question]),
-      );
-      const restored = savedQuestionIds.map((id) => questionMap.get(id));
-      if (
-        restored.every(Boolean) &&
-        new Set(savedQuestionIds).size === SAMPLE_SIZE
-      ) {
+  function saveState(next = { currentQuestionIndex, answers, dimensionVector }) {
+    useStorage("setItem", QUIZ_STATE_KEY, JSON.stringify({
+      ...next,
+      questionIds: questions.map((question) => question.id),
+      selectionVersion: window.QuestionSampler.SELECTION_VERSION,
+      bankRevision,
+    }));
+  }
+
+  function scoresMatch(saved, current) {
+    return saved && typeof saved === "object" && !Array.isArray(saved)
+      && Object.keys(saved).length === Object.keys(current).length
+      && Object.entries(current).every(([key, score]) => saved[key] === score);
+  }
+
+  function restoreOrSampleQuestions(saved) {
+    if (saved && saved.selectionVersion === window.QuestionSampler.SELECTION_VERSION
+      && saved.bankRevision === bankRevision
+      && Array.isArray(saved.questionIds) && saved.questionIds.length === SAMPLE_SIZE
+      && new Set(saved.questionIds).size === SAMPLE_SIZE
+      && Number.isInteger(saved.currentQuestionIndex) && saved.currentQuestionIndex >= 0
+      && saved.currentQuestionIndex <= SAMPLE_SIZE
+      && Array.isArray(saved.answers) && saved.answers.length === saved.currentQuestionIndex) {
+      const questionMap = new Map(questionBank.map((question) => [question.id, question]));
+      const restored = saved.questionIds.map((id) => questionMap.get(id));
+      if (restored.every(Boolean) && window.QuestionSampler.validateSelection(restored).valid
+        && saved.answers.every((answer, index) => {
+          const option = restored[index].options.find((item) => item.id === answer?.option);
+          return answer?.questionId === restored[index].id && option && scoresMatch(answer.scores, option.scores);
+        })) {
         questions = restored;
+        currentQuestionIndex = saved.currentQuestionIndex;
+        answers = saved.answers;
         return;
       }
     }
-
-    const sample = window.QuestionSampler.sampleStratified(
-      questionBank,
-      SAMPLE_SIZE,
-    );
+    const sample = window.QuestionSampler.sampleStratified(questionBank, SAMPLE_SIZE);
     questions = sample.questions;
     currentQuestionIndex = 0;
     answers = [];
-    saveState();
+    if (saved) statusLabel.textContent = "原测试进度已失效，已为你重新生成问卷。";
   }
 
   function renderQuestion() {
@@ -211,8 +178,8 @@
       completedAt: new Date().toISOString(),
     };
 
-    sessionStorage.setItem(QUIZ_RESULT_KEY, JSON.stringify(result));
-    sessionStorage.removeItem(QUIZ_STATE_KEY);
+    useStorage("setItem", QUIZ_RESULT_KEY, JSON.stringify(result));
+    useStorage("removeItem", QUIZ_STATE_KEY);
     window.location.href = resultPage;
   }
 
@@ -240,76 +207,59 @@
       window.setTimeout(resolve, selectionFeedbackDuration);
     });
 
-    const answer = {
-      questionId: question.id,
-      option: option.id,
-      /* 保存所选分值的快照，避免题库变化影响本轮结果。 */
-      scores: option.scores === null ? null : { ...option.scores },
-    };
-    answers[currentQuestionIndex] = answer;
-    window.DimensionVector.addOption(
-      dimensionVector,
-      answer.scores,
-      dimensionDefinitions,
-    );
-    currentQuestionIndex += 1;
-    saveState();
-
-    if (currentQuestionIndex >= questions.length) {
-      finishQuiz();
-      return;
+    try {
+      const answer = {
+        questionId: question.id,
+        option: option.id,
+        scores: { ...option.scores },
+      };
+      const next = {
+        answers: [...answers, answer],
+        dimensionVector: [...dimensionVector],
+        currentQuestionIndex: currentQuestionIndex + 1,
+      };
+      window.DimensionVector.addOption(next.dimensionVector, answer.scores, dimensionDefinitions);
+      saveState(next);
+      answers = next.answers;
+      dimensionVector = next.dimensionVector;
+      currentQuestionIndex = next.currentQuestionIndex;
+      if (currentQuestionIndex >= questions.length) finishQuiz();
+      else renderQuestion();
+    } catch (error) {
+      showError(error, "answer");
     }
-
-    renderQuestion();
   }
 
   async function startQuiz() {
     const params = new URLSearchParams(window.location.search);
-
-    if (params.get("restart") === "1") {
-      sessionStorage.removeItem(QUIZ_STATE_KEY);
-      sessionStorage.removeItem(QUIZ_RESULT_KEY);
-      window.history.replaceState({}, "", "text.html");
-    } else {
-      readSavedState();
-    }
-
     setOptionsDisabled(true);
-
+    let phase = "load";
     try {
-      const response = await fetch("../data/questions.json", {
-        cache: "no-store",
-      });
-      if (!response.ok) {
-        throw new Error(`题库加载失败：HTTP ${response.status}`);
-      }
-
+      const response = await fetch("../data/questions.json", { cache: "no-store" });
+      if (!response.ok) throw new Error(`题库加载失败：HTTP ${response.status}`);
       const data = await response.json();
-      if (!validateQuestionBank(data)) {
-        throw new Error("题库必须包含 92 道唯一题目、12 个占位维度和四个选项。");
-      }
-
+      phase = "data";
+      window.QuestionSampler.assertQuestionBank(data);
       questionBank = data.questions;
       dimensionDefinitions = data.dimensions;
-      restoreOrSampleQuestions();
-      /* 刷新页面后，根据已保存的答案重新建立第一层 12 维累计数据。 */
-      dimensionVector = window.DimensionVector.fromAnswers(
-        answers,
-        dimensionDefinitions,
-      );
-      saveState();
-
-      if (currentQuestionIndex >= questions.length) {
-        finishQuiz();
-        return;
+      bankRevision = data.bankRevision;
+      let saved = null;
+      if (params.get("restart") === "1") {
+        useStorage("removeItem", QUIZ_STATE_KEY);
+        useStorage("removeItem", QUIZ_RESULT_KEY);
+        window.history.replaceState({}, "", "text.html");
+      } else {
+        saved = readSavedState();
       }
-
-      renderQuestion();
+      phase = "generate";
+      restoreOrSampleQuestions(saved);
+      dimensionVector = window.DimensionVector.fromAnswers(answers, dimensionDefinitions);
+      saveState();
+      quizPanel.dataset.loadState = "ready";
+      if (currentQuestionIndex >= questions.length) finishQuiz();
+      else renderQuestion();
     } catch (error) {
-      quizPanel.dataset.loadState = "error";
-      questionSlot.setAttribute("aria-label", "题库加载失败");
-      questionSlot.textContent = "题目加载失败，请通过本地服务器打开页面后重试。";
-      console.error(error);
+      showError(error, phase);
     }
   }
 

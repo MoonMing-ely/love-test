@@ -1,3 +1,4 @@
+import { runnableBank } from "./helpers/question-fixtures.mjs";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
@@ -265,7 +266,7 @@ for (let step = 0; step <= 10; step += 1) {
   assert.equal(incomplete.P2_judgment_shift, null);
 }
 
-// Actual 28-question data crosses the complete Raw -> Layer 5 boundary.
+// 真实题库加独立测试操题跨越 Raw -> Layer 5；未确认题不会进入正式池。
 {
   let randomState = 7;
   const random = () => {
@@ -273,7 +274,7 @@ for (let step = 0; step <= 10; step += 1) {
     return randomState / 2 ** 32;
   };
   const sample = context.QuestionSampler.sampleStratified(
-    questionData.questions,
+    runnableBank().questions,
     28,
     random,
   );

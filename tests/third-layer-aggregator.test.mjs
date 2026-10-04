@@ -1,3 +1,4 @@
+import { runnableBank } from "./helpers/question-fixtures.mjs";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
@@ -226,7 +227,7 @@ assert.throws(
     return randomState / 2 ** 32;
   };
   const sample = context.QuestionSampler.sampleStratified(
-    questionData.questions,
+    runnableBank().questions,
     28,
     random,
   );

@@ -20,9 +20,9 @@ http://127.0.0.1:4173/html/index.html
 
 ```text
 data/questions.json
-        ↓ interactions/quiz.js 加载并校验 92 道题
+        ↓ interactions/quiz.js 加载并校验题库 v4
 js/question-sampler.js
-        ↓ 按 A/B/C/D 题型比例无放回抽取 28 道
+        ↓ 按固定题型配额、维度覆盖与语义限制抽取 28 道
 js/interactions/quiz.js
         ↓ 显示题目、播放选择反馈、保存答案快照
 js/core-algorithm/dimension-vector.js
@@ -71,7 +71,7 @@ love-test/
 | `css/style.css` | 全站背景、外框和基础响应式布局 | 修改整体视觉 |
 | `css/content.css` | 题目、选项、进度和结果内容样式 | 修改内容区排版 |
 | `js/interactions/quiz.js` | 题库校验、答题流程、状态恢复和结果保存 | 修改答题行为 |
-| `js/question-sampler.js` | 分层比例分配、洗牌和无重复抽题 | 修改抽题策略 |
+| `js/question-sampler.js` | 受约束抽题、题库与题组校验 | 修改抽题策略 |
 | `js/scoring.js` | 评分算法的唯一公开入口 | 编写 12 维评分算法 |
 | `js/core-algorithm/dimension-vector.js` | 建立并累加 12 维选项向量 | 修改第一层维度处理 |
 | `js/core-algorithm/second-layer-normalizer.js` | 根据本轮题目容量生成标准化维度数据 | 修改第二层标准化处理 |
@@ -92,13 +92,11 @@ love-test/
 以下常量集中定义在 `js/interactions/quiz.js`：
 
 ```js
-const QUESTION_BANK_SIZE = 92;
 const SAMPLE_SIZE = 28;
-const DIMENSION_COUNT = 12;
-const OPTION_IDS = ["A", "B", "C", "D"];
+// 题库结构检查由 QuestionSampler.assertQuestionBank 负责。
 ```
 
-- 题库总数：92 道。
+- 当前题库：92 道；总量允许扩充，不作为运行时固定限制。
 - 每轮抽题：28 道。
 - 评分维度：12 个。
 - 题型层：A、B、C、D 四层。
@@ -106,34 +104,23 @@ const OPTION_IDS = ["A", "B", "C", "D"];
 
 题型字母与选项字母虽然相同，但含义不同：`question.stratum` 表示题型，`answer.option` 表示用户选择，算法中不能将两者混用。
 
-## 6. 分层随机抽题
+## 6. 受约束随机抽题
 
-题库四层数量为：
+`QuestionSampler.sampleStratified(questions, 28, random)` 固定 A12/B6/C6/D4。仅使用 valid 题，认需特稀各至少 1 个不同 ID，其余八维各至少 2 个不同 ID，同语义组最多 2 题。先补骨架覆盖，再补配额，完整验证后洗牌；最多尝试 100 次。不修改原始题库或评分。
 
-| 题型 | 数量 | 含义 |
-| --- | ---: | --- |
-| A | 39 | 程度自陈题 |
-| B | 21 | 真实经历／日常行为题 |
-| C | 21 | 短投射题 |
-| D | 11 | 元认知／自我校准题 |
+`assertQuestionBank(data)` 检查版本、结构和元数据；`validateSelection(questions)` 返回 `{ valid, errors, debug }`，用于生成及恢复。容量不足报 `QuestionPoolConstraintError`，reason 为 `pool_insufficient`；尝试耗尽为 `attempts_exhausted`。非预期程序异常直接向页面传播，不重抽。
 
-`question-sampler.js` 先使用最大余数法按照各层题量分配 28 个名额，然后在每层内部执行 Fisher–Yates 洗牌并截取相应数量，最后再次打乱合并后的 28 道题。
+维护源每题标题后包含一行 `<!-- selection: {...} -->`，其中 dimensions 使用英文评分 key，status 为 valid/review/disabled，semantic_group 为具体主题。同组第二题及非 A 来源属于优先选择，不增加硬规则。
 
-当前每轮固定抽取 A 12 道、D 3 道；B/C 分别为 6 道和 7 道。B/C 的比例余数相同，因此通过随机平局值决定哪一层多一道。
+生成脚本输出题库 version=4，并用 Node 内置 SHA-256 计算 bankRevision；同内容构建相同。候选状态及审核依据见 `question-bank-audit.md`。目前 A29/C05 等存疑题为 review，正式操题不足，页面按设计暂停生成。1000 次生成及完整评分流程目前使用独立测试操题，不能视为正式题库验收。
 
-抽题函数的公开形式：
-
-```js
-QuestionSampler.sampleStratified(questions, sampleSize, random);
-```
-
-第三个参数 `random` 在浏览器中默认使用 `Math.random`，测试中可以传入固定随机函数，使相同种子得到可重复检查的结果。
+第三个参数 random 默认 Math.random，可注入固定种子。成功返回 questions、allocation 和 debug（题型、维度来源、语义统计、attempt_count），不保存或展示用户答案日志。
 
 ## 7. 浏览器会话状态
 
 项目使用 `sessionStorage` 保存两类数据：
 
-- `deceptionIndexQuizStateV3`：当前题号、已经完成的答案和本轮题目编号。
+- `deceptionIndexQuizStateV3`：当前题号、答案、题目 ID、selectionVersion 和 bankRevision。旧 key 保留，旧数据缺版本会重新生成。
 - `deceptionIndexQuizResultV3`：完成状态、28 条原始答案、第一至第五层算法数据和占位评分输出。
 
 `sessionStorage` 的作用范围是当前浏览器标签页会话。它不是长期数据库，也不会自动在不同设备或不同标签页之间同步。
@@ -164,7 +151,7 @@ E/J/B 始终保留自己的 `subScores`。如果某组含有 `null`，该组的 
 
 第五层入口 `Layer5Mechanisms.calculate(layer4Evidence)` 独立计算关系价值放大 P1、判断偏移 P2、行动失守 P3、退出困难 P4。M 与可选一致性只进入 `protection`，不修改 P1～P4；`debug` 保留各机制的 core/support。第五层不求和、不映射阶段，也不生成最终风险，第六层仍未实现。
 
-V1 只有在 12 个底层维度都可计算时才正式生成 P1～P4；否则第四、第五层返回 `insufficient_data`。当前 28 题抽样器只保证 A/B/C/D 题型比例，不保证每轮覆盖全部 12 维，因此生产启用第五层前还需要单独确定维度覆盖抽样策略，不能把缺失维度静默当成 0。
+V1 只有在 12 个底层维度都可计算时才正式生成 P1～P4，否则返回 `insufficient_data`。新抽题器保证合格问卷的最低覆盖；目前仍需补足有效操题才能生成正式问卷，不能把缺失维度静默当成 0。
 
 ## 8. 评分算法边界
 
@@ -212,8 +199,9 @@ node tests/about-navigation-stack.test.mjs
 
 各测试职责：
 
-- `question-bank.test.mjs`：检查 92 道题、12 个维度、各题型数量和分值格式。
-- `question-sampler.test.mjs`：使用 100 组随机种子检查抽题比例、随机差异和同轮不重复。
+- `question-bank.test.mjs`：检查元数据、维护源/JSON 一致性、修订号稳定性及变化敏感性。
+- `question-sampler.test.mjs`：1000 组固定种子验证配额、维度来源、语义、状态及随机性；测试题池明确区分于正式题库。
+- `quiz-flow.test.mjs`：真实抽题器接页面及 Raw→第五层→结果，覆盖刷新恢复和启动/中途/完成存储失败。
 - `scoring-interface.test.mjs`：检查评分输入输出约定，并模拟完成 28 道题，确认页面完整传入答案和维度定义。
 - `dimension-vector.test.mjs`：检查第一层 12 维向量的建立、累加和恢复。
 - `second-layer-normalizer.test.mjs`：检查 Capacity、0～1 标准化、特殊维度、exposure、clamp 警告和重复计算一致性。

@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { buildQuestionBank } from "../scripts/build-question-bank.mjs";
 
 const questionBank = JSON.parse(
   await readFile(new URL("../data/questions.json", import.meta.url), "utf8"),
 );
-const expectedCounts = { A: 39, B: 21, C: 21, D: 11 };
-assert.equal(questionBank.version, 3);
+assert.equal(questionBank.version, 4);
+assert.match(questionBank.bankRevision, /^[a-f0-9]{64}$/u);
 assert.equal(questionBank.scoringStatus, "configured");
 assert.equal(questionBank.dimensions.length, 12);
 assert.ok(
@@ -14,22 +15,17 @@ assert.ok(
   ),
 );
 const dimensionKeys = new Set(questionBank.dimensions.map(({ key }) => key));
-assert.equal(questionBank.questions.length, 92);
-assert.equal(new Set(questionBank.questions.map(({ id }) => id)).size, 92);
-
-for (const [stratum, expectedCount] of Object.entries(expectedCounts)) {
-  assert.equal(
-    questionBank.questions.filter((question) => question.stratum === stratum)
-      .length,
-    expectedCount,
-  );
-}
+assert.ok(questionBank.questions.length >= 28);
+assert.equal(new Set(questionBank.questions.map(({ id }) => id)).size, questionBank.questions.length);
 
 for (const question of questionBank.questions) {
-  assert.match(question.id, /^[A-D]\d{2}$/u);
+  assert.match(question.id, /^[A-D]\d{2,}$/u);
   assert.equal(question.stratum, question.id[0]);
   assert.ok(question.prompt.length > 0);
   assert.equal(question.dimensionJudgement, null);
+  assert.ok(["valid", "review", "disabled"].includes(question.status));
+  assert.match(question.semantic_group, /^[a-z][a-z0-9_]*$/u);
+  assert.deepEqual([...question.dimensions].sort(), [...new Set(question.options.flatMap((option) => Object.keys(option.scores)))].sort());
   assert.equal(question.options.length, 4);
   assert.deepEqual(
     question.options.map((option) => option.id),
@@ -72,4 +68,19 @@ assert.deepEqual(questionsById.get("D08").options[0].scores, {
   boundaries: 2,
 });
 
+const markdown = await readFile(new URL("../data/question-bank-source.md", import.meta.url), "utf8");
+assert.deepEqual(buildQuestionBank(markdown), questionBank, "维护源与运行题库必须一致");
+assert.equal(buildQuestionBank(markdown).bankRevision, questionBank.bankRevision);
+for (const changed of [
+  markdown.replace("我会更想了解TA。", "我会更想进一步了解TA。"),
+  markdown.replace("〔认+3〕", "〔认+4〕"),
+  markdown.replace('"status":"valid"', '"status":"review"'),
+  markdown.replace('"semantic_group":"being_understood"', '"semantic_group":"being_understood_new"'),
+]) assert.notEqual(buildQuestionBank(changed).bankRevision, questionBank.bankRevision);
+assert.throws(() => buildQuestionBank(markdown.replace(/<!-- selection: .+? -->/u, "")), /缺少 selection/);
+assert.throws(() => buildQuestionBank(markdown.replace('"dimensions":["recognition"]', '"dimensions":["needed"]')), /计分维度不一致/);
+const expandedSource = markdown + '\n### A100\n\n<!-- selection: {"dimensions":["recognition"],"status":"review","semantic_group":"test_future_id"} -->\n\n测试未来编号\n\n**甲** 〔认+3〕 · **乙** 〔认+2〕 · **丙** 〔认+1〕 · **丁** 〔认+0〕\n';
+assert.ok(buildQuestionBank(expandedSource).questions.some((q) => q.id === "A100"));
+assert.equal(questionsById.get("A29").status, "review");
+assert.equal(questionsById.get("C05").status, "review");
 console.log("Question bank tests passed.");

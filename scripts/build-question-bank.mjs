@@ -1,4 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { pathToFileURL } from "node:url";
+import "../js/question-sampler.js";
 
 const sourceUrl = new URL("../data/question-bank-source.md", import.meta.url);
 const outputUrl = new URL("../data/questions.json", import.meta.url);
@@ -75,17 +78,21 @@ function parseOptions(line, questionId) {
   });
 }
 
-function parseQuestions(markdown) {
+export function parseQuestions(markdown) {
   const lines = markdown.split(/\r?\n/u);
   const questions = [];
 
   lines.forEach((line, index) => {
-    const heading = line.match(/^### ([A-D]\d{2})$/u);
+    const heading = line.match(/^### ([A-D]\d{2,})$/u);
     if (!heading) return;
 
     const id = heading[1];
     const stratum = id[0];
-    const promptLine = nextContentLine(lines, index + 1);
+    const metadataLine = nextContentLine(lines, index + 1);
+    const metadataMatch = metadataLine?.value.match(/^<!-- selection: (.+) -->$/u);
+    if (!metadataMatch) throw new Error(`${id} 缺少 selection 元数据。`);
+    const metadata = JSON.parse(metadataMatch[1]);
+    const promptLine = nextContentLine(lines, metadataLine.index + 1);
     const optionsLine = promptLine
       ? nextContentLine(lines, promptLine.index + 1)
       : null;
@@ -98,6 +105,9 @@ function parseQuestions(markdown) {
       id,
       stratum,
       type: STRATA[stratum].type,
+      dimensions: metadata.dimensions,
+      status: metadata.status,
+      semantic_group: metadata.semantic_group,
       prompt: promptLine.value,
       options: parseOptions(optionsLine.value, id),
       dimensionJudgement: null,
@@ -107,39 +117,28 @@ function parseQuestions(markdown) {
   return questions;
 }
 
-function validateQuestionBank(questions) {
-  const expectedCounts = { A: 39, B: 21, C: 21, D: 11 };
-  const ids = new Set(questions.map((question) => question.id));
-
-  if (questions.length !== 92 || ids.size !== 92) {
-    throw new Error(`题库必须包含 92 个唯一题目，当前为 ${questions.length}。`);
-  }
-
-  for (const [stratum, expected] of Object.entries(expectedCounts)) {
-    const actual = questions.filter((question) => question.stratum === stratum).length;
-    if (actual !== expected) {
-      throw new Error(`${stratum} 类应有 ${expected} 题，当前为 ${actual} 题。`);
-    }
-  }
+export function buildQuestionBank(markdown) {
+  const questions = parseQuestions(markdown);
+  globalThis.QuestionSampler.assertQuestions(questions);
+  const bankRevision = createHash("sha256")
+    .update(JSON.stringify({ dimensions: DIMENSIONS, questions }))
+    .digest("hex");
+  return {
+    version: 4,
+    bankRevision,
+    title: "情感被骗指数测试",
+    scoringStatus: "configured",
+    dimensions: DIMENSIONS,
+    strata: Object.entries(STRATA).map(([key, value]) => ({
+      key, label: value.label, type: value.type,
+      questionCount: questions.filter((question) => question.stratum === key).length,
+    })),
+    questions,
+  };
 }
 
-const markdown = await readFile(sourceUrl, "utf8");
-const questions = parseQuestions(markdown);
-validateQuestionBank(questions);
-
-const questionBank = {
-  version: 3,
-  title: "情感被骗指数测试",
-  scoringStatus: "configured",
-  dimensions: DIMENSIONS,
-  strata: Object.entries(STRATA).map(([key, value]) => ({
-    key,
-    label: value.label,
-    type: value.type,
-    questionCount: questions.filter((question) => question.stratum === key).length,
-  })),
-  questions,
-};
-
-await writeFile(outputUrl, `${JSON.stringify(questionBank, null, 2)}\n`);
-console.log(`Generated ${questions.length} questions in ${outputUrl.pathname}.`);
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const bank = buildQuestionBank(await readFile(sourceUrl, "utf8"));
+  await writeFile(outputUrl, `${JSON.stringify(bank, null, 2)}\n`);
+  console.log(`Generated ${bank.questions.length} questions in ${outputUrl.pathname}.`);
+}
