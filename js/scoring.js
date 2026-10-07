@@ -1,13 +1,7 @@
 (function (global) {
   "use strict";
 
-  /**
-   * 本文件是“答题流程”和“评分算法”之间唯一的公开接口。
-   *
-   * 当前返回值仍是未计分状态。你以后写算法时，主要修改
-   * calculateResult() 中标记为 TODO 的区域即可；
-   * 页面抽题、按钮动画和结果存储不需要跟着重写。
-   */
+  // 只适配已经计算好的第六层结果，不重新读取题库或计算前五层。
 
   const DIMENSION_COUNT = 12;
 
@@ -42,15 +36,16 @@
    * @typedef {Object} ScoringInput
    * @property {AnswerRecord[]} answers - 本次测试的 28 条答案，顺序就是出题顺序。
    * @property {DimensionDefinition[]} dimensions - 12 个维度的名称与唯一键。
+   * @property {Object} layer6Integration - 第六层已计算的输出。
    */
 
   /**
    * 评分模块交给结果页的统一输出。
    * @typedef {Object} ScoringResult
    * @property {3} version - 输出结构版本；字段发生不兼容变化时才升级。
-   * @property {"scoring-placeholder"|"scored"} status - 占位或已经完成计算。
+   * @property {"scored"|"insufficient_data"} status - 已计算或数据不足。
    * @property {number} dimensionCount - 维度数量，当前固定为 12。
-   * @property {number|null} totalScore - 你的总分；未实现算法时为 null。
+   * @property {number|null} totalScore - 最终分；数据不足时为 null。
    * @property {Object.<string, number>|null} dimensionScores - 以维度 key 为键的最终分数。
    * @property {string} title - 结果页主标题。
    * @property {string} summary - 结果页解释文字。
@@ -113,24 +108,26 @@
   function calculateResult(input) {
     validateScoringInput(input);
 
-    /*
-     * TODO（留给你实现）：
-     * 1. 遍历 input.answers。
-     * 2. 把每条 answer.scores 中相同维度的数值累加。
-     * 3. 根据你的规则做反向计分、权重、归一化或区间判断。
-     * 4. 将 status 改为 "scored"，并填写 totalScore、dimensionScores、title、summary。
-     *
-     * 不要直接依赖答案在数组中的位置；请使用 questionId、option 和维度 key。
-     */
-
+    const layer6 = input.layer6Integration;
+    if (!layer6 || !["complete", "insufficient_data"].includes(layer6.status)) {
+      throw new TypeError("评分接口需要第六层 layer6Integration 输出。");
+    }
+    const complete = layer6.status === "complete";
+    if (complete && (!Number.isFinite(layer6.totalScore) || layer6.totalScore < 0 || layer6.totalScore > 100 ||
+        ![1, 2, 3, 4].includes(layer6.stage))) {
+      throw new RangeError("第六层最终分或阶段无效。");
+    }
     return {
       version: 3,
-      status: "scoring-placeholder",
+      status: complete ? "scored" : "insufficient_data",
       dimensionCount: input.dimensions.length,
-      totalScore: null,
+      totalScore: complete ? layer6.totalScore : null,
       dimensionScores: null,
-      title: "随机抽题测试已完成",
-      summary: "28 道题已全部作答；12 维判断标准暂未启用。",
+      stage: complete ? layer6.stage : null,
+      title: complete ? "情感被骗指数" : "测试数据不足",
+      summary: complete
+        ? `Stage ${layer6.stage} · ${layer6.shapeLabel ?? "无典型形状"} · ${layer6.paths.map((path) => path.label).join(" + ") || "无明显路径"}。V1 参数待校准。`
+        : "本次数据不足以计算最终分数，请重测一次。",
     };
   }
 

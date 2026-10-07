@@ -4,7 +4,7 @@ import { runnableBank, seededRandom } from "./question-fixtures.mjs";
 
 const paths = ["question-sampler.js", "core-algorithm/dimension-vector.js", "core-algorithm/second-layer-normalizer.js",
   "core-algorithm/third-layer-aggregator.js", "core-algorithm/algorithm-config.js", "core-algorithm/fourth-layer-evidence.js",
-  "core-algorithm/fifth-layer-mechanisms.js", "scoring.js", "interactions/quiz.js"];
+  "core-algorithm/fifth-layer-mechanisms.js", "core-algorithm/sixth-layer-integration.js", "scoring.js", "interactions/quiz.js"];
 const scripts = await Promise.all(paths.map((path) => readFile(new URL(`../../js/${path}`, import.meta.url), "utf8")));
 export const STATE_KEY = "deceptionIndexQuizStateV3";
 export const RESULT_KEY = "deceptionIndexQuizResultV3";

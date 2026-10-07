@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
-import { productionBank, runnableBank, seededRandom } from "./helpers/question-fixtures.mjs";
+import { productionBank, seededRandom } from "./helpers/question-fixtures.mjs";
 
 const context = {};
 vm.runInNewContext(await readFile(new URL("../js/question-sampler.js", import.meta.url), "utf8"), context);
 const sampler = context.QuestionSampler;
-const bank = runnableBank();
+const bank = productionBank;
 const before = JSON.stringify(bank);
 const signatures = new Set();
 let maximumAttempt = 0;
@@ -90,10 +90,5 @@ assert.equal(sampler.validateSelection(tooSimilar).valid, false);
 assert.throws(() => sampler.validateSelection([...sample.questions.slice(1), sample.questions[1]]), /ID 重复/);
 
 const validManipulation = productionBank.questions.filter((q) => q.status === "valid" && q.dimensions.includes("manipulation"));
-if (validManipulation.length < 2) {
-  assert.throws(() => sampler.sampleStratified(productionBank.questions), (e) => e.reason === "pool_insufficient");
-  console.log(`1000 次测试夹具生成通过（不是正式题库验收）；最多尝试 ${maximumAttempt} 次。正式操题不足，按设计停止。`);
-} else {
-  for (let seed = 1; seed <= 1000; seed += 1) sampler.sampleStratified(productionBank.questions, 28, seededRandom(seed));
-  console.log(`1000 次正式题库及测试题池生成通过；测试题池最多尝试 ${maximumAttempt} 次。`);
-}
+assert.deepEqual(validManipulation.map((q) => q.id).sort(), ["A40", "C22", "C23", "C24"]);
+console.log(`1000 次正式题库生成全部合格；最多尝试 ${maximumAttempt} 次，不补入人工测试题。`);

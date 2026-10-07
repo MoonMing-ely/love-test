@@ -79,13 +79,7 @@
     const page = document.createElement("main");
     page.className = "home about-page";
     page.dataset.page = "about";
-    const hearts = Array.from(
-      { length: 20 },
-      () => '<span class="heart"></span>',
-    ).join("");
-
     page.innerHTML = `
-      <div class="heart-field" aria-hidden="true">${hearts}</div>
       <nav class="top-actions" aria-hidden="true">
         <span class="image-slot ${activeView === "project" ? "is-active" : ""}"></span>
         <span class="image-slot ${activeView === "result" ? "is-active" : ""}"></span>

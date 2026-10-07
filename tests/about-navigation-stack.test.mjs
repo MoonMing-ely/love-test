@@ -100,6 +100,10 @@ assert.equal(
 );
 
 const navigationStorage = createStorage();
+assert.equal(
+  normalizeRoute("text.html?restart=1&mode=test#question", "https://example.test/html/text.html"),
+  "text.html?mode=test#question",
+);
 const openProject = createControl(
   "https://example.test/html/about.html?view=project&from=text.html",
 );
@@ -160,5 +164,25 @@ projectToQuestion.click();
 
 const emptiedStack = new NavigationStack(navigationStorage);
 assert.equal(emptiedStack.size, 0);
+
+// Binding happens before quiz.js finishes loading and removes restart from the address.
+const restartStorage = createStorage();
+const restartedToProject = createControl("https://example.test/html/about.html?view=project&from=text.html");
+bindPage(restartStorage, "question", "https://example.test/html/text.html?restart=1", [restartedToProject]);
+restartedToProject.click();
+assert.equal(new NavigationStack(restartStorage).peek(), "text.html");
+const returnToRestartedQuiz = createControl("https://example.test/html/text.html", true);
+bindPage(restartStorage, "about", "https://example.test/html/about.html?view=project&from=text.html", [returnToRestartedQuiz]);
+assert.equal(returnToRestartedQuiz.href, "text.html");
+returnToRestartedQuiz.click();
+assert.equal(returnToRestartedQuiz.href, "text.html");
+
+// Already persisted navigation stacks must also be safe for return-animation preloads.
+const oldRestartStorage = createStorage(JSON.stringify(["text.html?restart=1"]));
+const oldReturn = createControl("https://example.test/html/text.html", true);
+bindPage(oldRestartStorage, "about", "https://example.test/html/about.html?view=result&from=text.html", [oldReturn]);
+assert.equal(oldReturn.href, "text.html");
+oldReturn.click();
+assert.equal(oldReturn.href, "text.html");
 
 console.log("About navigation stack tests passed.");

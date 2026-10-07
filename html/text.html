@@ -10,33 +10,16 @@
   </head>
   <body>
     <main class="home quiz-page" data-page="question">
-      <div class="heart-field" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-      </div>
-
-      <nav class="top-actions" aria-label="快捷操作">
-        <a class="image-slot" href="about.html?view=project&amp;from=text.html" data-route="about-project" aria-label="查看关于这个测试"></a>
-        <a class="image-slot" href="about.html?view=result&amp;from=text.html" data-route="about-result" aria-label="查看关于测试结果"></a>
-      </nav>
+      <header class="quiz-header">
+        <div class="quiz-progress" aria-live="polite">
+          <progress id="quiz-progress" max="28" value="0" aria-label="答题进度">0 / 28</progress>
+          <span id="progress-label">准备中…</span>
+        </div>
+        <nav class="top-actions" aria-label="快捷操作">
+          <a class="image-slot" href="about.html?view=project&amp;from=text.html" data-route="about-project" aria-label="查看关于这个测试"></a>
+          <a class="image-slot" href="about.html?view=result&amp;from=text.html" data-route="about-result" aria-label="查看关于测试结果"></a>
+        </nav>
+      </header>
 
       <section class="content-frame quiz-frame" aria-label="性格测试题目区域">
         <section
@@ -44,9 +27,8 @@
           data-question-id=""
           data-result-page="result.html"
           aria-label="题目和选项"
+          tabindex="0"
         >
-          <div class="quiz-rule" aria-hidden="true"></div>
-
           <div
             class="question-slot"
             role="heading"
@@ -62,11 +44,6 @@
           </div>
 
           <p id="quiz-status" role="status" aria-live="polite"></p>
-
-          <div class="quiz-progress" aria-live="polite">
-            <span id="progress-label">正在准备题目…</span>
-            <progress id="quiz-progress" max="28" value="0">0 / 28</progress>
-          </div>
         </section>
       </section>
     </main>
@@ -77,6 +54,7 @@
     <script src="../js/core-algorithm/algorithm-config.js"></script>
     <script src="../js/core-algorithm/fourth-layer-evidence.js"></script>
     <script src="../js/core-algorithm/fifth-layer-mechanisms.js"></script>
+    <script src="../js/core-algorithm/sixth-layer-integration.js"></script>
     <script src="../js/scoring.js"></script>
     <script src="../js/interactions/quiz.js"></script>
     <script src="../js/interactions/about-navigation-stack.js"></script>

@@ -15,6 +15,8 @@
       const url = new URL(value, baseUrl);
       const page = url.pathname.split("/").pop();
       if (!allowedPages.has(page)) return null;
+      // Restart is a one-time command, never a destination for returning to a quiz.
+      if (page === "text.html") url.searchParams.delete("restart");
       return `${page}${url.search}${url.hash}`;
     } catch {
       return null;
@@ -96,7 +98,7 @@
 
     if (isAboutPage && activeControl) {
       const fallbackRoute = normalizeRoute(activeControl.href, global.location.href) || "index.html";
-      activeControl.href = stack.peek() || fallbackRoute;
+      activeControl.href = normalizeRoute(stack.peek(), global.location.href) || fallbackRoute;
     }
 
     controls.forEach((control) => {
@@ -105,7 +107,7 @@
 
         if (isAboutPage && control.classList.contains("is-active")) {
           const fallbackRoute = normalizeRoute(control.href, global.location.href) || "index.html";
-          control.href = stack.pop() || fallbackRoute;
+          control.href = normalizeRoute(stack.pop(), global.location.href) || fallbackRoute;
           return;
         }
 

@@ -33,91 +33,134 @@
   z-index: 1;
 }
 
-/* 题目与选项组件。 */
-.quiz-panel {
-  --quiz-inner-width: min(94%, 720px);
-  top: 4%;
-  height: auto;
-  padding: clamp(18px, 3vw, 28px);
-  grid-template-rows: auto auto auto auto;
-  gap: clamp(15px, 1.9svh, 21px);
-  align-content: start;
-  justify-items: center;
+/* 答题页独立适配：外框保持相同比例，内容按顺序排布并在必要时滚动。 */
+.quiz-page {
+  --quiz-frame-width: min(85.5vw, 722px);
+  min-height: 100svh;
+  padding-top: calc(max(60px, calc(8.5svh - 8px)) + 2svh);
 }
 
-.quiz-rule,
-.quiz-progress,
-.question-slot,
-.options-grid {
-  width: var(--quiz-inner-width);
+.quiz-frame {
+  width: calc(var(--quiz-frame-width) * 1.03);
+  height: min(85svh, 1160px);
+  min-height: 0;
+  /* 保持外框现有高度，只调整它的整体位置。 */
+  max-height: calc(100svh - max(60px, calc(8.5svh - 8px)) - 5svh - 16px);
 }
 
+.quiz-frame::before,
 .quiz-panel::before {
   display: none;
 }
 
-.quiz-rule {
-  height: 1px;
-  background: var(--line);
+.content-surface.quiz-panel {
+  /* 以原面板内容宽度为基准：94% × 1.15，保持竖屏加宽 15%。 */
+  --quiz-card-width: min(calc((88% - 2 * clamp(18px, 3vw, 28px)) * 0.94 * 1.15), 828px);
+  top: 4%;
+  bottom: calc(clamp(12px, 2svh, 22px) + 3svh);
+  margin-top: -3svh;
+  /* 扣除外框新增的宽度，保持题干与选项的尺寸和居中位置。 */
+  width: calc(100% - var(--quiz-frame-width) * 0.03);
+  height: auto;
+  padding: clamp(18px, 3vw, 28px) 0;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: max-content;
+  gap: clamp(15px, 1.9svh, 21px);
+  align-content: start;
+  justify-items: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-gray-strong) transparent;
 }
 
-.quiz-progress {
-  display: grid;
-  grid-template-columns: auto minmax(120px, 1fr);
-  gap: clamp(12px, 2vw, 20px);
-  padding-block: clamp(12px, 1.6svh, 16px);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  color: #596174;
-  font-size: clamp(0.8125rem, 1.6vw, 0.9375rem);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.06em;
-  line-height: 1.55;
+.quiz-panel:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -4px;
+}
+
+.question-slot,
+.options-grid,
+#quiz-status {
+  width: var(--quiz-card-width);
+  min-width: 0;
+}
+
+.quiz-header {
+  --quiz-circle-gap: clamp(12px, 2.8vw, 28px);
+  --quiz-header-inset: 4.5vw;
+  position: absolute;
+  z-index: 3;
+  top: clamp(14px, 2svh, 28px);
+  right: var(--quiz-header-inset);
+  left: calc((100% - var(--quiz-frame-width) * 1.03) / 2);
+  display: flex;
+  gap: 16px;
   align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-header .top-actions { position: static; gap: var(--quiz-circle-gap); }
+
+.quiz-progress {
+  position: relative;
+  flex: 0 1 auto;
+  width: calc(min(320px, calc(100vw - 2 * var(--quiz-header-inset) - 96px - var(--quiz-circle-gap))) * 0.9);
+  min-width: 0;
+  height: 36px;
+  overflow: hidden;
+  border: var(--stroke-soft) solid var(--blue-gray);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 .quiz-progress progress {
+  display: block;
   width: 100%;
-  height: 7px;
-  overflow: hidden;
+  height: 100%;
   border: 0;
-  border-radius: 999px;
-  background: #edf1f8;
-  accent-color: var(--blue-gray-strong);
+  border-radius: inherit;
+  background: transparent;
+  appearance: none;
+  accent-color: var(--blue-gray);
 }
 
-.quiz-progress progress::-webkit-progress-bar {
-  border-radius: 999px;
-  background: #edf1f8;
-}
+.quiz-progress progress::-webkit-progress-bar { background: transparent; }
+.quiz-progress progress::-webkit-progress-value { background: var(--blue-gray); border-radius: 999px; }
+.quiz-progress progress::-moz-progress-bar { background: var(--blue-gray); border-radius: 999px; }
 
-.quiz-progress progress::-webkit-progress-value {
-  border-radius: 999px;
-  background: var(--blue-gray-strong);
-}
-
-.quiz-progress progress::-moz-progress-bar {
-  border-radius: 999px;
-  background: var(--blue-gray-strong);
+#progress-label {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  pointer-events: none;
 }
 
 .question-slot {
   display: block;
-  height: 216px;
-  min-height: 0;
+  height: auto;
+  min-height: 192.78px; /* 竖屏缩短后的基准再拉伸 5%；长题按内容撑开。 */
   padding: 22px 20px 20px 22px;
-  overflow: hidden;
-  border: 1px solid #f6bfd2;
+  border: 2px solid #f6bfd2;
   border-radius: var(--radius-control);
-  background: var(--soft-pink);
+  background: var(--surface);
   box-shadow: none;
-  font-size: clamp(1.2375rem, 3.08vw, 1.925rem);
-  font-weight: 650;
-  letter-spacing: 0.072em;
-  line-height: 1.52;
-  overflow-wrap: anywhere;
+  font-size: clamp(1.11375rem, 2.772vw, 1.7325rem);
+  font-weight: 600;
+  letter-spacing: 0.0684em;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
   text-align: left;
-  text-wrap: wrap;
+  text-wrap: pretty;
   transition:
     border-color 140ms var(--ease-out),
     background-color 140ms var(--ease-out),
@@ -131,16 +174,23 @@
 }
 
 .options-grid {
+  --option-gap: clamp(10px, 1.4svh, 12px);
   display: grid;
+  /* Douse 上移 3svh，E 的补偿间距再减少 2svh，使 E 总共上移 5svh。 */
+  margin-top: 1svh;
+  /* 将移走的空白留在底部，避免滚动条消失导致题干宽度变化。 */
+  margin-bottom: calc(2svh - var(--option-gap) * 0.09);
   grid-template-columns: minmax(0, 1fr);
-  gap: clamp(10px, 1.4svh, 12px);
+  gap: calc(var(--option-gap) * 1.03);
 }
 
 .option-slot {
   width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
   min-height: clamp(52px, 6.5svh, 60px);
   padding: clamp(12px, 2vw, 20px);
-  border: 2px solid #f2b3c8;
+  border: 2px solid var(--blue-gray);
   border-radius: var(--radius-control);
   background: var(--surface);
   box-shadow: none;
@@ -158,12 +208,9 @@
     transform 220ms var(--ease-out);
 }
 
-.option-slot:nth-child(n + 3) {
-  border-color: var(--blue-gray);
-}
-
-/* 结果页只保留外层渐变框和底部操作框。 */
+/* 结果页保留外层渐变框和底部操作；分层数据独立滚动。 */
 .result-frame {
+  --result-action-height: clamp(50px, 7svh, 76px);
   background: linear-gradient(
     180deg,
     #dbeaff 0%,
@@ -199,28 +246,97 @@
   line-height: 1.8;
 }
 
+/* 滚动区为底部操作保留同一套响应式高度，长结果不遮挡按钮。 */
+.result-content {
+  top: clamp(24px, 6%, 48px);
+  bottom: calc(clamp(28px, 6%, 64px) + var(--result-action-height) + 20px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-gray-strong) transparent;
+  padding: 0 6px 12px;
+}
+
+.result-content:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-control);
+}
+
+.result-content .final-score {
+  margin: 16px 0 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-layers { margin-top: 32px; text-align: left; }
+.algorithm-layer + .algorithm-layer { margin-top: 32px; }
+.algorithm-layer h2 { margin: 0; font-size: clamp(1.0625rem, 2vw, 1.25rem); line-height: 1.5; }
+.algorithm-layer .layer-scale { margin: 8px 0 12px; font-size: 0.875rem; line-height: 1.65; }
+.algorithm-layer table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.9375rem; line-height: 1.6; }
+.algorithm-layer th, .algorithm-layer td { padding: 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+.algorithm-layer th { width: 62%; padding-right: 12px; font-weight: 500; text-align: left; }
+.algorithm-layer td { text-align: right; font-variant-numeric: tabular-nums; }
+
 .result-frame::before {
   display: none;
 }
 
 .result-actions {
   position: absolute;
-  right: 0;
   bottom: clamp(28px, 6%, 64px);
-  left: 0;
+  left: 50%;
   display: grid;
-  width: 100%;
-  gap: clamp(12px, 2svh, 20px);
-  justify-items: center;
+  width: min(78%, 680px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+  transform: translateX(-50%);
 }
 
-.result-action {
-  width: min(58%, 360px);
+.result-actions .result-action {
+  width: 100%;
+  min-width: 0;
 }
 
 button.result-action {
   cursor: pointer;
 }
+
+.result-action:disabled { cursor: wait; opacity: 0.65; }
+.share-status {
+  position: absolute;
+  right: 8%;
+  bottom: 4px;
+  left: 8%;
+  margin: 0;
+  color: var(--ink);
+  text-align: center;
+  font-size: 0.8125rem;
+}
+.share-preview {
+  width: min(92vw, 760px);
+  max-height: 90svh;
+  padding: clamp(16px, 3vw, 28px);
+  border: var(--stroke-soft) solid var(--blue-gray);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  color: var(--ink);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-gray-strong) transparent;
+}
+.share-preview::backdrop { background: rgb(62 69 85 / 55%); }
+.share-preview h2 { margin: 0; font-size: 1.5rem; }
+.share-preview p { margin: 12px 0 20px; line-height: 1.6; }
+.share-preview-image { max-height: 52svh; overflow-y: auto; border: 1px solid var(--line); }
+.share-preview-image img { display: block; width: 100%; height: auto; }
+.share-preview-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.share-preview-actions .info-action { flex: 1 1 100px; width: auto; padding: 0 12px; cursor: pointer; }
+.share-preview-actions [hidden] { display: none; }
+.share-preview-actions :disabled { cursor: wait; opacity: 0.65; }
 
 /* 内容页面公共操作控件。 */
 .info-action {
@@ -252,7 +368,7 @@ button.result-action {
 @media (hover: hover) and (pointer: fine) {
   .option-slot:hover {
     border-color: var(--blue-gray-strong);
-    background: var(--soft-pink-strong);
+    background: #fff3f7;
     box-shadow: none;
     transform: translateY(-1px);
   }
@@ -289,22 +405,22 @@ button.result-action {
   opacity: 1;
 }
 
-/* 较宽竖屏布局。 */
+/* 共享内容页原有断点；答题页只调整自己的尺寸。 */
 @media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) {
-  .content-surface {
-    width: 86%;
-    padding: clamp(26px, 4.5vw, 40px);
+  .content-surface { width: 86%; padding: clamp(26px, 4.5vw, 40px); }
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((86% - 2 * clamp(20px, 3vw, 28px)) * 0.86 * 1.15), 598px);
+    padding: clamp(20px, 3vw, 28px) 0;
   }
-
-  .quiz-panel {
-    --quiz-inner-width: min(86%, 520px);
-    padding: clamp(20px, 3vw, 28px);
-  }
-
 }
 
-/* PC横屏布局。 */
 @media (min-width: 900px) {
+  .quiz-page { --quiz-frame-width: min(83.6vw, 1216px); }
+  .quiz-header {
+    --quiz-circle-gap: clamp(14px, 1.4vw, 25px);
+    --quiz-header-inset: clamp(24px, 3vw, 44px);
+    top: clamp(12px, 1.8svh, 22px);
+  }
   .content-surface {
     top: 11%;
     width: min(84%, 1080px);
@@ -313,171 +429,102 @@ button.result-action {
     border-radius: var(--radius-frame);
   }
 
-  .quiz-panel {
-    --quiz-inner-width: min(86%, 760px);
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((84% - 2 * clamp(22px, 2.2vw, 32px)) * 0.78 * 1.15), 782px);
     top: 1%;
-    height: 98%;
-    padding: clamp(22px, 2.2vw, 32px);
-    grid-template-rows: auto auto auto;
+    height: auto;
+    padding: clamp(22px, 2.2vw, 32px) 0;
     gap: clamp(15px, 1.8svh, 19px);
   }
 
-  .question-slot {
-    width: min(78%, 680px);
-    height: 180px;
-    padding: 22px 20px 20px 22px;
-    border-radius: var(--radius-panel);
-  }
-
-  .options-grid {
-    width: min(78%, 680px);
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-  }
-
-  .quiz-progress {
-    position: absolute;
-    top: 82%;
-    left: 50%;
-    margin-top: 0;
-    transform: translateX(-50%);
-  }
-
-  .option-slot {
-    min-height: 60px;
-  }
-
-  .result-action {
-    width: min(28%, 380px);
-    min-height: clamp(64px, 8svh, 92px);
-  }
-
+  .question-slot { min-height: 160.65px; border-radius: var(--radius-panel); }
+  .options-grid { --option-gap: 12px; }
+  .option-slot { min-height: 60px; }
+  .result-frame { --result-action-height: clamp(64px, 8svh, 92px); }
+  .result-action { min-height: var(--result-action-height); }
 }
 
-/* 近方形窗口：给长题干更多横向与纵向空间，避免 PC 规则在临界比例裁字。 */
-@media (min-width: 900px) and (min-aspect-ratio: 4 / 5) and (max-aspect-ratio: 4 / 3) {
-  .quiz-panel {
-    --quiz-inner-width: min(88%, 720px);
-    padding: 18px 22px;
-    gap: 12px;
-  }
-
-  .question-slot {
-    width: min(86%, 720px);
-    height: 200px;
-    font-size: clamp(1.2rem, 2.6vw, 1.65rem);
-    line-height: 1.48;
-  }
-
-  .options-grid {
-    width: min(86%, 720px);
-  }
+/* 近方形采用同一外框高度和自然内容高度，不再切换固定 200px 题框。 */
+@media (min-width: 600px) and (min-aspect-ratio: 4 / 5) and (max-aspect-ratio: 4 / 3) {
+  .question-slot { font-size: clamp(1.08rem, 2.34vw, 1.485rem); }
 }
 
-/* PC 横屏：收紧主体宽度，同时保持宽竖屏的题干字号与底部节奏。 */
+@media (min-width: 900px) and (orientation: portrait) and (min-aspect-ratio: 4 / 5) {
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((84% - 44px) * 0.86 * 1.15), 828px);
+    padding-block: 18px;
+    gap: 12px;
+  }
+  .question-slot { min-height: 178.5px; }
+}
+
 @media (min-width: 900px) and (orientation: landscape) {
-  .question-slot,
-  .options-grid {
-    position: relative;
-    top: 9px;
+  .quiz-page { --quiz-frame-width: min(71.06vw, 1033.6px); }
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((84% - 2 * clamp(22px, 2.2vw, 32px)) * 0.624), 544px);
   }
-
   .question-slot {
-    width: min(62.4%, 544px);
+    min-height: 189px;
     padding: 24.2px 22px 22px 24.2px;
-    font-size: clamp(0.97rem, 2.1vw, 1.335rem);
-    transform: translateY(2%);
-  }
-
-  .options-grid {
-    width: min(62.4%, 544px);
-    transform: translateY(8%);
-  }
-
-  .quiz-progress {
-    top: 88%;
+    font-size: clamp(0.873rem, 1.89vw, 1.2015rem);
   }
 }
 
-/* 近方形横屏以该比例下原有宽度为基准收窄 20%。 */
 @media (min-width: 900px) and (orientation: landscape) and (max-aspect-ratio: 4 / 3) {
-  .question-slot,
-  .options-grid {
-    top: 10px;
-    width: min(68.8%, 576px);
-  }
+  .content-surface.quiz-panel { --quiz-card-width: min(calc((84% - 44px) * 0.688), 576px); }
 }
 
-/* 常见笔记本高度：压缩控件留白，确保进度条完整留在蓝色外框内。 */
 @media (min-width: 900px) and (orientation: landscape) and (max-height: 820px) {
-  .quiz-panel {
-    padding: 18px 22px;
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((84% - 44px) * 0.624), 544px);
+    padding-block: 18px;
     gap: 12px;
   }
-
-  .option-slot {
-    min-height: 52px;
-    padding: 10px 16px;
-  }
-
-  .quiz-progress {
-    margin-top: 0;
-    padding-block: 10px;
-  }
+  .option-slot { min-height: 52px; padding: 10px 16px; }
 }
 
-/* 低高度与减少动态效果。 */
+@media (min-width: 900px) and (orientation: landscape) and (max-height: 820px) and (max-aspect-ratio: 4 / 3) {
+  .content-surface.quiz-panel { --quiz-card-width: min(calc((84% - 44px) * 0.688), 576px); }
+}
+
 @media (max-height: 650px) {
-  .content-surface {
-    top: 6%;
-    height: 82%;
-    padding: 18px;
-  }
-
-  .option-slot {
-    min-height: 46px;
-  }
-
-  .quiz-panel {
+  .content-surface { top: 6%; height: 82%; padding: 18px; }
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((88% - 28px) * 0.94 * 1.15), 828px);
     top: 3%;
     height: auto;
-    padding: 14px;
+    padding: 14px 0;
     gap: 12px;
   }
+  .question-slot { min-height: 160.65px; }
+  .option-slot { min-height: 46px; padding: 10px 12px; }
+}
 
-  .question-slot {
-    height: 180px;
-    padding: 22px 20px 20px 22px;
-  }
-
-  .quiz-progress {
-    padding-bottom: 10px;
-  }
+@media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) and (max-height: 650px) {
+  .content-surface.quiz-panel { --quiz-card-width: min(calc((86% - 28px) * 0.86 * 1.15), 598px); }
 }
 
 @media (min-width: 900px) and (orientation: landscape) and (max-height: 650px) {
-  .quiz-panel {
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((84% - 28px) * 0.624), 544px);
     top: 1%;
-    height: 98%;
   }
+  .question-slot { min-height: 189px; }
+  .options-grid { --option-gap: 8px; }
+  .option-slot { min-height: 44px; padding: 5px 12px; }
+}
 
-  .options-grid {
-    gap: 8px;
+/* 小于 PC 断点的横屏保留原宽高基准；15% 调整只作用于竖屏。 */
+@media (max-width: 899px) and (orientation: landscape) {
+  .content-surface.quiz-panel {
+    --quiz-card-width: min(calc((88% - 2 * clamp(18px, 3vw, 28px)) * 0.94), 720px);
   }
+  .question-slot { min-height: 226.8px; }
+}
 
-  .question-slot {
-    padding: 24.2px 22px 22px 24.2px;
-  }
-
-  .option-slot {
-    min-height: 44px;
-    padding: 5px 12px;
-  }
-
-  .quiz-progress {
-    top: 88%;
-    margin-top: 0;
-  }
+@media (max-width: 899px) and (orientation: landscape) and (max-height: 650px) {
+  .content-surface.quiz-panel { --quiz-card-width: min(calc((88% - 28px) * 0.94), 720px); }
+  .question-slot { min-height: 189px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

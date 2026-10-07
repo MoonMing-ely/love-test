@@ -73,7 +73,13 @@ assert.equal(result.layer3Structures.version, "1.1");
 assert.equal(result.layer4Evidence.status, "complete");
 assert.equal(result.layer5Mechanisms.status, "complete");
 assert.equal(result.outcome.version, 3);
-assert.equal(result.outcome.totalScore, null);
+assert.equal(result.layer6Integration.status, "complete");
+assert.equal(result.layer6Integration.version, "1.0");
+assert.equal(result.outcome.status, "scored");
+assert.equal(result.outcome.totalScore, result.layer6Integration.totalScore);
+assert.ok(Number.isFinite(result.outcome.totalScore));
+assert.equal(result.outcome.stage, result.layer6Integration.stage);
+assert.equal(result.dimensions.length, 12);
 const bank = runnableBank();
 const expectedVector = Array(12).fill(0);
 result.answers.forEach((answer, i) => {
@@ -101,10 +107,14 @@ for (const failedStage of ["result", "cleanup"]) {
 const invalidData = await quizHarness({ data: { ...bank, version: 3 } });
 assert.match(invalidData.status.textContent, /数据无效/);
 const production = await quizHarness({ data: productionBank });
-const enough = productionBank.questions.filter((q) => q.status === "valid" && q.dimensions.includes("manipulation")).length >= 2;
-if (!enough) {
-  assert.equal(production.panel.dataset.loadState, "error");
-  assert.match(production.status.textContent, /有效题目/);
-  assert.equal(production.storage.has(STATE_KEY), false);
-}
-console.log("Quiz flow tests passed: sampling -> restore -> Raw -> Layer 5 -> result, including storage failures.");
+assert.equal(production.panel.dataset.loadState, "ready");
+assert.equal(production.state().questionIds.length, 28);
+assert.equal(production.state().bankRevision, productionBank.bankRevision);
+assert.equal(production.status.textContent, "");
+const insufficient = structuredClone(productionBank);
+insufficient.questions.forEach((q) => { if (q.dimensions.includes("manipulation")) q.status = "review"; });
+const blocked = await quizHarness({ data: insufficient });
+assert.equal(blocked.panel.dataset.loadState, "error");
+assert.match(blocked.status.textContent, /有效题目/);
+assert.equal(blocked.storage.has(STATE_KEY), false);
+console.log("Quiz flow tests passed: formal pool -> restore -> Raw -> Layer 5 -> result, including storage failures.");

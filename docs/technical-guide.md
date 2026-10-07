@@ -35,15 +35,19 @@ js/core-algorithm/fourth-layer-evidence.js
         ↓ 第四层：适配回 0～1，提取峰值、短板、差异和模糊值
 js/core-algorithm/fifth-layer-mechanisms.js
         ↓ 第五层：计算 P1/P2/P3/P4 和 Protection ─────────┐
+js/core-algorithm/sixth-layer-integration.js
+        ↓ 第六层：连续严重度、Shape/Path、Score/Stage
 js/scoring.js                                             ├→ sessionStorage
-        ↓ 第六层尚未实现，继续单独生成占位 outcome ────────┘
+        ↓ 适配第六层最终分与阶段为 outcome ───────────────┘
         ↓ 保存本轮原始答案和计算结果
 js/interactions/result.js
-        ↓ 读取 title 和 summary
+        ↓ 校验并显示最终分与六层数据
 html/result.html
 ```
 
 这里的“无放回抽取”表示一道题在同一轮测试中最多出现一次。刷新答题页时，`js/interactions/quiz.js` 会尝试从 `sessionStorage` 恢复原题组和答题进度；点击重新测试时才清除旧状态并抽取新题组。
+
+右上角圆圈的返回路径由 `about-navigation-stack.js` 管理。`restart=1` 是一次性的重测命令，导航栈归一化答题页地址时会移除它；读取已有返回路径时也会进行归一化，避免关于页的返回动画预加载答题页时重复清空进度。
 
 ## 3. 目录结构
 
@@ -72,18 +76,19 @@ love-test/
 | `css/content.css` | 题目、选项、进度和结果内容样式 | 修改内容区排版 |
 | `js/interactions/quiz.js` | 题库校验、答题流程、状态恢复和结果保存 | 修改答题行为 |
 | `js/question-sampler.js` | 受约束抽题、题库与题组校验 | 修改抽题策略 |
-| `js/scoring.js` | 评分算法的唯一公开入口 | 编写 12 维评分算法 |
+| `js/scoring.js` | 将第六层结果适配为统一 outcome | 修改结果接口 |
 | `js/core-algorithm/dimension-vector.js` | 建立并累加 12 维选项向量 | 修改第一层维度处理 |
 | `js/core-algorithm/second-layer-normalizer.js` | 根据本轮题目容量生成标准化维度数据 | 修改第二层标准化处理 |
 | `js/core-algorithm/third-layer-aggregator.js` | 将 12 维观测值归纳为 E/J/B/H/F/M/R 和组内结构 | 修改第三层高层结构 |
-| `js/core-algorithm/algorithm-config.js` | 集中保存第四、第五层 V1 参数 | 重新标定冻结参数 |
+| `js/core-algorithm/algorithm-config.js` | 集中保存第四、第五层及独立 LAYER6 的 V1 参数 | 重新标定冻结参数 |
 | `js/core-algorithm/fourth-layer-evidence.js` | 生成第四层模糊值、峰值、短板、B/T 差异和一致性 | 修改结构证据算法 |
 | `js/core-algorithm/fifth-layer-mechanisms.js` | 独立计算 P1～P4、Protection、diagnostics 和 debug | 修改元机制算法 |
+| `js/core-algorithm/sixth-layer-integration.js` | 连续整合 P1～P4/M，输出分数、阶段与解释 | 修改第六层计算 |
 | `js/interactions/result.js` | 校验、读取和显示评分结果 | 增加结果图表或维度说明 |
 | `js/interactions/about.js` | 切换关于页面内容 | 修改关于页交互 |
 | `js/interactions/about-navigation-stack.js` | 右上角圆球的后进先出导航栈 | 修改圆球返回逻辑 |
 | `js/interactions/page-transition.js` | 页面圆形展开和收回动画 | 修改转场动画 |
-| `data/questions.json` | 浏览器实际读取的 92 题运行数据 | 通常由生成脚本产生 |
+| `data/questions.json` | 浏览器实际读取的 96 题运行数据 | 通常由生成脚本产生 |
 | `data/question-bank-source.md` | 题目文字的维护源 | 修改题干和选项文案 |
 | `scripts/build-question-bank.mjs` | 将题库 Markdown 转换为 JSON | 题库格式变化时修改 |
 
@@ -96,7 +101,7 @@ const SAMPLE_SIZE = 28;
 // 题库结构检查由 QuestionSampler.assertQuestionBank 负责。
 ```
 
-- 当前题库：92 道；总量允许扩充，不作为运行时固定限制。
+- 当前题库：96 道（A40/B21/C24/D11，77 valid / 19 review）；总量允许扩充，不作为运行时固定限制。
 - 每轮抽题：28 道。
 - 评分维度：12 个。
 - 题型层：A、B、C、D 四层。
@@ -112,7 +117,7 @@ const SAMPLE_SIZE = 28;
 
 维护源每题标题后包含一行 `<!-- selection: {...} -->`，其中 dimensions 使用英文评分 key，status 为 valid/review/disabled，semantic_group 为具体主题。同组第二题及非 A 来源属于优先选择，不增加硬规则。
 
-生成脚本输出题库 version=4，并用 Node 内置 SHA-256 计算 bankRevision；同内容构建相同。候选状态及审核依据见 `question-bank-audit.md`。目前 A29/C05 等存疑题为 review，正式操题不足，页面按设计暂停生成。1000 次生成及完整评分流程目前使用独立测试操题，不能视为正式题库验收。
+生成脚本输出题库 version=4，并用 Node 内置 SHA-256 计算 bankRevision；同内容构建相同。候选状态及审核依据见 `question-bank-audit.md`。A29/C05 等 19 道存疑题仍为 review。已按用户确认新增 A40/C22/C23/C24，四题均 valid 且仅计入 manipulation；正式题库 1000 次生成全部通过，完整评分链路及真实 Firefox 两轮答题、刷新恢复、旧题库修订号失效均已验证。三种操纵机制覆盖由题库整体提供，不增加每轮机制数量校验。
 
 第三个参数 random 默认 Math.random，可注入固定种子。成功返回 questions、allocation 和 debug（题型、维度来源、语义统计、attempt_count），不保存或展示用户答案日志。
 
@@ -149,7 +154,7 @@ E/J/B 始终保留自己的 `subScores`。如果某组含有 `null`，该组的 
 
 第四层入口 `Layer4Evidence.fromLayer3(layer3Structures)` 负责兼容第三层 V1.1：将 `0～100` 的细维度除以 100 后，再按新定义令 `B=boundary`、`T=stopLoss`。它不会把第三层旧的 `B.summary` 当成第四层 B。第四层输出 `E/J/H/B/T/F/M`、E 峰值、J 短板、`BT_gap`、可选一致性和集中计算的 High/Low。任一正式维度缺失时，状态为 `insufficient_data`，缺失值不会自动变成 0。
 
-第五层入口 `Layer5Mechanisms.calculate(layer4Evidence)` 独立计算关系价值放大 P1、判断偏移 P2、行动失守 P3、退出困难 P4。M 与可选一致性只进入 `protection`，不修改 P1～P4；`debug` 保留各机制的 core/support。第五层不求和、不映射阶段，也不生成最终风险，第六层仍未实现。
+第五层入口 `Layer5Mechanisms.calculate(layer4Evidence)` 独立计算关系价值放大 P1、判断偏移 P2、行动失守 P3、退出困难 P4。M 与可选一致性只进入 `protection`，不修改 P1～P4；`debug` 保留各机制的 core/support。第五层不求和、不映射阶段，也不生成最终风险。第六层已独立实现：`Layer6Integration.calculate(layer5Mechanisms)` 仅读取四条风险和 protection.M，产生连续最终分及离散阶段/标签；`QuizScoring.calculateResult` 只适配第六层输出。公式和实施验收见 [第六层方案](layer6-implementation-plan.md)。旧占位结果需重测，不以0补缺失值。
 
 V1 只有在 12 个底层维度都可计算时才正式生成 P1～P4，否则返回 `insufficient_data`。新抽题器保证合格问卷的最低覆盖；目前仍需补足有效操题才能生成正式问卷，不能把缺失维度静默当成 0。
 
@@ -164,10 +169,10 @@ QuizScoring.calculateResult({ answers, dimensions });
 职责划分如下：
 
 - `js/interactions/quiz.js` 负责收集、整理和传递数据。
-- `scoring.js` 负责纯计算，不读取按钮或修改页面。
+- 核心算法模块负责纯计算，`scoring.js` 只适配第六层输出，不读取按钮或修改页面。
 - `js/interactions/result.js` 负责验证和显示计算结果。
 
-实现评分时，主要修改 `js/scoring.js` 中 `calculateResult()` 的 TODO 区域。输入结构、输出结构、12 维键名、稀疏分值向量和建议实现顺序见 [评分接口说明](scoring-interface.md)。
+第六层算法位于 `js/core-algorithm/sixth-layer-integration.js`；`js/scoring.js` 的 `calculateResult()` 只适配该层输出。输入结构、输出结构、12 维键名、稀疏分值向量和建议实现顺序见 [评分接口说明](scoring-interface.md)。
 
 ## 9. 题库维护
 
@@ -200,7 +205,7 @@ node tests/about-navigation-stack.test.mjs
 各测试职责：
 
 - `question-bank.test.mjs`：检查元数据、维护源/JSON 一致性、修订号稳定性及变化敏感性。
-- `question-sampler.test.mjs`：1000 组固定种子验证配额、维度来源、语义、状态及随机性；测试题池明确区分于正式题库。
+- `question-sampler.test.mjs`：直接使用正式题库生成 1000 组固定种子，验证配额、维度来源、语义、状态及随机性；另验证容量不足和重试失败。
 - `quiz-flow.test.mjs`：真实抽题器接页面及 Raw→第五层→结果，覆盖刷新恢复和启动/中途/完成存储失败。
 - `scoring-interface.test.mjs`：检查评分输入输出约定，并模拟完成 28 道题，确认页面完整传入答案和维度定义。
 - `dimension-vector.test.mjs`：检查第一层 12 维向量的建立、累加和恢复。
@@ -211,3 +216,41 @@ node tests/about-navigation-stack.test.mjs
 - `about-navigation-stack.test.mjs`：检查连续打开两个右上角圆球后，返回顺序符合后进先出规则。
 
 自动测试只能验证数据和程序行为。涉及字体、响应式比例、留白和动画速度的改动，还需要在手机与电脑浏览器中进行人工检查。
+
+
+## 答题页响应式修复（2026-10-06）
+
+已完成：竖屏题框与选项以原宽度为基准增加 15%，短题框最低高度为原高度的 85%；长题干与选项按实际内容自动增加高度，完整换行。题框顶部保持对齐，缩短留白发生在底部。
+
+答题页外框统一采用 83svh 基准，受顶部快捷操作和底部留白约束；近正方形不再使用独立固定题框高度。移除顶部灰线及外框顶端装饰线，外框上移 8px（受快捷操作最小间距约束）。题干、选项、提示和进度条按自然顺序排列，去掉额外位移与进度条的绝对定位。
+
+较矮窗口或长文本超出外框时，整组内容可纵向滚动；键盘可以聚焦滚动区域，选项仍保持至少 44px 点击高度。每次渲染新题或恢复问卷时，将滚动位置归零。保留原粉蓝配色、选项反馈、抽题和六层评分接口。
+
+验证：Firefox 在 11 种尺寸（320×568 至 1440×900，包含竖屏、正方形与低高度横屏）逐题检查真实题库的全部 96 道题；题干、选项无裁字及互相覆盖，进度位于选项之后。现有 14 个测试文件全部通过。另实测最小竖屏下选项操作、下一题回顶部、刷新恢复、完成 28 题、六层结果显示和重测。
+
+
+### 顶部进度与比例微调（2026-10-06）
+
+答题进度移至左上角，采用与右上角快捷操作圆圈同为 40px 高的胶囊条；完成部分使用现有蓝色，题号显示为 `1/28题` 并位于条内右侧。顶部共用 flex 布局，移动端为圆圈预留空间，进度不会随答题区域滚动。保留原生 progress 的 max/value 更新、刷新恢复和暂停提示。
+
+中间外框以当前宽度缩窄 5%，题框与选项跟随容器收窄；外框高度基准由 83svh 调为 85svh，短题框最低高度增加 5%，长文本继续按内容撑开。较矮窗口仍受可用屏高约束，保留滚动与换题回顶部。
+
+验证：11 种屏幕尺寸、真实题库全部 96 题的布局检查及现有 14 个测试文件通过；Firefox 验证顶部圆条与圆圈等高、题号右对齐、无重叠，并完成整轮答题及刷新、重测的进度更新。
+
+### 题干阅读与整体位置微调（2026-10-07）
+
+交流中的 A 为进度条，B 为两个快捷操作圆圈，C 为蓝色外框，Douse 为粉色题干区域，E 为四个选项。这些名称仅用于描述页面区域。
+
+答题页先通过外层顶部留白增加 `5svh` 将 C、Douse、E 整体下移，随后按要求将 C、Douse 上移 `3svh`：当前外层顶部额外留白为 `2svh`，E 使用 `3svh` 的顶部间距补偿，保持四个选项的位置。A、B 保持原位置；外框高度沿用调整前的约束，内部内容仍可滚动。
+
+题干在全部字号断点上缩小 10%，字间距从 `0.072em` 减少至 `0.0684em`；字重调整为 600，行高统一为 1.65。保留左对齐，使用严格中文标点换行规则及自然换行，题目文字不变。
+
+E 的四个选项边框统一使用 `--blue-gray`。A 的未完成区域保持白色，已完成部分为蓝色，高度由 40px 缩小至 36px；原生 progress 的填充条在 Firefox 与 WebKit/Blink 样式中均设为圆弧端点，保留 max/value 与题号更新。
+
+C 以原有各断点宽度为基准增加 3%，仍居中显示；内部答题面板扣除这部分新增宽度，Douse 与 E 的宽度、高度和位置保持不变。Firefox 在 11 种尺寸下对比验证外框宽度为原值的 1.03 倍，内部题干与选项的几何尺寸和位置一致。
+
+后续局部调整：C、B 不动，Douse 再上移屏高的 3%，E 顶部再上移屏高的 5%，三个选项间距各增加原值的 3%。答题面板保留原滚动视口高度，将移走的空白补在选项底部，避免滚动条消失而改变题干宽度。A 左端保持原位，宽度先缩短为原来的 80%，再回调至 90%；宽度计算保留原 320px 上限和 B 的预留空间，手机与桌面均按相同比例调整。11 种尺寸的浏览器对比及全部 96 道题的布局检查通过。
+
+题干当前使用白色背景与 2px 粉色边框，选项悬停反馈改为淡粉色 `#fff3f7`，点击后的蓝色确认状态保留。A 的左边与 C 外框左边对齐；使用共同的外框宽度变量计算位置，进度条仍保持此前原始长度的 90%，B 的位置不变。
+
+Firefox 对比修改前后 11 种屏幕尺寸，验证字号缩放与字间距比例，以及 C、Douse 上移屏高的 3%、E 与 A/B 位置不变；全部 96 道题的题干与选项无横向溢出、重叠或裁字，末尾选项可通过内部滚动完整访问。

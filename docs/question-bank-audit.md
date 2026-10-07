@@ -1,6 +1,6 @@
 # 抽题元数据审核记录
 
-日期：2026-10-04。此记录检查内容与现有维度/方向的一致性，不代表心理测量效度验证。原有题干、选项与分值均不修改。review 题等待确认，禁止正式抽取。
+日期：2026-10-05。此记录检查内容与现有维度/方向的一致性，不代表心理测量效度验证。原有题干、选项与分值均不修改。review 题等待确认，禁止正式抽取。
 
 | ID | 维度 | 语义组 | 状态 | 审核依据 |
 | --- | --- | --- | --- | --- |
@@ -43,6 +43,7 @@
 | A37 | 边 | one_sided_maintenance | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | A38 | 分,止 | companionship_relationship_separation | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | A39 | 止 | exit_despite_attachment | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
+| A40 | 操 | relationship_pressure | valid | 用户确认文档候选 1；关系施压识别，仅操 3/2/1/0。 |
 | B01 | 合 | delaying_clarification | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | B02 | 证 | conditional_warmth | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | B03 | 边,止 | relationship_imbalance | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
@@ -85,6 +86,9 @@
 | C19 | 自 | admitting_misjudgment | review | 选项多因解释与自我校准能力顺序计分存疑。 |
 | C20 | 自 | external_feedback | review | 识别排斥外部意见与自身校准能力的映射存疑。 |
 | C21 | 分 | affection_trust_separation | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
+| C22 | 操 | responsibility_shift | valid | 用户确认文档候选 2；改为假设情景，其余选项不变，仅操 0/1/2/3。 |
+| C23 | 操 | care_justifies_control | valid | 用户确认文档候选 3；善意包装/控制合理化识别，仅操 0/1/2/3。 |
+| C24 | 操 | relationship_pressure | valid | 用户确认文档候选 4 正式加入；仅操 0/1/2/3，不增加自维度分值。 |
 | D01 | 自 | emotion_changes_standards | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | D02 | 自 | experience_prediction_gap | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | D03 | 自 | self_overconfidence | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
@@ -97,6 +101,6 @@
 | D10 | 自 | external_feedback | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 | D11 | 自 | survey_reality_gap | valid | 现有题干、选项与评分定义基本一致；保留原分值。 |
 
-正式操题仍不足；补题必须经用户确认。
+现共 96 题：A40/B21/C24/D11，77 道 valid、19 道 review。原有 92 题全部逐字段保持不变，包括 A29/C05 的 review 状态。
 
-本轮新增元数据：73 道 valid、19 道 review。发现的方向/归属问题只通过 review 排除，未调整任何原有分值。新操题 A40/C22 的具体草案已向用户提问，尚未收到确认，因此未添加到正式题库。
+四道新增题按用户确认方案加入；题干、选项及分值使用文档原文，C22 仅题干改为已确认的假设情景。题库整体覆盖关系施压、责任转移、善意包装/控制合理化三种机制；A40/C24 共用关系施压语义组，继续遵守同组最多两题。正式题库抽题与浏览器全流程验收已通过，最终分数仍为占位。

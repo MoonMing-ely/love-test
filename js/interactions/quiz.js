@@ -119,7 +119,7 @@
 
     quizPanel.dataset.questionId = question.id;
     quizPanel.dataset.questionType = question.stratum;
-    progressLabel.textContent = `第 ${currentQuestionIndex + 1} / ${questions.length} 题`;
+    progressLabel.textContent = `${currentQuestionIndex + 1}/${questions.length}题`;
     progressBar.max = questions.length;
     progressBar.value = currentQuestionIndex + 1;
     questionSlot.textContent = question.prompt;
@@ -140,6 +140,8 @@
 
     isChangingQuestion = false;
     setOptionsDisabled(false);
+    // 较矮窗口可滚动答题；每次换题回到题干，避免保留上一题的选项位置。
+    quizPanel.scrollTop = 0;
   }
 
   function finishQuiz() {
@@ -152,6 +154,7 @@
       window.HigherOrderStructure.aggregate(normalizedDimensions);
     const layer4Evidence = window.Layer4Evidence.fromLayer3(layer3Structures);
     const layer5Mechanisms = window.Layer5Mechanisms.calculate(layer4Evidence);
+    const layer6Integration = window.Layer6Integration.calculate(layer5Mechanisms);
     /*
      * 这里是答题流程调用评分模块的唯一位置。
      * calculateResult 不读取 DOM，也不重新查询题库，只依赖明确传入的数据。
@@ -159,6 +162,7 @@
     const outcome = window.QuizScoring.calculateResult({
       answers,
       dimensions: dimensionDefinitions,
+      layer6Integration,
     });
     /*
      * result 是写入 sessionStorage 的结果信封：
@@ -174,6 +178,8 @@
       layer3Structures,
       layer4Evidence,
       layer5Mechanisms,
+      layer6Integration,
+      dimensions: dimensionDefinitions.map(({ key, code, label }) => ({ key, code, label })),
       outcome,
       completedAt: new Date().toISOString(),
     };
