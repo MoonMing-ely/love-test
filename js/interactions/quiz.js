@@ -3,13 +3,16 @@
 
   const quizPanel = document.querySelector("[data-result-page]");
   const questionSlot = document.querySelector(".question-slot");
+  const questionPrompt = document.querySelector(".question-prompt");
+  const questionCounter = document.querySelector("#question-counter");
   const optionButtons = Array.from(
     document.querySelectorAll("[data-option-index]"),
   );
-  const optionsGrid = document.querySelector(".options-grid");
   const resultPage = quizPanel?.dataset.resultPage || "result.html";
   const progressLabel = document.querySelector("#progress-label");
   const progressBar = document.querySelector("#quiz-progress");
+  const previousButton = document.querySelector("#quiz-previous");
+  const forwardButton = document.querySelector("#quiz-forward");
   const statusLabel = document.querySelector("#quiz-status");
   /* 测试的固定特征量。修改这些值时，需要同步检查题库校验和结果页。 */
   const SAMPLE_SIZE = 28;
@@ -28,10 +31,15 @@
   let bankRevision = "";
   let isChangingQuestion = false;
 
-  function setOptionsDisabled(disabled) {
+  function setControlsDisabled(disabled) {
     optionButtons.forEach((button) => {
       button.disabled = disabled;
     });
+    previousButton.hidden = currentQuestionIndex === 0;
+    previousButton.disabled = disabled || currentQuestionIndex === 0;
+    const canJumpForward = currentQuestionIndex < answers.length && answers.length < questions.length;
+    forwardButton.hidden = !canJumpForward;
+    forwardButton.disabled = disabled || !canJumpForward;
   }
 
   function useStorage(action, key, value) {
@@ -45,8 +53,9 @@
   }
 
   function showError(error, phase) {
-    setOptionsDisabled(true);
+    setControlsDisabled(true);
     isChangingQuestion = true;
+    quizPanel.classList.remove("is-answering");
     quizPanel.dataset.loadState = "error";
     let message = "测试暂时无法继续，请重新打开页面。";
     if (error.reason === "storage_unavailable") message = "无法读取或保存测试进度，请检查浏览器存储设置后重试。";
@@ -88,7 +97,8 @@
       && new Set(saved.questionIds).size === SAMPLE_SIZE
       && Number.isInteger(saved.currentQuestionIndex) && saved.currentQuestionIndex >= 0
       && saved.currentQuestionIndex <= SAMPLE_SIZE
-      && Array.isArray(saved.answers) && saved.answers.length === saved.currentQuestionIndex) {
+      && Array.isArray(saved.answers) && saved.answers.length >= saved.currentQuestionIndex
+      && saved.answers.length <= SAMPLE_SIZE) {
       const questionMap = new Map(questionBank.map((question) => [question.id, question]));
       const restored = saved.questionIds.map((id) => questionMap.get(id));
       if (restored.every(Boolean) && window.QuestionSampler.validateSelection(restored).valid
@@ -122,26 +132,28 @@
     progressLabel.textContent = `${currentQuestionIndex + 1}/${questions.length}题`;
     progressBar.max = questions.length;
     progressBar.value = currentQuestionIndex + 1;
-    questionSlot.textContent = question.prompt;
+    questionPrompt.textContent = question.prompt;
+    questionCounter.textContent = `QUESTION ${currentQuestionIndex + 1} / ${questions.length}`;
     questionSlot.setAttribute(
       "aria-label",
       `第 ${currentQuestionIndex + 1} 题：${question.prompt}`,
     );
 
-    questionSlot.classList.remove("is-muted");
-    optionsGrid.classList.remove("is-answering");
+    quizPanel.classList.remove("is-answering");
     optionButtons.forEach((button, optionIndex) => {
       const option = question.options[optionIndex];
       button.classList.remove("is-selected");
       button.textContent = option.text;
       button.dataset.option = option.id;
+      button.setAttribute("aria-pressed", String(answers[currentQuestionIndex]?.option === option.id));
       button.setAttribute("aria-label", `${option.id}：${option.text}`);
     });
 
     isChangingQuestion = false;
-    setOptionsDisabled(false);
-    // 较矮窗口可滚动答题；每次换题回到题干，避免保留上一题的选项位置。
+    setControlsDisabled(false);
+    // 手机使用整页滚动，电脑使用面板滚动；换题统一回到题干。
     quizPanel.scrollTop = 0;
+    window.scrollTo?.({ top: 0, behavior: "instant" });
   }
 
   function finishQuiz() {
@@ -197,7 +209,7 @@
     if (!option) return;
 
     isChangingQuestion = true;
-    setOptionsDisabled(true);
+    setControlsDisabled(true);
     const selectedButton = optionButtons[optionIndex];
 
     await new Promise((resolve) => {
@@ -205,8 +217,7 @@
     });
 
     selectedButton.classList.add("is-selected");
-    questionSlot.classList.add("is-muted");
-    optionsGrid.classList.add("is-answering");
+    quizPanel.classList.add("is-answering");
     selectedButton.setAttribute("aria-label", `${option.id}：${option.text}，已选择`);
 
     await new Promise((resolve) => {
@@ -219,12 +230,14 @@
         option: option.id,
         scores: { ...option.scores },
       };
+      // 回看时替换该题答案，保留其他题；按完整答案重算，避免旧分数重复累计。
+      const nextAnswers = [...answers];
+      nextAnswers[currentQuestionIndex] = answer;
       const next = {
-        answers: [...answers, answer],
-        dimensionVector: [...dimensionVector],
+        answers: nextAnswers,
+        dimensionVector: window.DimensionVector.fromAnswers(nextAnswers, dimensionDefinitions),
         currentQuestionIndex: currentQuestionIndex + 1,
       };
-      window.DimensionVector.addOption(next.dimensionVector, answer.scores, dimensionDefinitions);
       saveState(next);
       answers = next.answers;
       dimensionVector = next.dimensionVector;
@@ -236,9 +249,26 @@
     }
   }
 
+  function navigateToQuestion(index) {
+    if (isChangingQuestion || index < 0 || index >= questions.length || index > answers.length
+      || index === currentQuestionIndex) return;
+    try {
+      const next = { currentQuestionIndex: index, answers, dimensionVector };
+      saveState(next);
+      currentQuestionIndex = index;
+      renderQuestion();
+    } catch (error) {
+      showError(error, "navigation");
+    }
+  }
+
+  // 悬停反馈交给 CSS；只有点击才移动游标，答案始终保留。
+  previousButton.addEventListener("click", () => navigateToQuestion(currentQuestionIndex - 1));
+  forwardButton.addEventListener("click", () => navigateToQuestion(answers.length));
+
   async function startQuiz() {
     const params = new URLSearchParams(window.location.search);
-    setOptionsDisabled(true);
+    setControlsDisabled(true);
     let phase = "load";
     try {
       const response = await fetch("../data/questions.json", { cache: "no-store" });

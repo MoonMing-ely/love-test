@@ -11,10 +11,10 @@
   <body>
     <main class="home quiz-page" data-page="question">
       <header class="quiz-header">
-        <div class="quiz-progress" aria-live="polite">
-          <progress id="quiz-progress" max="28" value="0" aria-label="答题进度">0 / 28</progress>
-          <span id="progress-label">准备中…</span>
-        </div>
+        <nav class="quiz-question-nav" aria-label="题目导航">
+          <button class="image-slot quiz-navigation-button" id="quiz-previous" type="button" hidden disabled aria-label="上一题" title="上一题"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 12H5m7-7-7 7 7 7" /></svg></span></button>
+          <button class="image-slot quiz-navigation-button" id="quiz-forward" type="button" hidden disabled aria-label="跳到第一道未答题" title="跳到第一道未答题"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></span></button>
+        </nav>
         <nav class="top-actions" aria-label="快捷操作">
           <a class="image-slot" href="about.html?view=project&amp;from=text.html" data-route="about-project" aria-label="查看关于这个测试"></a>
           <a class="image-slot" href="about.html?view=result&amp;from=text.html" data-route="about-result" aria-label="查看关于测试结果"></a>
@@ -34,7 +34,19 @@
             role="heading"
             aria-level="1"
             aria-label="当前题目"
-          ></div>
+          >
+            <div class="question-ornament" aria-hidden="true">
+              <span class="question-ornament-line"></span>
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path fill="currentColor" d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z" />
+              </svg>
+              <span class="question-ornament-line"></span>
+            </div>
+            <p class="question-prompt"></p>
+            <p class="question-counter" id="question-counter"></p>
+          </div>
+
+          <div class="quiz-divider" aria-hidden="true"></div>
 
           <div class="options-grid" role="group" aria-label="题目选项">
             <button class="option-slot" type="button" data-option-index="0" aria-label="选项一"></button>
@@ -45,6 +57,12 @@
 
           <p id="quiz-status" role="status" aria-live="polite"></p>
         </section>
+        <div class="quiz-footer">
+          <div class="quiz-progress" aria-live="polite">
+            <progress id="quiz-progress" max="28" value="0" aria-label="答题进度">0 / 28</progress>
+            <span id="progress-label" hidden>准备中…</span>
+          </div>
+        </div>
       </section>
     </main>
     <script src="../js/question-sampler.js"></script>

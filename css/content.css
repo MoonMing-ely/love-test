@@ -36,16 +36,21 @@
 /* 答题页独立适配：外框保持相同比例，内容按顺序排布并在必要时滚动。 */
 .quiz-page {
   --quiz-frame-width: min(85.5vw, 722px);
+  --quiz-option-font: clamp(0.9375rem, 1.8vw, 1.0625rem);
+  --quiz-footer-space: 64px;
+  --question-pink: var(--canvas);
+  --question-border: #f6bfd2;
   min-height: 100svh;
   padding-top: calc(max(60px, calc(8.5svh - 8px)) + 2svh);
 }
 
 .quiz-frame {
   width: calc(var(--quiz-frame-width) * 1.03);
-  height: min(85svh, 1160px);
+  height: min(89.25svh, 1218px);
   min-height: 0;
-  /* 保持外框现有高度，只调整它的整体位置。 */
-  max-height: calc(100svh - max(60px, calc(8.5svh - 8px)) - 5svh - 16px);
+  /* 高度增加 5%，向上移动增量的一半，保持外框中心。 */
+  max-height: calc((100svh - max(60px, calc(8.5svh - 8px)) - 5svh - 16px) * 1.05);
+  transform: translateY(-2.380952381%);
 }
 
 .quiz-frame::before,
@@ -54,23 +59,28 @@
 }
 
 .content-surface.quiz-panel {
-  /* 以原面板内容宽度为基准：94% × 1.15，保持竖屏加宽 15%。 */
-  --quiz-card-width: min(calc((88% - 2 * clamp(18px, 3vw, 28px)) * 0.94 * 1.15), 828px);
-  top: 4%;
-  bottom: calc(clamp(12px, 2svh, 22px) + 3svh);
-  margin-top: -3svh;
+  --question-top: var(--question-pink);
+  --question-middle: #fff1f7;
+  /* 题框、选项和状态共用一条内容宽度；断点仅调整这一入口。 */
+  --quiz-card-base: min(calc(100% - clamp(24px, 4vw, 40px)), 720px);
+  --quiz-card-width: var(--quiz-card-base);
+  --quiz-section-gap: calc(16px + 1svh);
+  top: 0;
+  bottom: max(calc(clamp(12px, 2svh, 22px) + 3svh), var(--quiz-footer-space));
+  margin-top: 0;
   /* 扣除外框新增的宽度，保持题干与选项的尺寸和居中位置。 */
   width: calc(100% - var(--quiz-frame-width) * 0.03);
   height: auto;
   padding: clamp(18px, 3vw, 28px) 0;
   grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: max-content;
-  gap: clamp(15px, 1.9svh, 21px);
+  gap: calc(var(--quiz-section-gap) * 1.1);
   align-content: start;
   justify-items: center;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
+  scrollbar-gutter: stable both-edges;
   scrollbar-color: var(--blue-gray-strong) transparent;
 }
 
@@ -80,6 +90,7 @@
 }
 
 .question-slot,
+.quiz-divider,
 .options-grid,
 #quiz-status {
   width: var(--quiz-card-width);
@@ -101,17 +112,27 @@
 }
 
 .quiz-header .top-actions { position: static; gap: var(--quiz-circle-gap); }
+.quiz-question-nav { display: flex; gap: var(--quiz-circle-gap); }
+
+.quiz-footer {
+  position: absolute;
+  right: 24px;
+  bottom: 12px;
+  left: 24px;
+  display: flex;
+  justify-content: center;
+}
 
 .quiz-progress {
   position: relative;
   flex: 0 1 auto;
-  width: calc(min(320px, calc(100vw - 2 * var(--quiz-header-inset) - 96px - var(--quiz-circle-gap))) * 0.9);
+  width: min(90%, 288px);
   min-width: 0;
   height: 36px;
   overflow: hidden;
-  border: var(--stroke-soft) solid var(--blue-gray);
+  border: 0;
   border-radius: 999px;
-  background: var(--surface);
+  background: transparent;
   color: var(--ink);
   font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
@@ -119,12 +140,15 @@
 }
 
 .quiz-progress progress {
+  position: absolute;
+  top: 50%;
   display: block;
   width: 100%;
-  height: 100%;
+  height: 8px;
   border: 0;
   border-radius: inherit;
-  background: transparent;
+  background: var(--line);
+  transform: translateY(-50%);
   appearance: none;
   accent-color: var(--blue-gray);
 }
@@ -133,27 +157,18 @@
 .quiz-progress progress::-webkit-progress-value { background: var(--blue-gray); border-radius: 999px; }
 .quiz-progress progress::-moz-progress-bar { background: var(--blue-gray); border-radius: 999px; }
 
-#progress-label {
-  position: absolute;
-  top: 0;
-  right: 12px;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  pointer-events: none;
-}
-
 .question-slot {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: auto;
   min-height: 192.78px; /* 竖屏缩短后的基准再拉伸 5%；长题按内容撑开。 */
-  padding: 22px 20px 20px 22px;
-  border: 2px solid #f6bfd2;
+  padding: 22px 20px 10px 22px;
+  border: 2px solid var(--question-border);
   border-radius: var(--radius-control);
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--question-top) 0%, var(--question-middle) 54%, var(--surface) 100%);
   box-shadow: none;
   font-size: clamp(1.11375rem, 2.772vw, 1.7325rem);
-  font-weight: 600;
+  font-weight: 510;
   letter-spacing: 0.0684em;
   line-height: 1.65;
   overflow-wrap: break-word;
@@ -161,26 +176,52 @@
   line-break: strict;
   text-align: left;
   text-wrap: pretty;
-  transition:
-    border-color 140ms var(--ease-out),
-    background-color 140ms var(--ease-out),
-    color 120ms ease-out;
 }
 
-.question-slot.is-muted {
-  border-color: #d8dce5;
-  background: #f7f8fa;
-  color: #8a909d;
+.question-ornament {
+  display: flex;
+  gap: 12px;
+  /* 累计上移装饰高度的 45%。 */
+  margin-bottom: 10.4px;
+  transform: translateY(-45%);
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+.question-ornament svg { display: block; width: 20.4px; height: 20.4px; }
+.question-ornament-line {
+  width: clamp(24px, 8vw, 44px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+}
+.question-ornament-line:last-child { background: linear-gradient(90deg, currentColor, transparent); }
+.question-prompt {
+  width: 92%;
+  margin: 0 auto;
+  /* 长题限制位移，避免文字与爱心重叠。 */
+  transform: translateY(calc(-2.4px - min(25%, 15.5px)));
+}
+.question-counter {
+  /* 自动间距将题号贴近底部；长题仍保留题文与题号之间的空白。 */
+  margin: auto 0 0;
+  padding-top: 33.6px;
+  color: var(--question-border);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-align: center;
+  /* 按文字行高上移 5%，不计上方布局留白。 */
+  transform: translateY(-0.07em);
 }
 
 .options-grid {
   --option-gap: clamp(10px, 1.4svh, 12px);
   display: grid;
-  /* Douse 上移 3svh，E 的补偿间距再减少 2svh，使 E 总共上移 5svh。 */
-  margin-top: 1svh;
-  /* 将移走的空白留在底部，避免滚动条消失导致题干宽度变化。 */
-  margin-bottom: calc(2svh - var(--option-gap) * 0.09);
+  margin: 0;
   grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: max-content;
+  align-items: start;
   gap: calc(var(--option-gap) * 1.03);
 }
 
@@ -190,14 +231,16 @@
   overflow-wrap: anywhere;
   min-height: clamp(52px, 6.5svh, 60px);
   padding: clamp(12px, 2vw, 20px);
+  /* 保留按钮原宽度，只把可用文字宽度缩至原来的 90%。 */
+  padding-inline: calc(5% + clamp(12px, 2vw, 20px) * 0.9 - 0.2px);
   border: 2px solid var(--blue-gray);
   border-radius: var(--radius-control);
   background: var(--surface);
   box-shadow: none;
   color: var(--ink);
   cursor: pointer;
-  font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
-  font-weight: 600;
+  font-size: var(--quiz-option-font);
+  font-weight: 540;
   letter-spacing: 0.08em;
   line-height: 1.65;
   transition:
@@ -207,6 +250,48 @@
     color 120ms ease-out,
     transform 220ms var(--ease-out);
 }
+
+.quiz-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--line) 12px, var(--line) calc(100% - 12px), transparent);
+}
+
+.option-slot[aria-pressed="true"] {
+  background: #ffe1ec;
+  border-color: var(--blue-gray-strong);
+}
+
+.quiz-navigation-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-color: var(--blue-gray);
+  background: var(--surface);
+  color: var(--blue-gray-strong);
+  font: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.quiz-navigation-button span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform: translateY(-2%);
+}
+.quiz-navigation-button svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.quiz-navigation-button[hidden] { visibility: hidden; }
+.quiz-navigation-button:disabled { opacity: 0.45; cursor: default; transform: none; }
+.quiz-navigation-button:enabled:hover,
+.quiz-navigation-button:enabled:active { background: var(--soft-pink-strong); border-color: var(--blue-gray-strong); }
 
 /* 结果页保留外层渐变框和底部操作；分层数据独立滚动。 */
 .result-frame {
@@ -366,9 +451,9 @@ button.result-action {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .option-slot:hover {
+  .option-slot:enabled:hover {
     border-color: var(--blue-gray-strong);
-    background: #fff3f7;
+    background: #ffe1ec;
     box-shadow: none;
     transform: translateY(-1px);
   }
@@ -392,26 +477,56 @@ button.result-action {
   transform: none;
 }
 
-.options-grid.is-answering .option-slot:not(.is-selected):disabled {
-  border-color: #d8dce5;
-  background: #f7f8fa;
-  color: #8a909d;
+.quiz-panel.is-answering .option-slot:not(.is-selected):disabled {
+  background: var(--surface);
+  border-color: var(--blue-gray);
 }
 
 .option-slot.is-selected:disabled {
-  border-color: var(--blue-gray);
-  background: var(--blue-gray);
-  color: #ffffff;
+  border-color: var(--blue-gray-strong);
+  background: #dbeaff;
+  color: var(--ink);
   opacity: 1;
 }
 
-/* 共享内容页原有断点；答题页只调整自己的尺寸。 */
+/* 共享内容页断点：只调整结果页、关于页沿用的公共面板。 */
 @media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) {
   .content-surface { width: 86%; padding: clamp(26px, 4.5vw, 40px); }
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((86% - 2 * clamp(20px, 3vw, 28px)) * 0.86 * 1.15), 598px);
-    padding: clamp(20px, 3vw, 28px) 0;
+}
+
+@media (min-width: 900px) {
+  .content-surface {
+    top: 11%;
+    width: min(84%, 1080px);
+    height: 76%;
+    padding: clamp(36px, 3.4vw, 58px);
+    border-radius: var(--radius-frame);
   }
+  .result-frame { --result-action-height: clamp(64px, 8svh, 92px); }
+  .result-action { min-height: var(--result-action-height); }
+}
+
+@media (max-height: 650px) {
+  .content-surface { top: 6%; height: 82%; padding: 18px; }
+}
+
+/* 竖屏收窄连续过渡：390px 及以下为 2%，约 768px 起为 5%。 */
+@media (orientation: portrait) {
+  .content-surface.quiz-panel {
+    --quiz-portrait-trim: clamp(0px, calc(5.3vw - 20.67px), calc(var(--quiz-card-base) * 0.03));
+    --quiz-card-width: calc(var(--quiz-card-base) * 0.98 - var(--quiz-portrait-trim));
+  }
+}
+
+/* 答题页尺寸断点：手机自然滚动，平板与电脑保持受限内容区。 */
+@media (max-width: 899px) and (orientation: portrait) {
+  .quiz-page { --quiz-frame-width: min(90vw, 780px); }
+  .question-slot { padding-inline: clamp(16px, 2.5vw, 24px); }
+  .content-surface.quiz-panel { --quiz-section-gap: 16px; }
+}
+
+@media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) {
+  .content-surface.quiz-panel { padding-block: clamp(20px, 3vw, 28px); }
 }
 
 @media (min-width: 900px) {
@@ -421,117 +536,123 @@ button.result-action {
     --quiz-header-inset: clamp(24px, 3vw, 44px);
     top: clamp(12px, 1.8svh, 22px);
   }
-  .content-surface {
-    top: 11%;
-    width: min(84%, 1080px);
-    height: 76%;
-    padding: clamp(36px, 3.4vw, 58px);
-    border-radius: var(--radius-frame);
-  }
-
   .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((84% - 2 * clamp(22px, 2.2vw, 32px)) * 0.78 * 1.15), 782px);
-    top: 1%;
+    --quiz-card-base: min(calc(100% - 64px), 760px);
+    top: 0;
+    bottom: var(--quiz-footer-space);
     height: auto;
-    padding: clamp(22px, 2.2vw, 32px) 0;
-    gap: clamp(15px, 1.8svh, 19px);
+    padding: 24px 0;
+    --quiz-section-gap: calc(clamp(15px, 1.8svh, 19px) + 1svh);
   }
-
-  .question-slot { min-height: 160.65px; border-radius: var(--radius-panel); }
+  .question-slot { min-height: 160.65px; padding-inline: 24px; border-radius: var(--radius-panel); }
   .options-grid { --option-gap: 12px; }
   .option-slot { min-height: 60px; }
-  .result-frame { --result-action-height: clamp(64px, 8svh, 92px); }
-  .result-action { min-height: var(--result-action-height); }
 }
 
-/* 近方形采用同一外框高度和自然内容高度，不再切换固定 200px 题框。 */
+/* 近方形保持中等字号；横屏随后覆盖自己的阅读字号。 */
 @media (min-width: 600px) and (min-aspect-ratio: 4 / 5) and (max-aspect-ratio: 4 / 3) {
   .question-slot { font-size: clamp(1.08rem, 2.34vw, 1.485rem); }
 }
 
 @media (min-width: 900px) and (orientation: portrait) and (min-aspect-ratio: 4 / 5) {
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((84% - 44px) * 0.86 * 1.15), 828px);
-    padding-block: 18px;
-    gap: 12px;
-  }
+  .content-surface.quiz-panel { --quiz-section-gap: calc(12px + 1svh); }
   .question-slot { min-height: 178.5px; }
 }
 
-@media (min-width: 900px) and (orientation: landscape) {
-  .quiz-page { --quiz-frame-width: min(71.06vw, 1033.6px); }
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((84% - 2 * clamp(22px, 2.2vw, 32px)) * 0.624), 544px);
-  }
-  .question-slot {
-    min-height: 189px;
-    padding: 24.2px 22px 22px 24.2px;
-    font-size: clamp(0.873rem, 1.89vw, 1.2015rem);
-  }
-}
-
-@media (min-width: 900px) and (orientation: landscape) and (max-aspect-ratio: 4 / 3) {
-  .content-surface.quiz-panel { --quiz-card-width: min(calc((84% - 44px) * 0.688), 576px); }
-}
-
-@media (min-width: 900px) and (orientation: landscape) and (max-height: 820px) {
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((84% - 44px) * 0.624), 544px);
-    padding-block: 18px;
-    gap: 12px;
-  }
-  .option-slot { min-height: 52px; padding: 10px 16px; }
-}
-
-@media (min-width: 900px) and (orientation: landscape) and (max-height: 820px) and (max-aspect-ratio: 4 / 3) {
-  .content-surface.quiz-panel { --quiz-card-width: min(calc((84% - 44px) * 0.688), 576px); }
-}
-
 @media (max-height: 650px) {
-  .content-surface { top: 6%; height: 82%; padding: 18px; }
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((88% - 28px) * 0.94 * 1.15), 828px);
-    top: 3%;
-    height: auto;
-    padding: 14px 0;
-    gap: 12px;
-  }
+  .content-surface.quiz-panel { height: auto; padding: 14px 0; }
   .question-slot { min-height: 160.65px; }
-  .option-slot { min-height: 46px; padding: 10px 12px; }
-}
-
-@media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) and (max-height: 650px) {
-  .content-surface.quiz-panel { --quiz-card-width: min(calc((86% - 28px) * 0.86 * 1.15), 598px); }
-}
-
-@media (min-width: 900px) and (orientation: landscape) and (max-height: 650px) {
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((84% - 28px) * 0.624), 544px);
-    top: 1%;
+  .option-slot {
+    min-height: 46px;
+    padding: 10px 12px;
+    padding-inline: calc(5% + 10.8px - 0.2px);
   }
-  .question-slot { min-height: 189px; }
-  .options-grid { --option-gap: 8px; }
-  .option-slot { min-height: 44px; padding: 5px 12px; }
 }
 
-/* 小于 PC 断点的横屏保留原宽高基准；15% 调整只作用于竖屏。 */
+/* 横屏外框随窗口展开，D/E 独立缓慢增宽并共同居中。 */
+@media (orientation: landscape) {
+  .quiz-page { --quiz-frame-width: calc(48.54368932vw + min(42vw, 600px)); }
+  .content-surface.quiz-panel {
+    --quiz-card-base: min(calc(100% - clamp(32px, 5vw, 64px)), clamp(560px, 58vw, 680px));
+  }
+}
+
 @media (max-width: 899px) and (orientation: landscape) {
-  .content-surface.quiz-panel {
-    --quiz-card-width: min(calc((88% - 2 * clamp(18px, 3vw, 28px)) * 0.94), 720px);
-  }
   .question-slot { min-height: 226.8px; }
 }
 
 @media (max-width: 899px) and (orientation: landscape) and (max-height: 650px) {
-  .content-surface.quiz-panel { --quiz-card-width: min(calc((88% - 28px) * 0.94), 720px); }
   .question-slot { min-height: 189px; }
+}
+
+@media (min-width: 900px) and (orientation: landscape) {
+  .question-slot {
+    min-height: 189px;
+    padding-block: 24.2px 10px;
+    font-size: clamp(0.873rem, 1.89vw, 1.2015rem);
+  }
+}
+
+@media (min-width: 900px) and (orientation: landscape) and (max-height: 820px) {
+  .content-surface.quiz-panel { padding-block: 24px; --quiz-section-gap: calc(12px + 1svh); }
+  .option-slot {
+    min-height: 52px;
+    padding: 10px 16px;
+    padding-inline: calc(5% + 14.4px - 0.2px);
+  }
+}
+
+@media (min-width: 900px) and (orientation: landscape) and (max-height: 650px) {
+  .options-grid { --option-gap: 8px; }
+  .option-slot {
+    min-height: 44px;
+    padding: 5px 12px;
+    padding-inline: calc(5% + 10.8px - 0.2px);
+  }
+}
+
+/* 手机优先自然页面滚动，保留字号和触控空间。 */
+@media (max-width: 599px) {
+  .quiz-page { --quiz-option-font: 1rem; padding-bottom: 24px; overflow: visible; }
+  .quiz-frame {
+    display: block;
+    height: auto;
+    min-height: calc((100svh - max(60px, calc(8.5svh - 8px)) - 5svh - 16px) * 1.05);
+    max-height: none;
+    padding: 0;
+  }
+  .content-surface.quiz-panel {
+    position: relative;
+    left: auto;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 24px 0 calc(24px + var(--quiz-footer-space));
+    transform: none;
+    overflow: visible;
+  }
+  .question-slot { min-height: 192.78px; }
+  .question-counter { padding-top: 12px; }
+  .option-slot { min-height: 52px; font-size: var(--quiz-option-font); line-height: 1.6; }
+}
+
+/* 矮横屏选项两列，回收纵向留白。 */
+@media (min-width: 600px) and (orientation: landscape) and (max-height: 500px) {
+  .quiz-page { --quiz-option-font: 15px; }
+  .content-surface.quiz-panel { top: 0; bottom: var(--quiz-footer-space); padding-block: 10px; --quiz-section-gap: 12px; }
+  .question-slot { min-height: 120px; padding: 12px 20px 10px; font-size: 16px; line-height: 1.5; }
+  .question-ornament { margin-bottom: 6px; }
+  .question-prompt { transform: translateY(-8px); }
+  .question-counter { padding-top: 4px; }
+  .options-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+  .option-slot { min-height: 52px; padding: 6px 14px; font-size: var(--quiz-option-font); line-height: 1.5; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .option-slot,
-  .info-action {
-    transition-duration: 0.01ms !important;
-  }
+  .info-action { transition-duration: 0.01ms !important; }
 }
 
 /* 恢复或失败提示独立于题干，避免首题渲染覆盖提示。 */

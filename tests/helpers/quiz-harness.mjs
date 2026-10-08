@@ -11,9 +11,11 @@ export const RESULT_KEY = "deceptionIndexQuizResultV3";
 
 function element(dataset = {}) {
   const listeners = new Map();
-  return { dataset, disabled: false, textContent: "", classList: { add() {}, remove() {} }, setAttribute() {},
+  const attributes = new Map();
+  return { dataset, disabled: false, textContent: "", classList: { add() {}, remove() {} }, setAttribute(key, value) { attributes.set(key, value); }, getAttribute(key) { return attributes.get(key); },
     addEventListener(type, callback) { listeners.set(type, callback); },
     click() { if (!this.disabled) return listeners.get("click")?.(); },
+    dispatch(type, event = {}) { return listeners.get(type)?.(event); },
   };
 }
 
@@ -21,7 +23,11 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
   failFetch = false, seed = 7, search = "" } = {}) {
   const panel = element({ resultPage: "result.html" });
   const buttons = Array.from({ length: 4 }, () => element());
+  const previous = element();
+  const forward = element();
   const slot = element();
+  const prompt = element();
+  const counter = element();
   const status = element();
   const progress = element();
   const progressBar = element();
@@ -34,7 +40,8 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
     document: {
       querySelector(selector) {
         return { "[data-result-page]": panel, ".question-slot": slot, ".options-grid": element(),
-          "#progress-label": progress, "#quiz-progress": progressBar, "#quiz-status": status }[selector];
+          ".question-prompt": prompt, "#question-counter": counter,
+          "#progress-label": progress, "#quiz-progress": progressBar, "#quiz-status": status, "#quiz-previous": previous, "#quiz-forward": forward }[selector];
       },
       querySelectorAll() { return buttons; },
     },
@@ -52,7 +59,7 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
   context.window = context;
   scripts.forEach((source) => vm.runInContext(source, context));
   for (let i = 0; i < 10; i += 1) await Promise.resolve();
-  return { context, storage, panel, buttons, slot, status, progress, progressBar, errors,
+  return { context, storage, panel, buttons, previous, forward, slot, prompt, counter, status, progress, progressBar, errors,
     state() { return JSON.parse(storage.get(STATE_KEY)); },
     async answer(index = 0) { await buttons[index].click(); },
   };
