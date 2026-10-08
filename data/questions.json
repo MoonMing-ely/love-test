@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "bankRevision": "6a497ae5721eb0fd7f56e84557efa9b28b43f60e71e1f9508c9f45da93a45dc7",
+  "bankRevision": "6cc525e1bcfd713b42f0be72b48586f1a4f79d659666e505dbf910a2ca8c4604",
   "title": "情感被骗指数测试",
   "scoringStatus": "configured",
   "dimensions": [
@@ -113,7 +113,7 @@
       ],
       "status": "valid",
       "semantic_group": "being_understood",
-      "prompt": "如果一个人能很快理解我平时很少和别人聊的想法，我会更想了解TA。",
+      "prompt": "如果有一个人能很快理解那些我平时很少和别人聊的想法，我会更想了解TA。",
       "options": [
         {
           "id": "A",
@@ -156,7 +156,7 @@
       ],
       "status": "valid",
       "semantic_group": "affection_trust_separation",
-      "prompt": "我可以越来越喜欢一个人，同时减少对TA的信任。",
+      "prompt": "我可以一边越来越喜欢一个人，一边减少对TA的信任。",
       "options": [
         {
           "id": "A",
@@ -202,7 +202,7 @@
       ],
       "status": "valid",
       "semantic_group": "remembered_details",
-      "prompt": "一个人记得我很久以前随口提过的小事，会让我对TA非常有好感。",
+      "prompt": "要是一个人记得我很久以前随口提过的小事，我会对TA非常有好感。",
       "options": [
         {
           "id": "A",
@@ -245,7 +245,7 @@
       ],
       "status": "valid",
       "semantic_group": "understanding_acceptance_separation",
-      "prompt": "我可以理解一个人的难处，但也不会忽略这件事对我的影响。",
+      "prompt": "当发生冲突，并且能理解对方的难处时，我不会因同情而忽视自己的心情。",
       "options": [
         {
           "id": "A",
@@ -291,7 +291,7 @@
       ],
       "status": "valid",
       "semantic_group": "scarcity",
-      "prompt": "遇到一个真正聊得来的人时，我会觉得这样的机会并不常有。",
+      "prompt": "我会觉得遇到一个真正聊得来的人的机会并不常有。",
       "options": [
         {
           "id": "A",
@@ -334,7 +334,7 @@
       ],
       "status": "valid",
       "semantic_group": "private_disclosure_trust",
-      "prompt": "如果一个人愿意和我聊很私人的事情，我会自然地提高对TA的信任。",
+      "prompt": "当一个人愿意和我聊很私人的事情，我会自然地更信任TA。",
       "options": [
         {
           "id": "A",
@@ -380,7 +380,7 @@
       ],
       "status": "valid",
       "semantic_group": "rapid_connection",
-      "prompt": "我觉得人与人之间是否契合，有时几次深入交流就能感觉出来。",
+      "prompt": "我认为人与人之间是否契合，有时几次深入交流就能感觉出来。",
       "options": [
         {
           "id": "A",
@@ -423,7 +423,7 @@
       ],
       "status": "valid",
       "semantic_group": "exclusive_vulnerability",
-      "prompt": "如果一个平时很独立的人只愿意向我展示脆弱的一面，我会很重视这种特殊性。",
+      "prompt": "如果有人平时很独立，却独愿意向我展示脆弱一面，我会非常重视这种关系。",
       "options": [
         {
           "id": "A",
@@ -470,7 +470,7 @@
       ],
       "status": "valid",
       "semantic_group": "understanding_relaxes_standards",
-      "prompt": "如果我感觉对方是真的懂我，我对一些形式上的要求会放宽些。",
+      "prompt": "当我感觉对方是真的懂我，我放宽一些形式上的要求。",
       "options": [
         {
           "id": "A",
@@ -517,7 +517,7 @@
       ],
       "status": "valid",
       "semantic_group": "explanation_evidence_separation",
-      "prompt": "我可以一面接受一个人的解释，一面保留对这件事的疑问。",
+      "prompt": "当发生冲突，我可以在接受一个人解释的同时，保留对这件事的疑问。",
       "options": [
         {
           "id": "A",
@@ -563,7 +563,7 @@
       ],
       "status": "valid",
       "semantic_group": "special_treatment",
-      "prompt": "如果一个人平时对别人比较疏离，却唯独愿意和我亲近，我会觉得这段关系和普通关系不太一样。",
+      "prompt": "如果有一个人平时对别人疏离，唯独愿意和我亲近，我会觉得我们不是普通关系。",
       "options": [
         {
           "id": "A",
@@ -605,7 +605,7 @@
       ],
       "status": "review",
       "semantic_group": "relationship_imbalance",
-      "prompt": "我认为关系里偶尔失衡很正常，只要这种状态会不会长期持续。",
+      "prompt": "我觉得关系里偶尔失衡很正常，只要这种状态不长期持续。",
       "options": [
         {
           "id": "A",
@@ -647,7 +647,7 @@
       ],
       "status": "valid",
       "semantic_group": "listening_interest",
-      "prompt": "一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。",
+      "prompt": "有一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。",
       "options": [
         {
           "id": "A",
@@ -689,7 +689,7 @@
       ],
       "status": "valid",
       "semantic_group": "understanding_acceptance_separation",
-      "prompt": "我可以一面理解一个人的行为原因，一面认为这种行为不能接受。",
+      "prompt": "我可以做到一方面理解一个人的行为原因，一方面不接受这种行为。",
       "options": [
         {
           "id": "A",
@@ -731,7 +731,7 @@
       ],
       "status": "valid",
       "semantic_group": "giving_explanations",
-      "prompt": "如果我欣赏一个人，我通常会给TA比普通人更多解释的机会。",
+      "prompt": "如果我欣赏一个人，通常会给TA比普通人更多解释的机会。",
       "options": [
         {
           "id": "A",
@@ -815,7 +815,7 @@
       ],
       "status": "review",
       "semantic_group": "uncertain_future",
-      "prompt": "我可以很享受一段关系，同时不急着判断它最终会走到哪里。",
+      "prompt": "我可以很享受一段关系，不急着判断它最终会走到哪里。",
       "options": [
         {
           "id": "A",
@@ -904,7 +904,7 @@
       ],
       "status": "valid",
       "semantic_group": "affinity_excusing_discomfort",
-      "prompt": "如果一个人总能说到我心里，我可能不会很介意TA身上一些让我不舒服的地方。",
+      "prompt": "如果一个人总能说到我心里，我可以TA身上一些让我不舒服的地方。",
       "options": [
         {
           "id": "A",
@@ -946,7 +946,7 @@
       ],
       "status": "valid",
       "semantic_group": "help_relationship_separation",
-      "prompt": "我可以对一个人很好，但不一定因此觉得我们之间有特殊关系。",
+      "prompt": "我可以对一个人很好，但不一定觉得我们之间有特殊关系。",
       "options": [
         {
           "id": "A",
@@ -988,7 +988,7 @@
       ],
       "status": "valid",
       "semantic_group": "updating_with_evidence",
-      "prompt": "我一般不会先往坏处想，但反复出现的异常会改变我的判断。",
+      "prompt": "我一般不会先往坏处想，但若反复出现异常也会改变我的判断。",
       "options": [
         {
           "id": "A",
@@ -1030,7 +1030,7 @@
       ],
       "status": "valid",
       "semantic_group": "excusing_anomalies",
-      "prompt": "如果我已经很在意一段关系，我会更愿意把一些反常理解成暂时的问题。",
+      "prompt": "当我很在意一段关系，我会更愿意把一些反常理解成暂时的问题。",
       "options": [
         {
           "id": "A",
@@ -1199,7 +1199,7 @@
       ],
       "status": "valid",
       "semantic_group": "help_relationship_upgrade",
-      "prompt": "当我帮助一个人很多，我会自然把这种帮助理解成关系正在升级。",
+      "prompt": "当我帮助一个人很多，我会自然把这种帮助理解成关系的升级。",
       "options": [
         {
           "id": "A",
@@ -1371,7 +1371,7 @@
       ],
       "status": "valid",
       "semantic_group": "scarcity",
-      "prompt": "如果我觉得一段关系很难得，我会更能接受其中的不确定。",
+      "prompt": "如果我觉得一段关系很难得，我会更包容其中的不确定性。",
       "options": [
         {
           "id": "A",

@@ -119,6 +119,13 @@
     if (saved) statusLabel.textContent = "原测试进度已失效，已为你重新生成问卷。";
   }
 
+  function updateQuestionLayout() {
+    const minimumHeight = parseFloat(window.getComputedStyle(questionSlot).minHeight);
+    quizPanel.dataset.questionExpanded = String(
+      questionSlot.getBoundingClientRect().height > minimumHeight + 0.5,
+    );
+  }
+
   function renderQuestion() {
     const question = questions[currentQuestionIndex];
 
@@ -149,6 +156,7 @@
       button.setAttribute("aria-label", `${option.id}：${option.text}`);
     });
 
+    updateQuestionLayout();
     isChangingQuestion = false;
     setControlsDisabled(false);
     // 手机使用整页滚动，电脑使用面板滚动；换题统一回到题干。
@@ -302,6 +310,11 @@
   optionButtons.forEach((button, optionIndex) => {
     button.addEventListener("click", () => selectOption(optionIndex));
   });
+
+  // 按实际内容高度识别长题；换题、旋转及字体加载后的尺寸变化共用同一逻辑。
+  const questionResizeObserver = new ResizeObserver(updateQuestionLayout);
+  questionResizeObserver.observe(questionSlot, { box: "border-box" });
+  window.addEventListener("resize", updateQuestionLayout);
 
   startQuiz();
 })();

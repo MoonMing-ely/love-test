@@ -26,6 +26,7 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
   const previous = element();
   const forward = element();
   const slot = element();
+  slot.getBoundingClientRect = () => ({ height: 200 });
   const prompt = element();
   const counter = element();
   const status = element();
@@ -48,6 +49,9 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
     fetch: async () => { if (failFetch) throw new Error("network error"); return { ok: true, json: async () => data }; },
     location: { href: "text.html", search }, history: { replaceState() {} },
     matchMedia: () => ({ matches: true }), setTimeout(callback) { callback(); },
+    getComputedStyle: () => ({ minHeight: "200px" }),
+    ResizeObserver: class { constructor(callback) { this.callback = callback; } observe() {} },
+    addEventListener() {},
     sessionStorage: Object.fromEntries(["getItem", "setItem", "removeItem"].map((action) => [action, (key, value) => {
       storageCalls += 1;
       if (failStorage(action, key, storageCalls)) throw new Error("storage error");

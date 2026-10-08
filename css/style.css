@@ -1,14 +1,18 @@
 :root {
-  --blue-gray: #c6d7f2;
-  --blue-gray-strong: #95b3e2;
+  --blue-gray: #b8cced;
+  --blue-gray-strong: #85a8df;
+  --blue-selection: #cee1fc;
+  --blue-tint: #e8f0fd;
+  --blue-hover: #7da1dc;
+  --focus-ring: rgb(133 168 223 / 55%);
   --soft-pink: #ffe8f0;
   --soft-pink-strong: #ffcfe0;
   --canvas: #ffe3ee;
   --surface: #ffffff;
-  --surface-cool: #fbfcff;
+  --surface-cool: #f5f8ff;
   --line: #e8eaf1;
   --ink: #3e4555;
-  --focus: #83a4d9;
+  --focus: #749ad6;
   --radius-frame: clamp(24px, 3vw, 38px);
   --radius-panel: clamp(18px, 2.4vw, 28px);
   --radius-control: clamp(12px, 1.6vw, 18px);
@@ -113,13 +117,14 @@ html.is-page-transitioning-out body > .home {
   top: clamp(14px, 2svh, 28px);
   right: 4.5vw;
   display: flex;
-  gap: clamp(12px, 2.8vw, 28px);
+  gap: calc(clamp(12px, 2.8vw, 28px) * 1.265);
 }
 
 .image-slot {
+  position: relative;
   display: block;
   flex: 0 0 auto;
-  width: 40px;
+  width: 34.56px;
   aspect-ratio: 1;
   padding: 0;
   border: var(--stroke-soft) solid var(--blue-gray);
@@ -135,6 +140,14 @@ html.is-page-transitioning-out body > .home {
   text-decoration: none;
 }
 
+/* 透明点击区向四周延伸 6px，不改变圆圈的可见尺寸和布局间距。 */
+.image-slot:is(a, button)::after {
+  position: absolute;
+  inset: calc(-6px - var(--stroke-soft));
+  border-radius: 50%;
+  content: "";
+}
+
 .about-page .image-slot.is-active {
   border-color: var(--blue-gray-strong);
   background: var(--soft-pink-strong);
@@ -142,18 +155,19 @@ html.is-page-transitioning-out body > .home {
 
 .image-slot:focus-visible,
 .primary-action:focus-visible {
-  outline: 3px solid rgb(145 176 226 / 55%);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
 .content-frame {
+  --frame-height-scale: 0.992;
   position: relative;
   z-index: 2;
   display: flex;
   width: min(90vw, 760px);
-  height: 86svh;
-  min-height: 560px;
-  max-height: 1300px;
+  height: calc(86svh * var(--frame-height-scale));
+  min-height: calc(560px * var(--frame-height-scale));
+  max-height: calc(1300px * var(--frame-height-scale));
   padding: 0 clamp(16px, 4vw, 48px) clamp(22px, 4vw, 48px);
   overflow: hidden;
   border: clamp(2px, 0.35vw, 4px) solid var(--blue-gray);
@@ -162,6 +176,19 @@ html.is-page-transitioning-out body > .home {
   box-shadow: none;
   align-items: center;
   flex-direction: column;
+  /* 高度收回 0.8%，补偿顶部位移，保留原来的底边。 */
+  transform: translateY(0.806451613%);
+}
+
+/* 首页统一屏高比例，横竖屏及矮屏不再切换固定高度。 */
+.home[data-page="start"] {
+  min-height: 100svh;
+  padding-top: max(64px, 8.5svh);
+}
+.home[data-page="start"] .content-frame {
+  height: calc(82.7svh * var(--frame-height-scale));
+  min-height: 0;
+  max-height: none;
 }
 
 .content-frame::before {
@@ -179,13 +206,15 @@ html.is-page-transitioning-out body > .home {
 }
 
 .title-slot {
+  --title-width: 82%;
+  --title-top: 14%;
   position: absolute;
   z-index: 2;
-  top: 14%;
+  top: calc(var(--title-top) - 1svh);
   left: 50%;
-  width: 82%;
-  height: 42%;
-  min-height: 112px;
+  width: calc(var(--title-width) * 0.97);
+  height: 40%;
+  min-height: 0;
   border: 1px solid #f6bfd2;
   border-radius: var(--radius-panel);
   background: var(--soft-pink);
@@ -221,6 +250,7 @@ html.is-page-transitioning-out body > .home {
 }
 
 .primary-action {
+  --action-blue: color-mix(in srgb, var(--blue-gray-strong) 80%, var(--surface));
   position: absolute;
   top: 65%;
   left: 50%;
@@ -228,9 +258,9 @@ html.is-page-transitioning-out body > .home {
   height: 12%;
   min-height: 64px;
   padding: 0;
-  border: var(--stroke-soft) solid var(--blue-gray-strong);
-  border-radius: var(--radius-control);
-  background: var(--blue-gray-strong);
+  border: var(--stroke-soft) solid var(--action-blue);
+  border-radius: clamp(20px, 2.5vw, 26px);
+  background: var(--action-blue);
   box-shadow: none;
   cursor: pointer;
   transform: translateX(-50%);
@@ -242,10 +272,9 @@ html.is-page-transitioning-out body > .home {
   display: flex;
   color: #ffffff;
   font-size: clamp(1.69rem, 3.38vw, 2.028rem);
-  font-weight: 700;
+  font-family: "Yuanti SC", "YouYuan", "幼圆", "MiSans VF", "MiSans", "Noto Sans CJK SC", sans-serif;
+  font-weight: 770;
   letter-spacing: 0.088em;
-  -webkit-text-stroke: 3px #aa8994;
-  paint-order: stroke fill;
   text-decoration: none;
   align-items: center;
   justify-content: center;
@@ -265,8 +294,9 @@ html.is-page-transitioning-out body > .home {
   }
 
   .primary-action:hover {
-    border-color: #83a4d9;
-    background: #8dacdf;
+    --action-blue: color-mix(in srgb, var(--blue-hover) 80%, var(--surface));
+    border-color: var(--action-blue);
+    background: var(--action-blue);
     box-shadow: none;
     transform: translate(-50%, -1px);
   }
@@ -295,9 +325,7 @@ html.is-page-transitioning-out body > .home {
 ) and (
   orientation: portrait
 ) {
-  .title-slot {
-    width: 80%;
-  }
+  .title-slot { --title-width: 80%; }
 
   .primary-action {
     width: min(48%, 340px);
@@ -311,7 +339,7 @@ html.is-page-transitioning-out body > .home {
 
   .content-frame {
     width: min(88vw, 1280px);
-    height: min(94svh, 1160px);
+    height: calc(min(94svh, 1160px) * var(--frame-height-scale));
     border-color: var(--blue-gray);
     border-radius: var(--radius-frame);
     overflow: visible;
@@ -328,16 +356,13 @@ html.is-page-transitioning-out body > .home {
   .top-actions {
     top: clamp(12px, 1.8svh, 22px);
     right: clamp(24px, 3vw, 44px);
-    gap: clamp(14px, 1.4vw, 25px);
+    gap: calc(clamp(14px, 1.4vw, 25px) * 1.265);
     flex-direction: row;
   }
 
   .title-slot {
-    z-index: 2;
-    top: 15%;
-    width: min(70%, 900px);
-    height: 40%;
-    min-height: 0;
+    --title-top: 15%;
+    --title-width: min(70%, 900px);
   }
 
   .primary-action {
@@ -355,7 +380,7 @@ html.is-page-transitioning-out body > .home {
   }
 
   .content-frame {
-    height: min(82svh, 1160px);
+    height: calc(min(82svh, 1160px) * var(--frame-height-scale));
   }
 }
 
@@ -367,7 +392,7 @@ html.is-page-transitioning-out body > .home {
 
   .content-frame {
     width: min(74.8vw, 1088px);
-    height: min(82.7svh, 1160px);
+    height: calc(min(82.7svh, 1160px) * var(--frame-height-scale));
     min-height: 0;
   }
 }
@@ -379,7 +404,7 @@ html.is-page-transitioning-out body > .home {
   }
 
   .content-frame {
-    height: min(82.7svh, 1160px);
+    height: calc(min(82.7svh, 1160px) * var(--frame-height-scale));
     min-height: 0;
   }
 }
@@ -391,7 +416,7 @@ html.is-page-transitioning-out body > .home {
   }
 
   .content-frame {
-    height: 550px;
+    height: calc(550px * var(--frame-height-scale));
   }
 }
 
@@ -401,7 +426,7 @@ html.is-page-transitioning-out body > .home {
   }
 
   .content-frame {
-    height: min(82.7svh, 1160px);
+    height: calc(min(82.7svh, 1160px) * var(--frame-height-scale));
   }
 }
 

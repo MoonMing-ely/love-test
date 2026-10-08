@@ -40,7 +40,7 @@
 
 <!-- selection: {"dimensions":["recognition"],"status":"valid","semantic_group":"being_understood"} -->
 
-如果一个人能很快理解我平时很少和别人聊的想法，我会更想了解TA。
+如果有一个人能很快理解那些我平时很少和别人聊的想法，我会更想了解TA。
 
 **80%–90%** 〔认+3〕　·　**60%–70%** 〔认+2〕　·　**30%–40%** 〔认+1〕　·　**10%–20%** 〔认+0〕
 
@@ -48,7 +48,7 @@
 
 <!-- selection: {"dimensions":["differentiation","stopLoss"],"status":"valid","semantic_group":"affection_trust_separation"} -->
 
-我可以越来越喜欢一个人，同时减少对TA的信任。
+我可以一边越来越喜欢一个人，一边减少对TA的信任。
 
 **80%–90%** 〔分+3｜止+1〕　·　**60%–70%** 〔分+2｜止+1〕　·　**30%–40%** 〔分+1｜止+0〕　·　**10%–20%** 〔分+0｜止+0〕
 
@@ -56,7 +56,7 @@
 
 <!-- selection: {"dimensions":["recognition"],"status":"valid","semantic_group":"remembered_details"} -->
 
-一个人记得我很久以前随口提过的小事，会让我对TA非常有好感。
+要是一个人记得我很久以前随口提过的小事，我会对TA非常有好感。
 
 **80%–90%** 〔认+3〕　·　**60%–70%** 〔认+2〕　·　**30%–40%** 〔认+1〕　·　**10%–20%** 〔认+0〕
 
@@ -64,7 +64,7 @@
 
 <!-- selection: {"dimensions":["differentiation","boundaries"],"status":"valid","semantic_group":"understanding_acceptance_separation"} -->
 
-我可以理解一个人的难处，但也不会忽略这件事对我的影响。
+当发生冲突，并且能理解对方的难处时，我不会因同情而忽视自己的心情。
 
 **80%–90%** 〔分+3｜边+2〕　·　**60%–70%** 〔分+2｜边+1〕　·　**30%–40%** 〔分+1｜边+1〕　·　**10%–20%** 〔分+0｜边+0〕
 
@@ -72,7 +72,7 @@
 
 <!-- selection: {"dimensions":["scarcity"],"status":"valid","semantic_group":"scarcity"} -->
 
-遇到一个真正聊得来的人时，我会觉得这样的机会并不常有。
+我会觉得遇到一个真正聊得来的人的机会并不常有。
 
 **80%–90%** 〔稀+3〕　·　**60%–70%** 〔稀+2〕　·　**30%–40%** 〔稀+1〕　·　**10%–20%** 〔稀+0〕
 
@@ -80,7 +80,7 @@
 
 <!-- selection: {"dimensions":["calibration","specialness"],"status":"valid","semantic_group":"private_disclosure_trust"} -->
 
-如果一个人愿意和我聊很私人的事情，我会自然地提高对TA的信任。
+当一个人愿意和我聊很私人的事情，我会自然地更信任TA。
 
 **80%–90%** 〔校+0｜特+3〕　·　**60%–70%** 〔校+1｜特+2〕　·　**30%–40%** 〔校+2｜特+1〕　·　**10%–20%** 〔校+3｜特+0〕
 
@@ -88,7 +88,7 @@
 
 <!-- selection: {"dimensions":["specialness"],"status":"valid","semantic_group":"rapid_connection"} -->
 
-我觉得人与人之间是否契合，有时几次深入交流就能感觉出来。
+我认为人与人之间是否契合，有时几次深入交流就能感觉出来。
 
 **80%–90%** 〔特+3〕　·　**60%–70%** 〔特+2〕　·　**30%–40%** 〔特+1〕　·　**10%–20%** 〔特+0〕
 
@@ -96,7 +96,7 @@
 
 <!-- selection: {"dimensions":["recognition","specialness"],"status":"valid","semantic_group":"exclusive_vulnerability"} -->
 
-如果一个平时很独立的人只愿意向我展示脆弱的一面，我会很重视这种特殊性。
+如果有人平时很独立，却独愿意向我展示脆弱一面，我会非常重视这种关系。
 
 **80%–90%** 〔认+3｜特+3〕　·　**60%–70%** 〔认+2｜特+2〕　·　**30%–40%** 〔认+1｜特+1〕　·　**10%–20%** 〔认+0｜特+0〕
 
@@ -104,7 +104,7 @@
 
 <!-- selection: {"dimensions":["calibration","differentiation"],"status":"valid","semantic_group":"understanding_relaxes_standards"} -->
 
-如果我感觉对方是真的懂我，我对一些形式上的要求会放宽些。
+当我感觉对方是真的懂我，我放宽一些形式上的要求。
 
 **80%–90%** 〔校+0｜分+0〕　·　**60%–70%** 〔校+1｜分+1〕　·　**30%–40%** 〔校+2｜分+2〕　·　**10%–20%** 〔校+3｜分+3〕
 
@@ -112,7 +112,7 @@
 
 <!-- selection: {"dimensions":["differentiation","evidence"],"status":"valid","semantic_group":"explanation_evidence_separation"} -->
 
-我可以一面接受一个人的解释，一面保留对这件事的疑问。
+当发生冲突，我可以在接受一个人解释的同时，保留对这件事的疑问。
 
 **80%–90%** 〔分+3｜证+2〕　·　**60%–70%** 〔分+2｜证+2〕　·　**30%–40%** 〔分+1｜证+1〕　·　**10%–20%** 〔分+0｜证+0〕
 
@@ -120,7 +120,7 @@
 
 <!-- selection: {"dimensions":["specialness"],"status":"valid","semantic_group":"special_treatment"} -->
 
-如果一个人平时对别人比较疏离，却唯独愿意和我亲近，我会觉得这段关系和普通关系不太一样。
+如果有一个人平时对别人疏离，唯独愿意和我亲近，我会觉得我们不是普通关系。
 
 **80%–90%** 〔特+3〕　·　**60%–70%** 〔特+2〕　·　**30%–40%** 〔特+1〕　·　**10%–20%** 〔特+0〕
 
@@ -128,7 +128,7 @@
 
 <!-- selection: {"dimensions":["calibration"],"status":"review","semantic_group":"relationship_imbalance"} -->
 
-我认为关系里偶尔失衡很正常，只要这种状态会不会长期持续。
+我觉得关系里偶尔失衡很正常，只要这种状态不长期持续。
 
 **80%–90%** 〔校+3〕　·　**60%–70%** 〔校+2〕　·　**30%–40%** 〔校+1〕　·　**10%–20%** 〔校+0〕
 
@@ -136,7 +136,7 @@
 
 <!-- selection: {"dimensions":["recognition"],"status":"valid","semantic_group":"listening_interest"} -->
 
-一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。
+有一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。
 
 **80%–90%** 〔认+3〕　·　**60%–70%** 〔认+2〕　·　**30%–40%** 〔认+1〕　·　**10%–20%** 〔认+0〕
 
@@ -144,7 +144,7 @@
 
 <!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"understanding_acceptance_separation"} -->
 
-我可以一面理解一个人的行为原因，一面认为这种行为不能接受。
+我可以做到一方面理解一个人的行为原因，一方面不接受这种行为。
 
 **80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
@@ -152,7 +152,7 @@
 
 <!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"giving_explanations"} -->
 
-如果我欣赏一个人，我通常会给TA比普通人更多解释的机会。
+如果我欣赏一个人，通常会给TA比普通人更多解释的机会。
 
 **80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
@@ -168,7 +168,7 @@
 
 <!-- selection: {"dimensions":["rationalization"],"status":"review","semantic_group":"uncertain_future"} -->
 
-我可以很享受一段关系，同时不急着判断它最终会走到哪里。
+我可以很享受一段关系，不急着判断它最终会走到哪里。
 
 **80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
@@ -184,7 +184,7 @@
 
 <!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"affinity_excusing_discomfort"} -->
 
-如果一个人总能说到我心里，我可能不会很介意TA身上一些让我不舒服的地方。
+如果一个人总能说到我心里，我可以TA身上一些让我不舒服的地方。
 
 **80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
@@ -192,7 +192,7 @@
 
 <!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"help_relationship_separation"} -->
 
-我可以对一个人很好，但不一定因此觉得我们之间有特殊关系。
+我可以对一个人很好，但不一定觉得我们之间有特殊关系。
 
 **80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
@@ -200,7 +200,7 @@
 
 <!-- selection: {"dimensions":["evidence"],"status":"valid","semantic_group":"updating_with_evidence"} -->
 
-我一般不会先往坏处想，但反复出现的异常会改变我的判断。
+我一般不会先往坏处想，但若反复出现异常也会改变我的判断。
 
 **80%–90%** 〔证+3〕　·　**60%–70%** 〔证+2〕　·　**30%–40%** 〔证+1〕　·　**10%–20%** 〔证+0〕
 
@@ -208,7 +208,7 @@
 
 <!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"excusing_anomalies"} -->
 
-如果我已经很在意一段关系，我会更愿意把一些反常理解成暂时的问题。
+当我很在意一段关系，我会更愿意把一些反常理解成暂时的问题。
 
 **80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
@@ -240,7 +240,7 @@
 
 <!-- selection: {"dimensions":["calibration","differentiation"],"status":"valid","semantic_group":"help_relationship_upgrade"} -->
 
-当我帮助一个人很多，我会自然把这种帮助理解成关系正在升级。
+当我帮助一个人很多，我会自然把这种帮助理解成关系的升级。
 
 **80%–90%** 〔校+0｜分+0〕　·　**60%–70%** 〔校+1｜分+1〕　·　**30%–40%** 〔校+2｜分+2〕　·　**10%–20%** 〔校+3｜分+3〕
 
@@ -272,7 +272,7 @@
 
 <!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"scarcity"} -->
 
-如果我觉得一段关系很难得，我会更能接受其中的不确定。
+如果我觉得一段关系很难得，我会更包容其中的不确定性。
 
 **80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
