@@ -603,15 +603,14 @@ html.is-page-transitioning-out body > .home {
 /* 结果横屏字号对应答题页；首页采用 vmin，旋转时维持同一字号。 */
 @media (orientation: landscape) {
   :root {
-    --landscape-art: url("../assets/images/pastel-landscape.jpg");
-    --subject-whitewash: radial-gradient(ellipse 34% 38% at 50% 48%, rgb(255 255 255 / 26%) 0%, rgb(255 255 255 / 18%) 36%, rgb(255 255 255 / 6%) 72%, rgb(255 255 255 / 0%) 100%);
+    --landscape-art: url("../assets/images/pastel-landscape.png");
   }
   .landscape-background {
     position: absolute;
     z-index: 0;
     inset: calc(var(--quiz-topbar-bottom, 70px) * 0.9) 0 var(--quiz-topbar-bottom, 70px);
     display: block;
-    background-image: var(--subject-whitewash), var(--landscape-art);
+    background-image: var(--landscape-art);
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -654,7 +653,6 @@ html.is-page-transitioning-out body > .home {
     min-height: 0;
     max-height: none;
     background:
-      var(--subject-whitewash) padding-box,
       var(--landscape-art) padding-box,
       var(--frame-border-fill) border-box;
     background-size: 100% 100%;
