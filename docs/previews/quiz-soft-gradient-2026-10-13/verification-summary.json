@@ -1,0 +1,39 @@
+{
+  "layoutChecks": 960,
+  "circleDownViewportFraction": 0.005,
+  "bottomLineAndProgressDownViewportFraction": 0.005,
+  "progressHeightCssPx": 6.4,
+  "questionCounter": "hidden; internal ID/update interface retained",
+  "topLine": "removed",
+  "backgroundTop": "#f7faff",
+  "backgroundBottom": "#fff7fa",
+  "pageBottomCssPx": 17,
+  "maxMovementErrorCssPx": 0.011677856445312607,
+  "flow": {
+    "answers": 28,
+    "previous": "passed",
+    "forward": "passed",
+    "refresh": "passed",
+    "aboutReturn": "passed",
+    "finish": "passed"
+  },
+  "zoom": {
+    "zooms": [
+      1,
+      2
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "maxCssPixelDifference": 0.0,
+    "sameLines": true
+  },
+  "fourCirclesNavigation": true,
+  "nodeTests": {
+    "pass": 13,
+    "fail": 1,
+    "existingFailure": "question-bank.test.mjs: source Markdown differs from runtime JSON"
+  },
+  "questionFilesUnchanged": true
+}

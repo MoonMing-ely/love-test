@@ -1,0 +1,9 @@
+{
+  "textScale200": "passed",
+  "status": "passed",
+  "fontLoading": "loaded",
+  "fontSizeChanges": "passed",
+  "segmenterFallbackQuestions": 96,
+  "otherPages": "checked at 3 viewports",
+  "issues": []
+}

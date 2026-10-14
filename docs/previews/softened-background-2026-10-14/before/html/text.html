@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>情感被骗指数测试题目</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/content.css" />
+  </head>
+  <body>
+    <main class="home quiz-page" data-page="question">
+      <header class="quiz-header">
+        <nav class="quiz-question-nav" aria-label="题目导航">
+          <button class="image-slot quiz-navigation-button" id="quiz-previous" type="button" hidden disabled aria-label="上一题" title="上一题"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 12H5m7-7-7 7 7 7" /></svg></span></button>
+          <button class="image-slot quiz-navigation-button" id="quiz-forward" type="button" hidden disabled aria-label="跳到第一道未答题" title="跳到第一道未答题"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></span></button>
+        </nav>
+        <nav class="top-actions" aria-label="快捷操作">
+          <a class="image-slot" href="about.html?view=project&amp;from=text.html" data-route="about-project" aria-label="查看关于这个测试"></a>
+          <a class="image-slot" href="about.html?view=result&amp;from=text.html" data-route="about-result" aria-label="查看关于测试结果"></a>
+        </nav>
+      </header>
+
+      <section class="content-frame quiz-frame" aria-label="性格测试题目区域">
+        <div class="frame-side-glow" aria-hidden="true"></div>
+        <section
+          class="content-surface quiz-panel"
+          data-question-id=""
+          data-result-page="result.html"
+          aria-label="题目和选项"
+          tabindex="0"
+        >
+          <div class="question-stack">
+            <div
+              class="question-slot"
+              role="heading"
+              aria-level="1"
+              aria-label="当前题目"
+            >
+              <div class="question-ornament" aria-hidden="true">
+                <span class="question-ornament-line"></span>
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path fill="currentColor" d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z" />
+                </svg>
+                <span class="question-ornament-line"></span>
+              </div>
+              <p class="question-prompt"></p>
+              <p class="question-counter" id="question-counter" hidden></p>
+            </div>
+          </div>
+
+          <div class="quiz-divider" aria-hidden="true"></div>
+
+          <div class="options-grid" role="group" aria-label="题目选项">
+            <button class="option-slot" type="button" data-option-index="0" aria-label="选项一"></button>
+            <button class="option-slot" type="button" data-option-index="1" aria-label="选项二"></button>
+            <button class="option-slot" type="button" data-option-index="2" aria-label="选项三"></button>
+            <button class="option-slot" type="button" data-option-index="3" aria-label="选项四"></button>
+          </div>
+
+          <p id="quiz-status" role="status" aria-live="polite"></p>
+          <div class="quiz-divider quiz-bottom-divider" aria-hidden="true"></div>
+          <div class="quiz-footer" aria-live="polite">
+            <span id="progress-label">— / 28</span>
+            <div class="quiz-progress">
+              <progress id="quiz-progress" max="28" value="0" aria-label="答题进度">0 / 28</progress>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="../js/question-sampler.js"></script>
+    <script src="../js/core-algorithm/dimension-vector.js"></script>
+    <script src="../js/core-algorithm/second-layer-normalizer.js"></script>
+    <script src="../js/core-algorithm/third-layer-aggregator.js"></script>
+    <script src="../js/core-algorithm/algorithm-config.js"></script>
+    <script src="../js/core-algorithm/fourth-layer-evidence.js"></script>
+    <script src="../js/core-algorithm/fifth-layer-mechanisms.js"></script>
+    <script src="../js/core-algorithm/sixth-layer-integration.js"></script>
+    <script src="../js/scoring.js"></script>
+    <script src="../js/interactions/quiz.js"></script>
+    <script src="../js/interactions/quiz-layout.js"></script>
+    <script src="../js/interactions/about-navigation-stack.js"></script>
+    <script src="../js/interactions/page-transition.js"></script>
+  </body>
+</html>

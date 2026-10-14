@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "width": 375,
+      "height": 667,
+      "background": "white",
+      "layout": "unchanged"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "background": "white",
+      "layout": "unchanged"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "background": "white",
+      "layout": "unchanged"
+    }
+  ]
+}

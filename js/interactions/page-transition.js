@@ -84,7 +84,7 @@
         <span class="image-slot ${activeView === "project" ? "is-active" : ""}"></span>
         <span class="image-slot ${activeView === "result" ? "is-active" : ""}"></span>
       </nav>
-      <section class="content-frame about-frame"></section>
+      <section class="content-frame about-frame"><div class="frame-side-glow" aria-hidden="true"></div></section>
     `;
     return page;
   }

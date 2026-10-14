@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "qid": "C10",
+      "gradient": "linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgb(229, 237, 242) 100%)",
+      "band": "71.45px",
+      "pageHeight": 844
+    },
+    {
+      "passed": true,
+      "width": 1440,
+      "height": 900,
+      "qid": "C10",
+      "gradient": "linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgb(229, 237, 242) 100%)",
+      "band": "74.05px",
+      "pageHeight": 900
+    }
+  ],
+  "flow": {
+    "passed": true,
+    "answer": true,
+    "previous": true
+  }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "width": 360,
+    "height": 640,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  },
+  {
+    "width": 899,
+    "height": 900,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  },
+  {
+    "width": 900,
+    "height": 899,
+    "passed": true,
+    "exitMs": 160,
+    "entryMs": 220,
+    "reverse": true,
+    "doubleClick": true,
+    "repeatedNavigation": true,
+    "longPrompts": true
+  }
+]

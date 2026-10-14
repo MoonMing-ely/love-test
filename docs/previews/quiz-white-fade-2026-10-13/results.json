@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "qid": "C10",
+      "gradient": "linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgb(239, 247, 252) 65%, rgb(255, 255, 255) 100%)",
+      "band": "71.45px",
+      "pageHeight": 844
+    },
+    {
+      "passed": true,
+      "width": 1440,
+      "height": 900,
+      "qid": "C10",
+      "gradient": "linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgb(239, 247, 252) 65%, rgb(255, 255, 255) 100%)",
+      "band": "74.05px",
+      "pageHeight": 900
+    },
+    {
+      "passed": true,
+      "width": 844,
+      "height": 390,
+      "qid": "C24",
+      "gradient": "linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgb(239, 247, 252) 65%, rgb(255, 255, 255) 100%)",
+      "band": "56.2px",
+      "pageHeight": 615.4166870117188
+    },
+    {
+      "passed": true,
+      "width": 320,
+      "height": 572,
+      "qid": "C24",
+      "gradient": "linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30%, rgb(239, 247, 252) 65%, rgb(255, 255, 255) 100%)",
+      "band": "57.7167px",
+      "pageHeight": 851.9500122070312
+    }
+  ],
+  "flow": {
+    "passed": true,
+    "answer": true,
+    "previous": true
+  }
+}

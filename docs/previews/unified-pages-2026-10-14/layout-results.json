@@ -1,0 +1,3666 @@
+[
+  {
+    "passed": true,
+    "width": 375,
+    "height": 667,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 18.75,
+        "top": 68.41667175292969,
+        "right": 356.25,
+        "bottom": 604.6666717529297,
+        "width": 337.5,
+        "height": 536.25,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 54.06666564941406,
+        "top": 137.53334045410156,
+        "right": 320.9166717529297,
+        "bottom": 351.23333740234375,
+        "width": 266.8500061035156,
+        "height": 213.6999969482422,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 79.08332824707031,
+        "top": 179.98333740234375,
+        "right": 295.93333435058594,
+        "bottom": 247.18333435058594,
+        "width": 216.85000610351562,
+        "height": 67.19999694824219,
+        "font": "28px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 79.08332824707031,
+        "top": 261.183349609375,
+        "right": 295.93333435058594,
+        "bottom": 308.7833557128906,
+        "width": 216.85000610351562,
+        "height": 47.600006103515625,
+        "font": "14px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 96.91667175292969,
+        "top": 416.66668701171875,
+        "right": 278.0833282470703,
+        "bottom": 480.7666778564453,
+        "width": 181.16665649414062,
+        "height": 64.09999084472656,
+        "font": "27.0313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 258.25,
+        "top": 13.883331298828125,
+        "right": 351.1999969482422,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 18.75,
+        "top": 68.41667175292969,
+        "right": 356.25,
+        "bottom": 604.6666717529297,
+        "width": 337.5,
+        "height": 536.25,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 54.06666564941406,
+        "top": 110.81666564941406,
+        "right": 320.9166717529297,
+        "bottom": 377.93333435058594,
+        "width": 266.8500061035156,
+        "height": 267.1166687011719,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 79.08332824707031,
+        "top": 179.96665954589844,
+        "right": 295.93333435058594,
+        "bottom": 247.1666717529297,
+        "width": 216.85000610351562,
+        "height": 67.20001220703125,
+        "font": "28px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 79.08332824707031,
+        "top": 261.16668701171875,
+        "right": 295.93333435058594,
+        "bottom": 308.7666778564453,
+        "width": 216.85000610351562,
+        "height": 47.59999084472656,
+        "font": "14px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 96.91667175292969,
+        "top": 416.66668701171875,
+        "right": 278.0833282470703,
+        "bottom": 500.00001525878906,
+        "width": 181.16665649414062,
+        "height": 83.33332824707031,
+        "font": "27.0313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 258.25,
+        "top": 13.883331298828125,
+        "right": 351.1999969482422,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 375,
+    "height": 667,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 11.816665649414062,
+        "top": 46.68333435058594,
+        "right": 363.18333435058594,
+        "bottom": 649.9999847412109,
+        "width": 351.3666687011719,
+        "height": 603.316650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 258.23333740234375,
+        "top": 13.883331298828125,
+        "right": 351.18333435058594,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 26.25,
+        "top": 68.68333435058594,
+        "right": 348.75,
+        "bottom": 255.43333435058594,
+        "width": 322.5,
+        "height": 186.75,
+        "font": "19.25px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 62.30000305175781,
+        "top": 106.53334045410156,
+        "right": 312.6999969482422,
+        "bottom": 201.8333282470703,
+        "width": 250.39999389648438,
+        "height": 95.29998779296875,
+        "font": "19.25px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 26.25,
+        "top": 274.4666748046875,
+        "right": 348.75,
+        "bottom": 558.2333374023438,
+        "width": 322.5,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 26.25,
+        "top": 633.433349609375,
+        "right": 348.75,
+        "bottom": 639.8333435058594,
+        "width": 322.5,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 11.816665649414062,
+        "top": 46.68333435058594,
+        "right": 363.18333435058594,
+        "bottom": 649.9999847412109,
+        "width": 351.3666687011719,
+        "height": 603.316650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 258.23333740234375,
+        "top": 13.883331298828125,
+        "right": 351.18333435058594,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 26.25,
+        "top": 68.68333435058594,
+        "right": 348.75,
+        "bottom": 255.43333435058594,
+        "width": 322.5,
+        "height": 186.75,
+        "font": "19.25px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 62.30000305175781,
+        "top": 106.53334045410156,
+        "right": 312.6999969482422,
+        "bottom": 201.8333282470703,
+        "width": 250.39999389648438,
+        "height": 95.29998779296875,
+        "font": "19.25px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 26.25,
+        "top": 274.4666748046875,
+        "right": 348.75,
+        "bottom": 558.2333374023438,
+        "width": 322.5,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 26.25,
+        "top": 633.433349609375,
+        "right": 348.75,
+        "bottom": 639.8333435058594,
+        "width": 322.5,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 375,
+    "height": 667,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 18.75,
+        "top": 64.60000610351562,
+        "right": 356.25,
+        "bottom": 622.2500305175781,
+        "width": 337.5,
+        "height": 557.6500244140625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 258.25,
+        "top": 13.883331298828125,
+        "right": 351.1999969482422,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 56.66667175292969,
+        "top": 148.93333435058594,
+        "right": 318.3500213623047,
+        "bottom": 260.1333312988281,
+        "width": 261.683349609375,
+        "height": 111.19999694824219,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 56.66667175292969,
+        "top": 537.9166870117188,
+        "right": 318.3500213623047,
+        "bottom": 587.9166870117188,
+        "width": 261.683349609375,
+        "height": 50,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 18.75,
+        "top": 64.60000610351562,
+        "right": 356.25,
+        "bottom": 622.2500305175781,
+        "width": 337.5,
+        "height": 557.6500244140625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 258.25,
+        "top": 13.883331298828125,
+        "right": 351.1999969482422,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 56.66667175292969,
+        "top": 148.93333435058594,
+        "right": 318.3500213623047,
+        "bottom": 260.1333312988281,
+        "width": 261.683349609375,
+        "height": 111.19999694824219,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 56.66667175292969,
+        "top": 537.9166870117188,
+        "right": 318.3500213623047,
+        "bottom": 587.9166870117188,
+        "width": 261.683349609375,
+        "height": 50,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 375,
+    "height": 667,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 18.75,
+        "top": 64.60000610351562,
+        "right": 356.25,
+        "bottom": 622.2500305175781,
+        "width": 337.5,
+        "height": 557.6500244140625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 258.25,
+        "top": 13.883331298828125,
+        "right": 351.1999969482422,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 18.75,
+        "top": 64.60000610351562,
+        "right": 356.25,
+        "bottom": 622.2500305175781,
+        "width": 337.5,
+        "height": 557.6500244140625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 258.25,
+        "top": 13.883331298828125,
+        "right": 351.1999969482422,
+        "bottom": 52.76666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 390,
+    "height": 844,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 19.5,
+        "top": 77.31666564941406,
+        "right": 370.5,
+        "bottom": 755.8666534423828,
+        "width": 351,
+        "height": 678.5499877929688,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 56.19999694824219,
+        "top": 164.60000610351562,
+        "right": 333.78334045410156,
+        "bottom": 435.2166442871094,
+        "width": 277.5833435058594,
+        "height": 270.61663818359375,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 81.19999694824219,
+        "top": 252.3000030517578,
+        "right": 308.78334045410156,
+        "bottom": 285.8999938964844,
+        "width": 227.58334350585938,
+        "height": 33.59999084472656,
+        "font": "28px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 81.19999694824219,
+        "top": 299.8999938964844,
+        "right": 308.78334045410156,
+        "bottom": 347.5,
+        "width": 227.58334350585938,
+        "height": 47.600006103515625,
+        "font": "14px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 100.78334045410156,
+        "top": 518.066650390625,
+        "right": 289.23333740234375,
+        "bottom": 599.2499847412109,
+        "width": 188.4499969482422,
+        "height": 81.18333435058594,
+        "font": "27.0313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 272.7833251953125,
+        "top": 17.633331298828125,
+        "right": 365.7333221435547,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 19.5,
+        "top": 77.31666564941406,
+        "right": 370.5,
+        "bottom": 755.8666534423828,
+        "width": 351,
+        "height": 678.5499877929688,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 56.19999694824219,
+        "top": 130.76666259765625,
+        "right": 333.78334045410156,
+        "bottom": 469.0333251953125,
+        "width": 277.5833435058594,
+        "height": 338.26666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 81.19999694824219,
+        "top": 252.3000030517578,
+        "right": 308.78334045410156,
+        "bottom": 285.8999938964844,
+        "width": 227.58334350585938,
+        "height": 33.59999084472656,
+        "font": "28px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 81.19999694824219,
+        "top": 299.8999938964844,
+        "right": 308.78334045410156,
+        "bottom": 347.5,
+        "width": 227.58334350585938,
+        "height": 47.600006103515625,
+        "font": "14px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 100.78334045410156,
+        "top": 518.066650390625,
+        "right": 289.23333740234375,
+        "bottom": 623.5999908447266,
+        "width": 188.4499969482422,
+        "height": 105.53334045410156,
+        "font": "27.0313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 272.7833251953125,
+        "top": 17.633331298828125,
+        "right": 365.7333221435547,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 390,
+    "height": 844,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 12.283340454101562,
+        "top": 59.06666564941406,
+        "right": 377.6999969482422,
+        "bottom": 827.0000152587891,
+        "width": 365.4166564941406,
+        "height": 767.933349609375,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 272.76666259765625,
+        "top": 17.633331298828125,
+        "right": 365.71665954589844,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 27.283340454101562,
+        "top": 86.38333129882812,
+        "right": 362.68333435058594,
+        "bottom": 322.6999969482422,
+        "width": 335.3999938964844,
+        "height": 236.31666564941406,
+        "font": "19.25px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 64.14999389648438,
+        "top": 124.23333740234375,
+        "right": 325.8166809082031,
+        "bottom": 219.53334045410156,
+        "width": 261.66668701171875,
+        "height": 95.30000305175781,
+        "font": "19.25px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 27.283340454101562,
+        "top": 395.41668701171875,
+        "right": 362.68333435058594,
+        "bottom": 679.183349609375,
+        "width": 335.3999938964844,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 27.283340454101562,
+        "top": 805.0833129882812,
+        "right": 362.68333435058594,
+        "bottom": 811.4833221435547,
+        "width": 335.3999938964844,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 12.283340454101562,
+        "top": 59.06666564941406,
+        "right": 377.6999969482422,
+        "bottom": 827.0000152587891,
+        "width": 365.4166564941406,
+        "height": 767.933349609375,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 272.76666259765625,
+        "top": 17.633331298828125,
+        "right": 365.71665954589844,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 27.283340454101562,
+        "top": 86.38333129882812,
+        "right": 362.68333435058594,
+        "bottom": 322.6999969482422,
+        "width": 335.3999938964844,
+        "height": 236.31666564941406,
+        "font": "19.25px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 64.14999389648438,
+        "top": 124.23333740234375,
+        "right": 325.8166809082031,
+        "bottom": 219.53334045410156,
+        "width": 261.66668701171875,
+        "height": 95.30000305175781,
+        "font": "19.25px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 27.283340454101562,
+        "top": 395.41668701171875,
+        "right": 362.68333435058594,
+        "bottom": 679.183349609375,
+        "width": 335.3999938964844,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 27.283340454101562,
+        "top": 805.0833129882812,
+        "right": 362.68333435058594,
+        "bottom": 811.4833221435547,
+        "width": 335.3999938964844,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 390,
+    "height": 844,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 19.5,
+        "top": 81.75,
+        "right": 370.5,
+        "bottom": 787.36669921875,
+        "width": 351,
+        "height": 705.61669921875,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 272.7833251953125,
+        "top": 17.633331298828125,
+        "right": 365.7333221435547,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 58.883331298828125,
+        "top": 188.28334045410156,
+        "right": 331.1000061035156,
+        "bottom": 299.48333740234375,
+        "width": 272.2166748046875,
+        "height": 111.19999694824219,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 58.883331298828125,
+        "top": 685.0833129882812,
+        "right": 331.1000061035156,
+        "bottom": 744.1499786376953,
+        "width": 272.2166748046875,
+        "height": 59.06666564941406,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 19.5,
+        "top": 81.75,
+        "right": 370.5,
+        "bottom": 787.36669921875,
+        "width": 351,
+        "height": 705.61669921875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 272.7833251953125,
+        "top": 17.633331298828125,
+        "right": 365.7333221435547,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 58.883331298828125,
+        "top": 188.28334045410156,
+        "right": 331.1000061035156,
+        "bottom": 299.48333740234375,
+        "width": 272.2166748046875,
+        "height": 111.19999694824219,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 58.883331298828125,
+        "top": 685.0833129882812,
+        "right": 331.1000061035156,
+        "bottom": 744.1499786376953,
+        "width": 272.2166748046875,
+        "height": 59.06666564941406,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 390,
+    "height": 844,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 19.5,
+        "top": 81.75,
+        "right": 370.5,
+        "bottom": 787.36669921875,
+        "width": 351,
+        "height": 705.61669921875,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 272.7833251953125,
+        "top": 17.633331298828125,
+        "right": 365.7333221435547,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 19.5,
+        "top": 81.75,
+        "right": 370.5,
+        "bottom": 787.36669921875,
+        "width": 351,
+        "height": 705.61669921875,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 272.7833251953125,
+        "top": 17.633331298828125,
+        "right": 365.7333221435547,
+        "bottom": 56.51666259765625,
+        "width": 92.94999694824219,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 768,
+    "height": 1024,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 38.399993896484375,
+        "top": 93.80000305175781,
+        "right": 729.6000061035156,
+        "bottom": 917.0666656494141,
+        "width": 691.2000122070312,
+        "height": 823.2666625976562,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 117.36666870117188,
+        "top": 200.25,
+        "right": 650.6333312988281,
+        "bottom": 527.9500122070312,
+        "width": 533.2666625976562,
+        "height": 327.70001220703125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 235.86666870117188,
+        "top": 320.3500061035156,
+        "right": 532.1333312988281,
+        "bottom": 366.3999938964844,
+        "width": 296.26666259765625,
+        "height": 46.04998779296875,
+        "font": "38.375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 235.86666870117188,
+        "top": 381.75,
+        "right": 532.1333312988281,
+        "bottom": 407.8333282470703,
+        "width": 296.26666259765625,
+        "height": 26.083328247070312,
+        "font": "15.3438px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 219.0833282470703,
+        "top": 628.316650390625,
+        "right": 548.9333343505859,
+        "bottom": 726.6166534423828,
+        "width": 329.8500061035156,
+        "height": 98.30000305175781,
+        "font": "27.0313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 623.5,
+        "top": 22.133331298828125,
+        "right": 728.4666595458984,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 38.399993896484375,
+        "top": 93.80000305175781,
+        "right": 729.6000061035156,
+        "bottom": 917.0666656494141,
+        "width": 691.2000122070312,
+        "height": 823.2666625976562,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 117.36666870117188,
+        "top": 159.3000030517578,
+        "right": 650.6333312988281,
+        "bottom": 568.9333343505859,
+        "width": 533.2666625976562,
+        "height": 409.6333312988281,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 235.86666870117188,
+        "top": 320.3666687011719,
+        "right": 532.1333312988281,
+        "bottom": 366.4166717529297,
+        "width": 296.26666259765625,
+        "height": 46.05000305175781,
+        "font": "38.375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 235.86666870117188,
+        "top": 381.76666259765625,
+        "right": 532.1333312988281,
+        "bottom": 407.8500061035156,
+        "width": 296.26666259765625,
+        "height": 26.083343505859375,
+        "font": "15.3438px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 219.0833282470703,
+        "top": 628.316650390625,
+        "right": 548.9333343505859,
+        "bottom": 756.1166534423828,
+        "width": 329.8500061035156,
+        "height": 127.80000305175781,
+        "font": "27.0313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 623.5,
+        "top": 22.133331298828125,
+        "right": 728.4666595458984,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 768,
+    "height": 1024,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 24.199996948242188,
+        "top": 71.66667175292969,
+        "right": 743.7999725341797,
+        "bottom": 1006.9999847412109,
+        "width": 719.5999755859375,
+        "height": 935.3333129882812,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 623.4833374023438,
+        "top": 22.133331298828125,
+        "right": 728.4499969482422,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 64,
+        "top": 101.66667175292969,
+        "right": 704,
+        "bottom": 341.6666717529297,
+        "width": 640,
+        "height": 240,
+        "font": "23px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 131,
+        "top": 139.3333282470703,
+        "right": 637,
+        "bottom": 215.23333740234375,
+        "width": 506,
+        "height": 75.90000915527344,
+        "font": "23px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 64,
+        "top": 494.4666748046875,
+        "right": 704,
+        "bottom": 778.2333374023438,
+        "width": 640,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 202.75,
+        "top": 980.13330078125,
+        "right": 565.25,
+        "bottom": 986.5333099365234,
+        "width": 362.5,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 24.199996948242188,
+        "top": 71.66667175292969,
+        "right": 743.7999725341797,
+        "bottom": 1006.9999847412109,
+        "width": 719.5999755859375,
+        "height": 935.3333129882812,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 623.4833374023438,
+        "top": 22.133331298828125,
+        "right": 728.4499969482422,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 64,
+        "top": 101.66667175292969,
+        "right": 704,
+        "bottom": 341.6666717529297,
+        "width": 640,
+        "height": 240,
+        "font": "23px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 131,
+        "top": 139.3333282470703,
+        "right": 637,
+        "bottom": 215.23333740234375,
+        "width": 506,
+        "height": 75.90000915527344,
+        "font": "23px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 64,
+        "top": 494.4666748046875,
+        "right": 704,
+        "bottom": 778.2333374023438,
+        "width": 640,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 202.75,
+        "top": 980.13330078125,
+        "right": 565.25,
+        "bottom": 986.5333099365234,
+        "width": 362.5,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 768,
+    "height": 1024,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 38.399993896484375,
+        "top": 114.71665954589844,
+        "right": 729.6000061035156,
+        "bottom": 930.9999847412109,
+        "width": 691.2000122070312,
+        "height": 816.2833251953125,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 623.5,
+        "top": 22.133331298828125,
+        "right": 728.4666595458984,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 116,
+        "top": 238.5500030517578,
+        "right": 652,
+        "bottom": 324.21665954589844,
+        "width": 536,
+        "height": 85.66665649414062,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 116,
+        "top": 808.5999755859375,
+        "right": 652,
+        "bottom": 880.2666320800781,
+        "width": 536,
+        "height": 71.66665649414062,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 38.399993896484375,
+        "top": 114.71665954589844,
+        "right": 729.6000061035156,
+        "bottom": 930.9999847412109,
+        "width": 691.2000122070312,
+        "height": 816.2833251953125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 623.5,
+        "top": 22.133331298828125,
+        "right": 728.4666595458984,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 116,
+        "top": 238.5500030517578,
+        "right": 652,
+        "bottom": 324.21665954589844,
+        "width": 536,
+        "height": 85.66665649414062,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 116,
+        "top": 808.5999755859375,
+        "right": 652,
+        "bottom": 880.2666320800781,
+        "width": 536,
+        "height": 71.66665649414062,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 768,
+    "height": 1024,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 38.399993896484375,
+        "top": 114.71665954589844,
+        "right": 729.6000061035156,
+        "bottom": 930.9999847412109,
+        "width": 691.2000122070312,
+        "height": 816.2833251953125,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 623.5,
+        "top": 22.133331298828125,
+        "right": 728.4666595458984,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 38.399993896484375,
+        "top": 114.71665954589844,
+        "right": 729.6000061035156,
+        "bottom": 930.9999847412109,
+        "width": 691.2000122070312,
+        "height": 816.2833251953125,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 623.5,
+        "top": 22.133331298828125,
+        "right": 728.4666595458984,
+        "bottom": 61.01666259765625,
+        "width": 104.96665954589844,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1440,
+    "height": 900,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 181.43333435058594,
+        "top": 82.44999694824219,
+        "right": 1258.550033569336,
+        "bottom": 806.0166473388672,
+        "width": 1077.11669921875,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 355.66668701171875,
+        "top": 183.38333129882812,
+        "right": 1084.2999877929688,
+        "bottom": 471.1999816894531,
+        "width": 728.63330078125,
+        "height": 287.816650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 501.58331298828125,
+        "top": 269.3833312988281,
+        "right": 938.38330078125,
+        "bottom": 336.5833282470703,
+        "width": 436.79998779296875,
+        "height": 67.19999694824219,
+        "font": "56px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 501.58331298828125,
+        "top": 354.58331298828125,
+        "right": 938.38330078125,
+        "bottom": 385.1833190917969,
+        "width": 436.79998779296875,
+        "height": 30.600006103515625,
+        "font": "18px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 591.2166748046875,
+        "top": 552.1666870117188,
+        "right": 848.75,
+        "bottom": 638.5000152587891,
+        "width": 257.5333251953125,
+        "height": 86.33332824707031,
+        "font": "32.4375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 181.43333435058594,
+        "top": 82.44999694824219,
+        "right": 1258.550033569336,
+        "bottom": 806.0166473388672,
+        "width": 1077.11669921875,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 355.66668701171875,
+        "top": 147.39999389648438,
+        "right": 1084.2999877929688,
+        "bottom": 507.1833190917969,
+        "width": 728.63330078125,
+        "height": 359.7833251953125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 585.8333129882812,
+        "top": 294.1499938964844,
+        "right": 854.13330078125,
+        "bottom": 317.06666564941406,
+        "width": 268.29998779296875,
+        "height": 22.916671752929688,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 585.8333129882812,
+        "top": 333.1333312988281,
+        "right": 854.13330078125,
+        "bottom": 360.43333435058594,
+        "width": 268.29998779296875,
+        "height": 27.300003051757812,
+        "font": "16.0625px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 591.2166748046875,
+        "top": 552.1666870117188,
+        "right": 848.75,
+        "bottom": 664.4166870117188,
+        "width": 257.5333251953125,
+        "height": 112.25,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1440,
+    "height": 900,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 84,
+        "top": 63,
+        "right": 1356,
+        "bottom": 883,
+        "width": 1272,
+        "height": 820,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 432,
+        "top": 92,
+        "right": 1008,
+        "bottom": 332,
+        "width": 576,
+        "height": 240,
+        "font": "19.0938px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 509.9666748046875,
+        "top": 131.73333740234375,
+        "right": 930.0333557128906,
+        "bottom": 194.73333740234375,
+        "width": 420.0666809082031,
+        "height": 63,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 432,
+        "top": 427.8833312988281,
+        "right": 1008,
+        "bottom": 711.6499938964844,
+        "width": 576,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 509.95001220703125,
+        "top": 859.7666625976562,
+        "right": 930.0500183105469,
+        "bottom": 866.1666717529297,
+        "width": 420.1000061035156,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 84,
+        "top": 63,
+        "right": 1356,
+        "bottom": 883,
+        "width": 1272,
+        "height": 820,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 432,
+        "top": 92,
+        "right": 1008,
+        "bottom": 332,
+        "width": 576,
+        "height": 240,
+        "font": "19.0938px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 509.9666748046875,
+        "top": 131.73333740234375,
+        "right": 930.0333557128906,
+        "bottom": 194.73333740234375,
+        "width": 420.0666809082031,
+        "height": 63,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 432,
+        "top": 427.8833312988281,
+        "right": 1008,
+        "bottom": 711.6499938964844,
+        "width": 576,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 509.95001220703125,
+        "top": 859.7666625976562,
+        "right": 930.0500183105469,
+        "bottom": 866.1666717529297,
+        "width": 420.1000061035156,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1440,
+    "height": 900,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 181.43333435058594,
+        "top": 82.44999694824219,
+        "right": 1258.550033569336,
+        "bottom": 806.0166473388672,
+        "width": 1077.11669921875,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 379.98333740234375,
+        "top": 192.38333129882812,
+        "right": 1059.9833374023438,
+        "bottom": 304.8833312988281,
+        "width": 680,
+        "height": 112.5,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 379.98333740234375,
+        "top": 688.8499755859375,
+        "right": 1059.9833374023438,
+        "bottom": 760.8499755859375,
+        "width": 680,
+        "height": 72,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 181.43333435058594,
+        "top": 82.44999694824219,
+        "right": 1258.550033569336,
+        "bottom": 806.0166473388672,
+        "width": 1077.11669921875,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 379.98333740234375,
+        "top": 192.38333129882812,
+        "right": 1059.9833374023438,
+        "bottom": 264.3000030517578,
+        "width": 680,
+        "height": 71.91667175292969,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 379.98333740234375,
+        "top": 688.8499755859375,
+        "right": 1059.9833374023438,
+        "bottom": 760.8499755859375,
+        "width": 680,
+        "height": 72,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1440,
+    "height": 900,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 181.43333435058594,
+        "top": 82.44999694824219,
+        "right": 1258.550033569336,
+        "bottom": 806.0166473388672,
+        "width": 1077.11669921875,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 181.43333435058594,
+        "top": 82.44999694824219,
+        "right": 1258.550033569336,
+        "bottom": 806.0166473388672,
+        "width": 1077.11669921875,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 1228.75,
+        "top": 17.23333740234375,
+        "right": 1332,
+        "bottom": 56.116668701171875,
+        "width": 103.25,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 844,
+    "height": 390,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 42.19999694824219,
+        "top": 66.58332824707031,
+        "right": 801.7999725341797,
+        "bottom": 380.13331604003906,
+        "width": 759.5999755859375,
+        "height": 313.54998779296875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 120.69999694824219,
+        "top": 107.30000305175781,
+        "right": 723.2833709716797,
+        "bottom": 231.9166717529297,
+        "width": 602.5833740234375,
+        "height": 124.61666870117188,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 258.20001220703125,
+        "top": 121.51666259765625,
+        "right": 585.8000183105469,
+        "bottom": 172.14999389648438,
+        "width": 327.6000061035156,
+        "height": 50.633331298828125,
+        "font": "42.1875px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 258.20001220703125,
+        "top": 189.03334045410156,
+        "right": 585.8000183105469,
+        "bottom": 217.71665954589844,
+        "width": 327.6000061035156,
+        "height": 28.683319091796875,
+        "font": "16.875px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 252,
+        "top": 270.08331298828125,
+        "right": 592,
+        "bottom": 334.08331298828125,
+        "width": 340,
+        "height": 64,
+        "font": "28.5313px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 42.19999694824219,
+        "top": 66.58332824707031,
+        "right": 801.7999725341797,
+        "bottom": 380.13331604003906,
+        "width": 759.5999755859375,
+        "height": 313.54998779296875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 120.69999694824219,
+        "top": 91.71665954589844,
+        "right": 723.2833709716797,
+        "bottom": 247.48333740234375,
+        "width": 602.5833740234375,
+        "height": 155.7666778564453,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 304.3833312988281,
+        "top": 140.93333435058594,
+        "right": 539.6166687011719,
+        "bottom": 160,
+        "width": 235.23333740234375,
+        "height": 19.066665649414062,
+        "font": "15.8906px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 304.3833312988281,
+        "top": 174.1666717529297,
+        "right": 539.6166687011719,
+        "bottom": 198.26666259765625,
+        "width": 235.23333740234375,
+        "height": 24.099990844726562,
+        "font": "14.1719px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 252,
+        "top": 270.08331298828125,
+        "right": 592,
+        "bottom": 353.2833251953125,
+        "width": 340,
+        "height": 83.20001220703125,
+        "font": "15.8906px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 844,
+    "height": 390,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 20.283340454101562,
+        "top": 44,
+        "right": 811.6999664306641,
+        "bottom": 598.4166870117188,
+        "width": 791.4166259765625,
+        "height": 554.4166870117188,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 127.98333740234375,
+        "top": 61,
+        "right": 703.9833374023438,
+        "bottom": 221,
+        "width": 576,
+        "height": 160,
+        "font": "15.8906px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 241.18333435058594,
+        "top": 92.88333129882812,
+        "right": 590.7833404541016,
+        "bottom": 140.5500030517578,
+        "width": 349.6000061035156,
+        "height": 47.66667175292969,
+        "font": "15.8906px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 127.98333740234375,
+        "top": 236.06666564941406,
+        "right": 703.9833374023438,
+        "bottom": 519.8333282470703,
+        "width": 576,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 205.93333435058594,
+        "top": 584.11669921875,
+        "right": 626.0333404541016,
+        "bottom": 590.5166931152344,
+        "width": 420.1000061035156,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 20.283340454101562,
+        "top": 44,
+        "right": 811.6999664306641,
+        "bottom": 598.4166870117188,
+        "width": 791.4166259765625,
+        "height": 554.4166870117188,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 127.98333740234375,
+        "top": 61,
+        "right": 703.9833374023438,
+        "bottom": 221,
+        "width": 576,
+        "height": 160,
+        "font": "15.8906px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 241.18333435058594,
+        "top": 92.88333129882812,
+        "right": 590.7833404541016,
+        "bottom": 140.5500030517578,
+        "width": 349.6000061035156,
+        "height": 47.66667175292969,
+        "font": "15.8906px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 127.98333740234375,
+        "top": 236.06666564941406,
+        "right": 703.9833374023438,
+        "bottom": 519.8333282470703,
+        "width": 576,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 205.93333435058594,
+        "top": 584.11669921875,
+        "right": 626.0333404541016,
+        "bottom": 590.5166931152344,
+        "width": 420.1000061035156,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 844,
+    "height": 390,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 36.19999694824219,
+        "top": 69.48333740234375,
+        "right": 795.7999725341797,
+        "bottom": 613.8999633789062,
+        "width": 759.5999755859375,
+        "height": 544.4166259765625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 120.53334045410156,
+        "top": 151.8333282470703,
+        "right": 711.4499664306641,
+        "bottom": 243.81666564941406,
+        "width": 590.9166259765625,
+        "height": 91.98333740234375,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 120.53334045410156,
+        "top": 530.36669921875,
+        "right": 711.4499664306641,
+        "bottom": 580.36669921875,
+        "width": 590.9166259765625,
+        "height": 50,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 36.19999694824219,
+        "top": 69.48333740234375,
+        "right": 795.7999725341797,
+        "bottom": 613.8999633789062,
+        "width": 759.5999755859375,
+        "height": 544.4166259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 120.53334045410156,
+        "top": 151.8333282470703,
+        "right": 711.4499664306641,
+        "bottom": 214.13333129882812,
+        "width": 590.9166259765625,
+        "height": 62.30000305175781,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 120.53334045410156,
+        "top": 530.36669921875,
+        "right": 711.4499664306641,
+        "bottom": 580.36669921875,
+        "width": 590.9166259765625,
+        "height": 50,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 844,
+    "height": 390,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 36.19999694824219,
+        "top": 69.48333740234375,
+        "right": 795.7999725341797,
+        "bottom": 613.8999633789062,
+        "width": 759.5999755859375,
+        "height": 544.4166259765625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 36.19999694824219,
+        "top": 69.48333740234375,
+        "right": 795.7999725341797,
+        "bottom": 613.8999633789062,
+        "width": 759.5999755859375,
+        "height": 544.4166259765625,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 692.9000244140625,
+        "top": 12.5,
+        "right": 800.5500335693359,
+        "bottom": 51.383331298828125,
+        "width": 107.65000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1024,
+    "height": 768,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 129.01666259765625,
+        "top": 70.35000610351562,
+        "right": 894.9666748046875,
+        "bottom": 687.8000183105469,
+        "width": 765.9500122070312,
+        "height": 617.4500122070312,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 252.63333129882812,
+        "top": 156,
+        "right": 771.3500061035156,
+        "bottom": 402.1666717529297,
+        "width": 518.7166748046875,
+        "height": 246.1666717529297,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 313.1166687011719,
+        "top": 224.06666564941406,
+        "right": 710.8500061035156,
+        "bottom": 285.5,
+        "width": 397.73333740234375,
+        "height": 61.43333435058594,
+        "font": "51.1875px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 313.1166687011719,
+        "top": 303.5,
+        "right": 710.8500061035156,
+        "bottom": 334.1000061035156,
+        "width": 397.73333740234375,
+        "height": 30.600006103515625,
+        "font": "18px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 420.316650390625,
+        "top": 471.3833312988281,
+        "right": 603.6499786376953,
+        "bottom": 545.2333374023438,
+        "width": 183.3333282470703,
+        "height": 73.85000610351562,
+        "font": "32.4375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 875.38330078125,
+        "top": 14.199996948242188,
+        "right": 971.2833099365234,
+        "bottom": 53.08332824707031,
+        "width": 95.90000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 129.01666259765625,
+        "top": 70.35000610351562,
+        "right": 894.9666748046875,
+        "bottom": 687.8000183105469,
+        "width": 765.9500122070312,
+        "height": 617.4500122070312,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 252.63333129882812,
+        "top": 125.21665954589844,
+        "right": 771.3500061035156,
+        "bottom": 432.93333435058594,
+        "width": 518.7166748046875,
+        "height": 307.7166748046875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 360.6333312988281,
+        "top": 242.68333435058594,
+        "right": 663.3333435058594,
+        "bottom": 265.6000061035156,
+        "width": 302.70001220703125,
+        "height": 22.916671752929688,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 360.6333312988281,
+        "top": 284.066650390625,
+        "right": 663.3333435058594,
+        "bottom": 315.4666442871094,
+        "width": 302.70001220703125,
+        "height": 31.399993896484375,
+        "font": "18.4688px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 420.316650390625,
+        "top": 471.3833312988281,
+        "right": 603.6499786376953,
+        "bottom": 567.3833312988281,
+        "width": 183.3333282470703,
+        "height": 96,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 875.38330078125,
+        "top": 14.199996948242188,
+        "right": 971.2833099365234,
+        "bottom": 53.08332824707031,
+        "width": 95.90000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1024,
+    "height": 768,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 32.26666259765625,
+        "top": 53.75,
+        "right": 991.7333374023438,
+        "bottom": 751,
+        "width": 959.4666748046875,
+        "height": 697.25,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 875.36669921875,
+        "top": 14.199996948242188,
+        "right": 971.2666931152344,
+        "bottom": 53.08332824707031,
+        "width": 95.89999389648438,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 224,
+        "top": 78.78334045410156,
+        "right": 800,
+        "bottom": 293.81666564941406,
+        "width": 576,
+        "height": 215.0333251953125,
+        "font": "19.0938px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 301.9666748046875,
+        "top": 118.51666259765625,
+        "right": 722.0333557128906,
+        "bottom": 181.51666259765625,
+        "width": 420.0666809082031,
+        "height": 63,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 224,
+        "top": 337.816650390625,
+        "right": 800,
+        "bottom": 632.4499816894531,
+        "width": 576,
+        "height": 294.6333312988281,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 301.95001220703125,
+        "top": 731.8333129882812,
+        "right": 722.0500183105469,
+        "bottom": 738.2333221435547,
+        "width": 420.1000061035156,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 32.26666259765625,
+        "top": 53.75,
+        "right": 991.7333374023438,
+        "bottom": 751,
+        "width": 959.4666748046875,
+        "height": 697.25,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 875.36669921875,
+        "top": 14.199996948242188,
+        "right": 971.2666931152344,
+        "bottom": 53.08332824707031,
+        "width": 95.89999389648438,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 224,
+        "top": 78.78334045410156,
+        "right": 800,
+        "bottom": 293.81666564941406,
+        "width": 576,
+        "height": 215.0333251953125,
+        "font": "19.0938px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 301.9666748046875,
+        "top": 118.51666259765625,
+        "right": 722.0333557128906,
+        "bottom": 181.51666259765625,
+        "width": 420.0666809082031,
+        "height": 63,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 224,
+        "top": 337.816650390625,
+        "right": 800,
+        "bottom": 632.4499816894531,
+        "width": 576,
+        "height": 294.6333312988281,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 301.95001220703125,
+        "top": 731.8333129882812,
+        "right": 722.0500183105469,
+        "bottom": 738.2333221435547,
+        "width": 420.1000061035156,
+        "height": 6.4000091552734375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1024,
+    "height": 768,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 129.01666259765625,
+        "top": 70.35000610351562,
+        "right": 894.9666748046875,
+        "bottom": 687.8000183105469,
+        "width": 765.9500122070312,
+        "height": 617.4500122070312,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 875.38330078125,
+        "top": 14.199996948242188,
+        "right": 971.2833099365234,
+        "bottom": 53.08332824707031,
+        "width": 95.90000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 214.0500030517578,
+        "top": 163.6666717529297,
+        "right": 809.9167022705078,
+        "bottom": 267.6999969482422,
+        "width": 595.86669921875,
+        "height": 104.0333251953125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 214.0500030517578,
+        "top": 585.88330078125,
+        "right": 809.9167022705078,
+        "bottom": 649.88330078125,
+        "width": 595.86669921875,
+        "height": 64,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 129.01666259765625,
+        "top": 70.35000610351562,
+        "right": 894.9666748046875,
+        "bottom": 687.8000183105469,
+        "width": 765.9500122070312,
+        "height": 617.4500122070312,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 875.38330078125,
+        "top": 14.199996948242188,
+        "right": 971.2833099365234,
+        "bottom": 53.08332824707031,
+        "width": 95.90000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 214.0500030517578,
+        "top": 163.6666717529297,
+        "right": 809.9167022705078,
+        "bottom": 242.9166717529297,
+        "width": 595.86669921875,
+        "height": 79.25,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 214.0500030517578,
+        "top": 585.88330078125,
+        "right": 809.9167022705078,
+        "bottom": 649.88330078125,
+        "width": 595.86669921875,
+        "height": 64,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 1024,
+    "height": 768,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 129.01666259765625,
+        "top": 70.35000610351562,
+        "right": 894.9666748046875,
+        "bottom": 687.8000183105469,
+        "width": 765.9500122070312,
+        "height": 617.4500122070312,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 875.38330078125,
+        "top": 14.199996948242188,
+        "right": 971.2833099365234,
+        "bottom": 53.08332824707031,
+        "width": 95.90000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 129.01666259765625,
+        "top": 70.35000610351562,
+        "right": 894.9666748046875,
+        "bottom": 687.8000183105469,
+        "width": 765.9500122070312,
+        "height": 617.4500122070312,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 875.38330078125,
+        "top": 14.199996948242188,
+        "right": 971.2833099365234,
+        "bottom": 53.08332824707031,
+        "width": 95.90000915527344,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 899,
+    "height": 900,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 69.5,
+        "top": 82.44999694824219,
+        "right": 829.5,
+        "bottom": 806.0166473388672,
+        "width": 760,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 156.1666717529297,
+        "top": 176.18333435058594,
+        "right": 742.8166961669922,
+        "bottom": 463.99998474121094,
+        "width": 586.6500244140625,
+        "height": 287.816650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 273.95001220703125,
+        "top": 268.8666687011719,
+        "right": 625.0166625976562,
+        "bottom": 322.8000030517578,
+        "width": 351.066650390625,
+        "height": 53.93333435058594,
+        "font": "44.9375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 273.95001220703125,
+        "top": 340.76666259765625,
+        "right": 625.0166625976562,
+        "bottom": 371.31666564941406,
+        "width": 351.066650390625,
+        "height": 30.550003051757812,
+        "font": "17.9688px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 279.5,
+        "top": 552.1666870117188,
+        "right": 619.5,
+        "bottom": 638.5000152587891,
+        "width": 340,
+        "height": 86.33332824707031,
+        "font": "30.375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 69.5,
+        "top": 82.44999694824219,
+        "right": 829.5,
+        "bottom": 806.0166473388672,
+        "width": 760,
+        "height": 723.566650390625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 156.1666717529297,
+        "top": 140.1999969482422,
+        "right": 742.8166961669922,
+        "bottom": 499.9833221435547,
+        "width": 586.6500244140625,
+        "height": 359.7833251953125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 273.95001220703125,
+        "top": 268.8666687011719,
+        "right": 625.0166625976562,
+        "bottom": 322.8000030517578,
+        "width": 351.066650390625,
+        "height": 53.93333435058594,
+        "font": "44.9375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 273.95001220703125,
+        "top": 340.76666259765625,
+        "right": 625.0166625976562,
+        "bottom": 371.31666564941406,
+        "width": 351.066650390625,
+        "height": 30.550003051757812,
+        "font": "17.9688px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 279.5,
+        "top": 552.1666870117188,
+        "right": 619.5,
+        "bottom": 664.4166870117188,
+        "width": 340,
+        "height": 112.25,
+        "font": "30.375px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 899,
+    "height": 900,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 28.316665649414062,
+        "top": 63,
+        "right": 870.6666412353516,
+        "bottom": 883,
+        "width": 842.3499755859375,
+        "height": 820,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 129.48333740234375,
+        "top": 93,
+        "right": 769.4833374023438,
+        "bottom": 333,
+        "width": 640,
+        "height": 240,
+        "font": "22.7188px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 199.56666564941406,
+        "top": 130.64999389648438,
+        "right": 699.3833160400391,
+        "bottom": 205.61666870117188,
+        "width": 499.816650390625,
+        "height": 74.9666748046875,
+        "font": "22.7188px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 129.48333740234375,
+        "top": 427.91668701171875,
+        "right": 769.4833374023438,
+        "bottom": 711.683349609375,
+        "width": 640,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 268.23333740234375,
+        "top": 859.066650390625,
+        "right": 630.7333374023438,
+        "bottom": 865.4666442871094,
+        "width": 362.5,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 28.316665649414062,
+        "top": 63,
+        "right": 870.6666412353516,
+        "bottom": 883,
+        "width": 842.3499755859375,
+        "height": 820,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 129.48333740234375,
+        "top": 93,
+        "right": 769.4833374023438,
+        "bottom": 333,
+        "width": 640,
+        "height": 240,
+        "font": "22.7188px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 199.56666564941406,
+        "top": 130.64999389648438,
+        "right": 699.3833160400391,
+        "bottom": 205.61666870117188,
+        "width": 499.816650390625,
+        "height": 74.9666748046875,
+        "font": "22.7188px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 129.48333740234375,
+        "top": 427.91668701171875,
+        "right": 769.4833374023438,
+        "bottom": 711.683349609375,
+        "width": 640,
+        "height": 283.76666259765625,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 268.23333740234375,
+        "top": 859.066650390625,
+        "right": 630.7333374023438,
+        "bottom": 865.4666442871094,
+        "width": 362.5,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 899,
+    "height": 900,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 69.5,
+        "top": 113.89999389648438,
+        "right": 829.5,
+        "bottom": 831.3500061035156,
+        "width": 760,
+        "height": 717.4500122070312,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 154.6666717529297,
+        "top": 222.9166717529297,
+        "right": 744.3332977294922,
+        "bottom": 320.8666687011719,
+        "width": 589.6666259765625,
+        "height": 97.94999694824219,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 154.6666717529297,
+        "top": 723.5499877929688,
+        "right": 744.3332977294922,
+        "bottom": 786.5499877929688,
+        "width": 589.6666259765625,
+        "height": 63,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 69.5,
+        "top": 113.89999389648438,
+        "right": 829.5,
+        "bottom": 831.3500061035156,
+        "width": 760,
+        "height": 717.4500122070312,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 154.6666717529297,
+        "top": 222.9166717529297,
+        "right": 744.3332977294922,
+        "bottom": 320.8666687011719,
+        "width": 589.6666259765625,
+        "height": 97.94999694824219,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 154.6666717529297,
+        "top": 723.5499877929688,
+        "right": 744.3332977294922,
+        "bottom": 786.5499877929688,
+        "width": 589.6666259765625,
+        "height": 63,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 899,
+    "height": 900,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 69.5,
+        "top": 113.89999389648438,
+        "right": 829.5,
+        "bottom": 831.3500061035156,
+        "width": 760,
+        "height": 717.4500122070312,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 69.5,
+        "top": 113.89999389648438,
+        "right": 829.5,
+        "bottom": 831.3500061035156,
+        "width": 760,
+        "height": 717.4500122070312,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 743.11669921875,
+        "top": 19.050003051757812,
+        "right": 852.7166900634766,
+        "bottom": 57.93333435058594,
+        "width": 109.59999084472656,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 900,
+    "height": 899,
+    "page": "index.html",
+    "before": {
+      ".content-frame": {
+        "left": 113.39999389648438,
+        "top": 82.35000610351562,
+        "right": 786.6000061035156,
+        "bottom": 805.1166687011719,
+        "width": 673.2000122070312,
+        "height": 722.7666625976562,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 222.13333129882812,
+        "top": 182.46665954589844,
+        "right": 677.8666687011719,
+        "bottom": 470.7666473388672,
+        "width": 455.73333740234375,
+        "height": 288.29998779296875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 274.5333251953125,
+        "top": 275.316650390625,
+        "right": 625.4666442871094,
+        "bottom": 329.316650390625,
+        "width": 350.9333190917969,
+        "height": 54,
+        "font": "45px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 274.5333251953125,
+        "top": 347.316650390625,
+        "right": 625.4666442871094,
+        "bottom": 377.9166564941406,
+        "width": 350.9333190917969,
+        "height": 30.600006103515625,
+        "font": "18px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 369.4666748046875,
+        "top": 551.8333129882812,
+        "right": 530.5500183105469,
+        "bottom": 638.316650390625,
+        "width": 161.08334350585938,
+        "height": 86.48333740234375,
+        "font": "30.4063px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 758.183349609375,
+        "top": 17.199996948242188,
+        "right": 853.6666870117188,
+        "bottom": 56.08332824707031,
+        "width": 95.48333740234375,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 113.39999389648438,
+        "top": 82.35000610351562,
+        "right": 786.6000061035156,
+        "bottom": 805.1166687011719,
+        "width": 673.2000122070312,
+        "height": 722.7666625976562,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot": {
+        "left": 222.13333129882812,
+        "top": 146.43333435058594,
+        "right": 677.8666687011719,
+        "bottom": 506.81666564941406,
+        "width": 455.73333740234375,
+        "height": 360.3833312988281,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot h1": {
+        "left": 299.3999938964844,
+        "top": 291.3999938964844,
+        "right": 600.6000061035156,
+        "bottom": 314.31666564941406,
+        "width": 301.20001220703125,
+        "height": 22.916671752929688,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".title-slot p": {
+        "left": 299.3999938964844,
+        "top": 331.91668701171875,
+        "right": 600.6000061035156,
+        "bottom": 361.8333435058594,
+        "width": 301.20001220703125,
+        "height": 29.916656494140625,
+        "font": "17.5938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".primary-action": {
+        "left": 369.4666748046875,
+        "top": 551.8333129882812,
+        "right": 530.5500183105469,
+        "bottom": 664.2666473388672,
+        "width": 161.08334350585938,
+        "height": 112.43333435058594,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 758.183349609375,
+        "top": 17.199996948242188,
+        "right": 853.6666870117188,
+        "bottom": 56.08332824707031,
+        "width": 95.48333740234375,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 900,
+    "height": 899,
+    "page": "text.html",
+    "before": {
+      ".content-frame": {
+        "left": 28.350006103515625,
+        "top": 62.91667175292969,
+        "right": 871.6499938964844,
+        "bottom": 881.9999847412109,
+        "width": 843.2999877929688,
+        "height": 819.0833129882812,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 758.1666870117188,
+        "top": 17.199996948242188,
+        "right": 853.6500091552734,
+        "bottom": 56.08332824707031,
+        "width": 95.48332214355469,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 162,
+        "top": 91.88333129882812,
+        "right": 738,
+        "bottom": 331.8833312988281,
+        "width": 576,
+        "height": 240,
+        "font": "19.0938px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 239.96665954589844,
+        "top": 131.61666870117188,
+        "right": 660.0333404541016,
+        "bottom": 194.61666870117188,
+        "width": 420.0666809082031,
+        "height": 63,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 162,
+        "top": 425.08331298828125,
+        "right": 738,
+        "bottom": 713.38330078125,
+        "width": 576,
+        "height": 288.29998779296875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 239.9499969482422,
+        "top": 858.816650390625,
+        "right": 660.0500030517578,
+        "bottom": 865.2166442871094,
+        "width": 420.1000061035156,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 28.350006103515625,
+        "top": 62.91667175292969,
+        "right": 871.6499938964844,
+        "bottom": 881.9999847412109,
+        "width": 843.2999877929688,
+        "height": 819.0833129882812,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 758.1666870117188,
+        "top": 17.199996948242188,
+        "right": 853.6500091552734,
+        "bottom": 56.08332824707031,
+        "width": 95.48332214355469,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".question-slot": {
+        "left": 162,
+        "top": 91.88333129882812,
+        "right": 738,
+        "bottom": 331.8833312988281,
+        "width": 576,
+        "height": 240,
+        "font": "19.0938px",
+        "bg": "linear-gradient(rgb(255, 227, 238) 0%, rgb(255, 241, 247) 54%, rgb(255, 255, 255) 100%), linear-gradient(rgb(247, 204, 220) 0%, rgb(247, 204, 220) 35%, rgb(238, 179, 199) 80%, rgb(238, 179, 199) 100%)",
+        "shadow": "none"
+      },
+      ".question-prompt": {
+        "left": 239.96665954589844,
+        "top": 131.61666870117188,
+        "right": 660.0333404541016,
+        "bottom": 194.61666870117188,
+        "width": 420.0666809082031,
+        "height": 63,
+        "font": "19.0938px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".options-grid": {
+        "left": 162,
+        "top": 425.08331298828125,
+        "right": 738,
+        "bottom": 713.38330078125,
+        "width": 576,
+        "height": 288.29998779296875,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".quiz-footer": {
+        "left": 239.9499969482422,
+        "top": 858.816650390625,
+        "right": 660.0500030517578,
+        "bottom": 865.2166442871094,
+        "width": 420.1000061035156,
+        "height": 6.399993896484375,
+        "font": "15.5938px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 900,
+    "height": 899,
+    "page": "result.html",
+    "before": {
+      ".content-frame": {
+        "left": 113.39999389648438,
+        "top": 82.35000610351562,
+        "right": 786.6000061035156,
+        "bottom": 805.1166687011719,
+        "width": 673.2000122070312,
+        "height": 722.7666625976562,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 758.183349609375,
+        "top": 17.199996948242188,
+        "right": 853.6666870117188,
+        "bottom": 56.08332824707031,
+        "width": 95.48333740234375,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 188.23333740234375,
+        "top": 191.4499969482422,
+        "right": 711.7666625976562,
+        "bottom": 289.5500030517578,
+        "width": 523.5333251953125,
+        "height": 98.10000610351562,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 188.23333740234375,
+        "top": 688.9666748046875,
+        "right": 711.7666625976562,
+        "bottom": 760.8833465576172,
+        "width": 523.5333251953125,
+        "height": 71.91667175292969,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 113.39999389648438,
+        "top": 82.35000610351562,
+        "right": 786.6000061035156,
+        "bottom": 805.1166687011719,
+        "width": 673.2000122070312,
+        "height": 722.7666625976562,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".top-actions": {
+        "left": 758.183349609375,
+        "top": 17.199996948242188,
+        "right": 853.6666870117188,
+        "bottom": 56.08332824707031,
+        "width": 95.48333740234375,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-content": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-empty": {
+        "left": 188.23333740234375,
+        "top": 191.4499969482422,
+        "right": 711.7666625976562,
+        "bottom": 268.03334045410156,
+        "width": 523.5333251953125,
+        "height": 76.58334350585938,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      },
+      ".result-actions": {
+        "left": 188.23333740234375,
+        "top": 688.9666748046875,
+        "right": 711.7666625976562,
+        "bottom": 760.8833465576172,
+        "width": 523.5333251953125,
+        "height": 71.91667175292969,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  },
+  {
+    "passed": true,
+    "width": 900,
+    "height": 899,
+    "page": "about.html",
+    "before": {
+      ".content-frame": {
+        "left": 113.39999389648438,
+        "top": 82.35000610351562,
+        "right": 786.6000061035156,
+        "bottom": 805.1166687011719,
+        "width": 673.2000122070312,
+        "height": 722.7666625976562,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 758.183349609375,
+        "top": 17.199996948242188,
+        "right": 853.6666870117188,
+        "bottom": 56.08332824707031,
+        "width": 95.48333740234375,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    },
+    "after": {
+      ".content-frame": {
+        "left": 113.39999389648438,
+        "top": 82.35000610351562,
+        "right": 786.6000061035156,
+        "bottom": 805.1166687011719,
+        "width": 673.2000122070312,
+        "height": 722.7666625976562,
+        "font": "16px",
+        "bg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))",
+        "shadow": "rgba(205, 223, 249, 0.595) 0px -6px 15px -4.5px"
+      },
+      ".top-actions": {
+        "left": 758.183349609375,
+        "top": 17.199996948242188,
+        "right": 853.6666870117188,
+        "bottom": 56.08332824707031,
+        "width": 95.48333740234375,
+        "height": 38.883331298828125,
+        "font": "16px",
+        "bg": "none",
+        "shadow": "none"
+      }
+    }
+  }
+]

@@ -1,0 +1,515 @@
+[
+  {
+    "width": 360,
+    "height": 640,
+    "questions": 96,
+    "fonts": [
+      [
+        "17.8125px",
+        "459",
+        "1.21838px",
+        "17px",
+        "2px"
+      ],
+      [
+        "15.6406px",
+        "475.203",
+        "1.25125px",
+        "14px",
+        "2px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 179.1999969482422,
+        "cardTop": 66,
+        "optionsTop": 287.8666687011719,
+        "optionsBottom": 547.8666687011719,
+        "gapA": 42.6667,
+        "gapB": 21.3333,
+        "space": 64,
+        "progressBottom": 591.2000122070312,
+        "documentHeight": 640,
+        "lines": [
+          "我觉得信任总要有",
+          "一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 187.75,
+        "cardTop": 66,
+        "optionsTop": 290.7166748046875,
+        "optionsBottom": 550.7166748046875,
+        "gapA": 36.9667,
+        "gapB": 18.4833,
+        "space": 55.45,
+        "progressBottom": 591.2000122070312,
+        "documentHeight": 640,
+        "lines": [
+          "有人因为对方过去",
+          "受过伤而反复包容，",
+          "你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 246.51666259765625,
+        "cardTop": 66,
+        "optionsTop": 336.51666259765625,
+        "optionsBottom": 662.7166748046875,
+        "gapA": 24,
+        "gapB": 16,
+        "space": 40,
+        "progressBottom": 700.7166748046875,
+        "documentHeight": 750,
+        "lines": [
+          "某个人在你拒绝一件事后",
+          "说：“没事，你不愿意就算",
+          "了，我只是没想到我们关系",
+          "这么好，你还是会这么对",
+          "我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 375,
+    "height": 667,
+    "questions": 96,
+    "fonts": [
+      [
+        "17.8125px",
+        "459",
+        "1.21838px",
+        "17px",
+        "2px"
+      ],
+      [
+        "15.6406px",
+        "475.203",
+        "1.25125px",
+        "14px",
+        "2px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 186.75,
+        "cardTop": 68.68333435058594,
+        "optionsTop": 308.91668701171875,
+        "optionsBottom": 568.9166870117188,
+        "gapA": 53.4833,
+        "gapB": 26.75,
+        "space": 80.23,
+        "progressBottom": 617.6666870117188,
+        "documentHeight": 667,
+        "lines": [
+          "我觉得信任总要有",
+          "一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 186.75,
+        "cardTop": 68.68333435058594,
+        "optionsTop": 308.91668701171875,
+        "optionsBottom": 568.9166870117188,
+        "gapA": 53.4833,
+        "gapB": 26.75,
+        "space": 80.23,
+        "progressBottom": 617.6666870117188,
+        "documentHeight": 667,
+        "lines": [
+          "有人因为对方过去受过伤而",
+          "反复包容，你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 246.51666259765625,
+        "cardTop": 68.68333435058594,
+        "optionsTop": 339.20001220703125,
+        "optionsBottom": 643.3333435058594,
+        "gapA": 24,
+        "gapB": 16,
+        "space": 40,
+        "progressBottom": 681.3333129882812,
+        "documentHeight": 731,
+        "lines": [
+          "某个人在你拒绝一件事后",
+          "说：“没事，你不愿意就算",
+          "了，我只是没想到我们关系",
+          "这么好，你还是会这么对",
+          "我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "questions": 96,
+    "fonts": [
+      [
+        "17.8125px",
+        "459",
+        "1.21838px",
+        "17px",
+        "2px"
+      ],
+      [
+        "15.6406px",
+        "475.203",
+        "1.25125px",
+        "14px",
+        "2px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 236.31666564941406,
+        "cardTop": 86.38333129882812,
+        "optionsTop": 378.70001220703125,
+        "optionsBottom": 638.7000122070312,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 688.7000122070312,
+        "documentHeight": 844,
+        "lines": [
+          "我觉得信任总要有",
+          "一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 236.31666564941406,
+        "cardTop": 86.38333129882812,
+        "optionsTop": 378.70001220703125,
+        "optionsBottom": 638.7000122070312,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 688.7000122070312,
+        "documentHeight": 844,
+        "lines": [
+          "有人因为对方过去受过伤而",
+          "反复包容，你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 246.51666259765625,
+        "cardTop": 86.38333129882812,
+        "optionsTop": 388.8999938964844,
+        "optionsBottom": 693.0333557128906,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 743.0333251953125,
+        "documentHeight": 844,
+        "lines": [
+          "某个人在你拒绝一件事后",
+          "说：“没事，你不愿意就算",
+          "了，我只是没想到我们关系",
+          "这么好，你还是会这么对",
+          "我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "questions": 96,
+    "fonts": [
+      [
+        "17.8125px",
+        "459",
+        "1.21838px",
+        "17px",
+        "2px"
+      ],
+      [
+        "15.6406px",
+        "475.203",
+        "1.25125px",
+        "14px",
+        "2px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 240,
+        "cardTop": 95.18333435058594,
+        "optionsTop": 391.183349609375,
+        "optionsBottom": 651.183349609375,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 701.183349609375,
+        "documentHeight": 932,
+        "lines": [
+          "我觉得信任总要有",
+          "一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 240,
+        "cardTop": 95.18333435058594,
+        "optionsTop": 391.183349609375,
+        "optionsBottom": 651.183349609375,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 701.183349609375,
+        "documentHeight": 932,
+        "lines": [
+          "有人因为对方过去受过伤而",
+          "反复包容，你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 240,
+        "cardTop": 95.18333435058594,
+        "optionsTop": 391.183349609375,
+        "optionsBottom": 695.3166809082031,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 745.316650390625,
+        "documentHeight": 932,
+        "lines": [
+          "某个人在你拒绝一件事后说：“没",
+          "事，你不愿意就算了，我只是",
+          "没想到我们关系这么好，你还是会",
+          "这么对我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "questions": 96,
+    "fonts": [
+      [
+        "21.2813px",
+        "459",
+        "1.45564px",
+        "17.2833px",
+        "2px"
+      ],
+      [
+        "14.6563px",
+        "475.203",
+        "1.1725px",
+        "14.2833px",
+        "2px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 240,
+        "cardTop": 101.66667175292969,
+        "optionsTop": 397.66668701171875,
+        "optionsBottom": 657.6666870117188,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 707.6666870117188,
+        "documentHeight": 1024,
+        "lines": [
+          "我觉得信任总要有一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 240,
+        "cardTop": 101.66667175292969,
+        "optionsTop": 397.66668701171875,
+        "optionsBottom": 657.6666870117188,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 707.6666870117188,
+        "documentHeight": 1024,
+        "lines": [
+          "有人因为对方过去受过伤而",
+          "反复包容，你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 240,
+        "cardTop": 101.66667175292969,
+        "optionsTop": 397.66668701171875,
+        "optionsBottom": 657.6666870117188,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 707.6666870117188,
+        "documentHeight": 1024,
+        "lines": [
+          "某个人在你拒绝一件事后说：“没事，你不愿",
+          "意就算了，我只是没想到我们关系这么好，你",
+          "还是会这么对我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "questions": 96,
+    "fonts": [
+      [
+        "17.6875px",
+        "459",
+        "1.20983px",
+        "25px",
+        "2px"
+      ],
+      [
+        "15.2969px",
+        "486",
+        "1.22375px",
+        "12.8px",
+        "2px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 240,
+        "cardTop": 92,
+        "optionsTop": 388,
+        "optionsBottom": 648,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 698,
+        "documentHeight": 900,
+        "lines": [
+          "我觉得信任总要有一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 240,
+        "cardTop": 92,
+        "optionsTop": 388,
+        "optionsBottom": 648,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 698,
+        "documentHeight": 900,
+        "lines": [
+          "有人因为对方过去受过伤而反复包容，你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 240,
+        "cardTop": 92,
+        "optionsTop": 388,
+        "optionsBottom": 648,
+        "gapA": 56,
+        "gapB": 28,
+        "space": 84,
+        "progressBottom": 698,
+        "documentHeight": 900,
+        "lines": [
+          "某个人在你拒绝一件事后说：“没事，你不愿",
+          "意就算了，我只是没想到我们关系这么好，你",
+          "还是会这么对我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "questions": 96,
+    "fonts": [
+      [
+        "14.7188px",
+        "459",
+        "1.00676px",
+        "17.7167px",
+        "1px"
+      ],
+      [
+        "13.5px",
+        "486",
+        "1.08px",
+        "9.44px",
+        "1px"
+      ]
+    ],
+    "samples": [
+      {
+        "id": "A28",
+        "cardHeight": 160,
+        "cardTop": 61,
+        "optionsTop": 245,
+        "optionsBottom": 505,
+        "gapA": 24,
+        "gapB": 16,
+        "space": 40,
+        "progressBottom": 543,
+        "documentHeight": 591,
+        "lines": [
+          "我觉得信任总要有一方先迈出一步。"
+        ]
+      },
+      {
+        "id": "C10",
+        "cardHeight": 160,
+        "cardTop": 61,
+        "optionsTop": 245,
+        "optionsBottom": 505,
+        "gapA": 24,
+        "gapB": 16,
+        "space": 40,
+        "progressBottom": 543,
+        "documentHeight": 591,
+        "lines": [
+          "有人因为对方过去受过伤而反复包容，你更觉得主要是："
+        ]
+      },
+      {
+        "id": "C24",
+        "cardHeight": 160,
+        "cardTop": 61,
+        "optionsTop": 245,
+        "optionsBottom": 505,
+        "gapA": 24,
+        "gapB": 16,
+        "space": 40,
+        "progressBottom": 543,
+        "documentHeight": 591,
+        "lines": [
+          "某个人在你拒绝一件事后说：“没事，你不愿意就算了，我只是",
+          "没想到我们关系这么好，你还是会这么对我。”你更倾向怎么理解？"
+        ]
+      }
+    ],
+    "issues": []
+  }
+]

@@ -30,6 +30,29 @@
   let dimensionVector = window.DimensionVector.create();
   let bankRevision = "";
   let isChangingQuestion = false;
+  let questionAnimation = null;
+
+  function stopQuestionAnimation() {
+    questionAnimation?.cancel();
+    questionAnimation = null;
+  }
+
+  function animateQuestion(phase, direction = 1) {
+    stopQuestionAnimation();
+    if (reduceMotion.matches || typeof questionSlot.animate !== "function") return;
+    const leaving = phase === "out";
+    const edge = { transform: `translate(${14 * direction * (leaving ? -1 : 1)}px, ${leaving ? -3 : 3}px)`, opacity: 0 };
+    const rest = { transform: "none", opacity: 1 };
+    // 前卡抽出／归位，底卡持续可见；不动画布局尺寸或累积持久样式。
+    questionAnimation = questionSlot.animate(leaving ? [rest, edge] : [edge, rest], {
+      duration: leaving ? 160 : 220,
+      delay: leaving ? 90 : 0,
+      easing: leaving ? "cubic-bezier(0.4, 0, 1, 1)" : "cubic-bezier(0.16, 1, 0.3, 1)",
+      fill: leaving ? "forwards" : "none",
+    });
+  }
+
+  reduceMotion.addEventListener?.("change", stopQuestionAnimation);
 
   function setControlsDisabled(disabled) {
     optionButtons.forEach((button) => {
@@ -53,6 +76,7 @@
   }
 
   function showError(error, phase) {
+    stopQuestionAnimation();
     setControlsDisabled(true);
     isChangingQuestion = true;
     quizPanel.classList.remove("is-answering");
@@ -64,7 +88,7 @@
     else if (phase === "load") message = "题库加载失败，请检查网络并通过本地服务器打开页面。";
     else if (phase === "data") message = "题库数据无效，暂时无法开始测试。";
     statusLabel.textContent = message;
-    progressLabel.textContent = "测试已暂停";
+    progressLabel.textContent = "—";
     console.error(error);
   }
 
@@ -119,14 +143,8 @@
     if (saved) statusLabel.textContent = "原测试进度已失效，已为你重新生成问卷。";
   }
 
-  function updateQuestionLayout() {
-    const minimumHeight = parseFloat(window.getComputedStyle(questionSlot).minHeight);
-    quizPanel.dataset.questionExpanded = String(
-      questionSlot.getBoundingClientRect().height > minimumHeight + 0.5,
-    );
-  }
-
-  function renderQuestion() {
+  function renderQuestion(direction = 0) {
+    stopQuestionAnimation();
     const question = questions[currentQuestionIndex];
 
     if (!question) {
@@ -136,7 +154,7 @@
 
     quizPanel.dataset.questionId = question.id;
     quizPanel.dataset.questionType = question.stratum;
-    progressLabel.textContent = `${currentQuestionIndex + 1}/${questions.length}题`;
+    progressLabel.textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
     progressBar.max = questions.length;
     progressBar.value = currentQuestionIndex + 1;
     questionPrompt.textContent = question.prompt;
@@ -156,12 +174,11 @@
       button.setAttribute("aria-label", `${option.id}：${option.text}`);
     });
 
-    updateQuestionLayout();
     isChangingQuestion = false;
     setControlsDisabled(false);
-    // 手机使用整页滚动，电脑使用面板滚动；换题统一回到题干。
-    quizPanel.scrollTop = 0;
+    // 各视口统一使用整页滚动，换题回到题干。
     window.scrollTo?.({ top: 0, behavior: "instant" });
+    if (direction) animateQuestion("in", direction);
   }
 
   function finishQuiz() {
@@ -217,6 +234,7 @@
     if (!option) return;
 
     isChangingQuestion = true;
+    stopQuestionAnimation();
     setControlsDisabled(true);
     const selectedButton = optionButtons[optionIndex];
 
@@ -226,6 +244,7 @@
 
     selectedButton.classList.add("is-selected");
     quizPanel.classList.add("is-answering");
+    animateQuestion("out");
     selectedButton.setAttribute("aria-label", `${option.id}：${option.text}，已选择`);
 
     await new Promise((resolve) => {
@@ -251,7 +270,7 @@
       dimensionVector = next.dimensionVector;
       currentQuestionIndex = next.currentQuestionIndex;
       if (currentQuestionIndex >= questions.length) finishQuiz();
-      else renderQuestion();
+      else renderQuestion(1);
     } catch (error) {
       showError(error, "answer");
     }
@@ -261,10 +280,11 @@
     if (isChangingQuestion || index < 0 || index >= questions.length || index > answers.length
       || index === currentQuestionIndex) return;
     try {
+      const direction = Math.sign(index - currentQuestionIndex);
       const next = { currentQuestionIndex: index, answers, dimensionVector };
       saveState(next);
       currentQuestionIndex = index;
-      renderQuestion();
+      renderQuestion(direction);
     } catch (error) {
       showError(error, "navigation");
     }
@@ -310,11 +330,6 @@
   optionButtons.forEach((button, optionIndex) => {
     button.addEventListener("click", () => selectOption(optionIndex));
   });
-
-  // 按实际内容高度识别长题；换题、旋转及字体加载后的尺寸变化共用同一逻辑。
-  const questionResizeObserver = new ResizeObserver(updateQuestionLayout);
-  questionResizeObserver.observe(questionSlot, { box: "border-box" });
-  window.addEventListener("resize", updateQuestionLayout);
 
   startQuiz();
 })();

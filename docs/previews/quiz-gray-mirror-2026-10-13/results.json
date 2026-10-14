@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "qid": "C10",
+      "gradient": "linear-gradient(0deg, rgb(240, 245, 248) 0%, rgb(246, 248, 250) 60%, rgb(250, 251, 252) 100%)",
+      "band": "50.0167px",
+      "pageHeight": 844
+    },
+    {
+      "passed": true,
+      "width": 1440,
+      "height": 900,
+      "qid": "C10",
+      "gradient": "linear-gradient(0deg, rgb(240, 245, 248) 0%, rgb(246, 248, 250) 60%, rgb(250, 251, 252) 100%)",
+      "band": "51.8333px",
+      "pageHeight": 900
+    },
+    {
+      "passed": true,
+      "width": 844,
+      "height": 390,
+      "qid": "C24",
+      "gradient": "linear-gradient(0deg, rgb(240, 245, 248) 0%, rgb(246, 248, 250) 60%, rgb(250, 251, 252) 100%)",
+      "band": "39.3333px",
+      "pageHeight": 615.4166870117188
+    },
+    {
+      "passed": true,
+      "width": 320,
+      "height": 572,
+      "qid": "C24",
+      "gradient": "linear-gradient(0deg, rgb(240, 245, 248) 0%, rgb(246, 248, 250) 60%, rgb(250, 251, 252) 100%)",
+      "band": "40.4px",
+      "pageHeight": 851.9500122070312
+    }
+  ],
+  "flow": {
+    "passed": true,
+    "answer": true,
+    "previous": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "qid": "C10",
+      "color": "rgb(234, 244, 252)",
+      "band": "71.45px",
+      "pageHeight": 844
+    },
+    {
+      "passed": true,
+      "width": 1440,
+      "height": 900,
+      "qid": "C10",
+      "color": "rgb(234, 244, 252)",
+      "band": "74.05px",
+      "pageHeight": 900
+    }
+  ],
+  "flow": {
+    "passed": true,
+    "answer": true,
+    "previous": true
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "before": [
+    {
+      "transform": "none",
+      "transition": "0.00001s",
+      "content": "normal"
+    },
+    {
+      "transform": "matrix(0.999701, -0.0244322, 0.0244322, 0.999701, -3, 12)",
+      "transition": "0.00001s",
+      "content": "\"\""
+    },
+    {
+      "transform": "matrix(0.999781, 0.0209424, -0.0209424, 0.999781, 3, 6)",
+      "transition": "0.00001s",
+      "content": "\"\""
+    }
+  ],
+  "after": [
+    {
+      "transform": "none",
+      "transition": "0.00001s",
+      "content": "normal"
+    },
+    {
+      "transform": "matrix(0.999701, -0.0244322, 0.0244322, 0.999701, -3, 12)",
+      "transition": "0.00001s",
+      "content": "\"\""
+    },
+    {
+      "transform": "matrix(0.999781, 0.0209424, -0.0209424, 0.999781, 3, 6)",
+      "transition": "0.00001s",
+      "content": "\"\""
+    }
+  ]
+}

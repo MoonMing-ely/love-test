@@ -1,0 +1,41 @@
+{
+  "viewports": 10,
+  "questionsPerViewport": 96,
+  "layoutChecks": 960,
+  "outerFrame": "background, border, shadow and side glow removed",
+  "topLine": "at former outer frame top, same width/height/gradient as bottom line",
+  "optionHeightRatio": 1.1,
+  "optionRadiusRatio": 1.15,
+  "strokeScale": 0.81,
+  "optionGapCssPx": 10.8,
+  "pageBottomCssPx": 17,
+  "maxHeightRatioErrorCssPx": 0.010023498535147723,
+  "maxGrowthPositionErrorCssPx": 0.05000244140624943,
+  "overflowPolicy": "consume middle whitespace upward; when its minimum is reached extend the page naturally",
+  "flow": {
+    "answers": 28,
+    "previous": "passed",
+    "forward": "passed",
+    "refresh": "passed",
+    "aboutReturn": "passed",
+    "finish": "passed"
+  },
+  "zoom": {
+    "zooms": [
+      1,
+      2
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "maxCssPixelDifference": 0.0,
+    "sameLines": true
+  },
+  "nodeTests": {
+    "pass": 13,
+    "fail": 1,
+    "existingFailure": "question-bank.test.mjs: source Markdown differs from runtime JSON"
+  },
+  "questionFilesUnchanged": true
+}

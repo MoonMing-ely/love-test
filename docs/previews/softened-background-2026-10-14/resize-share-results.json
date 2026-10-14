@@ -1,0 +1,10 @@
+{
+  "resize": {
+    "error": "Error: about resize accumulated top {\"original\":{\"left\":4.8166656494140625,\"top\":82.69999694824219,\"right\":1435.1666412353516,\"bottom\":848.1166839599609,\"width\":1430.3499755859375,\"height\":765.4166870117188},\"final\":{\"left\":4.8166656494140625,\"top\":79.18333435058594,\"right\":1435.1666412353516,\"bottom\":714.2333221435547,\"width\":1430.3499755859375,\"height\":635.0499877929688},\"scrollY\":0,\"style\":\"height: 635.043px; max-height: none; transform: translateY(2.68333px);\"}"
+  },
+  "share": {
+    "passed": true,
+    "shareImageWidth": 832,
+    "shareImageHeight": 6229
+  }
+}

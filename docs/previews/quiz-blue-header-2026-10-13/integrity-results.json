@@ -1,0 +1,9 @@
+{
+  "data/question-bank-source.md": true,
+  "data/questions.json": true,
+  "html/text.html": true,
+  "html/index.html": true,
+  "html/result.html": true,
+  "html/about.html": true,
+  "js/interactions/quiz.js": true
+}
