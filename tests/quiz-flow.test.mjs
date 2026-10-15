@@ -54,6 +54,10 @@ const offline = await quizHarness({ storage: new Map([[STATE_KEY, saved]]), fail
 assert.equal(offline.storage.get(STATE_KEY), saved);
 assert.ok(offline.buttons.every((b) => b.disabled));
 assert.match(offline.status.textContent, /加载失败/);
+const localFile = await quizHarness({ failFetch: true, protocol: "file:" });
+assert.equal(localFile.panel.dataset.loadState, "error");
+assert.ok(localFile.buttons.every((button) => button.disabled));
+assert.match(localFile.status.textContent, /当前浏览器无法直接读取本地题库/);
 
 for (const action of ["getItem", "setItem"]) {
   const broken = await quizHarness({ failStorage: (method) => method === action });

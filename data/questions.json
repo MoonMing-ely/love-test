@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "bankRevision": "8cc237829d2e4b7be75c42e7d869b718bb2bbec3499e34e4c2e505b12a24057d",
+  "bankRevision": "b9679e5cd95336133cfc8d66b022a0f3f81e8ba1e0bac0ce17c3a79cbe03ea03",
   "title": "情感被骗指数测试",
   "scoringStatus": "configured",
   "dimensions": [
@@ -3207,7 +3207,7 @@
         },
         {
           "id": "D",
-          "text": "说明不能再像以前照顾TA，结束聊天。",
+          "text": "莫名其妙，滚一边去。",
           "scores": {
             "stopLoss": 3
           }

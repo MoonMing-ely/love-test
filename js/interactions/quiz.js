@@ -85,7 +85,9 @@
     if (error.reason === "storage_unavailable") message = "无法读取或保存测试进度，请检查浏览器存储设置后重试。";
     else if (error.reason === "pool_insufficient") message = "有效题目尚未满足测试要求，暂时无法开始测试。";
     else if (error.reason === "attempts_exhausted") message = "暂时无法生成问卷，请重新开始。";
-    else if (phase === "load") message = "题库加载失败，请检查网络并通过本地服务器打开页面。";
+    else if (phase === "load") message = window.location.protocol === "file:"
+      ? "当前浏览器无法直接读取本地题库，请通过本地服务器打开测试。"
+      : "题库加载失败，请检查网络并通过本地服务器打开页面。";
     else if (phase === "data") message = "题库数据无效，暂时无法开始测试。";
     statusLabel.textContent = message;
     progressLabel.textContent = "—";

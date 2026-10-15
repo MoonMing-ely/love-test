@@ -20,7 +20,7 @@ function element(dataset = {}) {
 }
 
 export async function quizHarness({ data = runnableBank(), storage = new Map(), failStorage = () => false,
-  failFetch = false, seed = 7, search = "" } = {}) {
+  failFetch = false, seed = 7, search = "", protocol = "http:" } = {}) {
   const panel = element({ resultPage: "result.html" });
   const buttons = Array.from({ length: 4 }, () => element());
   const previous = element();
@@ -47,7 +47,7 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
       querySelectorAll() { return buttons; },
     },
     fetch: async () => { if (failFetch) throw new Error("network error"); return { ok: true, json: async () => data }; },
-    location: { href: "text.html", search }, history: { replaceState() {} },
+    location: { href: "text.html", search, protocol }, history: { replaceState() {} },
     matchMedia: () => ({ matches: true }), setTimeout(callback) { callback(); },
     getComputedStyle: () => ({ minHeight: "200px" }),
     ResizeObserver: class { constructor(callback) { this.callback = callback; } observe() {} },

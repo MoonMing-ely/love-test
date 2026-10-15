@@ -162,6 +162,7 @@ for (const [id, group, prompt, options, scores] of approvedQuestions) {
   assert.deepEqual(q.options.map((o) => o.text), options);
   assert.deepEqual(q.options.map((o) => o.scores), scores.map((score) => ({ manipulation: score })));
 }
+assert.equal(questionsById.get("C25").options[3].text, "莫名其妙，滚一边去。");
 assert.equal(questionBank.questions.length, 85);
 assert.equal(questionBank.questions.filter((q) => q.status === "valid").length, 85);
 assert.equal(questionBank.questions.filter((q) => q.status === "review").length, 0);
