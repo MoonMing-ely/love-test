@@ -63,13 +63,14 @@ assert.equal(
   0,
 );
 close(
-  calculate({ recognition: 0.55, need: 0.55, specialness: 0.55, scarcity: 0.55 })
+  calculate({ recognition: 0.50, need: 0.50, specialness: 0.50, scarcity: 0.50 })
     .P1_relation_value_amplification,
   0.5,
 );
 
-// P2: relationship pull AND weak judgment; support cannot create the core.
-assert.equal(
+// P2 retains the original E/J channel and competes with three independent
+// risk signals. Avoidance is counted once, rather than supported by itself.
+close(
   calculate({
     recognition: 0.9,
     need: 0.9,
@@ -80,9 +81,9 @@ assert.equal(
     manipulation: 0.9,
     rationalization: 1,
   }).P2_judgment_shift,
-  0,
+  0.45,
 );
-assert.equal(
+close(
   calculate({
     recognition: 0.9,
     need: 0.9,
@@ -94,15 +95,59 @@ assert.equal(
   }).P2_judgment_shift,
   1,
 );
-assert.equal(
+close(
   calculate({
     calibration: 0.2,
     evidence: 0.2,
     manipulation: 0.2,
     rationalization: 1,
   }).P2_judgment_shift,
-  0,
+  0.8,
 );
+
+close(calculate({ evidence: 0.1 }).P2_judgment_shift, 0.5);
+close(calculate({ rationalization: 1 }).P2_judgment_shift, 0.45);
+close(calculate({ rationalization: 0.5 }).P2_judgment_shift, 0.225);
+close(calculate({ rationalization: 0.2 }).P2_judgment_shift, 0);
+// The old combined channel keeps its H support; the alternative H signal
+// competes with it and is never fed back into that multiplier.
+close(calculate({
+  recognition: 0.5, need: 0.5, specialness: 0.5, scarcity: 0.5,
+  calibration: 0.5, evidence: 0.5, manipulation: 0.5,
+  rationalization: 1,
+}).P2_judgment_shift, 0.5625);
+
+// Independent signals cannot weaken the old channel or introduce a new
+// reversal when a single judgment ability improves. The legacy J_hole
+// support can still have its existing direction exceptions.
+{
+  let state = 314159;
+  const random = () => {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    return state / 2 ** 32;
+  };
+  const oldP2 = (fourth) => {
+    const core = Math.min(fourth.fuzzy.high_E, fourth.fuzzy.low_J);
+    const support = Math.max(fourth.fuzzy.high_H, fourth.fuzzy.high_J_hole);
+    return core * (1 + 0.25 * (1 - core) * support);
+  };
+  assert.equal(context.Layer5Mechanisms.VERSION, "1.1");
+  for (let sample = 0; sample < 1000; sample += 1) {
+    const values = Object.fromEntries(Object.keys(input()).map((key) => [key, random()]));
+    const fourth = context.Layer4Evidence.calculate(values);
+    const current = context.Layer5Mechanisms.calculate(fourth);
+    assert.ok(current.P2_judgment_shift + 1e-12 >= oldP2(fourth));
+    for (const key of ["calibration", "evidence", "manipulation"]) {
+      const improvedFourth = context.Layer4Evidence.calculate({
+        ...values, [key]: Math.min(1, values[key] + 0.05),
+      });
+      const improved = context.Layer5Mechanisms.calculate(improvedFourth);
+      const legacyIncrease = oldP2(improvedFourth) - oldP2(fourth);
+      const currentIncrease = improved.P2_judgment_shift - current.P2_judgment_shift;
+      assert.ok(currentIncrease <= Math.max(0, legacyIncrease) + 1e-12);
+    }
+  }
+}
 
 // P3 uses J/B and is independent from T.
 assert.equal(

@@ -101,11 +101,13 @@
     }
     sixthRows.push(["四条风险均值", debug?.mean], ["最大风险", debug?.max], ["最小风险", debug?.min], ["风险极差", debug?.spread],
       ["基础严重度", debug?.baseSeverity], ["计分主体 PathSeverity", debug?.pathSeverity],
-      ["连续多路径增益", debug?.shapeAdjustment], ["保护修正前分数", debug?.preScore],
-      ["Protection 修正", debug?.protectionAdjustment], ["解释用 PathAnchor", sixth.diagnostics?.pathAnchor],
+      ["连续多路径增益（证据分）", debug?.shapeAdjustment], ["保护修正前证据分", debug?.preScore],
+      ["Protection 修正（证据分）", debug?.protectionAdjustment], ["映射前证据分", debug?.evidenceScore],
+      ["解释用 PathAnchor", sixth.diagnostics?.pathAnchor],
       ["解释用 Depth", sixth.diagnostics?.depth], ["解释用深度修正", sixth.diagnostics?.depthAdjustment],
       ["最终分", sixth.totalScore], ["阶段", sixth.stage ? `Stage ${sixth.stage}` : null]);
-    section(6, "第六层 · 连续整合", `最终分 0～100；版本 ${sixth.version}。Path 权重仅用于解释。`, sixthRows);
+    const anchors = AlgorithmConfig.LAYER6.SCORE_ANCHORS;
+    section(6, "第六层 · 连续整合", `最终指数 ${anchors[0].score}～${anchors[anchors.length - 1].score}；版本 ${sixth.version}。证据分与最终指数采用不同标尺，指数不代表被骗概率。Path 权重仅用于解释。`, sixthRows);
   }
 
   try {
@@ -123,19 +125,23 @@
     summary.textContent = result.outcome.summary;
     score.hidden = true;
     layers.replaceChildren();
-    if (result.outcome.status === "scoring-placeholder") {
+    if (result.outcome.status === "scoring-placeholder" ||
+        (result.layer6Integration && result.layer6Integration.version !== AlgorithmConfig.VERSION)) {
       frame.dataset.resultState = "legacy";
-      summary.textContent = "这是第六层启用前的答题记录，请点击重测一次查看最终分数和六层数据。";
+      summary.textContent = "这份记录使用旧版算法，请点击重测一次，按当前算法重新测试。";
     } else {
       const sixth = result.layer6Integration;
       if (!sixth || !["complete", "insufficient_data"].includes(sixth.status) || !Array.isArray(sixth.paths) ||
           !Array.isArray(result.dimensions) || result.dimensions.length !== 12 ||
           !Array.isArray(result.dimensionVector) || result.dimensionVector.length !== 12) throw new Error("分层记录不完整。");
       if (result.outcome.status === "scored") {
+        const anchors = AlgorithmConfig.LAYER6.SCORE_ANCHORS;
         if (sixth.status !== "complete" || !Number.isFinite(result.outcome.totalScore) ||
-            result.outcome.totalScore < 0 || result.outcome.totalScore > 100 ||
+            result.outcome.totalScore < anchors[0].score || result.outcome.totalScore > anchors[anchors.length - 1].score ||
             result.outcome.totalScore !== sixth.totalScore || ![1, 2, 3, 4].includes(sixth.stage) ||
-            result.outcome.stage !== sixth.stage || !sixth.debug || sixth.debug.allPaths.length !== 4) {
+            result.outcome.stage !== sixth.stage || !sixth.debug || sixth.debug.allPaths.length !== 4 ||
+            !Number.isFinite(sixth.debug.evidenceScore) || sixth.debug.evidenceScore < anchors[0].evidence ||
+            sixth.debug.evidenceScore > anchors[anchors.length - 1].evidence) {
           throw new Error("最终分记录无效。");
         }
         score.textContent = `${format(result.outcome.totalScore)} / 100`;

@@ -36,16 +36,17 @@ function close(actual, expected) {
   assert.ok(Math.abs(actual - expected) < 1e-10, `${actual} != ${expected}`);
 }
 
-assert.equal(context.AlgorithmConfig.HIGH_START, 0.35);
-assert.equal(context.AlgorithmConfig.HIGH_FULL, 0.75);
-assert.equal(context.Layer4Evidence.high(0.35), 0);
-close(context.Layer4Evidence.high(0.55), 0.5);
-assert.equal(context.Layer4Evidence.high(0.75), 1);
-close(context.Layer4Evidence.low(0.45), 0.5);
+assert.equal(context.AlgorithmConfig.HIGH_START, 0.20);
+assert.equal(context.AlgorithmConfig.HIGH_FULL, 0.80);
+assert.equal(context.Layer4Evidence.high(0.20), 0);
+close(context.Layer4Evidence.high(0.50), 0.5);
+assert.equal(context.Layer4Evidence.high(0.80), 1);
+close(context.Layer4Evidence.low(0.50), 0.5);
+assert.ok(context.Layer4Evidence.high(0.76) < context.Layer4Evidence.high(0.96));
 
 {
   const result = context.Layer4Evidence.calculate(input());
-  assert.equal(result.version, "1.0");
+  assert.equal(result.version, "1.2");
   assert.equal(result.status, "complete");
   assert.equal(result.E, 0.75);
   close(result.J, 0.7);
@@ -56,6 +57,7 @@ close(context.Layer4Evidence.low(0.45), 0.5);
   close(result.E_sharp, 0.15);
   assert.equal(result.E_peak_source, "recognition");
   assert.equal(result.J_weak, 0.4);
+  close(result.fuzzy.low_J_weak, 2 / 3);
   close(result.J_hole, 0.3);
   assert.equal(result.J_weak_source, "manipulation");
   close(result.BT_gap, 0.6);
@@ -79,6 +81,7 @@ close(context.Layer4Evidence.low(0.45), 0.5);
   assert.equal(result.J, null);
   assert.equal(result.J_weak, null);
   assert.equal(result.fuzzy.low_J, null);
+  assert.equal(result.fuzzy.low_J_weak, null);
 }
 
 assert.throws(

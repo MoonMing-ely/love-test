@@ -31,7 +31,7 @@ async function testScoringContract() {
   assert.equal(result.version, 3);
   assert.equal(result.status, "scored");
   assert.equal(result.dimensionCount, 12);
-  assert.equal(result.totalScore, 91);
+  assert.equal(result.totalScore, 85);
   assert.equal(result.dimensionScores, null);
   assert.equal(result.stage, 4);
   assert.throws(() => context.QuizScoring.calculateResult({ answers, dimensions }), /第六层/);

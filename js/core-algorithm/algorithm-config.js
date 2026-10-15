@@ -2,12 +2,15 @@
   "use strict";
 
   const AlgorithmConfig = Object.freeze({
-    VERSION: "1.0",
-    HIGH_START: 0.35,
-    HIGH_FULL: 0.75,
+    VERSION: "1.4",
+    HIGH_START: 0.20,
+    HIGH_FULL: 0.80,
     P1_FIRST_WEIGHT: 0.8,
     P1_SECOND_WEIGHT: 0.2,
     P2_SUPPORT_WEIGHT: 0.25,
+    P2_JUDGMENT_WEIGHT: 0.8,
+    P2_WEAK_JUDGMENT_WEIGHT: 0.5,
+    P2_AVOIDANCE_WEIGHT: 0.45,
     P3_SUPPORT_WEIGHT: 0.2,
     P4_FIRST_WEIGHT: 0.8,
     P4_SECOND_WEIGHT: 0.2,
@@ -20,6 +23,12 @@
     }),
     CROSS_DIMENSION_CONTRIBUTION_LIMIT: 1.5,
     LAYER6: Object.freeze({
+      SCORE_ANCHORS: Object.freeze([
+        Object.freeze({ evidence: 0, score: 15 }),
+        Object.freeze({ evidence: 30, score: 30 }),
+        Object.freeze({ evidence: 70, score: 70 }),
+        Object.freeze({ evidence: 91, score: 85 }),
+      ]),
       PATHS: Object.freeze([
         Object.freeze({ id: "B", key: "P1_relation_value_amplification", label: "关系价值入口", threshold: 0.50, anchor: 40 }),
         Object.freeze({ id: "C", key: "P2_judgment_shift", label: "判断盲区", threshold: 0.45, anchor: 52 }),
@@ -35,8 +44,8 @@
       ABSOLUTE_WEIGHT: 0.8,
       SECOND_MATCH_MIN: 0.50,
       SECOND_RATIO_MIN: 0.70,
-      ACTIVATION_BEFORE: 0.05,
-      ACTIVATION_AFTER: 0.10,
+      ACTIVATION_BEFORE: 0.30,
+      ACTIVATION_AFTER: 0.35,
       DEPTH_CENTER: 0.60,
       DEPTH_SCALE: 25,
       BASE_SCALE: 70,

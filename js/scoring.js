@@ -126,7 +126,7 @@
       stage: complete ? layer6.stage : null,
       title: complete ? "情感被骗指数" : "测试数据不足",
       summary: complete
-        ? `Stage ${layer6.stage} · ${layer6.shapeLabel ?? "无典型形状"} · ${layer6.paths.map((path) => path.label).join(" + ") || "无明显路径"}。V1 参数待校准。`
+        ? `Stage ${layer6.stage} · ${layer6.shapeLabel ?? "无典型形状"} · ${layer6.paths.map((path) => path.label).join(" + ") || "无明显路径"}。指数不代表被骗概率，参数待真实样本校准。`
         : "本次数据不足以计算最终分数，请重测一次。",
     };
   }

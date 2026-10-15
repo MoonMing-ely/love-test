@@ -6,19 +6,19 @@
     <meta name="theme-color" content="#ffffff" />
     <title>情感被骗指数测试题目</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/content.css" />
+    <link rel="stylesheet" href="../css/content.css?v=20261015-controls-6" />
   </head>
   <body>
     <main class="home quiz-page" data-page="question">
       <div class="landscape-background" aria-hidden="true"></div>
       <header class="quiz-header">
         <nav class="quiz-question-nav" aria-label="题目导航">
-          <button class="image-slot quiz-navigation-button" id="quiz-previous" type="button" hidden disabled aria-label="上一题" title="上一题"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 12H5m7-7-7 7 7 7" /></svg></span></button>
-          <button class="image-slot quiz-navigation-button" id="quiz-forward" type="button" hidden disabled aria-label="跳到第一道未答题" title="跳到第一道未答题"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></span></button>
+          <button class="image-slot quiz-navigation-button" id="quiz-previous" type="button" hidden disabled aria-label="上一题" data-tooltip="上一题"><span class="quiz-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 12H5m7-7-7 7 7 7" /></svg></span></button>
+          <button class="image-slot quiz-navigation-button" id="quiz-forward" type="button" hidden disabled aria-label="下一题" data-tooltip="下一题"><span class="quiz-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></span></button>
         </nav>
         <nav class="top-actions" aria-label="快捷操作">
-          <a class="image-slot" href="about.html?view=project&amp;from=text.html" data-route="about-project" aria-label="查看关于这个测试"></a>
-          <a class="image-slot" href="about.html?view=result&amp;from=text.html" data-route="about-result" aria-label="查看关于测试结果"></a>
+          <a class="image-slot" href="about.html?view=project&amp;from=text.html" data-route="about-project" aria-label="关于作者" data-tooltip="关于作者"><span class="circle-icon circle-icon-feather" aria-hidden="true"></span></a>
+          <a class="image-slot" href="about.html?view=result&amp;from=text.html" data-route="about-result" aria-label="关于测试" data-tooltip="关于测试"><span class="circle-icon circle-icon-dots" aria-hidden="true"></span></a>
         </nav>
       </header>
 
@@ -82,6 +82,6 @@
     <script src="../js/interactions/quiz.js"></script>
     <script src="../js/interactions/quiz-layout.js"></script>
     <script src="../js/interactions/about-navigation-stack.js"></script>
-    <script src="../js/interactions/page-transition.js"></script>
+    <script src="../js/interactions/page-transition.js?v=20261015-controls-2"></script>
   </body>
 </html>

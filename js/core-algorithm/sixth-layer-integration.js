@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  const VERSION = "1.0";
+  const VERSION = "1.4";
   const SHAPE_LABELS = Object.freeze({
     A: "整体稳定", F: "单点突出", G: "弥散中度", H: "多路径高风险",
   });
@@ -20,6 +20,24 @@
       throw new RangeError("阶段映射需要 0～100 的最终分数。");
     }
     return score < 30 ? 1 : score < 50 ? 2 : score < 70 ? 3 : 4;
+  }
+
+  function scoreForEvidence(evidence) {
+    const anchors = global.AlgorithmConfig?.LAYER6?.SCORE_ANCHORS;
+    if (!anchors) throw new Error("第六层算法需要分数标尺锚点。");
+    const first = anchors[0];
+    const last = anchors[anchors.length - 1];
+    if (!Number.isFinite(evidence) || evidence < first.evidence || evidence > last.evidence) {
+      throw new RangeError(`证据分必须是 ${first.evidence}～${last.evidence} 的数字。`);
+    }
+    for (let index = 1; index < anchors.length; index += 1) {
+      const left = anchors[index - 1];
+      const right = anchors[index];
+      if (evidence <= right.evidence) {
+        return left.score + (right.score - left.score) *
+          (evidence - left.evidence) / (right.evidence - left.evidence);
+      }
+    }
   }
 
   function shapeFor(values, average, sorted, config) {
@@ -98,7 +116,8 @@
     const preScore = pathSeverity + shapeAdjustment;
     const protectionAdjustment = -config.PROTECTION_MAX * input.M *
       Math.min(1, preScore / config.PROTECTION_FULL_SCORE);
-    const totalScore = clip(preScore + protectionAdjustment, 0, 100);
+    const evidenceScore = clip(preScore + protectionAdjustment, 0, 100);
+    const totalScore = scoreForEvidence(evidenceScore);
     const shape = shapeFor(values, average, sorted, config);
 
     return {
@@ -109,9 +128,9 @@
         depthAdjustment: depth === null ? null : config.DEPTH_SCALE * (depth - config.DEPTH_CENTER) },
       debug: { input, mean: average, max: sorted[0], min: sorted[3],
         spread: sorted[0] - sorted[3], sorted, allPaths, baseSeverity, pathSeverity,
-        moderateOverlap, highOverlap, shapeAdjustment, preScore, protectionAdjustment },
+        moderateOverlap, highOverlap, shapeAdjustment, preScore, protectionAdjustment, evidenceScore },
     };
   }
 
-  global.Layer6Integration = Object.freeze({ VERSION, calculate, smooth, stageForScore });
+  global.Layer6Integration = Object.freeze({ VERSION, calculate, smooth, stageForScore, scoreForEvidence });
 })(typeof window === "undefined" ? globalThis : window);

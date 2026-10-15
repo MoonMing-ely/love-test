@@ -4,6 +4,7 @@ import vm from "node:vm";
 import { quizHarness, RESULT_KEY } from "./helpers/quiz-harness.mjs";
 
 const source = await readFile(new URL("../js/interactions/result.js", import.meta.url), "utf8");
+const configSource = await readFile(new URL("../js/core-algorithm/algorithm-config.js", import.meta.url), "utf8");
 function element(tag = "div") {
   let text = "";
   return { tag, dataset: {}, hidden: true, children: [], attributes: {},
@@ -17,9 +18,11 @@ function element(tag = "div") {
 function render(raw, storageFails = false) {
   const nodes = Object.fromEntries([".result-frame", ".result-content", ".result-empty", "#result-title", "#result-summary", "#result-score", "#result-layers"]
     .map((key) => [key, element()]));
-  vm.runInNewContext(source, { document: { querySelector: (key) => nodes[key], createElement: element }, sessionStorage: {
+  const context = { document: { querySelector: (key) => nodes[key], createElement: element }, sessionStorage: {
     getItem() { if (storageFails) throw new Error("storage unavailable"); return raw; },
-  } });
+  } };
+  vm.runInNewContext(configSource, context);
+  vm.runInNewContext(source, context);
   return nodes;
 }
 const quiz = await quizHarness();
@@ -38,13 +41,17 @@ const displayed = completed["#result-layers"].textContent;
 assert.match(displayed, /Capacity/);
 assert.match(displayed, /P2 · 判断偏移/);
 assert.match(displayed, /Protection 修正/);
+assert.match(displayed, /映射前证据分/);
+assert.match(displayed, /最终指数 15～85/);
+assert.match(displayed, /指数不代表被骗概率/);
 assert.match(displayed, /R · 关系经验暂无/);
 assert.match(displayed, /自报／行为一致性暂无/);
 
 const zero = structuredClone(record);
-zero.outcome.totalScore = zero.layer6Integration.totalScore = 0;
+zero.outcome.totalScore = zero.layer6Integration.totalScore = 15;
+zero.layer6Integration.debug.evidenceScore = 0;
 zero.outcome.stage = zero.layer6Integration.stage = 1;
-assert.equal(render(JSON.stringify(zero))["#result-score"].textContent, "0.00 / 100");
+assert.equal(render(JSON.stringify(zero))["#result-score"].textContent, "15.00 / 100");
 const legacy = structuredClone(record);
 legacy.outcome.status = "scoring-placeholder";
 legacy.outcome.totalScore = null;
@@ -54,10 +61,17 @@ assert.equal(old[".result-frame"].dataset.resultState, "legacy");
 assert.equal(old["#result-score"].hidden, true);
 assert.equal(old["#result-layers"].children.length, 0);
 assert.match(old["#result-summary"].textContent, /重测一次/);
+const previousAlgorithm = structuredClone(record);
+previousAlgorithm.layer6Integration.version = "1.3";
+const previous = render(JSON.stringify(previousAlgorithm));
+assert.equal(previous[".result-frame"].dataset.resultState, "legacy");
+assert.equal(previous["#result-score"].hidden, true);
+assert.equal(previous["#result-layers"].children.length, 0);
+assert.match(previous["#result-summary"].textContent, /旧版算法.*重测一次/);
 const partial = structuredClone(record);
 partial.outcome.status = "insufficient_data";
 partial.outcome.totalScore = partial.outcome.stage = null;
-partial.layer6Integration = { version: "1.0", status: "insufficient_data", totalScore: null, stage: null,
+partial.layer6Integration = { version: "1.4", status: "insufficient_data", totalScore: null, stage: null,
   shape: null, shapeLabel: null, paths: [], diagnostics: null, debug: null };
 const incomplete = render(JSON.stringify(partial));
 assert.equal(incomplete[".result-frame"].dataset.resultState, "insufficient_data");
@@ -75,6 +89,8 @@ for (const change of [
   (r) => { r.completed = false; },
   (r) => { r.outcome.totalScore = NaN; },
   (r) => { r.outcome.totalScore = 101; },
+  (r) => { r.outcome.totalScore = r.layer6Integration.totalScore = 0; },
+  (r) => { delete r.layer6Integration.debug.evidenceScore; },
   (r) => { r.outcome.stage = 0; },
   (r) => { r.layer6Integration.totalScore += 1; },
   (r) => { delete r.layer6Integration; },

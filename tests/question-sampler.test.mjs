@@ -6,6 +6,11 @@ import { productionBank, seededRandom } from "./helpers/question-fixtures.mjs";
 const context = {};
 vm.runInNewContext(await readFile(new URL("../js/question-sampler.js", import.meta.url), "utf8"), context);
 const sampler = context.QuestionSampler;
+assert.equal(sampler.SELECTION_VERSION, 4);
+for (const key of ["recognition", "needed", "specialness", "scarcity"]) {
+  assert.equal(sampler.MINIMUM[key], 2);
+}
+assert.equal(sampler.MINIMUM.stopLoss, 3);
 const bank = productionBank;
 const before = JSON.stringify(bank);
 const signatures = new Set();
@@ -30,6 +35,16 @@ for (let seed = 1; seed <= 1000; seed += 1) {
     semantics.set(q.semantic_group, (semantics.get(q.semantic_group) ?? 0) + 1);
   });
   assert.ok([...semantics.values()].every((n) => n <= 2));
+  const concrete = result.questions.filter((question) => question.dimensions.includes("boundaries") &&
+    sampler.BOUNDARY_EXECUTION.semanticGroups.includes(question.semantic_group));
+  assert.ok(concrete.length >= 2, "具体边界题至少两道");
+  const capacity = (question) => Math.max(...question.options.map((option) => option.scores.boundaries ?? 0));
+  const concreteCapacity = concrete.reduce((sum, question) => sum + capacity(question), 0);
+  const totalCapacity = result.questions.reduce((sum, question) => sum + capacity(question), 0);
+  assert.ok(2 * concreteCapacity >= totalCapacity, "具体边界题应覆盖至少一半边界容量");
+  assert.equal(result.debug.boundary_execution.question_count, concrete.length);
+  assert.equal(result.debug.boundary_execution.capacity, concreteCapacity);
+  assert.equal(result.debug.boundary_execution.total_capacity, totalCapacity);
   assert.ok(sampler.validateSelection(result.questions).valid);
   assert.equal(result.debug.selected_question_ids.join(","), ids.join(","));
   maximumAttempt = Math.max(maximumAttempt, result.debug.attempt_count);
@@ -37,6 +52,17 @@ for (let seed = 1; seed <= 1000; seed += 1) {
 }
 assert.ok(signatures.size > 900, "随机性需要来自题组变化");
 assert.equal(JSON.stringify(bank), before);
+// 扩大到止损至少3题后曾耗尽100次尝试的种子：不得挤占稀缺维度必选来源的题型名额。
+for (const seed of [13942, 14931, 16106, 16877, 18019]) {
+  const result = sampler.sampleStratified(bank.questions, 28, seededRandom(seed));
+  assert.ok(sampler.validateSelection(result.questions).valid);
+  for (const key of Object.keys(sampler.MINIMUM)) {
+    const sources = bank.questions.filter((question) => question.status === "valid" && question.dimensions.includes(key));
+    if (sources.length === sampler.MINIMUM[key]) {
+      assert.ok(sources.every((question) => result.questions.some((selected) => selected.id === question.id)));
+    }
+  }
+}
 const sample = sampler.sampleStratified(bank.questions, 28, seededRandom(7));
 assert.equal(JSON.stringify(sample), JSON.stringify(sampler.sampleStratified(bank.questions, 28, seededRandom(7))));
 assert.throws(() => sampler.sampleStratified(bank.questions, 27), /只支持 28/);
@@ -49,6 +75,13 @@ disabled.questions[0].status = "disabled";
 for (let seed = 1; seed <= 20; seed += 1) {
   assert.ok(sampler.sampleStratified(disabled.questions, 28, seededRandom(seed)).questions.every((q) => q.id !== disabled.questions[0].id));
 }
+// 止损来源不足三道应明确报错；扩充题池不能替代每轮覆盖约束。
+const stopLossIds = bank.questions.filter((question) => question.dimensions.includes("stopLoss")).map((question) => question.id);
+assert.equal(stopLossIds.length, 7);
+const shortStopLoss = bank.questions.filter((question) => !stopLossIds.slice(2).includes(question.id));
+assert.throws(() => sampler.sampleStratified(shortStopLoss), (error) =>
+  error.reason === "pool_insufficient" && error.details.some((detail) => detail === "stopLoss 2/3"));
+
 const shortType = bank.questions.filter((q) => q.stratum !== "D");
 assert.throws(() => sampler.sampleStratified(shortType), (e) => e.reason === "pool_insufficient" && e.details.some((d) => d.startsWith("D ")));
 const shortDimension = bank.questions.filter((q) => !q.dimensions.includes("manipulation"));
@@ -66,15 +99,24 @@ for (const [type, count] of Object.entries({ A: 24, B: 12, C: 6, D: 4 })) {
     });
   }
 }
+// 保留C/D共享组不可行的结构；边界只由两道明确的具体执行来源测量。
+for (const question of impossible) {
+  if (["A01", "A02"].includes(question.id)) {
+    question.semantic_group = question.id === "A01" ? "unwanted_intimacy" : "boundary_request";
+  } else {
+    question.dimensions = question.dimensions.filter((key) => key !== "boundaries");
+    question.options.forEach((option) => { delete option.scores.boundaries; });
+  }
+}
 assert.throws(() => sampler.sampleStratified(impossible, 28, seededRandom(1)), (e) => e.reason === "attempts_exhausted" && e.details.attempt_count === 100);
-// 补足四个 D 专属组后有解；种子 7 的首轮失败，第二轮成功。
+// 补足四个 D 专属组后有解，仍保留100次重试上限。
 const recoverable = structuredClone(impossible);
 for (let i = 4; i < 8; i += 1) {
   recoverable.push({ ...structuredClone(impossible.find((q) => q.stratum === "D")),
     id: `D${String(i + 1).padStart(2, "0")}`, semantic_group: `free_d_${i}` });
 }
 const recovered = sampler.sampleStratified(recoverable, 28, seededRandom(7));
-assert.equal(recovered.debug.attempt_count, 2);
+assert.ok(recovered.debug.attempt_count >= 1 && recovered.debug.attempt_count <= 100);
 assert.ok(sampler.validateSelection(recovered.questions).valid);
 const ordinaryName = structuredClone(bank);
 ordinaryName.questions[0].semantic_group = "constructor";
@@ -92,3 +134,23 @@ assert.throws(() => sampler.validateSelection([...sample.questions.slice(1), sam
 const validManipulation = productionBank.questions.filter((q) => q.status === "valid" && q.dimensions.includes("manipulation"));
 assert.deepEqual(validManipulation.map((q) => q.id).sort(), ["A40", "C22", "C23", "C24"]);
 console.log(`1000 次正式题库生成全部合格；最多尝试 ${maximumAttempt} 次，不补入人工测试题。`);
+
+// 具体执行证据不足的题池应尽早报告，不靠100次重试掩盖。
+const shortExecution = bank.questions.filter((question) =>
+  !sampler.BOUNDARY_EXECUTION.semanticGroups.includes(question.semantic_group));
+assert.throws(() => sampler.sampleStratified(shortExecution), (error) =>
+  error.reason === "pool_insufficient" && error.details.some((detail) => detail.startsWith("boundary_execution ")));
+
+// 旧规则可用但内容覆盖不足的正式题组应被拒绝。
+{
+  const questions = ["C23", "B04", "B09", "C13", "D01", "C05", "D04", "B14", "A05", "C17", "A19", "A18", "A08", "B03", "C22", "C03", "B12", "D05", "D03", "B15", "A06", "A09", "A10", "A39", "A20", "A25", "A15", "A22"].map((id) => bank.questions.find((question) => question.id === id));
+  const result = sampler.validateSelection(questions);
+  assert.equal(result.valid, false);
+  assert.ok(result.errors.some((error) => error.includes("具体边界执行来源不足")));
+}
+{
+  const questions = ["A05", "A31", "D07", "A27", "C17", "A08", "A39", "C24", "A04", "B03", "D01", "C03", "A29", "D06", "C23", "B09", "C13", "B18", "A16", "B13", "A13", "A10", "B16", "B06", "A25", "C02", "D10", "A36"].map((id) => bank.questions.find((question) => question.id === id));
+  const result = sampler.validateSelection(questions);
+  assert.equal(result.valid, false);
+  assert.ok(result.errors.some((error) => error.includes("边界总容量的 50%")));
+}

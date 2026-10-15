@@ -75,6 +75,7 @@
 
   function updateLayout() {
     wrapPrompt();
+    setLength(question, "--question-prompt-offset", question.getBoundingClientRect().height * 0.02);
     const reference = getReferenceSpacing();
     const frameBorder = number(getComputedStyle(frame), "border-bottom-width");
     const optionBorder = number(getComputedStyle(options.firstElementChild), "border-top-width");

@@ -19,14 +19,9 @@ controls.forEach((control) => {
     ? sourcePage
     : `about.html?view=${view}&from=${encodeURIComponent(sourcePage)}`;
   control.setAttribute("aria-current", isActive ? "page" : "false");
-  control.setAttribute(
-    "aria-label",
-    isActive
-      ? "返回上一页"
-      : view === "project"
-        ? "查看关于这个测试"
-        : "查看关于测试结果",
-  );
+  const label = isActive ? "返回上一页" : view === "project" ? "关于作者" : "关于测试";
+  control.setAttribute("aria-label", label);
+  control.dataset.tooltip = label;
 });
 
 // 以断点规则给出的原始位置为基准，将实际底部留白缩至 80%。

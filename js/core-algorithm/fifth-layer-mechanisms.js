@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  const VERSION = "1.0";
+  const VERSION = "1.1";
   const P1_SOURCES = Object.freeze([
     ["recognition", "high_recognition"],
     ["need", "high_need"],
@@ -50,9 +50,18 @@
       layer4.fuzzy.high_H,
       layer4.fuzzy.high_J_hole,
     );
-    const score =
-      core * (1 + config().P2_SUPPORT_WEIGHT * (1 - core) * support);
-    return { score: clamp(score), core, support };
+    const {
+      P2_SUPPORT_WEIGHT,
+      P2_JUDGMENT_WEIGHT,
+      P2_WEAK_JUDGMENT_WEIGHT,
+      P2_AVOIDANCE_WEIGHT,
+    } = config();
+    const relationship = core * (1 + P2_SUPPORT_WEIGHT * (1 - core) * support);
+    const judgment = P2_JUDGMENT_WEIGHT * layer4.fuzzy.low_J;
+    const weakJudgment = P2_WEAK_JUDGMENT_WEIGHT * layer4.fuzzy.low_J_weak;
+    const avoidance = P2_AVOIDANCE_WEIGHT * layer4.fuzzy.high_H;
+    const score = Math.max(relationship, judgment, weakJudgment, avoidance);
+    return { score: clamp(score), core, support, relationship, judgment, weakJudgment, avoidance };
   }
 
   function calculateP3(layer4) {
@@ -143,6 +152,10 @@
         low_J: layer4.fuzzy.low_J,
         core2: p2.core,
         support2: p2.support,
+        P2_relationship: p2.relationship,
+        P2_judgment: p2.judgment,
+        P2_weak_judgment: p2.weakJudgment,
+        P2_avoidance: p2.avoidance,
         high_J: layer4.fuzzy.high_J,
         low_B: layer4.fuzzy.low_B,
         core3: p3.core,

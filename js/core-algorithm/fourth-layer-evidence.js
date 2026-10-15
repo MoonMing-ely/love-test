@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  const VERSION = "1.0";
+  const VERSION = "1.2";
   const REQUIRED_KEYS = Object.freeze([
     "recognition",
     "need",
@@ -159,6 +159,7 @@
         low_E: low(E),
         high_J: high(J),
         low_J: low(J),
+        low_J_weak: low(JWeak?.value ?? null),
         high_H: high(H),
         low_H: low(H),
         high_B: high(B),

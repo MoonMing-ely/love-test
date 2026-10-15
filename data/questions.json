@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "bankRevision": "43f6d57ab74d25eb5968917a7eab93110e7f1436d75c0ef28cd70f7663ec598b",
+  "bankRevision": "8cc237829d2e4b7be75c42e7d869b718bb2bbec3499e34e4c2e505b12a24057d",
   "title": "情感被骗指数测试",
   "scoringStatus": "configured",
   "dimensions": [
@@ -94,7 +94,7 @@
       "key": "C",
       "label": "短投射题",
       "type": "projection",
-      "questionCount": 22
+      "questionCount": 24
     },
     {
       "key": "D",
@@ -2264,14 +2264,14 @@
         },
         {
           "id": "B",
-          "text": "对方可能忙，也可能没兴趣，再看看。",
+          "text": "可能忙或没兴趣，先看看。",
           "scores": {
             "rationalization": 0
           }
         },
         {
           "id": "C",
-          "text": "先信TA忙，如果一直这样再重新考虑。",
+          "text": "先信TA忙，一直这样再重新考虑。",
           "scores": {
             "rationalization": 1
           }
@@ -2341,28 +2341,28 @@
       "options": [
         {
           "id": "A",
-          "text": "这样的人太难遇到了，这些问题尽量接受。",
+          "text": "这样的人难遇到，尽量接受这些问题。",
           "scores": {
             "scarcity": 3
           }
         },
         {
           "id": "B",
-          "text": "确实舍不得，想再试着沟通，找到解决办法。",
+          "text": "确实舍不得，想再沟通找办法。",
           "scores": {
             "scarcity": 1
           }
         },
         {
           "id": "C",
-          "text": "我仍很珍惜TA，但不因珍惜就一直接受这些问题。",
+          "text": "我很珍惜TA，但不会一直接受这些问题。",
           "scores": {
             "scarcity": 0
           }
         },
         {
           "id": "D",
-          "text": "即使很难遇到，如果问题不改善，我会考虑结束关系。",
+          "text": "再难遇到，问题不改也会考虑分开。",
           "scores": {
             "scarcity": 0
           }
@@ -2383,7 +2383,7 @@
       "options": [
         {
           "id": "A",
-          "text": "TA会想到我，说明我在TA心里挺重要的。",
+          "text": "TA会想到我，说明我对TA挺重要。",
           "scores": {
             "evidence": 0
           }
@@ -2432,14 +2432,14 @@
         },
         {
           "id": "B",
-          "text": "挺失落，先不找TA，看TA会不会主动找我。",
+          "text": "失落也先不联系，看TA会不会主动。",
           "scores": {
             "stopLoss": 2
           }
         },
         {
           "id": "C",
-          "text": "主动这么久，放弃太可惜，我想再坚持一下。",
+          "text": "主动这么久舍不得放弃，想再坚持一下。",
           "scores": {
             "stopLoss": 0
           }
@@ -2474,21 +2474,21 @@
         },
         {
           "id": "B",
-          "text": "还没想好，但怕TA失望，还是答应吧。",
+          "text": "怕TA失望，没想好也先答应。",
           "scores": {
             "boundaries": 0
           }
         },
         {
           "id": "C",
-          "text": "才认识一周，不能答应，告诉TA再相处一阵。",
+          "text": "先不答应，告诉TA再相处一阵。",
           "scores": {
             "boundaries": 3
           }
         },
         {
           "id": "D",
-          "text": "这样有点下头，我会拒绝，且不想继续了。",
+          "text": "这样有点下头，拒绝且不想再发展。",
           "scores": {
             "boundaries": 3
           }
@@ -2572,7 +2572,7 @@
         },
         {
           "id": "D",
-          "text": "朋友感觉到TA的冷淡，但舍不得这么想。",
+          "text": "朋友察觉了冷淡，只是不愿承认。",
           "scores": {
             "calibration": 2
           }
@@ -2593,14 +2593,14 @@
       "options": [
         {
           "id": "A",
-          "text": "先帮TA，我的任务晚点做，熬夜能补上。",
+          "text": "先帮TA，自己的事熬夜补上。",
           "scores": {
             "boundaries": 0
           }
         },
         {
           "id": "B",
-          "text": "最多帮半小时，到点就回来做自己的事。",
+          "text": "最多帮半小时，到点就做自己的事。",
           "scores": {
             "boundaries": 1
           }
@@ -2614,7 +2614,7 @@
         },
         {
           "id": "D",
-          "text": "直接拒绝，已经因为帮TA耽误很多了。",
+          "text": "帮TA已耽误太多，这次直接拒绝。",
           "scores": {
             "boundaries": 3
           }
@@ -2899,7 +2899,7 @@
         },
         {
           "id": "B",
-          "text": "原来我对TA这么重要，感觉自己很有价值。",
+          "text": "被TA这么需要，觉得自己很有价值。",
           "scores": {
             "needed": 3
           }
@@ -2934,7 +2934,7 @@
       "options": [
         {
           "id": "A",
-          "text": "对朋友这么好，应该有好感，迟早在一起。",
+          "text": "对朋友这么好，应该喜欢TA且迟早在一起。",
           "scores": {
             "calibration": 0
           }
@@ -3109,14 +3109,14 @@
         },
         {
           "id": "B",
-          "text": "可能没安全感，我先少联系他们，让你放心。",
+          "text": "你可能没安全感，我先少联系朋友让你放心。",
           "scores": {
             "manipulation": 1
           }
         },
         {
           "id": "C",
-          "text": "你担心什么可以说，但我不想疏远朋友。",
+          "text": "担心可以说，但我不想疏远朋友。",
           "scores": {
             "manipulation": 3
           }
@@ -3168,6 +3168,90 @@
           "text": "关系好就不能拒绝吗？这次帮不了。",
           "scores": {
             "manipulation": 3
+          }
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C25",
+      "stratum": "C",
+      "type": "projection",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "post_breakup_care",
+      "prompt": "你已和TA分开，原来的问题也没改善。TA深夜又来诉苦，你会怎么做？",
+      "options": [
+        {
+          "id": "A",
+          "text": "简单聊聊，但不恢复每天陪伴。",
+          "scores": {
+            "stopLoss": 3
+          }
+        },
+        {
+          "id": "B",
+          "text": "先每天陪TA，等TA好些再少联系。",
+          "scores": {
+            "stopLoss": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "提出复合，恢复以前的相处。",
+          "scores": {
+            "stopLoss": 0
+          }
+        },
+        {
+          "id": "D",
+          "text": "说明不能再像以前照顾TA，结束聊天。",
+          "scores": {
+            "stopLoss": 3
+          }
+        }
+      ],
+      "dimensionJudgement": null
+    },
+    {
+      "id": "C26",
+      "stratum": "C",
+      "type": "projection",
+      "dimensions": [
+        "stopLoss"
+      ],
+      "status": "valid",
+      "semantic_group": "explicit_rejection_exit",
+      "prompt": "TA明确说只想做朋友，你仍喜欢TA。接下来你更可能怎么做？",
+      "options": [
+        {
+          "id": "A",
+          "text": "停止送礼追求，按普通朋友相处。",
+          "scores": {
+            "stopLoss": 3
+          }
+        },
+        {
+          "id": "B",
+          "text": "继续送礼邀约，争取让TA改主意。",
+          "scores": {
+            "stopLoss": 0
+          }
+        },
+        {
+          "id": "C",
+          "text": "先少联系，让自己缓一缓。",
+          "scores": {
+            "stopLoss": 3
+          }
+        },
+        {
+          "id": "D",
+          "text": "不提恋爱，仍每天找TA、随叫随到。",
+          "scores": {
+            "stopLoss": 1
           }
         }
       ],

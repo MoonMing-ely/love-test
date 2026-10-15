@@ -81,8 +81,8 @@
     page.dataset.page = "about";
     page.innerHTML = `
       <nav class="top-actions" aria-hidden="true">
-        <span class="image-slot ${activeView === "project" ? "is-active" : ""}"></span>
-        <span class="image-slot ${activeView === "result" ? "is-active" : ""}"></span>
+        <span class="image-slot ${activeView === "project" ? "is-active" : ""}"><span class="circle-icon circle-icon-feather"></span></span>
+        <span class="image-slot ${activeView === "result" ? "is-active" : ""}"><span class="circle-icon circle-icon-dots"></span></span>
       </nav>
       <section class="content-frame about-frame"><div class="frame-side-glow" aria-hidden="true"></div></section>
     `;

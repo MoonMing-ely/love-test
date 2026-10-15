@@ -2,15 +2,29 @@
   "use strict";
   const TYPE_QUOTA = Object.freeze({ A: 12, B: 6, C: 6, D: 4 });
   const MINIMUM = Object.freeze({
-    recognition: 1, needed: 1, specialness: 1, scarcity: 1,
+    recognition: 2, needed: 2, specialness: 2, scarcity: 2,
     calibration: 2, evidence: 2, manipulation: 2, rationalization: 2,
-    boundaries: 2, stopLoss: 2, differentiation: 2, selfCalibration: 2,
+    boundaries: 2, stopLoss: 3, differentiation: 2, selfCalibration: 2,
   });
   const CRITICAL = Object.freeze(["calibration", "evidence", "manipulation", "boundaries", "stopLoss", "differentiation"]);
   const KEYS = Object.keys(MINIMUM);
   const SAMPLE_SIZE = 28;
   const MAX_ATTEMPTS = 100;
-  const SELECTION_VERSION = 1;
+  const SELECTION_VERSION = 4;
+  const BOUNDARY_EXECUTION = Object.freeze({
+    minimum: 2,
+    minimumCapacityShare: 0.5,
+    semanticGroups: Object.freeze(["unwanted_intimacy", "need_driven_overresponsibility", "boundary_request", "pressure_to_commit", "overresponsibility", "past_hurt_boundary"]),
+  });
+
+  function isBoundaryExecution(question) {
+    return question.dimensions.includes("boundaries") &&
+      BOUNDARY_EXECUTION.semanticGroups.includes(question.semantic_group);
+  }
+
+  function boundaryCapacity(question) {
+    return Math.max(...question.options.map((option) => option.scores.boundaries ?? 0));
+  }
 
   function constraintError(reason, details) {
     const error = new Error(reason === "pool_insufficient" ? `有效题池不足：${details.join("；")}` : "100 次尝试仍未找到合格题组。");
@@ -70,7 +84,17 @@
       q.dimensions.forEach((key) => sources[key].add(q.id));
       semantics[q.semantic_group] = (semantics[q.semantic_group] ?? 0) + 1;
     }
+    const execution = questions.filter(isBoundaryExecution);
+    const executionCapacity = execution.reduce((sum, question) => sum + boundaryCapacity(question), 0);
+    const totalBoundaryCapacity = questions.reduce((sum, question) => sum + boundaryCapacity(question), 0);
     return {
+      boundary_execution: {
+        question_ids: execution.map((question) => question.id),
+        question_count: execution.length,
+        capacity: executionCapacity,
+        total_capacity: totalBoundaryCapacity,
+        capacity_share: totalBoundaryCapacity ? executionCapacity / totalBoundaryCapacity : null,
+      },
       selected_question_ids: questions.map((q) => q.id), type_counts: types,
       dimension_counts: Object.fromEntries(KEYS.map((key) => [key, sources[key].size])),
       dimension_question_ids: Object.fromEntries(KEYS.map((key) => [key, [...sources[key]]])),
@@ -87,6 +111,12 @@
     for (const [type, quota] of Object.entries(TYPE_QUOTA)) if (debug.type_counts[type] !== quota) errors.push(`${type} 配额必须为 ${quota}`);
     for (const [key, minimum] of Object.entries(MINIMUM)) if (debug.dimension_counts[key] < minimum) errors.push(`${key} 来源不足 ${minimum}`);
     if (Object.values(debug.semantic_group_counts).some((count) => count > 2)) errors.push("语义组超过 2 题");
+    if (debug.boundary_execution.question_count < BOUNDARY_EXECUTION.minimum) {
+      errors.push(`具体边界执行来源不足 ${BOUNDARY_EXECUTION.minimum}`);
+    }
+    if (debug.boundary_execution.capacity < BOUNDARY_EXECUTION.minimumCapacityShare * debug.boundary_execution.total_capacity) {
+      errors.push("具体边界执行证据不足边界总容量的 50%");
+    }
     return { valid: !errors.length, errors, debug };
   }
 
@@ -107,6 +137,9 @@
     for (const [key, minimum] of Object.entries(MINIMUM)) if (debug.dimension_counts[key] < minimum) shortages.push(`${key} ${debug.dimension_counts[key]}/${minimum}`);
     const capacity = Object.values(debug.semantic_group_counts).reduce((sum, n) => sum + Math.min(n, 2), 0);
     if (capacity < SAMPLE_SIZE) shortages.push(`语义容量 ${capacity}/${SAMPLE_SIZE}`);
+    if (debug.boundary_execution.question_count < BOUNDARY_EXECUTION.minimum) {
+      shortages.push(`boundary_execution ${debug.boundary_execution.question_count}/${BOUNDARY_EXECUTION.minimum}`);
+    }
     if (shortages.length) throw constraintError("pool_insufficient", shortages);
   }
 
@@ -130,6 +163,10 @@
     assertQuestions(questions);
     const pool = questions.filter((q) => q.status === "valid");
     assertCapacity(pool);
+    const poolCounts = statistics(pool).dimension_counts;
+    // 来源数恰等于最低要求时，每个来源都必须入选；为尚未选中的必选题保留题型名额。
+    const required = pool.filter((q) => q.dimensions.some((key) => poolCounts[key] === MINIMUM[key]));
+    const requiredIds = new Set(required.map((q) => q.id));
     for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
       const selected = [];
       const ids = new Set();
@@ -137,7 +174,13 @@
       const sources = Object.fromEntries(KEYS.map((key) => [key, new Set()]));
       const nonA = new Set();
       const groups = new Map();
-      const available = () => pool.filter((q) => !ids.has(q.id) && types[q.stratum] < TYPE_QUOTA[q.stratum] && (groups.get(q.semantic_group)?.length ?? 0) < 2);
+      const available = () => {
+        const reserved = { A: 0, B: 0, C: 0, D: 0 };
+        required.forEach((q) => { if (!ids.has(q.id)) reserved[q.stratum] += 1; });
+        return pool.filter((q) => !ids.has(q.id)
+          && types[q.stratum] + reserved[q.stratum] - (requiredIds.has(q.id) ? 1 : 0) < TYPE_QUOTA[q.stratum]
+          && (groups.get(q.semantic_group)?.length ?? 0) < 2);
+      };
       const add = (q) => {
         selected.push(q); ids.add(q.id); types[q.stratum] += 1;
         const group = groups.get(q.semantic_group) ?? [];
@@ -148,9 +191,14 @@
         groups.has(q.semantic_group) && !groups.get(q.semantic_group).includes(q.stratum) ? 1 : 0];
       let failed = false;
       for (const phase of [CRITICAL, ["rationalization", "selfCalibration"], ["recognition", "needed", "specialness", "scarcity"]]) {
-        while (phase.some((key) => sources[key].size < MINIMUM[key])) {
+        while (phase.some((key) => sources[key].size < MINIMUM[key]) ||
+            (phase === CRITICAL && selected.filter(isBoundaryExecution).length < BOUNDARY_EXECUTION.minimum)) {
           const missing = (q) => q.dimensions.filter((key) => phase.includes(key) && sources[key].size < MINIMUM[key]);
-          const q = chooseBest(available().filter((candidate) => missing(candidate).length), (candidate) => [missing(candidate).length,
+          const executionMissing = phase === CRITICAL &&
+            selected.filter(isBoundaryExecution).length < BOUNDARY_EXECUTION.minimum;
+          const contentGain = (candidate) => executionMissing && isBoundaryExecution(candidate) ? 1 : 0;
+          const q = chooseBest(available().filter((candidate) => missing(candidate).length || contentGain(candidate)),
+            (candidate) => [missing(candidate).length + contentGain(candidate),
             candidate.stratum !== "A" ? candidate.dimensions.filter((key) => CRITICAL.includes(key) && !nonA.has(key)).length : 0,
             ...semanticRank(candidate)], random);
           if (!q) { failed = true; break; }
@@ -182,5 +230,5 @@
   }
 
   global.QuestionSampler = Object.freeze({ SAMPLE_SIZE, TYPE_QUOTA, MINIMUM, CRITICAL, MAX_ATTEMPTS,
-    SELECTION_VERSION, assertQuestions, assertQuestionBank, validateSelection, sampleStratified, shuffle });
+    SELECTION_VERSION, BOUNDARY_EXECUTION, assertQuestions, assertQuestionBank, validateSelection, sampleStratified, shuffle });
 })(typeof window === "undefined" ? globalThis : window);

@@ -101,7 +101,7 @@ const SAMPLE_SIZE = 28;
 // 题库结构检查由 QuestionSampler.assertQuestionBank 负责。
 ```
 
-- 当前题库：96 道（A40/B21/C24/D11，77 valid / 19 review）；总量允许扩充，不作为运行时固定限制。
+- 当前题库：85 道（A35/B15/C24/D11，全部 valid）；总量允许扩充，不作为运行时固定限制。
 - 每轮抽题：28 道。
 - 评分维度：12 个。
 - 题型层：A、B、C、D 四层。
@@ -111,22 +111,22 @@ const SAMPLE_SIZE = 28;
 
 ## 6. 受约束随机抽题
 
-`QuestionSampler.sampleStratified(questions, 28, random)` 固定 A12/B6/C6/D4。仅使用 valid 题，认需特稀各至少 1 个不同 ID，其余八维各至少 2 个不同 ID，同语义组最多 2 题。先补骨架覆盖，再补配额，完整验证后洗牌；最多尝试 100 次。不修改原始题库或评分。
+`QuestionSampler.sampleStratified(questions, 28, random)` 固定 A12/B6/C6/D4。仅使用 valid 题，止损至少 3 个不同 ID，其余11维各至少 2 个不同 ID，同语义组最多 2 题。具体边界执行类至少2题，并占边界最高可得分总容量至少50%；骨架覆盖优先级同时考虑缺失内容方面，再补配额，完整验证后洗牌；最多尝试 100 次。不修改原始题库或评分。
 
 `assertQuestionBank(data)` 检查版本、结构和元数据；`validateSelection(questions)` 返回 `{ valid, errors, debug }`，用于生成及恢复。容量不足报 `QuestionPoolConstraintError`，reason 为 `pool_insufficient`；尝试耗尽为 `attempts_exhausted`。非预期程序异常直接向页面传播，不重抽。
 
 维护源每题标题后包含一行 `<!-- selection: {...} -->`，其中 dimensions 使用英文评分 key，status 为 valid/review/disabled，semantic_group 为具体主题。同组第二题及非 A 来源属于优先选择，不增加硬规则。
 
-生成脚本输出题库 version=4，并用 Node 内置 SHA-256 计算 bankRevision；同内容构建相同。候选状态及审核依据见 `question-bank-audit.md`。A29/C05 等 19 道存疑题仍为 review。已按用户确认新增 A40/C22/C23/C24，四题均 valid 且仅计入 manipulation；正式题库 1000 次生成全部通过，完整评分链路及真实 Firefox 两轮答题、刷新恢复、旧题库修订号失效均已验证。三种操纵机制覆盖由题库整体提供，不增加每轮机制数量校验。
+生成脚本输出题库 version=4，并用 Node 内置 SHA-256 计算 bankRevision；同内容构建相同。候选状态及审核依据见 `question-bank-audit.md`。当前正式题库为85道valid题，旧版review数量不再适用。本轮按用户确认微修20个选项，新增C25（分开后求助）、C26（明确拒绝），仅计入stopLoss，分别为[3,1,0,3]与[3,0,3,1]；原题干及原分值保留。抽题V4要求止损至少3题，允许自然抽到更多；具体变更与验证见 `sampler-stop-loss-v4.md`。已按用户确认新增 A40/C22/C23/C24，四题均 valid 且仅计入 manipulation；正式题库 1000 次生成全部通过，此前版本完整评分链路及真实 Firefox 两轮答题、刷新恢复、旧题库修订号失效已验证；本轮复核使用Node测试与答题流程模拟，未重做真实浏览器检查。三种操纵机制覆盖由题库整体提供，不增加每轮机制数量校验。
 
-第三个参数 random 默认 Math.random，可注入固定种子。成功返回 questions、allocation 和 debug（题型、维度来源、语义统计、attempt_count），不保存或展示用户答案日志。
+第三个参数 random 默认 Math.random，可注入固定种子。成功返回 questions、allocation 和 debug（题型、维度来源、语义统计、boundary_execution、attempt_count），不保存或展示用户答案日志。
 
 ## 7. 浏览器会话状态
 
 项目使用 `sessionStorage` 保存两类数据：
 
-- `deceptionIndexQuizStateV3`：当前题号、答案、题目 ID、selectionVersion 和 bankRevision。旧 key 保留，旧数据缺版本会重新生成。
-- `deceptionIndexQuizResultV3`：完成状态、28 条原始答案、第一至第五层算法数据和占位评分输出。
+- `deceptionIndexQuizStateV3`：当前题号、答案、题目 ID、selectionVersion 和 bankRevision。抽题版本为4；旧数据缺版本或不符合当前版本/覆盖规则时重新生成。
+- `deceptionIndexQuizResultV3`：完成状态、28 条原始答案、第一至第六层算法数据和最终评分输出。
 
 `sessionStorage` 的作用范围是当前浏览器标签页会话。它不是长期数据库，也不会自动在不同设备或不同标签页之间同步。
 
@@ -140,7 +140,8 @@ const SAMPLE_SIZE = 28;
   layer3Structures, // 第三层产生的 E、J、B、H、F、M、R 和组内结构
   layer4Evidence, // 第四层产生的结构证据和 High/Low 模糊值
   layer5Mechanisms, // 第五层产生的 P1～P4、Protection 和调试数据
-  outcome  // 评分算法根据 answers 计算出的派生结果
+  layer6Integration, // 第六层连续严重度、最终分及阶段
+  outcome  // 评分适配器从第六层复制最终分及阶段
 }
 ```
 
@@ -154,9 +155,9 @@ E/J/B 始终保留自己的 `subScores`。如果某组含有 `null`，该组的 
 
 第四层入口 `Layer4Evidence.fromLayer3(layer3Structures)` 负责兼容第三层 V1.1：将 `0～100` 的细维度除以 100 后，再按新定义令 `B=boundary`、`T=stopLoss`。它不会把第三层旧的 `B.summary` 当成第四层 B。第四层输出 `E/J/H/B/T/F/M`、E 峰值、J 短板、`BT_gap`、可选一致性和集中计算的 High/Low。任一正式维度缺失时，状态为 `insufficient_data`，缺失值不会自动变成 0。
 
-第五层入口 `Layer5Mechanisms.calculate(layer4Evidence)` 独立计算关系价值放大 P1、判断偏移 P2、行动失守 P3、退出困难 P4。M 与可选一致性只进入 `protection`，不修改 P1～P4；`debug` 保留各机制的 core/support。第五层不求和、不映射阶段，也不生成最终风险。第六层已独立实现：`Layer6Integration.calculate(layer5Mechanisms)` 仅读取四条风险和 protection.M，产生连续最终分及离散阶段/标签；`QuizScoring.calculateResult` 只适配第六层输出。公式和实施验收见 [第六层方案](layer6-implementation-plan.md)。旧占位结果需重测，不以0补缺失值。
+第五层入口 `Layer5Mechanisms.calculate(layer4Evidence)` 独立计算关系价值放大 P1、判断偏移 P2、行动失守 P3、退出困难 P4。M 与可选一致性只进入 `protection`，不修改 P1～P4；`debug` 保留各机制的 core/support。第五层不求和、不映射阶段，也不生成最终风险。第六层已独立实现：`Layer6Integration.calculate(layer5Mechanisms)` 仅读取四条风险和 protection.M，产生连续最终分及离散阶段/标签；`QuizScoring.calculateResult` 只适配第六层输出。当前参数、保留机制和验收见 [V1.4曲线说明](algorithm-calibration-v1.4.md)。P2保留原完整通道，再与三项独立证据取最大值；第四层新增`low_J_weak`。第四层版本为1.2，第五层为1.1，第六层为1.4；原证据分[0,30,70,91]映射为指数[15,30,70,85]，证据分保存在`debug.evidenceScore`；旧版已评分结果及占位结果均提示重测，不以0补缺失值。
 
-V1 只有在 12 个底层维度都可计算时才正式生成 P1～P4，否则返回 `insufficient_data`。新抽题器保证合格问卷的最低覆盖；目前仍需补足有效操题才能生成正式问卷，不能把缺失维度静默当成 0。
+只有在12个底层维度都可计算时才正式生成P1～P4，否则返回`insufficient_data`。当前正式题库满足抽题器的全部最低覆盖要求；缺失维度仍不能静默当成0。
 
 ## 8. 评分算法边界
 
@@ -191,28 +192,22 @@ node scripts/build-question-bank.mjs
 运行完整测试：
 
 ```bash
-node tests/question-bank.test.mjs
-node tests/question-sampler.test.mjs
-node tests/scoring-interface.test.mjs
-node tests/dimension-vector.test.mjs
-node tests/second-layer-normalizer.test.mjs
-node tests/third-layer-aggregator.test.mjs
-node tests/fourth-layer-evidence.test.mjs
-node tests/fifth-layer-mechanisms.test.mjs
-node tests/about-navigation-stack.test.mjs
+node --test tests/*.test.mjs
 ```
 
 各测试职责：
 
 - `question-bank.test.mjs`：检查元数据、维护源/JSON 一致性、修订号稳定性及变化敏感性。
 - `question-sampler.test.mjs`：直接使用正式题库生成 1000 组固定种子，验证配额、维度来源、语义、状态及随机性；另验证容量不足和重试失败。
-- `quiz-flow.test.mjs`：真实抽题器接页面及 Raw→第五层→结果，覆盖刷新恢复和启动/中途/完成存储失败。
+- `quiz-flow.test.mjs`：真实抽题器接页面及 Raw→第六层→结果，覆盖刷新恢复和启动/中途/完成存储失败。
 - `scoring-interface.test.mjs`：检查评分输入输出约定，并模拟完成 28 道题，确认页面完整传入答案和维度定义。
 - `dimension-vector.test.mjs`：检查第一层 12 维向量的建立、累加和恢复。
 - `second-layer-normalizer.test.mjs`：检查 Capacity、0～1 标准化、特殊维度、exposure、clamp 警告和重复计算一致性。
 - `third-layer-aggregator.test.mjs`：检查 0～100 转换、E 峰值、J/B 短板、并列来源、内部不均衡、H/F/M/R、缺失值和层级边界。
 - `fourth-layer-evidence.test.mjs`：检查 0～1 适配、High/Low、E/J 结构、B/T 解耦、一致性、缺失值和输入范围。
 - `fifth-layer-mechanisms.test.mjs`：检查 P1～P4 公式、五组集成人格、Protection、debug 和全部单调不变量。
+- `sixth-layer-integration.test.mjs`：检查连续计分、保留的锚点与多路径增益、M最多减8分、原型与阶段。
+- `result-page.test.mjs`：检查六层显示、旧算法结果隔离、缺失与无效记录。
 - `about-navigation-stack.test.mjs`：检查连续打开两个右上角圆球后，返回顺序符合后进先出规则。
 
 自动测试只能验证数据和程序行为。涉及字体、响应式比例、留白和动画速度的改动，还需要在手机与电脑浏览器中进行人工检查。
@@ -458,3 +453,5 @@ E 区按自然排布后与进度条之间的空白下移 20%，底部灰线保�
 ### 浅蓝上栏、按钮内渐变与全站圆圈一致性验证（2026-10-13）
 
 十视口全部 96 题共 960 组通过，按钮内部局部渐变、上栏中点与边界、自然阅读、层叠、进度、重复 resize 及换题动画正常。八视口四页面共 32 组坐标比较通过，右侧圆圈在首页／答题／结果／关于页同位、同径、同描边，矮横屏滚动条场景无错位；左侧答题导航使用同一规则。圆圈实际命中检查、完整 28 题、前后导航、刷新、关于页往返、减少动态效果、200% 字体下五个长短题均通过；相关 Node 测试 2/2。题目 Markdown、运行 JSON、HTML 与答题控制器哈希未变。见 [本轮视觉与坐标对比报告](previews/quiz-blue-header-2026-10-13/index.html)。
+
+抽题V3具体规则、验证限制与旧进度重新生成的代价见[内容覆盖说明](sampler-content-coverage-v3.md)。

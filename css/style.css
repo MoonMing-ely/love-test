@@ -1,18 +1,32 @@
+/* 全站按内容角色共用字号；只有矮横屏使用紧凑规格。 */
 :root {
-  --blue-gray: #b6cbef;
-  --blue-gray-strong: #81a7e3;
-  --blue-selection: #cce1fe;
-  --blue-tint: #e7f0fe;
-  --blue-hover: #79a0e0;
-  --focus-ring: rgb(129 167 227 / 55%);
+  --type-family: "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC", "PingFang SC", sans-serif;
+  --type-weight-regular: 400;
+  --type-weight-bold: 700;
+  --type-size-caption: 0.875rem;
+  --type-size-body: 1rem;
+  --type-size-reading: 1.1875rem;
+  --type-size-title: 1.375rem;
+  --type-size-score: 1.5rem;
+  --type-line-body: 1.6;
+  --type-line-title: 1.35;
+  --type-line-caption: 1.5;
+  --type-tracking-question: 0.01em;
+  --type-tracking-button: 0.02em;
+  --blue-gray: #b4caf1;
+  --blue-gray-strong: #7da6e7;
+  --blue-selection: #cbe1ff;
+  --blue-tint: #e6f0ff;
+  --blue-hover: #759fe4;
+  --focus-ring: rgb(125 166 231 / 55%);
   --soft-pink: #ffe8f0;
   --soft-pink-strong: #ffcfe0;
   --canvas: #ffe3ee;
   --surface: #ffffff;
   --surface-cool: #f5f8ff;
   --line: #e8eaf1;
-  --ink: #3d4556;
-  --focus: #7099da;
+  --ink: #3c4557;
+  --focus: #6c98de;
   --radius-frame: clamp(24px, 3vw, 38px);
   --radius-panel: clamp(18px, 2.4vw, 28px);
   --radius-control: clamp(12px, 1.6vw, 18px);
@@ -27,6 +41,20 @@
   --top-actions-y-offset: calc(var(--image-slot-size) * -0.1 + var(--top-actions-shift));
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+@media (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --type-size-body: 0.9375rem;
+    --type-size-reading: 1rem;
+    --type-size-title: 1.25rem;
+  }
+}
+h1, h2, h3, h4 {
+  font-size: var(--type-size-title);
+  font-weight: var(--type-weight-bold);
+  line-height: var(--type-line-title);
+}
+strong, b { font-weight: var(--type-weight-bold); }
 
 @supports (height: 1dvh) {
   :root { --top-actions-shift: 0.5dvh; }
@@ -50,9 +78,11 @@ html {
 body {
   color: var(--ink);
   background: var(--canvas);
-  font-family:
-    "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC", "PingFang SC",
-    sans-serif;
+  font-family: var(--type-family);
+  font-size: var(--type-size-body);
+  font-weight: var(--type-weight-regular);
+  line-height: var(--type-line-body);
+  letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -177,7 +207,7 @@ html.is-page-transitioning-out body > .home {
 .content-frame {
   --frame-height-scale: 0.97216;
   --frame-edge-shadow:
-    0 -6px 15px -4.5px rgb(203 223 251 / 59.5%);
+    0 -6px 15px -4.5px rgb(201 223 253 / 59.5%);
   --frame-stroke-base: calc(clamp(2px, 0.35vw, 4px) * var(--stroke-scale));
   --frame-stroke: var(--frame-stroke-base);
   --frame-border-fill: linear-gradient(var(--surface), var(--surface));
@@ -255,7 +285,7 @@ html.is-page-transitioning-out body > .home {
   inset: var(--frame-glow-outset);
   bottom: var(--frame-glow-bottom-outset);
   border-radius: var(--radius-frame);
-  box-shadow: -4px 0 9px -5px rgb(195 218 250 / 59.5%), 4px 0 9px -5px rgb(195 218 250 / 59.5%);
+  box-shadow: -4px 0 9px -5px rgb(193 218 252 / 59.5%), 4px 0 9px -5px rgb(193 218 252 / 59.5%);
   content: "";
 }
 
@@ -269,7 +299,7 @@ html.is-page-transitioning-out body > .home {
   width: calc(var(--title-width) * 0.97);
   height: 40%;
   min-height: 0;
-  border: calc(1px * var(--stroke-scale)) solid #f8bdd1;
+  border: calc(1px * var(--stroke-scale)) solid #fabbd0;
   border-radius: var(--radius-panel);
   background: var(--soft-pink);
   box-shadow: none;
@@ -285,18 +315,9 @@ html.is-page-transitioning-out body > .home {
   margin: 0;
 }
 
-.title-slot h1 {
-  font-size: clamp(1.75rem, 5vmin, 3.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-}
-
 .title-slot p {
   margin-top: 1em;
-  color: #705965;
-  font-size: clamp(0.875rem, 2vmin, 1.125rem);
-  line-height: 1.7;
+  color: #715865;
 }
 
 .description-slot {
@@ -325,17 +346,17 @@ html.is-page-transitioning-out body > .home {
     transform 220ms var(--ease-out);
   display: flex;
   color: #ffffff;
-  font-size: clamp(1.69rem, 3.38vmin, 2.028rem);
-  font-family: "Yuanti SC", "YouYuan", "幼圆", "MiSans VF", "MiSans", "Noto Sans CJK SC", sans-serif;
-  font-weight: 770;
-  letter-spacing: 0.088em;
+  font-size: var(--type-size-reading);
+  font-weight: var(--type-weight-bold);
+  line-height: 1.2;
+  letter-spacing: var(--type-tracking-button);
   text-decoration: none;
   align-items: center;
   justify-content: center;
 }
 
 .primary-action span {
-  line-height: 1;
+  line-height: inherit;
   transform: translateY(-10%);
 }
 
@@ -513,7 +534,7 @@ html.is-page-transitioning-out body > .home {
 
 /* 关于页以一圈柔和的蓝色光晕围住白框，外部不再使用粉色渐变。 */
 .about-page { background: var(--surface); --about-bottom-gap-scale: 0.8; }
-.about-frame { --frame-edge-shadow: 0 0 18px 3px rgb(203 223 251 / 59.5%); }
+.about-frame { --frame-edge-shadow: 0 0 18px 3px rgb(201 223 253 / 59.5%); }
 .about-frame .frame-side-glow { display: none; }
 .home:not(.about-page)::before,
 .home:not(.about-page)::after {
@@ -522,7 +543,7 @@ html.is-page-transitioning-out body > .home {
   right: 0;
   left: 0;
   height: var(--quiz-topbar-bottom, 70px);
-  background: #e9f4fd;
+  background: #e8f4fe;
   content: "";
   pointer-events: none;
 }
@@ -540,9 +561,6 @@ html.is-page-transitioning-out body > .home {
 .home:not(.about-page) .frame-side-glow { display: none; }
 
 /* 标题卡以原中心增高 25%，保留文案中心并为底卡和按钮留出间隔。 */
-.home[data-page="start"] {
-  font-family: "Yuanti SC", "YouYuan", "幼圆", "MiSans VF", "MiSans", "Noto Sans CJK SC", sans-serif;
-}
 .home[data-page="start"] .title-slot {
   top: calc(var(--title-top) - 1svh - 5%);
   height: 50%;
@@ -556,10 +574,10 @@ html.is-page-transitioning-out body > .home {
 .title-slot::after {
   position: absolute;
   inset: 0;
-  border: calc(2px * var(--stroke-scale) * 0.7) solid color-mix(in srgb, #8799be 60%, #ced7e8 40%);
+  border: calc(2px * var(--stroke-scale) * 0.7) solid color-mix(in srgb, #8598c0 60%, #cdd7e9 40%);
   border-radius: inherit;
-  background: #ced7e8;
-  box-shadow: 0 5px 12px rgb(85 95 132 / 0.12);
+  background: #cdd7e9;
+  box-shadow: 0 5px 12px rgb(83 94 134 / 0.12);
   filter: blur(0.45px);
   content: "";
   pointer-events: none;
@@ -570,8 +588,8 @@ html.is-page-transitioning-out body > .home {
 }
 .title-slot::after {
   z-index: 1;
-  border-color: color-mix(in srgb, #8799be 60%, #e2d6e5 40%);
-  background: #e2d6e5;
+  border-color: color-mix(in srgb, #8598c0 60%, #e2d5e6 40%);
+  background: #e2d5e6;
   filter: blur(0.25px);
   transform: translate(2px, 3px) rotate(0.3deg);
 }
@@ -583,7 +601,7 @@ html.is-page-transitioning-out body > .home {
   border-radius: inherit;
   background:
     linear-gradient(180deg, var(--canvas) 0%, #fff1f7 54%, var(--surface) 100%) padding-box,
-    linear-gradient(180deg, #f9cadc 0%, #f9cadc 35%, #f0b1c6 80%, #f0b1c6 100%) border-box;
+    linear-gradient(180deg, #fbc8dc 0%, #fbc8dc 35%, #f3aec5 80%, #f3aec5 100%) border-box;
 }
 .title-copy {
   position: absolute;
@@ -600,10 +618,10 @@ html.is-page-transitioning-out body > .home {
   .home[data-page="start"] .primary-action { min-height: 0; }
 }
 
-/* 结果横屏字号对应答题页；首页采用 vmin，旋转时维持同一字号。 */
+/* 横屏背景和卡片描边；文字规格由顶部的全站规则决定。 */
 @media (orientation: landscape) {
   :root {
-    --landscape-art: url("../assets/images/pastel-landscape.png");
+    --landscape-art: url("../assets/images/pastel-curves-rings-v2.png");
   }
   .landscape-background {
     position: absolute;
@@ -616,22 +634,11 @@ html.is-page-transitioning-out body > .home {
     background-repeat: no-repeat;
     pointer-events: none;
   }
-  .home:not(.about-page) {
-    --landscape-heading-font: calc(1.2015rem * 0.92 * 1.08);
-    --landscape-body-font: calc(clamp(0.9375rem, 1.8vw, 1.0625rem) * 0.9 * 1.05);
-  }
   .title-card { border-width: calc(clamp(2px, 0.35vw, 4px) * var(--stroke-scale) * 0.65); }
   .title-slot::before,
   .title-slot::after { border-width: calc(clamp(2px, 0.35vw, 4px) * var(--stroke-scale) * 0.65 * 0.7); }
 }
-@media (orientation: landscape) and (aspect-ratio <= 4 / 3) {
-  .home:not(.about-page) { --landscape-body-font: calc(clamp(0.9375rem, 1.8vw, 1.0625rem) * 1.035 * 1.05); }
-}
 @media (min-width: 600px) and (orientation: landscape) and (max-height: 500px) {
-  .home:not(.about-page) {
-    --landscape-heading-font: calc(1rem * 0.92 * 1.08);
-    --landscape-body-font: calc(15px * 0.9 * 1.05);
-  }
   .title-copy { padding-block: 12px; }
 }
 

@@ -123,8 +123,8 @@ const approvedQuestions = [
     "恋人希望你少和朋友来往，说：“我不是要控制你，只是太在乎你。”你会怎么回应？",
     [
       "你在乎我，我少和他们来往就是了。",
-      "可能没安全感，我先少联系他们，让你放心。",
-      "你担心什么可以说，但我不想疏远朋友。",
+      "你可能没安全感，我先少联系朋友让你放心。",
+      "担心可以说，但我不想疏远朋友。",
       "在乎我，就可以管我和谁来往吗？"
     ],
     [
@@ -162,8 +162,19 @@ for (const [id, group, prompt, options, scores] of approvedQuestions) {
   assert.deepEqual(q.options.map((o) => o.text), options);
   assert.deepEqual(q.options.map((o) => o.scores), scores.map((score) => ({ manipulation: score })));
 }
-assert.equal(questionBank.questions.length, 83);
-assert.equal(questionBank.questions.filter((q) => q.status === "valid").length, 83);
+assert.equal(questionBank.questions.length, 85);
+assert.equal(questionBank.questions.filter((q) => q.status === "valid").length, 85);
 assert.equal(questionBank.questions.filter((q) => q.status === "review").length, 0);
-assert.deepEqual(Object.fromEntries(questionBank.strata.map((s) => [s.key, s.questionCount])), { A: 35, B: 15, C: 22, D: 11 });
+assert.deepEqual(Object.fromEntries(questionBank.strata.map((s) => [s.key, s.questionCount])), { A: 35, B: 15, C: 24, D: 11 });
+for (const [id, group, prompt, scores] of [
+  ["C25", "post_breakup_care", "你已和TA分开，原来的问题也没改善。TA深夜又来诉苦，你会怎么做？", [3, 1, 0, 3]],
+  ["C26", "explicit_rejection_exit", "TA明确说只想做朋友，你仍喜欢TA。接下来你更可能怎么做？", [3, 0, 3, 1]],
+]) {
+  const question = questionsById.get(id);
+  assert.equal(question.prompt, prompt);
+  assert.equal(question.status, "valid");
+  assert.equal(question.semantic_group, group);
+  assert.deepEqual(question.dimensions, ["stopLoss"]);
+  assert.deepEqual(question.options.map((option) => option.scores), scores.map((score) => ({ stopLoss: score })));
+}
 console.log("Question bank tests passed.");
