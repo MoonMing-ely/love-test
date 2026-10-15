@@ -1,6 +1,6 @@
 # 情感被骗指数测试：第三版候选题库（12维评分版）
 
-> 保留当前人工初筛版本的题目与选项，仅将评分体系重构为 **12 个底层维度**。现存 **96 题**。
+> 保留当前人工初筛版本的题目与选项，仅将评分体系重构为 **12 个底层维度**。现存 **83 题**。
 
 ## 12 个底层维度
 
@@ -46,11 +46,11 @@
 
 ### A02
 
-<!-- selection: {"dimensions":["differentiation","stopLoss"],"status":"valid","semantic_group":"affection_trust_separation"} -->
+<!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"affection_trust_separation"} -->
 
 我可以一边越来越喜欢一个人，一边减少对TA的信任。
 
-**80%–90%** 〔分+3｜止+1〕　·　**60%–70%** 〔分+2｜止+1〕　·　**30%–40%** 〔分+1｜止+0〕　·　**10%–20%** 〔分+0｜止+0〕
+**80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
 ### A03
 
@@ -72,7 +72,7 @@
 
 <!-- selection: {"dimensions":["scarcity"],"status":"valid","semantic_group":"scarcity"} -->
 
-我会觉得遇到一个真正聊得来的人的机会并不常有。
+喜欢一个人时，我会担心错过TA，就再也遇不到这么合适的人。
 
 **80%–90%** 〔稀+3〕　·　**60%–70%** 〔稀+2〕　·　**30%–40%** 〔稀+1〕　·　**10%–20%** 〔稀+0〕
 
@@ -84,14 +84,6 @@
 
 **80%–90%** 〔校+0｜特+3〕　·　**60%–70%** 〔校+1｜特+2〕　·　**30%–40%** 〔校+2｜特+1〕　·　**10%–20%** 〔校+3｜特+0〕
 
-### A07
-
-<!-- selection: {"dimensions":["specialness"],"status":"valid","semantic_group":"rapid_connection"} -->
-
-我认为人与人之间是否契合，有时几次深入交流就能感觉出来。
-
-**80%–90%** 〔特+3〕　·　**60%–70%** 〔特+2〕　·　**30%–40%** 〔特+1〕　·　**10%–20%** 〔特+0〕
-
 ### A08
 
 <!-- selection: {"dimensions":["recognition","specialness"],"status":"valid","semantic_group":"exclusive_vulnerability"} -->
@@ -102,11 +94,11 @@
 
 ### A09
 
-<!-- selection: {"dimensions":["calibration","differentiation"],"status":"valid","semantic_group":"understanding_relaxes_standards"} -->
+<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"avoiding_future_disagreements"} -->
 
-当我感觉对方是真的懂我，我可以放宽一些形式上的要求。
+即使我们对未来安排有明显分歧，我也不太想谈，觉得喜欢就够了。
 
-**80%–90%** 〔校+0｜分+0〕　·　**60%–70%** 〔校+1｜分+1〕　·　**30%–40%** 〔校+2｜分+2〕　·　**10%–20%** 〔校+3｜分+3〕
+**80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
 ### A10
 
@@ -123,14 +115,6 @@
 如果有一个人平时对别人疏离，唯独愿意和我亲近，我会觉得我们不是普通关系。
 
 **80%–90%** 〔特+3〕　·　**60%–70%** 〔特+2〕　·　**30%–40%** 〔特+1〕　·　**10%–20%** 〔特+0〕
-
-### A12
-
-<!-- selection: {"dimensions":["calibration"],"status":"review","semantic_group":"relationship_imbalance"} -->
-
-我觉得关系里偶尔失衡很正常，只要这种状态不长期持续。
-
-**80%–90%** 〔校+3〕　·　**60%–70%** 〔校+2〕　·　**30%–40%** 〔校+1〕　·　**10%–20%** 〔校+0〕
 
 ### A13
 
@@ -150,11 +134,11 @@
 
 ### A15
 
-<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"giving_explanations"} -->
+<!-- selection: {"dimensions":["evidence"],"status":"valid","semantic_group":"apology_without_change"} -->
 
-如果我欣赏一个人，通常会给TA比普通人更多解释的机会。
+只要TA认真道歉，我就容易重新相信TA，不太会等着看有没有改变。
 
-**80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
+**80%–90%** 〔证+0〕　·　**60%–70%** 〔证+1〕　·　**30%–40%** 〔证+2〕　·　**10%–20%** 〔证+3〕
 
 ### A16
 
@@ -166,9 +150,9 @@
 
 ### A17
 
-<!-- selection: {"dimensions":["rationalization"],"status":"review","semantic_group":"uncertain_future"} -->
+<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"uncertain_future"} -->
 
-我可以很享受一段关系，不急着判断它最终会走到哪里。
+即使我已经想知道这段关系会不会继续，也会因为现在相处开心，拖着不去问。
 
 **80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
 
@@ -220,14 +204,6 @@
 
 **80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
-### A24
-
-<!-- selection: {"dimensions":["specialness"],"status":"review","semantic_group":"rapid_connection"} -->
-
-比起认识时间长短，我更看重两个人交流的深度。
-
-**80%–90%** 〔特+3〕　·　**60%–70%** 〔特+2〕　·　**30%–40%** 〔特+1〕　·　**10%–20%** 〔特+0〕
-
 ### A25
 
 <!-- selection: {"dimensions":["needed"],"status":"valid","semantic_group":"being_needed"} -->
@@ -254,67 +230,51 @@
 
 ### A28
 
-<!-- selection: {"dimensions":["calibration"],"status":"review","semantic_group":"trust_first_step"} -->
+<!-- selection: {"dimensions":["calibration"],"status":"valid","semantic_group":"trust_first_step"} -->
 
-我觉得信任总要有一方先迈出一步。
+即使还不太了解喜欢的人，我也愿意先把重要的事托付给TA，觉得信任总要有人先迈一步。
 
-**80%–90%** 〔校+1〕　·　**60%–70%** 〔校+1〕　·　**30%–40%** 〔校+2〕　·　**10%–20%** 〔校+3〕
+**80%–90%** 〔校+0〕　·　**60%–70%** 〔校+1〕　·　**30%–40%** 〔校+2〕　·　**10%–20%** 〔校+3〕
 
 ### A29
 
-<!-- selection: {"dimensions":["manipulation"],"status":"review","semantic_group":"motive_suspicion"} -->
+<!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"motive_suspicion"} -->
 
-在没有足够证据前，我不喜欢轻易怀疑一个人的动机。
+即使还不能确定TA是不是故意的，我也会把TA反复让我难受这件事当回事。
 
-**80%–90%** 〔操+3〕　·　**60%–70%** 〔操+2〕　·　**30%–40%** 〔操+1〕　·　**10%–20%** 〔操+0〕
-
-### A30
-
-<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"scarcity"} -->
-
-如果我觉得一段关系很难得，我会更能包容其中的不确定性。
-
-**80%–90%** 〔合+3〕　·　**60%–70%** 〔合+2〕　·　**30%–40%** 〔合+1〕　·　**10%–20%** 〔合+0〕
+**80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
 ### A31
 
-<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"initial_overinvestment"} -->
+<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"unwanted_intimacy"} -->
 
-喜欢上一个人之后，我通常不太介意自己先多做一点。
+即使不想牵手或拥抱，我也会因为怕TA失望而勉强配合。
 
 **80%–90%** 〔边+0〕　·　**60%–70%** 〔边+1〕　·　**30%–40%** 〔边+2〕　·　**10%–20%** 〔边+3〕
 
 ### A32
 
-<!-- selection: {"dimensions":["stopLoss","differentiation"],"status":"valid","semantic_group":"confirming_hard_truth"} -->
+<!-- selection: {"dimensions":["evidence"],"status":"valid","semantic_group":"confirming_hard_truth"} -->
 
 即使我很珍惜一段关系，我仍然愿意去确认那些可能让我失望的问题。
 
-**80%–90%** 〔止+3｜分+2〕　·　**60%–70%** 〔止+2｜分+2〕　·　**30%–40%** 〔止+1｜分+1〕　·　**10%–20%** 〔止+0｜分+0〕
+**80%–90%** 〔证+3〕　·　**60%–70%** 〔证+2〕　·　**30%–40%** 〔证+1〕　·　**10%–20%** 〔证+0〕
 
 ### A33
 
-<!-- selection: {"dimensions":["differentiation","boundaries"],"status":"valid","semantic_group":"help_relationship_separation"} -->
+<!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"help_relationship_separation"} -->
 
 我可以因为善意帮助一个人，并且不期待这种帮助换来亲密关系。
 
-**80%–90%** 〔分+3｜边+3〕　·　**60%–70%** 〔分+2｜边+2〕　·　**30%–40%** 〔分+1｜边+1〕　·　**10%–20%** 〔分+0｜边+0〕
+**80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
 ### A34
 
 <!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"future_justifies_imbalance"} -->
 
-当我觉得一段关系未来可能很好，我能接受当下暂时的不太对等。
+只要觉得将来会变好，即使长期都是我付出，我也会继续。
 
 **80%–90%** 〔边+0〕　·　**60%–70%** 〔边+1〕　·　**30%–40%** 〔边+2〕　·　**10%–20%** 〔边+3〕
-
-### A35
-
-<!-- selection: {"dimensions":["stopLoss"],"status":"valid","semantic_group":"ambiguous_exit"} -->
-
-只要对方没有明确拒绝，我一般不会因为一些模糊信号而较早退出。
-
-**80%–90%** 〔止+0〕　·　**60%–70%** 〔止+1〕　·　**30%–40%** 〔止+2〕　·　**10%–20%** 〔止+3〕
 
 ### A36
 
@@ -334,11 +294,11 @@
 
 ### A38
 
-<!-- selection: {"dimensions":["differentiation","stopLoss"],"status":"valid","semantic_group":"companionship_relationship_separation"} -->
+<!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"companionship_relationship_separation"} -->
 
 我可以一边接受自己很需要某个人的陪伴，一边承认TA给不了我想要的关系。
 
-**80%–90%** 〔分+3｜止+2〕　·　**60%–70%** 〔分+2｜止+2〕　·　**30%–40%** 〔分+1｜止+1〕　·　**10%–20%** 〔分+0｜止+0〕
+**80%–90%** 〔分+3〕　·　**60%–70%** 〔分+2〕　·　**30%–40%** 〔分+1〕　·　**10%–20%** 〔分+0〕
 
 ### A39
 
@@ -369,14 +329,6 @@
 过去一段时间，我曾因为不想破坏关系，把本来应该问清楚的事拖到后面。
 
 **从未** 〔合+0〕　·　**偶尔** 〔合+1〕　·　**有过几次** 〔合+2〕　·　**经常如此** 〔合+3〕
-
-### B02
-
-<!-- selection: {"dimensions":["evidence"],"status":"valid","semantic_group":"conditional_warmth"} -->
-
-过去一段时间，我发现过某个朋友只在需要帮助时明显热情。
-
-**从未** 〔证+0〕　·　**偶尔** 〔证+1〕　·　**有过几次** 〔证+2〕　·　**经常如此** 〔证+3〕
 
 ### B03
 
@@ -410,22 +362,6 @@
 
 **从未** 〔合+0〕　·　**偶尔** 〔合+1〕　·　**有过几次** 〔合+2〕　·　**经常如此** 〔合+3〕
 
-### B07
-
-<!-- selection: {"dimensions":["stopLoss"],"status":"review","semantic_group":"delaying_exit"} -->
-
-过去一段时间，我曾因为舍不得一段关系，而延后过本来想做的决定。
-
-**从未** 〔止+0〕　·　**偶尔** 〔止+1〕　·　**有过几次** 〔止+2〕　·　**经常如此** 〔止+3〕
-
-### B08
-
-<!-- selection: {"dimensions":["boundaries"],"status":"review","semantic_group":"sunk_cost"} -->
-
-过去一段时间，我曾发现自己因为帮一个人很多次，而更难降低投入。
-
-**从未** 〔边+0〕　·　**偶尔** 〔边+1〕　·　**有过几次** 〔边+2〕　·　**经常如此** 〔边+3〕
-
 ### B09
 
 <!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"broken_promises"} -->
@@ -436,25 +372,17 @@
 
 ### B10
 
-<!-- selection: {"dimensions":["needed","boundaries"],"status":"review","semantic_group":"need_driven_overresponsibility"} -->
+<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"need_driven_overresponsibility"} -->
 
-过去一段时间，我曾因为对方确实处境很难，而承担过原本不该由我承担的事。
+过去一段时间，我曾因为心疼对方的难处，勉强承担了自己已经顾不过来的事。
 
-**从未** 〔需+0｜边+0〕　·　**偶尔** 〔需+1｜边+1〕　·　**有过几次** 〔需+2｜边+2〕　·　**经常如此** 〔需+3｜边+3〕
-
-### B11
-
-<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"reducing_unequal_investment"} -->
-
-过去一段时间，我曾在一段明显不对等的关系里主动减少过投入。
-
-**从未** 〔边+0〕　·　**偶尔** 〔边+1〕　·　**有过几次** 〔边+2〕　·　**经常如此** 〔边+3〕
+**从未** 〔边+3〕　·　**偶尔** 〔边+2〕　·　**有过几次** 〔边+1〕　·　**经常如此** 〔边+0〕
 
 ### B12
 
-<!-- selection: {"dimensions":["rationalization"],"status":"review","semantic_group":"hot_cold_confusion"} -->
+<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"hot_cold_confusion"} -->
 
-过去一段时间，我曾因为一个人长期忽冷忽热而感到过困惑。
+过去一段时间，我曾因为对方偶尔很热情，就觉得TA平时的冷淡也没什么。
 
 **从未** 〔合+0〕　·　**偶尔** 〔合+1〕　·　**有过几次** 〔合+2〕　·　**经常如此** 〔合+3〕
 
@@ -506,29 +434,13 @@
 
 **从未** 〔边+3〕　·　**偶尔** 〔边+2〕　·　**有过几次** 〔边+1〕　·　**经常如此** 〔边+0〕
 
-### B19
-
-<!-- selection: {"dimensions":["stopLoss"],"status":"valid","semantic_group":"stopping_escalation"} -->
-
-过去一段时间，我曾在关系失衡后，主动停止加码。
-
-**从未** 〔止+0〕　·　**偶尔** 〔止+1〕　·　**有过几次** 〔止+2〕　·　**经常如此** 〔止+3〕
-
-### B20
-
-<!-- selection: {"dimensions":["differentiation","stopLoss"],"status":"valid","semantic_group":"care_investment_separation"} -->
-
-过去一段时间，我曾在对一个人失望之后，仍正常关心TA，却不再继续投入。
-
-**从未** 〔分+0｜止+0〕　·　**偶尔** 〔分+1｜止+1〕　·　**有过几次** 〔分+2｜止+2〕　·　**经常如此** 〔分+3｜止+3〕
-
 ### B21
 
-<!-- selection: {"dimensions":["selfCalibration","evidence"],"status":"review","semantic_group":"confirmation_bias"} -->
+<!-- selection: {"dimensions":["selfCalibration"],"status":"valid","semantic_group":"confirmation_bias"} -->
 
-过去一段时间，我曾发现过自己只愿意听取支持某段关系的意见。
+过去一段时间，别人说我喜欢的人不好时，我不太听得进去，还是更想听TA好的地方。
 
-**从未** 〔自+3｜证+3〕　·　**偶尔** 〔自+2｜证+2〕　·　**有过几次** 〔自+1｜证+1〕　·　**经常如此** 〔自+0｜证+0〕
+**从未** 〔自+3〕　·　**偶尔** 〔自+2〕　·　**有过几次** 〔自+1〕　·　**经常如此** 〔自+0〕
 
 ---
 
@@ -539,17 +451,17 @@
 
 ### C01
 
-<!-- selection: {"dimensions":["rationalization"],"status":"review","semantic_group":"excusing_distance"} -->
+<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"excusing_distance"} -->
 
-你喜欢的人最近几次取消约定，很少主动联系，说是最近太忙。你会怎么想？
+你喜欢的人最近总取消约定，也很少主动联系，说最近太忙。你会怎么想？
 
-**对方在婉拒我。** 〔合+0〕　·　**对方可能忙，也可能没兴趣，再看看。** 〔合+0〕　·　**先信TA忙，如果一直这样再重新考虑。** 〔合+1〕　·　**不愿往疏远那边想，就当TA忙。** 〔合+3〕
+**对方在婉拒我。** 〔合+0〕　·　**对方可能忙，也可能没兴趣，再看看。** 〔合+0〕　·　**先信TA忙，如果一直这样再重新考虑。** 〔合+1〕　·　**不想往疏远那边想，就当TA忙。** 〔合+3〕
 
 ### C02
 
-<!-- selection: {"dimensions":["rationalization"],"status":"review","semantic_group":"harm_minimization"} -->
+<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"harm_minimization"} -->
 
-明知道你会不舒服，喜欢的人当众拿你开玩笑，让你很难受，你会怎么想？
+知道你不喜欢被当众开玩笑，但喜欢的人还是这样做，让你很难受。你会怎么想？
 
 **都说了不舒服了，确实过分。** 〔合+0〕　·　**可能TA没有恶意，但我确实不舒服。** 〔合+0〕　·　**可能只是逗我，是我太当真了吧。** 〔合+2〕　·　**TA平时对我挺好的，这次应该也没什么。** 〔合+3〕
 
@@ -557,179 +469,163 @@
 
 <!-- selection: {"dimensions":["scarcity"],"status":"valid","semantic_group":"scarcity"} -->
 
-朋友说：“这样的人我几年都遇不到第二个。”你更觉得这更像： ？？？
+你喜欢一个人，觉得这样合适的人很难再遇到。但相处中一些问题反复出现，沟通后也没有改善。你会怎么想？
 
-**基于过往经验判断** 〔稀+0〕　·　**带有明显理想化** 〔稀+2〕　·　**受到稀缺感影响** 〔稀+3〕　·　**被当下情绪放大** 〔稀+2〕
+**这样的人太难遇到了，这些问题尽量接受。** 〔稀+3〕　·　**确实舍不得，想再试着沟通，找到解决办法。** 〔稀+1〕　·　**我仍很珍惜TA，但不因珍惜就一直接受这些问题。** 〔稀+0〕　·　**即使很难遇到，如果问题不改善，我会考虑结束关系。** 〔稀+0〕
 
 ### C04
 
 <!-- selection: {"dimensions":["evidence"],"status":"valid","semantic_group":"conditional_warmth"} -->
 
-有人只在需要帮忙时明显热情，你更倾向于理解为： ？？？
+一个人很少主动联系你，却常在需要你帮助时格外热情。你心里更接近哪种反应？
 
-**只是个人社交习惯** 〔证+0〕　·　**更像功能上的依赖** 〔证+2〕　·　**带有明显利益导向** 〔证+3〕　·　**已经出现关系失衡** 〔证+3〕
+**TA会想到我，说明我在TA心里挺重要的。** 〔证+0〕　·　**有点失落，还以为TA是真的想聊天。** 〔证+3〕　·　**没感觉，也没把TA当成多亲近的人。** 〔证+3〕　·　**挺烦的，有事才找我，这太功利了。** 〔证+3〕
 
 ### C05
 
-<!-- selection: {"dimensions":["manipulation"],"status":"review","semantic_group":"delaying_exit"} -->
+<!-- selection: {"dimensions":["stopLoss"],"status":"valid","semantic_group":"delaying_exit"} -->
 
-有人明知关系不对等却不退出，你更觉得主要是因为： ？？？
+你喜欢一个人，平时总是你主动找TA，TA很少主动，你也有点累，此时你更可能怎么做？
 
-**主要是依恋与不舍** 〔操+0〕　·　**仍在期待关系转机** 〔操+1〕　·　**已经习惯关系不对等** 〔操+2〕　·　**害怕面对真实结果** 〔操+3〕
+**谁让我喜欢TA呢，我愿意继续主动。** 〔止+1〕　·　**挺失落，先不找TA，看TA会不会主动找我。** 〔止+2〕　·　**主动这么久，放弃太可惜，我想再坚持一下。** 〔止+0〕　·　**累了，不想主动了，TA爱找不找。** 〔止+3〕
 
 ### C06
 
-<!-- selection: {"dimensions":["stopLoss"],"status":"review","semantic_group":"rapid_connection"} -->
+<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"pressure_to_commit"} -->
 
-朋友被一个很懂TA的人迅速打动，你更觉得动机更像： ？？？
+你对一个人有好感，但才认识一周。TA说想和你在一起，希望现在就有答复。你更可能怎么做？
 
-**只是正常产生好感** 〔止+0〕　·　**认为彼此确实契合** 〔止+1〕　·　**把稀缺感进一步放大** 〔止+2〕　·　**把期待投射到关系里** 〔止+3〕
+**我也喜欢TA，那就在一起试试。** 〔边+1〕　·　**还没想好，但怕TA失望，还是答应吧。** 〔边+0〕　·　**才认识一周，不能答应，告诉TA再相处一阵。** 〔边+3〕　·　**这样有点下头，我会拒绝，且不想继续了。** 〔边+3〕
 
 ### C07
 
 <!-- selection: {"dimensions":["specialness"],"status":"valid","semantic_group":"listening_interest"} -->
 
-一个人愿意听你聊很久，你更倾向于把这理解为： ？？？
+一个人愿意听你聊很久，你更倾向于把这理解为：
 
-**可能只是单纯善意** 〔特+0〕　·　**可能只是普通好感** 〔特+1〕　·　**确实有明显重视** 〔特+2〕　·　**已经有情感投入** 〔特+3〕
+**TA人挺好的，愿意听我说。** 〔特+0〕　·　**TA应该挺喜欢跟我聊天的。** 〔特+0〕　·　**TA挺在意我，不然不会愿意听我说。** 〔特+2〕　·　**TA应该喜欢我，才花很多时间陪我。** 〔特+3〕
 
 ### C08
 
 <!-- selection: {"dimensions":["calibration"],"status":"valid","semantic_group":"excusing_distance"} -->
 
-朋友说“TA只是不太会表达”，你更倾向于把这理解为： ？？？
+朋友喜欢一个人，但最近对方很少主动联系，且敷衍回复。朋友说：“TA只是不会表达。”你更倾向于怎么想？
 
-**只是表达方式不同** 〔校+0〕　·　**只是阶段性冷淡** 〔校+1〕　·　**关系本身正在降温** 〔校+2〕　·　**在替对方寻找解释** 〔校+3〕
+**有些人嘴笨，心里在意不一定说得出来。** 〔校+0〕　·　**可能最近状态不好，过阵子就好了。** 〔校+1〕　·　**TA不上心，朋友可能更在意这段关系。** 〔校+3〕　·　**朋友感觉到TA的冷淡，但舍不得这么想。** 〔校+2〕
 
 ### C09
 
-<!-- selection: {"dimensions":["evidence"],"status":"review","semantic_group":"overresponsibility"} -->
+<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"overresponsibility"} -->
 
-一个人总在别人需要时出现，你更觉得这更像： ？？？
+最近几次你帮在意的人忙，耽误了自己的事。今晚TA又来求助，但你有必须完成的事。你会怎么做？
 
-**本身比较乐于助人** 〔证+0〕　·　**对别人责任感较强** 〔证+1〕　·　**容易主动接管需求** 〔证+2〕　·　**个人投入边界较松** 〔证+3〕
+**先帮TA，我的任务晚点做，熬夜能补上。** 〔边+0〕　·　**最多帮半小时，到点就回来做自己的事。** 〔边+1〕　·　**告诉TA今晚不行，等忙完了再帮。** 〔边+2〕　·　**直接拒绝，已经因为帮TA耽误很多了。** 〔边+3〕
 
 ### C10
 
 <!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"past_hurt_boundary"} -->
 
-有人因为对方过去受过伤而反复包容，你更觉得主要是： ？？？
+你喜欢的人以前在感情里受过伤，最近几次因为小事冲你发火。你会怎么做？
 
-**只是理解对方经历** 〔边+0〕　·　**担心拒绝伤害对方** 〔边+1〕　·　**把责任感背得太重** 〔边+2〕　·　**因对方经历放松边界** 〔边+3〕
+**我忍忍，别再惹TA不高兴。** 〔边+0〕　·　**先哄好TA，之后再说我也不好受。** 〔边+2〕　·　**告诉TA心疼归心疼，不能冲我发火。** 〔边+3〕　·　**先少来往，我不想总受TA的气。** 〔边+3〕
 
 ### C11
 
-<!-- selection: {"dimensions":["boundaries"],"status":"review","semantic_group":"delaying_clarification"} -->
+<!-- selection: {"dimensions":["rationalization"],"status":"valid","semantic_group":"delaying_clarification"} -->
 
-一个人已经明显失望，却还不愿问清楚，你更觉得主要是： ？？？
+你和一个人暧昧了一段时间，TA始终不说想不想和你在一起。你有些失望，你会怎么做？
 
-**只是需要一些缓冲** 〔边+0〕　·　**主要还是害怕失去** 〔边+1〕　·　**还想等待新的转机** 〔边+2〕　·　**不愿面对明确答案** 〔边+3〕
-
-### C12
-
-<!-- selection: {"dimensions":["rationalization"],"status":"review","semantic_group":"one_sided_maintenance"} -->
-
-朋友一直主动维持一段关系，你更倾向于理解为： ？？？
-
-**本来就是主动型相处** 〔合+0〕　·　**确实很重视这段关系** 〔合+1〕　·　**已经变成单向维系** 〔合+2〕　·　**主要还是害怕失去** 〔合+3〕
+**先不问，怕一问连现在这样都没了。** 〔合+3〕　·　**再等一阵，说不定TA会主动表态。** 〔合+2〕　·　**直接问TA到底想不想在一起。** 〔合+0〕　·　**不再耗着，告诉TA不再继续暧昧。** 〔合+0〕
 
 ### C13
 
-<!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"help_relationship_upgrade"} -->
+<!-- selection: {"dimensions":["calibration","differentiation"],"status":"valid","semantic_group":"help_relationship_upgrade"} -->
 
-一个人花很多时间帮喜欢的人，你更觉得主要是：
+一个人花很多时间帮喜欢的人，你觉得最主要的原因是：
 
-**单纯向对方表达喜欢** 〔边+0〕　·　**本身习惯照顾别人** 〔边+1〕　·　**在用持续的付出维系关系** 〔边+2〕　·　**在期待付出能推动关系进展** 〔边+3〕
+**喜欢TA，想多为TA做点事。** 〔校+2｜分+2〕　·　**TA本来就热心，对别人也这样。** 〔校+3｜分+3〕　·　**怕不帮忙，彼此就没联系了。** 〔校+1｜分+0〕　·　**想对TA好，让TA也慢慢喜欢上自己。** 〔校+1｜分+1〕
 
 ### C14
 
 <!-- selection: {"dimensions":["boundaries"],"status":"valid","semantic_group":"relationship_imbalance"} -->
 
-有人说“感情不能算太清楚”，你更倾向于理解为： ？？？
+有人说：“感情不能算太清楚。”你更接近哪种想法？
 
-**更重视相处感受** 〔边+0〕　·　**能够接受关系波动** 〔边+1〕　·　**在淡化关系失衡** 〔边+2〕　·　**不愿讨论关系对等** 〔边+3〕
+**喜欢就别计较了，付出多少都没关系。** 〔边+0〕　·　**有时付出稍多没事，不用特别介意。** 〔边+2〕　·　**偶尔多付出没事，不能总是我付出。** 〔边+3〕　·　**谁也别占便宜，付出就该差不多。** 〔边+3〕
 
 ### C15
 
 <!-- selection: {"dimensions":["calibration"],"status":"valid","semantic_group":"behavior_inconsistency"} -->
 
-朋友长期被忽冷忽热，你更觉得最值得参考的是： ？？？
+朋友的恋人长期忽冷忽热，朋友不知道该不该继续。你会建议朋友先考虑什么？
 
-**自己长期真实感受** 〔校+0〕　·　**对方给出的解释** 〔校+1〕　·　**对方长期实际行为** 〔校+3〕　·　**关系最终实际结果** 〔校+2〕
+**这段关系长期让自己开心还是难受。** 〔校+3〕　·　**TA为什么这样，有无说得通的理由。** 〔校+1〕　·　**TA有没有花时间精力维持关系。** 〔校+3〕　·　**两个人是否都想认真继续这段关系。** 〔校+3〕
 
 ### C16
 
 <!-- selection: {"dimensions":["stopLoss"],"status":"valid","semantic_group":"ambiguous_exit"} -->
 
-一个人总觉得“再等等会变好”，你更觉得主要是： ？？？
+恋人几次答应多陪你，却一直没做到。你接下来会怎么做？
 
-**只是愿意耐心等待** 〔止+0〕　·　**还想继续保留希望** 〔止+1〕　·　**主要还是不舍退出** 〔止+2〕　·　**不愿面对明确结论** 〔止+3〕
+**再等等，说不定过阵子就好了。** 〔止+0〕　·　**再给一点时间，没变化就不继续了。** 〔止+2〕　·　**不再指望TA多陪我，关系先维持着。** 〔止+1〕　·　**不想继续等了，我会提出结束关系。** 〔止+3〕
 
 ### C17
 
 <!-- selection: {"dimensions":["needed"],"status":"valid","semantic_group":"being_needed"} -->
 
-有人很享受被需要的感觉，你更觉得这种满足感可能更来自：
+你在意的人经常找你帮忙，你更可能怎么想？
 
-**关系中的亲密感** 〔需+1〕　·　**被需要的价值感** 〔需+2〕　·　**照顾对方的责任感** 〔需+2〕　·　**影响局面的掌控感** 〔需+1〕
+**有事愿意找我，两个人关系更好了。** 〔需+1〕　·　**原来我对TA这么重要，感觉自己很有价值。** 〔需+3〕　·　**TA需要我，我得把TA照顾好。** 〔需+2〕　·　**能帮就帮，没什么特别的。** 〔需+0〕
 
 ### C18
 
 <!-- selection: {"dimensions":["calibration"],"status":"valid","semantic_group":"commitment_mismatch"} -->
 
-朋友说“TA对我很好，只是没法给承诺”，你更倾向于把这段关系理解为： ？？？
+朋友想和一个人谈恋爱，对方对TA很好，却不愿确定关系。你更倾向于怎么理解？
 
-**双方只是各取所需** 〔校+1〕　·　**双方真实需求错位** 〔校+2〕　·　**关系一直靠暧昧维持** 〔校+3〕　·　**主要是单方面期待** 〔校+3〕
+**对朋友这么好，应该有好感，迟早在一起。** 〔校+0〕　·　**对方可能没准备好，再相处一阵就好了。** 〔校+1〕　·　**朋友想谈，对方可能只想保持现状。** 〔校+3〕　·　**对方只想享受暧昧，不想负责。** 〔校+2〕
 
 ### C19
 
-<!-- selection: {"dimensions":["selfCalibration"],"status":"review","semantic_group":"admitting_misjudgment"} -->
+<!-- selection: {"dimensions":["selfCalibration"],"status":"valid","semantic_group":"admitting_misjudgment"} -->
 
-一个人很难承认自己看错人，你更觉得主要是因为： ？？？
+你喜欢一个人，觉得TA人很好，后来相处中却发现TA不像你想的那样。你更可能怎么想？
 
-**想维护原来的判断** 〔自+0〕　·　**情感上舍不得** 〔自+1〕　·　**已经被过去投入绑住** 〔自+2〕　·　**不断替自己合理化** 〔自+3〕
+**我应该没看错人，只是不够了解TA。** 〔自+0〕　·　**谁都有缺点，不至于说明我看错了。** 〔自+1〕　·　**可能之前太上头，没注意到这些。** 〔自+3〕　·　**看来之前确实把TA想得太好了。** 〔自+3〕
 
 ### C20
 
-<!-- selection: {"dimensions":["selfCalibration"],"status":"review","semantic_group":"external_feedback"} -->
+<!-- selection: {"dimensions":["selfCalibration"],"status":"valid","semantic_group":"external_feedback"} -->
 
-朋友说“别人不了解TA”，你更觉得这更像： ？？？
+朋友说你喜欢的人不太靠谱，但你一直觉得TA对你不错。你会怎么回应？
 
-**可能只是基于事实判断** 〔自+0〕　·　**更像一种防御反应** 〔自+1〕　·　**明显在替关系护短** 〔自+2〕　·　**正在排斥外部意见** 〔自+3〕
-
-### C21
-
-<!-- selection: {"dimensions":["differentiation"],"status":"valid","semantic_group":"affection_trust_separation"} -->
-
-一个人仍喜欢对方，却已经不再信任对方，你更倾向于理解为： ？？？
-
-**只是感情还没退去** 〔分+1〕　·　**已经把喜欢和判断分开** 〔分+3〕　·　**主要是原有信任受损** 〔分+2〕　·　**关系已经实际降级** 〔分+2〕
+**你又不了解TA，别乱说。** 〔自+0〕　·　**TA也有很多好的地方，我给你讲讲。** 〔自+1〕　·　**你为什么这么觉得？发生过什么？** 〔自+3〕　·　**可能有些事我没注意到，我会再留意。** 〔自+3〕
 
 ### C22
 
 <!-- selection: {"dimensions":["manipulation"],"status":"valid","semantic_group":"responsibility_shift"} -->
 
-如果对方做错事后反过来说“都是因为你让我没有安全感”，你更倾向怎样回应？ ？？？
+恋人背着你和别人暧昧，被发现后说：“都是因为你让我没有安全感。”你如何回应？
 
-**先判断自己的问题，淡化对方原本的行为** 〔操+0〕　·　**觉得双方都有责任，很难再单独判断那件事** 〔操+1〕　·　**听他的解释，单独判断他的行为是否合理** 〔操+2〕　·　**明确区分“为什么这样做”和“这样做是否合理”** 〔操+3〕
+**我没让你安心，以后会多关心你。** 〔操+0〕　·　**我们都有问题，这件事就别互相怪了。** 〔操+1〕　·　**缺安全感可以说，不能背着我和别人暧昧。** 〔操+3〕　·　**你跟别人暧昧，还怪我？** 〔操+3〕
 
 
 ### C23
 
 <!-- selection: {"dimensions":["manipulation"],"status":"valid","semantic_group":"care_justifies_control"} -->
 
-一个人总说：“我不是要控制你，我只是太在乎你，所以才希望你少和那些人来往。”你更倾向认为： ？？？
+恋人希望你少和朋友来往，说：“我不是要控制你，只是太在乎你。”你会怎么回应？
 
-**只是很在乎这段关系** 〔操+0〕　·　**可能缺安全感，所以可以理解** 〔操+1〕　·　**在乎是真的，但也在合理化限制行为** 〔操+2〕　·　**“在乎”不能证明合理，需单独判断是否限制对方** 〔操+3〕
+**你在乎我，我少和他们来往就是了。** 〔操+0〕　·　**可能没安全感，我先少联系他们，让你放心。** 〔操+1〕　·　**你担心什么可以说，但我不想疏远朋友。** 〔操+3〕　·　**在乎我，就可以管我和谁来往吗？** 〔操+3〕
 
 
 ### C24
 
 <!-- selection: {"dimensions":["manipulation"],"status":"valid","semantic_group":"relationship_pressure"} -->
 
-某个人在你拒绝一件事后说：“没事，你不愿意就算了，只是没想到我们关系这么好，你还这么对我。”你更倾向怎么理解？ ？？？
+朋友找你帮忙，你因有事拒绝。TA说：“没想到我们关系这么好，你还这么对我。”你会怎么回应？
 
-**只是受伤了，我应该再考虑一下** 〔操+0〕　·　**在表达失望，我可能真的有点过分** 〔操+1〕　·　**可能真的难过，但这句话会给我额外的压力** 〔操+2〕　·　**分开他的失望和我的决定，不因这种话重新判断原来回答** 〔操+3〕
+**我改下安排，还是来帮你吧。** 〔操+0〕　·　**看能不能挤点时间，尽量帮你。** 〔操+1〕　·　**这次真的没空，不是不把你当朋友。** 〔操+2〕　·　**关系好就不能拒绝吗？这次帮不了。** 〔操+3〕
 ---
 
 ## D. 元认知 / 自我校准题
@@ -765,7 +661,7 @@
 
 <!-- selection: {"dimensions":["selfCalibration"],"status":"valid","semantic_group":"experience_prediction_gap"} -->
 
-当前我对恋爱的理解，可能会和未来经历过一段关系后的理解有较大差距。
+恋爱后，我会留意实际想法与原先预想有什么不同。
 
 **80%–90%** 〔自+3〕　·　**60%–70%** 〔自+2〕　·　**30%–40%** 〔自+1〕　·　**10%–20%** 〔自+0〕
 
@@ -789,7 +685,7 @@
 
 <!-- selection: {"dimensions":["selfCalibration"],"status":"valid","semantic_group":"experience_prediction_gap"} -->
 
-如果我从没经历过某种关系，我通常会不太确定自己到时候会怎么做。
+没经历过的感情问题，我不会笃定自己一定能处理好。
 
 **80%–90%** 〔自+3〕　·　**60%–70%** 〔自+2〕　·　**30%–40%** 〔自+1〕　·　**10%–20%** 〔自+0〕
 
@@ -797,7 +693,7 @@
 
 <!-- selection: {"dimensions":["selfCalibration","boundaries"],"status":"valid","semantic_group":"planned_boundaries"} -->
 
-我会提前想清楚哪些边界即使恋爱后也不希望改变。
+我会先想好恋爱的底线，也留意自己会不会因心软而改变。
 
 **80%–90%** 〔自+3｜边+2〕　·　**60%–70%** 〔自+2｜边+2〕　·　**30%–40%** 〔自+1｜边+1〕　·　**10%–20%** 〔自+0｜边+0〕
 
@@ -821,7 +717,7 @@
 
 <!-- selection: {"dimensions":["selfCalibration"],"status":"valid","semantic_group":"survey_reality_gap"} -->
 
-我在问卷里给出的答案，应该会比真实情境中的自己更理性。
+我会提醒自己：问卷里选得理性，不代表真遇到也能做到。
 
 **80%–90%** 〔自+3〕　·　**60%–70%** 〔自+2〕　·　**30%–40%** 〔自+1〕　·　**10%–20%** 〔自+0〕
 

@@ -58,10 +58,9 @@ assert.deepEqual(questionsById.get("A01").options[0].scores, {
 });
 assert.deepEqual(questionsById.get("A02").options[0].scores, {
   differentiation: 3,
-  stopLoss: 1,
 });
 assert.deepEqual(questionsById.get("C03").options[2].scores, {
-  scarcity: 3,
+  scarcity: 0,
 });
 assert.deepEqual(questionsById.get("D08").options[0].scores, {
   selfCalibration: 3,
@@ -81,13 +80,13 @@ assert.throws(() => buildQuestionBank(markdown.replace(/<!-- selection: .+? -->/
 assert.throws(() => buildQuestionBank(markdown.replace('"dimensions":["recognition"]', '"dimensions":["needed"]')), /计分维度不一致/);
 const expandedSource = markdown + '\n### A100\n\n<!-- selection: {"dimensions":["recognition"],"status":"review","semantic_group":"test_future_id"} -->\n\n测试未来编号\n\n**甲** 〔认+3〕 · **乙** 〔认+2〕 · **丙** 〔认+1〕 · **丁** 〔认+0〕\n';
 assert.ok(buildQuestionBank(expandedSource).questions.some((q) => q.id === "A100"));
-assert.equal(questionsById.get("A29").status, "review");
-assert.equal(questionsById.get("C05").status, "review");
+assert.equal(questionsById.get("A29").status, "valid");
+assert.equal(questionsById.get("C05").status, "valid");
 const approvedQuestions = [
   [
     "A40",
     "relationship_pressure",
-    "当别人用“如果你真的在乎我，就应该……”来要求我做某件事时，我偏向清晰地保持自己的判断。",
+    "当别人用“如果你真的在乎我，就应该……”来要求我做某件事时，我能保持自己的判断。",
     [
       "80%–90%",
       "60%–70%",
@@ -104,46 +103,46 @@ const approvedQuestions = [
   [
     "C22",
     "responsibility_shift",
-    "如果对方做错事后反过来说“都是因为你让我没有安全感”，你更倾向怎样回应？",
+    "恋人背着你和别人暧昧，被发现后说：“都是因为你让我没有安全感。”你如何回应？",
     [
-      "先判断自己的问题，淡化对方原本的行为",
-      "觉得双方都有责任，很难再单独判断那件事",
-      "听他的解释，单独判断他的行为是否合理",
-      "明确区分“为什么这样做”和“这样做是否合理”"
+      "我没让你安心，以后会多关心你。",
+      "我们都有问题，这件事就别互相怪了。",
+      "缺安全感可以说，不能背着我和别人暧昧。",
+      "你跟别人暧昧，还怪我？"
     ],
     [
       0,
       1,
-      2,
+      3,
       3
     ]
   ],
   [
     "C23",
     "care_justifies_control",
-    "一个人总说：“我不是要控制你，我只是太在乎你，所以才希望你少和那些人来往。”你更倾向认为：",
+    "恋人希望你少和朋友来往，说：“我不是要控制你，只是太在乎你。”你会怎么回应？",
     [
-      "只是很在乎这段关系",
-      "可能缺安全感，所以可以理解",
-      "在乎是真的，但也在合理化限制行为",
-      "“在乎”不能证明合理，需单独判断是否限制对方"
+      "你在乎我，我少和他们来往就是了。",
+      "可能没安全感，我先少联系他们，让你放心。",
+      "你担心什么可以说，但我不想疏远朋友。",
+      "在乎我，就可以管我和谁来往吗？"
     ],
     [
       0,
       1,
-      2,
+      3,
       3
     ]
   ],
   [
     "C24",
     "relationship_pressure",
-    "某个人在你拒绝一件事后说：“没事，你不愿意就算了，我只是没想到我们关系这么好，你还是会这么对我。”你更倾向怎么理解？",
+    "朋友找你帮忙，你因有事拒绝。TA说：“没想到我们关系这么好，你还这么对我。”你会怎么回应？",
     [
-      "只是受伤了，我应该再考虑一下",
-      "在表达失望，我可能真的有点过分",
-      "可能真的难过，但这句话会给我额外的压力",
-      "分开他的失望和我的决定，不因这种话重新判断原来回答"
+      "我改下安排，还是来帮你吧。",
+      "看能不能挤点时间，尽量帮你。",
+      "这次真的没空，不是不把你当朋友。",
+      "关系好就不能拒绝吗？这次帮不了。"
     ],
     [
       0,
@@ -163,8 +162,8 @@ for (const [id, group, prompt, options, scores] of approvedQuestions) {
   assert.deepEqual(q.options.map((o) => o.text), options);
   assert.deepEqual(q.options.map((o) => o.scores), scores.map((score) => ({ manipulation: score })));
 }
-assert.equal(questionBank.questions.length, 96);
-assert.equal(questionBank.questions.filter((q) => q.status === "valid").length, 77);
-assert.equal(questionBank.questions.filter((q) => q.status === "review").length, 19);
-assert.deepEqual(Object.fromEntries(questionBank.strata.map((s) => [s.key, s.questionCount])), { A: 40, B: 21, C: 24, D: 11 });
+assert.equal(questionBank.questions.length, 83);
+assert.equal(questionBank.questions.filter((q) => q.status === "valid").length, 83);
+assert.equal(questionBank.questions.filter((q) => q.status === "review").length, 0);
+assert.deepEqual(Object.fromEntries(questionBank.strata.map((s) => [s.key, s.questionCount])), { A: 35, B: 15, C: 22, D: 11 });
 console.log("Question bank tests passed.");

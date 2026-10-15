@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "bankRevision": "6cc525e1bcfd713b42f0be72b48586f1a4f79d659666e505dbf910a2ca8c4604",
+  "bankRevision": "43f6d57ab74d25eb5968917a7eab93110e7f1436d75c0ef28cd70f7663ec598b",
   "title": "情感被骗指数测试",
   "scoringStatus": "configured",
   "dimensions": [
@@ -82,19 +82,19 @@
       "key": "A",
       "label": "程度自陈题",
       "type": "self-report",
-      "questionCount": 40
+      "questionCount": 35
     },
     {
       "key": "B",
       "label": "真实经历 / 日常行为题",
       "type": "experience",
-      "questionCount": 21
+      "questionCount": 15
     },
     {
       "key": "C",
       "label": "短投射题",
       "type": "projection",
-      "questionCount": 24
+      "questionCount": 22
     },
     {
       "key": "D",
@@ -151,8 +151,7 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "differentiation",
-        "stopLoss"
+        "differentiation"
       ],
       "status": "valid",
       "semantic_group": "affection_trust_separation",
@@ -162,32 +161,28 @@
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "differentiation": 3,
-            "stopLoss": 1
+            "differentiation": 3
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "differentiation": 2,
-            "stopLoss": 1
+            "differentiation": 2
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "differentiation": 1,
-            "stopLoss": 0
+            "differentiation": 1
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "differentiation": 0,
-            "stopLoss": 0
+            "differentiation": 0
           }
         }
       ],
@@ -291,7 +286,7 @@
       ],
       "status": "valid",
       "semantic_group": "scarcity",
-      "prompt": "我会觉得遇到一个真正聊得来的人的机会并不常有。",
+      "prompt": "喜欢一个人时，我会担心错过TA，就再也遇不到这么合适的人。",
       "options": [
         {
           "id": "A",
@@ -372,48 +367,6 @@
       "dimensionJudgement": null
     },
     {
-      "id": "A07",
-      "stratum": "A",
-      "type": "self-report",
-      "dimensions": [
-        "specialness"
-      ],
-      "status": "valid",
-      "semantic_group": "rapid_connection",
-      "prompt": "我认为人与人之间是否契合，有时几次深入交流就能感觉出来。",
-      "options": [
-        {
-          "id": "A",
-          "text": "80%–90%",
-          "scores": {
-            "specialness": 3
-          }
-        },
-        {
-          "id": "B",
-          "text": "60%–70%",
-          "scores": {
-            "specialness": 2
-          }
-        },
-        {
-          "id": "C",
-          "text": "30%–40%",
-          "scores": {
-            "specialness": 1
-          }
-        },
-        {
-          "id": "D",
-          "text": "10%–20%",
-          "scores": {
-            "specialness": 0
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
       "id": "A08",
       "stratum": "A",
       "type": "self-report",
@@ -423,7 +376,7 @@
       ],
       "status": "valid",
       "semantic_group": "exclusive_vulnerability",
-      "prompt": "如果有人平时很独立，却独愿意向我展示脆弱一面，我会非常重视这种关系。",
+      "prompt": "如果有人平时很独立，却唯独愿意向我展示脆弱一面，我会非常重视这种关系。",
       "options": [
         {
           "id": "A",
@@ -465,43 +418,38 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "calibration",
-        "differentiation"
+        "rationalization"
       ],
       "status": "valid",
-      "semantic_group": "understanding_relaxes_standards",
-      "prompt": "当我感觉对方是真的懂我，我放宽一些形式上的要求。",
+      "semantic_group": "avoiding_future_disagreements",
+      "prompt": "即使我们对未来安排有明显分歧，我也不太想谈，觉得喜欢就够了。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "calibration": 0,
-            "differentiation": 0
+            "rationalization": 3
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "calibration": 1,
-            "differentiation": 1
+            "rationalization": 2
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "calibration": 2,
-            "differentiation": 2
+            "rationalization": 1
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "calibration": 3,
-            "differentiation": 3
+            "rationalization": 0
           }
         }
       ],
@@ -597,48 +545,6 @@
       "dimensionJudgement": null
     },
     {
-      "id": "A12",
-      "stratum": "A",
-      "type": "self-report",
-      "dimensions": [
-        "calibration"
-      ],
-      "status": "review",
-      "semantic_group": "relationship_imbalance",
-      "prompt": "我觉得关系里偶尔失衡很正常，只要这种状态不长期持续。",
-      "options": [
-        {
-          "id": "A",
-          "text": "80%–90%",
-          "scores": {
-            "calibration": 3
-          }
-        },
-        {
-          "id": "B",
-          "text": "60%–70%",
-          "scores": {
-            "calibration": 2
-          }
-        },
-        {
-          "id": "C",
-          "text": "30%–40%",
-          "scores": {
-            "calibration": 1
-          }
-        },
-        {
-          "id": "D",
-          "text": "10%–20%",
-          "scores": {
-            "calibration": 0
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
       "id": "A13",
       "stratum": "A",
       "type": "self-report",
@@ -727,38 +633,38 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "rationalization"
+        "evidence"
       ],
       "status": "valid",
-      "semantic_group": "giving_explanations",
-      "prompt": "如果我欣赏一个人，通常会给TA比普通人更多解释的机会。",
+      "semantic_group": "apology_without_change",
+      "prompt": "只要TA认真道歉，我就容易重新相信TA，不太会等着看有没有改变。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "rationalization": 3
+            "evidence": 0
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "rationalization": 2
+            "evidence": 1
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "rationalization": 1
+            "evidence": 2
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "rationalization": 0
+            "evidence": 3
           }
         }
       ],
@@ -813,9 +719,9 @@
       "dimensions": [
         "rationalization"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "uncertain_future",
-      "prompt": "我可以很享受一段关系，不急着判断它最终会走到哪里。",
+      "prompt": "即使我已经想知道这段关系会不会继续，也会因为现在相处开心，拖着不去问。",
       "options": [
         {
           "id": "A",
@@ -904,7 +810,7 @@
       ],
       "status": "valid",
       "semantic_group": "affinity_excusing_discomfort",
-      "prompt": "如果一个人总能说到我心里，我可以TA身上一些让我不舒服的地方。",
+      "prompt": "如果一个人总能说到我心里，我可以忽略TA身上的一些让我不舒服的地方。",
       "options": [
         {
           "id": "A",
@@ -1106,48 +1012,6 @@
       "dimensionJudgement": null
     },
     {
-      "id": "A24",
-      "stratum": "A",
-      "type": "self-report",
-      "dimensions": [
-        "specialness"
-      ],
-      "status": "review",
-      "semantic_group": "rapid_connection",
-      "prompt": "比起认识时间长短，我更看重两个人交流的深度。",
-      "options": [
-        {
-          "id": "A",
-          "text": "80%–90%",
-          "scores": {
-            "specialness": 3
-          }
-        },
-        {
-          "id": "B",
-          "text": "60%–70%",
-          "scores": {
-            "specialness": 2
-          }
-        },
-        {
-          "id": "C",
-          "text": "30%–40%",
-          "scores": {
-            "specialness": 1
-          }
-        },
-        {
-          "id": "D",
-          "text": "10%–20%",
-          "scores": {
-            "specialness": 0
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
       "id": "A25",
       "stratum": "A",
       "type": "self-report",
@@ -1285,15 +1149,15 @@
       "dimensions": [
         "calibration"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "trust_first_step",
-      "prompt": "我觉得信任总要有一方先迈出一步。",
+      "prompt": "即使还不太了解喜欢的人，我也愿意先把重要的事托付给TA，觉得信任总要有人先迈一步。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "calibration": 1
+            "calibration": 0
           }
         },
         {
@@ -1325,80 +1189,38 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "manipulation"
-      ],
-      "status": "review",
-      "semantic_group": "motive_suspicion",
-      "prompt": "在没有足够证据前，我不喜欢轻易怀疑一个人的动机。",
-      "options": [
-        {
-          "id": "A",
-          "text": "80%–90%",
-          "scores": {
-            "manipulation": 3
-          }
-        },
-        {
-          "id": "B",
-          "text": "60%–70%",
-          "scores": {
-            "manipulation": 2
-          }
-        },
-        {
-          "id": "C",
-          "text": "30%–40%",
-          "scores": {
-            "manipulation": 1
-          }
-        },
-        {
-          "id": "D",
-          "text": "10%–20%",
-          "scores": {
-            "manipulation": 0
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "A30",
-      "stratum": "A",
-      "type": "self-report",
-      "dimensions": [
-        "rationalization"
+        "differentiation"
       ],
       "status": "valid",
-      "semantic_group": "scarcity",
-      "prompt": "如果我觉得一段关系很难得，我会更包容其中的不确定性。",
+      "semantic_group": "motive_suspicion",
+      "prompt": "即使还不能确定TA是不是故意的，我也会把TA反复让我难受这件事当回事。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "rationalization": 3
+            "differentiation": 3
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "rationalization": 2
+            "differentiation": 2
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "rationalization": 1
+            "differentiation": 1
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "rationalization": 0
+            "differentiation": 0
           }
         }
       ],
@@ -1412,8 +1234,8 @@
         "boundaries"
       ],
       "status": "valid",
-      "semantic_group": "initial_overinvestment",
-      "prompt": "喜欢一个人以后，我通常不太介意自己先多做一点。",
+      "semantic_group": "unwanted_intimacy",
+      "prompt": "即使不想牵手或拥抱，我也会因为怕TA失望而勉强配合。",
       "options": [
         {
           "id": "A",
@@ -1451,8 +1273,7 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "stopLoss",
-        "differentiation"
+        "evidence"
       ],
       "status": "valid",
       "semantic_group": "confirming_hard_truth",
@@ -1462,32 +1283,28 @@
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "stopLoss": 3,
-            "differentiation": 2
+            "evidence": 3
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "stopLoss": 2,
-            "differentiation": 2
+            "evidence": 2
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "stopLoss": 1,
-            "differentiation": 1
+            "evidence": 1
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "stopLoss": 0,
-            "differentiation": 0
+            "evidence": 0
           }
         }
       ],
@@ -1498,43 +1315,38 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "differentiation",
-        "boundaries"
+        "differentiation"
       ],
       "status": "valid",
       "semantic_group": "help_relationship_separation",
-      "prompt": "我可以因为善意帮助一个人，而不期待这种帮助换来亲密关系。",
+      "prompt": "我可以因为善意帮助一个人，并且不期待这种帮助换来亲密关系。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "differentiation": 3,
-            "boundaries": 3
+            "differentiation": 3
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "differentiation": 2,
-            "boundaries": 2
+            "differentiation": 2
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "differentiation": 1,
-            "boundaries": 1
+            "differentiation": 1
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "differentiation": 0,
-            "boundaries": 0
+            "differentiation": 0
           }
         }
       ],
@@ -1549,7 +1361,7 @@
       ],
       "status": "valid",
       "semantic_group": "future_justifies_imbalance",
-      "prompt": "如果我觉得一段关系未来可能很好，我可以接受现在暂时不太对等。",
+      "prompt": "只要觉得将来会变好，即使长期都是我付出，我也会继续。",
       "options": [
         {
           "id": "A",
@@ -1577,48 +1389,6 @@
           "text": "10%–20%",
           "scores": {
             "boundaries": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "A35",
-      "stratum": "A",
-      "type": "self-report",
-      "dimensions": [
-        "stopLoss"
-      ],
-      "status": "valid",
-      "semantic_group": "ambiguous_exit",
-      "prompt": "只要对方没有明确拒绝，我一般不会因为一些模糊信号太早退出。",
-      "options": [
-        {
-          "id": "A",
-          "text": "80%–90%",
-          "scores": {
-            "stopLoss": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "60%–70%",
-          "scores": {
-            "stopLoss": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "30%–40%",
-          "scores": {
-            "stopLoss": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "10%–20%",
-          "scores": {
-            "stopLoss": 3
           }
         }
       ],
@@ -1634,7 +1404,7 @@
       ],
       "status": "valid",
       "semantic_group": "expectation_reality_gap",
-      "prompt": "如果我发现自己喜欢的是“这段关系可能成为的样子”，我会不留情地重新看它现在实际是什么样。",
+      "prompt": "当发现我喜欢的其实是“这段关系可能成为的样子”，我会不留情地重新审视它实际的样子。",
       "options": [
         {
           "id": "A",
@@ -1680,7 +1450,7 @@
       ],
       "status": "valid",
       "semantic_group": "one_sided_maintenance",
-      "prompt": "如果我发现一段关系主要靠自己刻意的付出来维持，我会重新判断这段关系本身还剩下什么。",
+      "prompt": "当我发现一段关系主要靠自己刻意付出来维持，我会重新审视这段关系。",
       "options": [
         {
           "id": "A",
@@ -1718,43 +1488,38 @@
       "stratum": "A",
       "type": "self-report",
       "dimensions": [
-        "differentiation",
-        "stopLoss"
+        "differentiation"
       ],
       "status": "valid",
       "semantic_group": "companionship_relationship_separation",
-      "prompt": "我可以很需要一个人的陪伴，同时承认TA给不了我想要的关系。",
+      "prompt": "我可以一边接受自己很需要某个人的陪伴，一边承认TA给不了我想要的关系。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "differentiation": 3,
-            "stopLoss": 2
+            "differentiation": 3
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "differentiation": 2,
-            "stopLoss": 2
+            "differentiation": 2
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "differentiation": 1,
-            "stopLoss": 1
+            "differentiation": 1
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "differentiation": 0,
-            "stopLoss": 0
+            "differentiation": 0
           }
         }
       ],
@@ -1769,7 +1534,7 @@
       ],
       "status": "valid",
       "semantic_group": "exit_despite_attachment",
-      "prompt": "即使我仍然舍不得一段关系，我也能先停止继续投入。",
+      "prompt": "即使我舍不得某段关系，我也能先停止继续向其投入精力。",
       "options": [
         {
           "id": "A",
@@ -1811,7 +1576,7 @@
       ],
       "status": "valid",
       "semantic_group": "relationship_pressure",
-      "prompt": "当别人用“如果你真的在乎我，就应该……”来要求我做某件事时，我偏向清晰地保持自己的判断。",
+      "prompt": "当别人用“如果你真的在乎我，就应该……”来要求我做某件事时，我能保持自己的判断。",
       "options": [
         {
           "id": "A",
@@ -1853,7 +1618,7 @@
       ],
       "status": "valid",
       "semantic_group": "delaying_clarification",
-      "prompt": "过去一年里，我因为不想破坏关系，把本来想问清楚的事拖到后面。",
+      "prompt": "过去一段时间，我曾因为不想破坏关系，把本来应该问清楚的事拖到后面。",
       "options": [
         {
           "id": "A",
@@ -1887,48 +1652,6 @@
       "dimensionJudgement": null
     },
     {
-      "id": "B02",
-      "stratum": "B",
-      "type": "experience",
-      "dimensions": [
-        "evidence"
-      ],
-      "status": "valid",
-      "semantic_group": "conditional_warmth",
-      "prompt": "过去一年里，我发现过某个朋友只在需要帮助时明显热情。",
-      "options": [
-        {
-          "id": "A",
-          "text": "从未",
-          "scores": {
-            "evidence": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "偶尔",
-          "scores": {
-            "evidence": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "有过几次",
-          "scores": {
-            "evidence": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "经常如此",
-          "scores": {
-            "evidence": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
       "id": "B03",
       "stratum": "B",
       "type": "experience",
@@ -1938,7 +1661,7 @@
       ],
       "status": "valid",
       "semantic_group": "relationship_imbalance",
-      "prompt": "过去一年里，我在明知关系不太对等时，仍继续维持过原来的投入。",
+      "prompt": "过去一段时间，我曾在明知关系不太对等时，仍继续维持原来的投入。",
       "options": [
         {
           "id": "A",
@@ -1984,7 +1707,7 @@
       ],
       "status": "valid",
       "semantic_group": "being_understood",
-      "prompt": "过去一年里，我因为别人很懂我，而很快把TA当成特别的人。",
+      "prompt": "过去一段时间，我曾因为别人很懂我，而很快把TA当成特别的人。",
       "options": [
         {
           "id": "A",
@@ -2026,7 +1749,7 @@
       ],
       "status": "valid",
       "semantic_group": "private_disclosure_trust",
-      "prompt": "过去一年里，我因为别人向我倾诉很多，而明显提高过对TA的信任。",
+      "prompt": "过去一段时间，我曾因为别人向我倾诉很多，而明显提高对TA的信任。",
       "options": [
         {
           "id": "A",
@@ -2068,7 +1791,7 @@
       ],
       "status": "valid",
       "semantic_group": "giving_explanations",
-      "prompt": "过去一年里，我替一个反复让我失望的人找过不少理由。",
+      "prompt": "过去一段时间，我曾替一个反复让我失望的人找过不少理由。",
       "options": [
         {
           "id": "A",
@@ -2102,90 +1825,6 @@
       "dimensionJudgement": null
     },
     {
-      "id": "B07",
-      "stratum": "B",
-      "type": "experience",
-      "dimensions": [
-        "stopLoss"
-      ],
-      "status": "review",
-      "semantic_group": "delaying_exit",
-      "prompt": "过去一年里，我因为舍不得一段关系，而延后过本来想做的决定。",
-      "options": [
-        {
-          "id": "A",
-          "text": "从未",
-          "scores": {
-            "stopLoss": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "偶尔",
-          "scores": {
-            "stopLoss": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "有过几次",
-          "scores": {
-            "stopLoss": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "经常如此",
-          "scores": {
-            "stopLoss": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "B08",
-      "stratum": "B",
-      "type": "experience",
-      "dimensions": [
-        "boundaries"
-      ],
-      "status": "review",
-      "semantic_group": "sunk_cost",
-      "prompt": "过去一年里，我在帮一个人很多之后，发现自己更难降低投入。",
-      "options": [
-        {
-          "id": "A",
-          "text": "从未",
-          "scores": {
-            "boundaries": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "偶尔",
-          "scores": {
-            "boundaries": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "有过几次",
-          "scores": {
-            "boundaries": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "经常如此",
-          "scores": {
-            "boundaries": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
       "id": "B09",
       "stratum": "B",
       "type": "experience",
@@ -2194,7 +1833,7 @@
       ],
       "status": "valid",
       "semantic_group": "broken_promises",
-      "prompt": "过去一年里，我在对方反复失约后，仍按原来的方式继续主动。",
+      "prompt": "过去一段时间，我有过在对方反复失约后，依旧继续主动的经历。",
       "options": [
         {
           "id": "A",
@@ -2232,85 +1871,38 @@
       "stratum": "B",
       "type": "experience",
       "dimensions": [
-        "needed",
-        "boundaries"
-      ],
-      "status": "review",
-      "semantic_group": "need_driven_overresponsibility",
-      "prompt": "过去一年里，我因为对方确实处境很难，而承担过原本不该长期由我承担的事。",
-      "options": [
-        {
-          "id": "A",
-          "text": "从未",
-          "scores": {
-            "needed": 0,
-            "boundaries": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "偶尔",
-          "scores": {
-            "needed": 1,
-            "boundaries": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "有过几次",
-          "scores": {
-            "needed": 2,
-            "boundaries": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "经常如此",
-          "scores": {
-            "needed": 3,
-            "boundaries": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "B11",
-      "stratum": "B",
-      "type": "experience",
-      "dimensions": [
         "boundaries"
       ],
       "status": "valid",
-      "semantic_group": "reducing_unequal_investment",
-      "prompt": "过去一年里，我在一段明显不对等的关系里主动减少过投入。",
+      "semantic_group": "need_driven_overresponsibility",
+      "prompt": "过去一段时间，我曾因为心疼对方的难处，勉强承担了自己已经顾不过来的事。",
       "options": [
         {
           "id": "A",
           "text": "从未",
           "scores": {
-            "boundaries": 0
+            "boundaries": 3
           }
         },
         {
           "id": "B",
           "text": "偶尔",
           "scores": {
-            "boundaries": 1
+            "boundaries": 2
           }
         },
         {
           "id": "C",
           "text": "有过几次",
           "scores": {
-            "boundaries": 2
+            "boundaries": 1
           }
         },
         {
           "id": "D",
           "text": "经常如此",
           "scores": {
-            "boundaries": 3
+            "boundaries": 0
           }
         }
       ],
@@ -2323,9 +1915,9 @@
       "dimensions": [
         "rationalization"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "hot_cold_confusion",
-      "prompt": "过去一年里，我因为一个人长期忽冷忽热而感到过困惑。",
+      "prompt": "过去一段时间，我曾因为对方偶尔很热情，就觉得TA平时的冷淡也没什么。",
       "options": [
         {
           "id": "A",
@@ -2367,7 +1959,7 @@
       ],
       "status": "valid",
       "semantic_group": "excusing_distance",
-      "prompt": "过去一年里，我用 “TA最近可能很忙” 解释过持续一段时间的冷淡。",
+      "prompt": "过去一段时间，我曾用 “TA最近可能很忙” 解释过持续一段时间的冷淡。",
       "options": [
         {
           "id": "A",
@@ -2409,7 +2001,7 @@
       ],
       "status": "valid",
       "semantic_group": "being_recognized",
-      "prompt": "过去一年里，我因为别人认可了自己很少被看到的一面，而很快与TA亲近起来。",
+      "prompt": "过去一段时间，我曾因为有人认可了自己很少被看到的一面，而很快与TA亲近起来。",
       "options": [
         {
           "id": "A",
@@ -2451,7 +2043,7 @@
       ],
       "status": "valid",
       "semantic_group": "sunk_cost",
-      "prompt": "过去一年里，我因为已经投入很多，而不愿承认某段关系可能没有结果。",
+      "prompt": "过去一段时间，我曾因已经投入很多，不愿面对某段关系可能没有结果。",
       "options": [
         {
           "id": "A",
@@ -2493,34 +2085,34 @@
       ],
       "status": "valid",
       "semantic_group": "help_relationship_separation",
-      "prompt": "过去一年里，我帮助一个人很多，但没有把这种帮助当成关系升级。",
+      "prompt": "过去一段时间，我曾有过帮助一个人很多，而把这种帮助当成关系升级。",
       "options": [
         {
           "id": "A",
           "text": "从未",
           "scores": {
-            "differentiation": 0
+            "differentiation": 3
           }
         },
         {
           "id": "B",
           "text": "偶尔",
           "scores": {
-            "differentiation": 1
+            "differentiation": 2
           }
         },
         {
           "id": "C",
           "text": "有过几次",
           "scores": {
-            "differentiation": 2
+            "differentiation": 1
           }
         },
         {
           "id": "D",
           "text": "经常如此",
           "scores": {
-            "differentiation": 3
+            "differentiation": 0
           }
         }
       ],
@@ -2535,7 +2127,7 @@
       ],
       "status": "valid",
       "semantic_group": "behavior_inconsistency",
-      "prompt": "过去一年里，我因为一个人说得很真诚，而忽略过TA长期行为里的不一致。",
+      "prompt": "过去一段时间，我曾因为一个人说得很真诚，而忽略过TA长期的言行不一。",
       "options": [
         {
           "id": "A",
@@ -2577,7 +2169,7 @@
       ],
       "status": "valid",
       "semantic_group": "boundary_request",
-      "prompt": "过去一年里，我因为怕显得冷漠，而答应过自己其实不太想答应的请求。",
+      "prompt": "过去一段时间，我曾因为不想显得冷漠，而答应过其实不太想答应的请求。",
       "options": [
         {
           "id": "A",
@@ -2611,136 +2203,42 @@
       "dimensionJudgement": null
     },
     {
-      "id": "B19",
-      "stratum": "B",
-      "type": "experience",
-      "dimensions": [
-        "stopLoss"
-      ],
-      "status": "valid",
-      "semantic_group": "stopping_escalation",
-      "prompt": "过去一年里，我在关系失衡后主动停止过继续加码。",
-      "options": [
-        {
-          "id": "A",
-          "text": "从未",
-          "scores": {
-            "stopLoss": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "偶尔",
-          "scores": {
-            "stopLoss": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "有过几次",
-          "scores": {
-            "stopLoss": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "经常如此",
-          "scores": {
-            "stopLoss": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "B20",
-      "stratum": "B",
-      "type": "experience",
-      "dimensions": [
-        "differentiation",
-        "stopLoss"
-      ],
-      "status": "valid",
-      "semantic_group": "care_investment_separation",
-      "prompt": "过去一年里，我在对一个人失望后，仍能正常关心TA，但不再继续投入。",
-      "options": [
-        {
-          "id": "A",
-          "text": "从未",
-          "scores": {
-            "differentiation": 0,
-            "stopLoss": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "偶尔",
-          "scores": {
-            "differentiation": 1,
-            "stopLoss": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "有过几次",
-          "scores": {
-            "differentiation": 2,
-            "stopLoss": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "经常如此",
-          "scores": {
-            "differentiation": 3,
-            "stopLoss": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
       "id": "B21",
       "stratum": "B",
       "type": "experience",
       "dimensions": [
-        "selfCalibration",
-        "evidence"
+        "selfCalibration"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "confirmation_bias",
-      "prompt": "过去一年里，我发现过自己只愿意听支持某段关系的意见。",
+      "prompt": "过去一段时间，别人说我喜欢的人不好时，我不太听得进去，还是更想听TA好的地方。",
       "options": [
         {
           "id": "A",
           "text": "从未",
           "scores": {
-            "selfCalibration": 3,
-            "evidence": 3
+            "selfCalibration": 3
           }
         },
         {
           "id": "B",
           "text": "偶尔",
           "scores": {
-            "selfCalibration": 2,
-            "evidence": 2
+            "selfCalibration": 2
           }
         },
         {
           "id": "C",
           "text": "有过几次",
           "scores": {
-            "selfCalibration": 1,
-            "evidence": 1
+            "selfCalibration": 1
           }
         },
         {
           "id": "D",
           "text": "经常如此",
           "scores": {
-            "selfCalibration": 0,
-            "evidence": 0
+            "selfCalibration": 0
           }
         }
       ],
@@ -2753,36 +2251,36 @@
       "dimensions": [
         "rationalization"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "excusing_distance",
-      "prompt": "朋友说：“TA只是最近太忙。”你更倾向于把这理解为：",
+      "prompt": "你喜欢的人最近总取消约定，也很少主动联系，说最近太忙。你会怎么想？",
       "options": [
         {
           "id": "A",
-          "text": "基本可以相信",
+          "text": "对方在婉拒我。",
           "scores": {
             "rationalization": 0
           }
         },
         {
           "id": "B",
-          "text": "暂时可以相信",
+          "text": "对方可能忙，也可能没兴趣，再看看。",
+          "scores": {
+            "rationalization": 0
+          }
+        },
+        {
+          "id": "C",
+          "text": "先信TA忙，如果一直这样再重新考虑。",
           "scores": {
             "rationalization": 1
           }
         },
         {
-          "id": "C",
-          "text": "更像自我安慰",
+          "id": "D",
+          "text": "不想往疏远那边想，就当TA忙。",
           "scores": {
             "rationalization": 3
-          }
-        },
-        {
-          "id": "D",
-          "text": "目前依据不足",
-          "scores": {
-            "rationalization": 2
           }
         }
       ],
@@ -2795,34 +2293,34 @@
       "dimensions": [
         "rationalization"
       ],
-      "status": "review",
-      "semantic_group": "giving_explanations",
-      "prompt": "一个人总替喜欢的人找理由，你更觉得主要是因为：",
+      "status": "valid",
+      "semantic_group": "harm_minimization",
+      "prompt": "知道你不喜欢被当众开玩笑，但喜欢的人还是这样做，让你很难受。你会怎么想？",
       "options": [
         {
           "id": "A",
-          "text": "出于善意理解",
+          "text": "都说了不舒服了，确实过分。",
           "scores": {
             "rationalization": 0
           }
         },
         {
           "id": "B",
-          "text": "因为过于在意",
+          "text": "可能TA没有恶意，但我确实不舒服。",
           "scores": {
-            "rationalization": 1
+            "rationalization": 0
           }
         },
         {
           "id": "C",
-          "text": "接近无条件信任",
+          "text": "可能只是逗我，是我太当真了吧。",
           "scores": {
             "rationalization": 2
           }
         },
         {
           "id": "D",
-          "text": "有些回避现实",
+          "text": "TA平时对我挺好的，这次应该也没什么。",
           "scores": {
             "rationalization": 3
           }
@@ -2839,34 +2337,34 @@
       ],
       "status": "valid",
       "semantic_group": "scarcity",
-      "prompt": "朋友说：“这种人我几年都遇不到第二个。”你更觉得这更像：",
+      "prompt": "你喜欢一个人，觉得这样合适的人很难再遇到。但相处中一些问题反复出现，沟通后也没有改善。你会怎么想？",
       "options": [
         {
           "id": "A",
-          "text": "基于过往经验判断",
-          "scores": {
-            "scarcity": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "带有明显理想化",
-          "scores": {
-            "scarcity": 2
-          }
-        },
-        {
-          "id": "C",
-          "text": "受到稀缺感影响",
+          "text": "这样的人太难遇到了，这些问题尽量接受。",
           "scores": {
             "scarcity": 3
           }
         },
         {
-          "id": "D",
-          "text": "被当下情绪放大",
+          "id": "B",
+          "text": "确实舍不得，想再试着沟通，找到解决办法。",
           "scores": {
-            "scarcity": 2
+            "scarcity": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "我仍很珍惜TA，但不因珍惜就一直接受这些问题。",
+          "scores": {
+            "scarcity": 0
+          }
+        },
+        {
+          "id": "D",
+          "text": "即使很难遇到，如果问题不改善，我会考虑结束关系。",
+          "scores": {
+            "scarcity": 0
           }
         }
       ],
@@ -2881,32 +2379,32 @@
       ],
       "status": "valid",
       "semantic_group": "conditional_warmth",
-      "prompt": "有人只在需要帮忙时明显热情，你更倾向于理解为：",
+      "prompt": "一个人很少主动联系你，却常在需要你帮助时格外热情。你心里更接近哪种反应？",
       "options": [
         {
           "id": "A",
-          "text": "只是个人社交习惯",
+          "text": "TA会想到我，说明我在TA心里挺重要的。",
           "scores": {
             "evidence": 0
           }
         },
         {
           "id": "B",
-          "text": "更像功能上的依赖",
+          "text": "有点失落，还以为TA是真的想聊天。",
           "scores": {
-            "evidence": 2
+            "evidence": 3
           }
         },
         {
           "id": "C",
-          "text": "带有明显利益导向",
+          "text": "没感觉，也没把TA当成多亲近的人。",
           "scores": {
             "evidence": 3
           }
         },
         {
           "id": "D",
-          "text": "已经出现关系失衡",
+          "text": "挺烦的，有事才找我，这太功利了。",
           "scores": {
             "evidence": 3
           }
@@ -2919,38 +2417,38 @@
       "stratum": "C",
       "type": "projection",
       "dimensions": [
-        "manipulation"
+        "stopLoss"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "delaying_exit",
-      "prompt": "有人明知关系不对等却不退出，你更觉得主要是因为：",
+      "prompt": "你喜欢一个人，平时总是你主动找TA，TA很少主动，你也有点累，此时你更可能怎么做？",
       "options": [
         {
           "id": "A",
-          "text": "主要是依恋与不舍",
+          "text": "谁让我喜欢TA呢，我愿意继续主动。",
           "scores": {
-            "manipulation": 0
+            "stopLoss": 1
           }
         },
         {
           "id": "B",
-          "text": "仍在期待关系转机",
+          "text": "挺失落，先不找TA，看TA会不会主动找我。",
           "scores": {
-            "manipulation": 1
+            "stopLoss": 2
           }
         },
         {
           "id": "C",
-          "text": "已经习惯关系不对等",
+          "text": "主动这么久，放弃太可惜，我想再坚持一下。",
           "scores": {
-            "manipulation": 2
+            "stopLoss": 0
           }
         },
         {
           "id": "D",
-          "text": "害怕面对真实结果",
+          "text": "累了，不想主动了，TA爱找不找。",
           "scores": {
-            "manipulation": 3
+            "stopLoss": 3
           }
         }
       ],
@@ -2961,38 +2459,38 @@
       "stratum": "C",
       "type": "projection",
       "dimensions": [
-        "stopLoss"
+        "boundaries"
       ],
-      "status": "review",
-      "semantic_group": "rapid_connection",
-      "prompt": "朋友被一个很懂TA的人迅速打动，你更觉得动机更像：",
+      "status": "valid",
+      "semantic_group": "pressure_to_commit",
+      "prompt": "你对一个人有好感，但才认识一周。TA说想和你在一起，希望现在就有答复。你更可能怎么做？",
       "options": [
         {
           "id": "A",
-          "text": "只是正常产生好感",
+          "text": "我也喜欢TA，那就在一起试试。",
           "scores": {
-            "stopLoss": 0
+            "boundaries": 1
           }
         },
         {
           "id": "B",
-          "text": "认为彼此确实契合",
+          "text": "还没想好，但怕TA失望，还是答应吧。",
           "scores": {
-            "stopLoss": 1
+            "boundaries": 0
           }
         },
         {
           "id": "C",
-          "text": "把稀缺感进一步放大",
+          "text": "才认识一周，不能答应，告诉TA再相处一阵。",
           "scores": {
-            "stopLoss": 2
+            "boundaries": 3
           }
         },
         {
           "id": "D",
-          "text": "把期待投射到关系里",
+          "text": "这样有点下头，我会拒绝，且不想继续了。",
           "scores": {
-            "stopLoss": 3
+            "boundaries": 3
           }
         }
       ],
@@ -3011,28 +2509,28 @@
       "options": [
         {
           "id": "A",
-          "text": "可能只是单纯善意",
+          "text": "TA人挺好的，愿意听我说。",
           "scores": {
             "specialness": 0
           }
         },
         {
           "id": "B",
-          "text": "可能只是普通好感",
+          "text": "TA应该挺喜欢跟我聊天的。",
           "scores": {
-            "specialness": 1
+            "specialness": 0
           }
         },
         {
           "id": "C",
-          "text": "确实有明显重视",
+          "text": "TA挺在意我，不然不会愿意听我说。",
           "scores": {
             "specialness": 2
           }
         },
         {
           "id": "D",
-          "text": "已经有情感投入",
+          "text": "TA应该喜欢我，才花很多时间陪我。",
           "scores": {
             "specialness": 3
           }
@@ -3049,34 +2547,34 @@
       ],
       "status": "valid",
       "semantic_group": "excusing_distance",
-      "prompt": "朋友说“TA只是不太会表达”，你更倾向于把这理解为：",
+      "prompt": "朋友喜欢一个人，但最近对方很少主动联系，且敷衍回复。朋友说：“TA只是不会表达。”你更倾向于怎么想？",
       "options": [
         {
           "id": "A",
-          "text": "只是表达方式不同",
+          "text": "有些人嘴笨，心里在意不一定说得出来。",
           "scores": {
             "calibration": 0
           }
         },
         {
           "id": "B",
-          "text": "只是阶段性冷淡",
+          "text": "可能最近状态不好，过阵子就好了。",
           "scores": {
             "calibration": 1
           }
         },
         {
           "id": "C",
-          "text": "关系本身正在降温",
+          "text": "TA不上心，朋友可能更在意这段关系。",
           "scores": {
-            "calibration": 2
+            "calibration": 3
           }
         },
         {
           "id": "D",
-          "text": "在替对方寻找解释",
+          "text": "朋友感觉到TA的冷淡，但舍不得这么想。",
           "scores": {
-            "calibration": 3
+            "calibration": 2
           }
         }
       ],
@@ -3087,38 +2585,38 @@
       "stratum": "C",
       "type": "projection",
       "dimensions": [
-        "evidence"
+        "boundaries"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "overresponsibility",
-      "prompt": "一个人总在别人需要时出现，你更觉得这更像：",
+      "prompt": "最近几次你帮在意的人忙，耽误了自己的事。今晚TA又来求助，但你有必须完成的事。你会怎么做？",
       "options": [
         {
           "id": "A",
-          "text": "本身比较乐于助人",
+          "text": "先帮TA，我的任务晚点做，熬夜能补上。",
           "scores": {
-            "evidence": 0
+            "boundaries": 0
           }
         },
         {
           "id": "B",
-          "text": "对别人责任感较强",
+          "text": "最多帮半小时，到点就回来做自己的事。",
           "scores": {
-            "evidence": 1
+            "boundaries": 1
           }
         },
         {
           "id": "C",
-          "text": "容易主动接管需求",
+          "text": "告诉TA今晚不行，等忙完了再帮。",
           "scores": {
-            "evidence": 2
+            "boundaries": 2
           }
         },
         {
           "id": "D",
-          "text": "个人投入边界较松",
+          "text": "直接拒绝，已经因为帮TA耽误很多了。",
           "scores": {
-            "evidence": 3
+            "boundaries": 3
           }
         }
       ],
@@ -3133,32 +2631,32 @@
       ],
       "status": "valid",
       "semantic_group": "past_hurt_boundary",
-      "prompt": "有人因为对方过去受过伤而反复包容，你更觉得主要是：",
+      "prompt": "你喜欢的人以前在感情里受过伤，最近几次因为小事冲你发火。你会怎么做？",
       "options": [
         {
           "id": "A",
-          "text": "只是理解对方经历",
+          "text": "我忍忍，别再惹TA不高兴。",
           "scores": {
             "boundaries": 0
           }
         },
         {
           "id": "B",
-          "text": "担心拒绝伤害对方",
-          "scores": {
-            "boundaries": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "把责任感背得太重",
+          "text": "先哄好TA，之后再说我也不好受。",
           "scores": {
             "boundaries": 2
           }
         },
         {
+          "id": "C",
+          "text": "告诉TA心疼归心疼，不能冲我发火。",
+          "scores": {
+            "boundaries": 3
+          }
+        },
+        {
           "id": "D",
-          "text": "因对方经历放松边界",
+          "text": "先少来往，我不想总受TA的气。",
           "scores": {
             "boundaries": 3
           }
@@ -3171,80 +2669,38 @@
       "stratum": "C",
       "type": "projection",
       "dimensions": [
-        "boundaries"
-      ],
-      "status": "review",
-      "semantic_group": "delaying_clarification",
-      "prompt": "一个人已经明显失望，却还不愿问清楚，你更觉得主要是：",
-      "options": [
-        {
-          "id": "A",
-          "text": "只是需要一些缓冲",
-          "scores": {
-            "boundaries": 0
-          }
-        },
-        {
-          "id": "B",
-          "text": "主要还是害怕失去",
-          "scores": {
-            "boundaries": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "还想等待新的转机",
-          "scores": {
-            "boundaries": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "不愿面对明确答案",
-          "scores": {
-            "boundaries": 3
-          }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "C12",
-      "stratum": "C",
-      "type": "projection",
-      "dimensions": [
         "rationalization"
       ],
-      "status": "review",
-      "semantic_group": "one_sided_maintenance",
-      "prompt": "朋友一直主动维持一段关系，你更倾向于理解为：",
+      "status": "valid",
+      "semantic_group": "delaying_clarification",
+      "prompt": "你和一个人暧昧了一段时间，TA始终不说想不想和你在一起。你有些失望，你会怎么做？",
       "options": [
         {
           "id": "A",
-          "text": "本来就是主动型相处",
+          "text": "先不问，怕一问连现在这样都没了。",
           "scores": {
-            "rationalization": 0
+            "rationalization": 3
           }
         },
         {
           "id": "B",
-          "text": "确实很重视这段关系",
-          "scores": {
-            "rationalization": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "已经变成单向维系",
+          "text": "再等一阵，说不定TA会主动表态。",
           "scores": {
             "rationalization": 2
           }
         },
         {
-          "id": "D",
-          "text": "主要还是害怕失去",
+          "id": "C",
+          "text": "直接问TA到底想不想在一起。",
           "scores": {
-            "rationalization": 3
+            "rationalization": 0
+          }
+        },
+        {
+          "id": "D",
+          "text": "不再耗着，告诉TA不再继续暧昧。",
+          "scores": {
+            "rationalization": 0
           }
         }
       ],
@@ -3255,38 +2711,43 @@
       "stratum": "C",
       "type": "projection",
       "dimensions": [
-        "boundaries"
+        "calibration",
+        "differentiation"
       ],
       "status": "valid",
       "semantic_group": "help_relationship_upgrade",
-      "prompt": "一个人花很多时间帮喜欢的人，你更觉得主要是在：",
+      "prompt": "一个人花很多时间帮喜欢的人，你觉得最主要的原因是：",
       "options": [
         {
           "id": "A",
-          "text": "主要是在表达喜欢",
+          "text": "喜欢TA，想多为TA做点事。",
           "scores": {
-            "boundaries": 0
+            "calibration": 2,
+            "differentiation": 2
           }
         },
         {
           "id": "B",
-          "text": "本身习惯照顾别人",
+          "text": "TA本来就热心，对别人也这样。",
           "scores": {
-            "boundaries": 1
+            "calibration": 3,
+            "differentiation": 3
           }
         },
         {
           "id": "C",
-          "text": "在用持续付出维系关系",
+          "text": "怕不帮忙，彼此就没联系了。",
           "scores": {
-            "boundaries": 2
+            "calibration": 1,
+            "differentiation": 0
           }
         },
         {
           "id": "D",
-          "text": "期待付出推动关系进展",
+          "text": "想对TA好，让TA也慢慢喜欢上自己。",
           "scores": {
-            "boundaries": 3
+            "calibration": 1,
+            "differentiation": 1
           }
         }
       ],
@@ -3301,32 +2762,32 @@
       ],
       "status": "valid",
       "semantic_group": "relationship_imbalance",
-      "prompt": "有人说“感情不能算太清楚”，你更倾向于理解为：",
+      "prompt": "有人说：“感情不能算太清楚。”你更接近哪种想法？",
       "options": [
         {
           "id": "A",
-          "text": "更重视相处感受",
+          "text": "喜欢就别计较了，付出多少都没关系。",
           "scores": {
             "boundaries": 0
           }
         },
         {
           "id": "B",
-          "text": "能够接受关系波动",
-          "scores": {
-            "boundaries": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "在淡化关系失衡",
+          "text": "有时付出稍多没事，不用特别介意。",
           "scores": {
             "boundaries": 2
           }
         },
         {
+          "id": "C",
+          "text": "偶尔多付出没事，不能总是我付出。",
+          "scores": {
+            "boundaries": 3
+          }
+        },
+        {
           "id": "D",
-          "text": "不愿讨论关系对等",
+          "text": "谁也别占便宜，付出就该差不多。",
           "scores": {
             "boundaries": 3
           }
@@ -3343,34 +2804,34 @@
       ],
       "status": "valid",
       "semantic_group": "behavior_inconsistency",
-      "prompt": "朋友长期被忽冷忽热，你更觉得最值得参考的是：",
+      "prompt": "朋友的恋人长期忽冷忽热，朋友不知道该不该继续。你会建议朋友先考虑什么？",
       "options": [
         {
           "id": "A",
-          "text": "自己长期真实感受",
+          "text": "这段关系长期让自己开心还是难受。",
           "scores": {
-            "calibration": 0
+            "calibration": 3
           }
         },
         {
           "id": "B",
-          "text": "对方给出的解释",
+          "text": "TA为什么这样，有无说得通的理由。",
           "scores": {
             "calibration": 1
           }
         },
         {
           "id": "C",
-          "text": "对方长期实际行为",
+          "text": "TA有没有花时间精力维持关系。",
           "scores": {
             "calibration": 3
           }
         },
         {
           "id": "D",
-          "text": "关系最终实际结果",
+          "text": "两个人是否都想认真继续这段关系。",
           "scores": {
-            "calibration": 2
+            "calibration": 3
           }
         }
       ],
@@ -3385,32 +2846,32 @@
       ],
       "status": "valid",
       "semantic_group": "ambiguous_exit",
-      "prompt": "一个人总觉得“再等等会变好”，你更觉得主要是：",
+      "prompt": "恋人几次答应多陪你，却一直没做到。你接下来会怎么做？",
       "options": [
         {
           "id": "A",
-          "text": "只是愿意耐心等待",
+          "text": "再等等，说不定过阵子就好了。",
           "scores": {
             "stopLoss": 0
           }
         },
         {
           "id": "B",
-          "text": "还想继续保留希望",
-          "scores": {
-            "stopLoss": 1
-          }
-        },
-        {
-          "id": "C",
-          "text": "主要还是不舍退出",
+          "text": "再给一点时间，没变化就不继续了。",
           "scores": {
             "stopLoss": 2
           }
         },
         {
+          "id": "C",
+          "text": "不再指望TA多陪我，关系先维持着。",
+          "scores": {
+            "stopLoss": 1
+          }
+        },
+        {
           "id": "D",
-          "text": "不愿面对明确结论",
+          "text": "不想继续等了，我会提出结束关系。",
           "scores": {
             "stopLoss": 3
           }
@@ -3427,34 +2888,34 @@
       ],
       "status": "valid",
       "semantic_group": "being_needed",
-      "prompt": "有人很享受被需要的感觉，你更觉得这种满足更接近：",
+      "prompt": "你在意的人经常找你帮忙，你更可能怎么想？",
       "options": [
         {
           "id": "A",
-          "text": "来自关系中的亲密感",
+          "text": "有事愿意找我，两个人关系更好了。",
           "scores": {
             "needed": 1
           }
         },
         {
           "id": "B",
-          "text": "来自被需要的价值感",
+          "text": "原来我对TA这么重要，感觉自己很有价值。",
           "scores": {
-            "needed": 2
+            "needed": 3
           }
         },
         {
           "id": "C",
-          "text": "来自照顾对方的责任感",
+          "text": "TA需要我，我得把TA照顾好。",
           "scores": {
             "needed": 2
           }
         },
         {
           "id": "D",
-          "text": "来自影响局面的掌控感",
+          "text": "能帮就帮，没什么特别的。",
           "scores": {
-            "needed": 1
+            "needed": 0
           }
         }
       ],
@@ -3469,34 +2930,34 @@
       ],
       "status": "valid",
       "semantic_group": "commitment_mismatch",
-      "prompt": "朋友说“TA对我很好，只是没法给承诺”，你更倾向于把这段关系理解为：",
+      "prompt": "朋友想和一个人谈恋爱，对方对TA很好，却不愿确定关系。你更倾向于怎么理解？",
       "options": [
         {
           "id": "A",
-          "text": "双方只是各取所需",
+          "text": "对朋友这么好，应该有好感，迟早在一起。",
+          "scores": {
+            "calibration": 0
+          }
+        },
+        {
+          "id": "B",
+          "text": "对方可能没准备好，再相处一阵就好了。",
           "scores": {
             "calibration": 1
           }
         },
         {
-          "id": "B",
-          "text": "双方真实需求错位",
-          "scores": {
-            "calibration": 2
-          }
-        },
-        {
           "id": "C",
-          "text": "关系一直靠暧昧维持",
+          "text": "朋友想谈，对方可能只想保持现状。",
           "scores": {
             "calibration": 3
           }
         },
         {
           "id": "D",
-          "text": "主要是单方面期待",
+          "text": "对方只想享受暧昧，不想负责。",
           "scores": {
-            "calibration": 3
+            "calibration": 2
           }
         }
       ],
@@ -3509,34 +2970,34 @@
       "dimensions": [
         "selfCalibration"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "admitting_misjudgment",
-      "prompt": "一个人很难承认自己看错人，你更觉得主要是：",
+      "prompt": "你喜欢一个人，觉得TA人很好，后来相处中却发现TA不像你想的那样。你更可能怎么想？",
       "options": [
         {
           "id": "A",
-          "text": "想维护原来的自我判断",
+          "text": "我应该没看错人，只是不够了解TA。",
           "scores": {
             "selfCalibration": 0
           }
         },
         {
           "id": "B",
-          "text": "情感上仍然舍不得",
+          "text": "谁都有缺点，不至于说明我看错了。",
           "scores": {
             "selfCalibration": 1
           }
         },
         {
           "id": "C",
-          "text": "已经被过去投入绑住",
+          "text": "可能之前太上头，没注意到这些。",
           "scores": {
-            "selfCalibration": 2
+            "selfCalibration": 3
           }
         },
         {
           "id": "D",
-          "text": "不断替自己合理化",
+          "text": "看来之前确实把TA想得太好了。",
           "scores": {
             "selfCalibration": 3
           }
@@ -3551,78 +3012,36 @@
       "dimensions": [
         "selfCalibration"
       ],
-      "status": "review",
+      "status": "valid",
       "semantic_group": "external_feedback",
-      "prompt": "朋友说“别人不了解TA”，你更觉得这更像：",
+      "prompt": "朋友说你喜欢的人不太靠谱，但你一直觉得TA对你不错。你会怎么回应？",
       "options": [
         {
           "id": "A",
-          "text": "可能只是基于事实判断",
+          "text": "你又不了解TA，别乱说。",
           "scores": {
             "selfCalibration": 0
           }
         },
         {
           "id": "B",
-          "text": "更像一种防御反应",
+          "text": "TA也有很多好的地方，我给你讲讲。",
           "scores": {
             "selfCalibration": 1
           }
         },
         {
           "id": "C",
-          "text": "明显在替关系护短",
-          "scores": {
-            "selfCalibration": 2
-          }
-        },
-        {
-          "id": "D",
-          "text": "正在排斥外部意见",
+          "text": "你为什么这么觉得？发生过什么？",
           "scores": {
             "selfCalibration": 3
           }
-        }
-      ],
-      "dimensionJudgement": null
-    },
-    {
-      "id": "C21",
-      "stratum": "C",
-      "type": "projection",
-      "dimensions": [
-        "differentiation"
-      ],
-      "status": "valid",
-      "semantic_group": "affection_trust_separation",
-      "prompt": "一个人仍喜欢对方，却已经不再信任对方，你更倾向于理解为：",
-      "options": [
-        {
-          "id": "A",
-          "text": "只是感情还没退去",
-          "scores": {
-            "differentiation": 1
-          }
-        },
-        {
-          "id": "B",
-          "text": "已经把喜欢和判断分开",
-          "scores": {
-            "differentiation": 3
-          }
-        },
-        {
-          "id": "C",
-          "text": "主要是原有信任受损",
-          "scores": {
-            "differentiation": 2
-          }
         },
         {
           "id": "D",
-          "text": "关系已经实际降级",
+          "text": "可能有些事我没注意到，我会再留意。",
           "scores": {
-            "differentiation": 2
+            "selfCalibration": 3
           }
         }
       ],
@@ -3637,32 +3056,32 @@
       ],
       "status": "valid",
       "semantic_group": "responsibility_shift",
-      "prompt": "如果对方做错事后反过来说“都是因为你让我没有安全感”，你更倾向怎样回应？",
+      "prompt": "恋人背着你和别人暧昧，被发现后说：“都是因为你让我没有安全感。”你如何回应？",
       "options": [
         {
           "id": "A",
-          "text": "先判断自己的问题，淡化对方原本的行为",
+          "text": "我没让你安心，以后会多关心你。",
           "scores": {
             "manipulation": 0
           }
         },
         {
           "id": "B",
-          "text": "觉得双方都有责任，很难再单独判断那件事",
+          "text": "我们都有问题，这件事就别互相怪了。",
           "scores": {
             "manipulation": 1
           }
         },
         {
           "id": "C",
-          "text": "听他的解释，单独判断他的行为是否合理",
+          "text": "缺安全感可以说，不能背着我和别人暧昧。",
           "scores": {
-            "manipulation": 2
+            "manipulation": 3
           }
         },
         {
           "id": "D",
-          "text": "明确区分“为什么这样做”和“这样做是否合理”",
+          "text": "你跟别人暧昧，还怪我？",
           "scores": {
             "manipulation": 3
           }
@@ -3679,32 +3098,32 @@
       ],
       "status": "valid",
       "semantic_group": "care_justifies_control",
-      "prompt": "一个人总说：“我不是要控制你，我只是太在乎你，所以才希望你少和那些人来往。”你更倾向认为：",
+      "prompt": "恋人希望你少和朋友来往，说：“我不是要控制你，只是太在乎你。”你会怎么回应？",
       "options": [
         {
           "id": "A",
-          "text": "只是很在乎这段关系",
+          "text": "你在乎我，我少和他们来往就是了。",
           "scores": {
             "manipulation": 0
           }
         },
         {
           "id": "B",
-          "text": "可能缺安全感，所以可以理解",
+          "text": "可能没安全感，我先少联系他们，让你放心。",
           "scores": {
             "manipulation": 1
           }
         },
         {
           "id": "C",
-          "text": "在乎是真的，但也在合理化限制行为",
+          "text": "你担心什么可以说，但我不想疏远朋友。",
           "scores": {
-            "manipulation": 2
+            "manipulation": 3
           }
         },
         {
           "id": "D",
-          "text": "“在乎”不能证明合理，需单独判断是否限制对方",
+          "text": "在乎我，就可以管我和谁来往吗？",
           "scores": {
             "manipulation": 3
           }
@@ -3721,32 +3140,32 @@
       ],
       "status": "valid",
       "semantic_group": "relationship_pressure",
-      "prompt": "某个人在你拒绝一件事后说：“没事，你不愿意就算了，我只是没想到我们关系这么好，你还是会这么对我。”你更倾向怎么理解？",
+      "prompt": "朋友找你帮忙，你因有事拒绝。TA说：“没想到我们关系这么好，你还这么对我。”你会怎么回应？",
       "options": [
         {
           "id": "A",
-          "text": "只是受伤了，我应该再考虑一下",
+          "text": "我改下安排，还是来帮你吧。",
           "scores": {
             "manipulation": 0
           }
         },
         {
           "id": "B",
-          "text": "在表达失望，我可能真的有点过分",
+          "text": "看能不能挤点时间，尽量帮你。",
           "scores": {
             "manipulation": 1
           }
         },
         {
           "id": "C",
-          "text": "可能真的难过，但这句话会给我额外的压力",
+          "text": "这次真的没空，不是不把你当朋友。",
           "scores": {
             "manipulation": 2
           }
         },
         {
           "id": "D",
-          "text": "分开他的失望和我的决定，不因这种话重新判断原来回答",
+          "text": "关系好就不能拒绝吗？这次帮不了。",
           "scores": {
             "manipulation": 3
           }
@@ -3763,7 +3182,7 @@
       ],
       "status": "valid",
       "semantic_group": "emotion_changes_standards",
-      "prompt": "我觉得自己在非常喜欢一个人时，原本的判断标准可能会发生变化。",
+      "prompt": "我认为当我非常喜欢一个人时，原本的判断标准可能会发生变化。",
       "options": [
         {
           "id": "A",
@@ -3805,7 +3224,7 @@
       ],
       "status": "valid",
       "semantic_group": "experience_prediction_gap",
-      "prompt": "我认为真正进入一段关系后，自己的想法可能和现在预测的不一样。",
+      "prompt": "我认为未来进入一段关系后，自己的想法可能和现在预测的不一样。",
       "options": [
         {
           "id": "A",
@@ -3847,7 +3266,7 @@
       ],
       "status": "valid",
       "semantic_group": "self_overconfidence",
-      "prompt": "我觉得很多人会因为感情失去判断，但这种事不太容易发生在我身上。",
+      "prompt": "很多人会因为感情失去判断，但这种事不太容易发生在我身上。",
       "options": [
         {
           "id": "A",
@@ -3889,7 +3308,7 @@
       ],
       "status": "valid",
       "semantic_group": "experience_prediction_gap",
-      "prompt": "我认为自己目前对恋爱的理解，和真正经历一段关系后的理解可能会有较大差距。",
+      "prompt": "恋爱后，我会留意实际想法与原先预想有什么不同。",
       "options": [
         {
           "id": "A",
@@ -3973,34 +3392,34 @@
       ],
       "status": "valid",
       "semantic_group": "intelligence_overconfidence",
-      "prompt": "我不认为聪明、逻辑好，就意味着一个人在感情里也能保持同样准确的判断。",
+      "prompt": "一个人聪明、逻辑好，意味着这个人在感情里也能保持同样准确的判断。",
       "options": [
         {
           "id": "A",
           "text": "80%–90%",
           "scores": {
-            "selfCalibration": 3
+            "selfCalibration": 0
           }
         },
         {
           "id": "B",
           "text": "60%–70%",
           "scores": {
-            "selfCalibration": 2
+            "selfCalibration": 1
           }
         },
         {
           "id": "C",
           "text": "30%–40%",
           "scores": {
-            "selfCalibration": 1
+            "selfCalibration": 2
           }
         },
         {
           "id": "D",
           "text": "10%–20%",
           "scores": {
-            "selfCalibration": 0
+            "selfCalibration": 3
           }
         }
       ],
@@ -4015,7 +3434,7 @@
       ],
       "status": "valid",
       "semantic_group": "experience_prediction_gap",
-      "prompt": "如果我从没经历过某种关系，我通常不会太确定自己到时候一定会怎么做。",
+      "prompt": "没经历过的感情问题，我不会笃定自己一定能处理好。",
       "options": [
         {
           "id": "A",
@@ -4058,7 +3477,7 @@
       ],
       "status": "valid",
       "semantic_group": "planned_boundaries",
-      "prompt": "我会提前想清楚哪些边界即使恋爱后也不希望改变。",
+      "prompt": "我会先想好恋爱的底线，也留意自己会不会因心软而改变。",
       "options": [
         {
           "id": "A",
@@ -4104,7 +3523,7 @@
       ],
       "status": "valid",
       "semantic_group": "external_feedback",
-      "prompt": "我觉得熟悉我的朋友，可能会看到一些我自己没注意到的关系模式。",
+      "prompt": "熟悉我的朋友，可能会看到一些平时我自己没注意到的关系模式。",
       "options": [
         {
           "id": "A",
@@ -4146,7 +3565,7 @@
       ],
       "status": "valid",
       "semantic_group": "external_feedback",
-      "prompt": "如果朋友认为我比自己想象中更容易被打动，我会认真考虑这种可能。",
+      "prompt": "如果朋友认为我比自己想象中更容易被打动，我会非常认真地考虑这种可能。",
       "options": [
         {
           "id": "A",
@@ -4188,7 +3607,7 @@
       ],
       "status": "valid",
       "semantic_group": "survey_reality_gap",
-      "prompt": "我觉得自己在问卷里给出的答案，可能比真实情境中的自己更理性。",
+      "prompt": "我会提醒自己：问卷里选得理性，不代表真遇到也能做到。",
       "options": [
         {
           "id": "A",
