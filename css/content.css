@@ -484,46 +484,6 @@
   border-color: var(--question-border);
 }
 
-/* 圆圈内的羽叶、三点与返回箭头均由 CSS 描边绘制。 */
-.circle-icon {
-  position: absolute;
-  inset: 0;
-  width: 26px;
-  height: 26px;
-  margin: auto;
-  color: #9fc5ed;
-  pointer-events: none;
-}
-.circle-icon::before,
-.circle-icon::after { position: absolute; box-sizing: border-box; content: ""; }
-.circle-icon-feather::before {
-  top: 0;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  background: currentColor;
-  /* 保留外轮廓；内轮廓向外插值 30%，使描边减细 30%。 */
-  clip-path: path(evenodd, "M 4.6 21.5 C 3.6 12.7 12.1 4.8 24 1.8 C 24.2 8.3 21.8 13.1 18.4 15.6 L 20.4 14.8 Q 21.4 14.7 20.8 15.8 C 17.5 21.1 11.5 23.5 5.3 22.6 Z M 5.72 20.94 C 5.14 13.47 12.94 6.34 22.67 3.48 C 22.45 8.93 19.91 13.1 16.51 15.04 Q 15.83 15.41 17.18 16.13 Q 18.215 16.205 18.77 16.64 C 15.61 20.33 10.87 22.03 5.93 21.27 Z");
-}
-.circle-icon-feather::after {
-  top: 4px;
-  left: 2.1px;
-  width: 1.19px;
-  height: 21px;
-  border-radius: 2px;
-  background: currentColor;
-  transform-origin: center bottom;
-  transform: rotate(45deg);
-}
-.circle-icon-dots::before {
-  top: 11px;
-  left: 2px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 8.5px 0 currentColor, 17px 0 currentColor;
-}
 /* 同一条轮廓绘制竖直杆、左弯弧线和箭头，避免分件旋转错位。 */
 .about-page .image-slot.is-active .circle-icon::before {
   top: 0.8px;

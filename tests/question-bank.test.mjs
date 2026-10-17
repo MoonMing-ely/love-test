@@ -169,7 +169,7 @@ assert.equal(questionBank.questions.filter((q) => q.status === "review").length,
 assert.deepEqual(Object.fromEntries(questionBank.strata.map((s) => [s.key, s.questionCount])), { A: 35, B: 15, C: 24, D: 11 });
 for (const [id, group, prompt, scores] of [
   ["C25", "post_breakup_care", "你已和TA分开，原来的问题也没改善。TA深夜又来诉苦，你会怎么做？", [3, 1, 0, 3]],
-  ["C26", "explicit_rejection_exit", "TA明确说只想做朋友，你仍喜欢TA。接下来你更可能怎么做？", [3, 0, 3, 1]],
+  ["C26", "explicit_rejection_exit", "TA明确说只想做朋友，你仍喜欢TA。你更可能怎么做？", [3, 0, 3, 1]],
 ]) {
   const question = questionsById.get(id);
   assert.equal(question.prompt, prompt);

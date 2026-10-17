@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "bankRevision": "b9679e5cd95336133cfc8d66b022a0f3f81e8ba1e0bac0ce17c3a79cbe03ea03",
+  "bankRevision": "8d09f34a6d06e28ff931242a7617d22f7c53c5b7109accf9ad7ee9bb243866bc",
   "title": "情感被骗指数测试",
   "scoringStatus": "configured",
   "dimensions": [
@@ -113,7 +113,7 @@
       ],
       "status": "valid",
       "semantic_group": "being_understood",
-      "prompt": "如果有一个人能很快理解那些我平时很少和别人聊的想法，我会更想了解TA。",
+      "prompt": "如果有人能很快理解我平时很少和别人聊的想法，我会更想了解TA。",
       "options": [
         {
           "id": "A",
@@ -197,7 +197,7 @@
       ],
       "status": "valid",
       "semantic_group": "remembered_details",
-      "prompt": "要是一个人记得我很久以前随口提过的小事，我会对TA非常有好感。",
+      "prompt": "要是有人记得我很久以前随口提过的小事，我会对TA非常有好感。",
       "options": [
         {
           "id": "A",
@@ -329,7 +329,7 @@
       ],
       "status": "valid",
       "semantic_group": "private_disclosure_trust",
-      "prompt": "当一个人愿意和我聊很私人的事情，我会自然地更信任TA。",
+      "prompt": "有人愿意和我聊很私人的事时，我会自然地更信任TA。",
       "options": [
         {
           "id": "A",
@@ -465,7 +465,7 @@
       ],
       "status": "valid",
       "semantic_group": "explanation_evidence_separation",
-      "prompt": "当发生冲突，我可以在接受一个人解释的同时，保留对这件事的疑问。",
+      "prompt": "发生冲突时，我可以接受对方的解释，同时保留对这件事的疑问。",
       "options": [
         {
           "id": "A",
@@ -511,7 +511,7 @@
       ],
       "status": "valid",
       "semantic_group": "special_treatment",
-      "prompt": "如果有一个人平时对别人疏离，唯独愿意和我亲近，我会觉得我们不是普通关系。",
+      "prompt": "如果有人平时对别人疏离，唯独愿意和我亲近，我会觉得我们不是普通关系。",
       "options": [
         {
           "id": "A",
@@ -553,7 +553,7 @@
       ],
       "status": "valid",
       "semantic_group": "listening_interest",
-      "prompt": "有一个人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。",
+      "prompt": "有人愿意花很多时间和我聊天，会让我觉得自己对TA比较重要。",
       "options": [
         {
           "id": "A",
@@ -595,7 +595,7 @@
       ],
       "status": "valid",
       "semantic_group": "understanding_acceptance_separation",
-      "prompt": "我可以做到一方面理解一个人的行为原因，一方面不接受这种行为。",
+      "prompt": "我可以理解一个人的行为原因，同时不接受这种行为。",
       "options": [
         {
           "id": "A",
@@ -721,7 +721,7 @@
       ],
       "status": "valid",
       "semantic_group": "uncertain_future",
-      "prompt": "即使我已经想知道这段关系会不会继续，也会因为现在相处开心，拖着不去问。",
+      "prompt": "即使我已经想知道这段关系会不会继续，也会因为现在相处开心，拖着不问。",
       "options": [
         {
           "id": "A",
@@ -764,7 +764,7 @@
       ],
       "status": "valid",
       "semantic_group": "behavior_inconsistency",
-      "prompt": "当一个人的言语和长期行为不太一致时，我更看重行为。",
+      "prompt": "一个人的言语和长期行为不太一致时，我更看重行为。",
       "options": [
         {
           "id": "A",
@@ -810,7 +810,7 @@
       ],
       "status": "valid",
       "semantic_group": "affinity_excusing_discomfort",
-      "prompt": "如果一个人总能说到我心里，我可以忽略TA身上的一些让我不舒服的地方。",
+      "prompt": "如果有人总能说到我心里，我可以忽略TA身上一些让我不舒服的地方。",
       "options": [
         {
           "id": "A",
@@ -936,7 +936,7 @@
       ],
       "status": "valid",
       "semantic_group": "excusing_anomalies",
-      "prompt": "当我很在意一段关系，我会更愿意把一些反常理解成暂时的问题。",
+      "prompt": "我很在意一段关系时，会更愿意把一些反常理解成暂时的问题。",
       "options": [
         {
           "id": "A",
@@ -1109,7 +1109,7 @@
       ],
       "status": "valid",
       "semantic_group": "exclusive_disclosure",
-      "prompt": "如果一个人说“我平时很少和别人讲这些”，我会觉得我们的关系确实有些不同。",
+      "prompt": "如果有人说“我平时很少和别人讲这些”，我会觉得我们的关系确实有些不同。",
       "options": [
         {
           "id": "A",
@@ -1277,7 +1277,7 @@
       ],
       "status": "valid",
       "semantic_group": "confirming_hard_truth",
-      "prompt": "即使我很珍惜一段关系，我仍然愿意去确认那些可能让我失望的问题。",
+      "prompt": "即使很珍惜一段关系，我仍然愿意确认那些可能让我失望的问题。",
       "options": [
         {
           "id": "A",
@@ -1319,7 +1319,7 @@
       ],
       "status": "valid",
       "semantic_group": "help_relationship_separation",
-      "prompt": "我可以因为善意帮助一个人，并且不期待这种帮助换来亲密关系。",
+      "prompt": "我可以出于善意帮助一个人，不期待换来亲密关系。",
       "options": [
         {
           "id": "A",
@@ -1534,7 +1534,7 @@
       ],
       "status": "valid",
       "semantic_group": "exit_despite_attachment",
-      "prompt": "即使我舍不得某段关系，我也能先停止继续向其投入精力。",
+      "prompt": "即使我舍不得某段关系，我也能先停止向其投入精力。",
       "options": [
         {
           "id": "A",
@@ -1618,7 +1618,7 @@
       ],
       "status": "valid",
       "semantic_group": "delaying_clarification",
-      "prompt": "过去一段时间，我曾因为不想破坏关系，把本来应该问清楚的事拖到后面。",
+      "prompt": "过去一段时间，我曾因为不想破坏关系，拖着本该问清楚的事。",
       "options": [
         {
           "id": "A",
@@ -1661,7 +1661,7 @@
       ],
       "status": "valid",
       "semantic_group": "relationship_imbalance",
-      "prompt": "过去一段时间，我曾在明知关系不太对等时，仍继续维持原来的投入。",
+      "prompt": "过去一段时间，我曾明知关系不太对等，仍维持原来的投入。",
       "options": [
         {
           "id": "A",
@@ -1707,7 +1707,7 @@
       ],
       "status": "valid",
       "semantic_group": "being_understood",
-      "prompt": "过去一段时间，我曾因为别人很懂我，而很快把TA当成特别的人。",
+      "prompt": "过去一段时间，我曾因为别人很懂我，很快把TA当成特别的人。",
       "options": [
         {
           "id": "A",
@@ -1749,7 +1749,7 @@
       ],
       "status": "valid",
       "semantic_group": "private_disclosure_trust",
-      "prompt": "过去一段时间，我曾因为别人向我倾诉很多，而明显提高对TA的信任。",
+      "prompt": "过去一段时间，我曾因为别人向我倾诉很多，明显提高对TA的信任。",
       "options": [
         {
           "id": "A",
@@ -1833,7 +1833,7 @@
       ],
       "status": "valid",
       "semantic_group": "broken_promises",
-      "prompt": "过去一段时间，我有过在对方反复失约后，依旧继续主动的经历。",
+      "prompt": "过去一段时间，我曾在对方反复失约后，依旧主动。",
       "options": [
         {
           "id": "A",
@@ -2001,7 +2001,7 @@
       ],
       "status": "valid",
       "semantic_group": "being_recognized",
-      "prompt": "过去一段时间，我曾因为有人认可了自己很少被看到的一面，而很快与TA亲近起来。",
+      "prompt": "过去一段时间，我曾因为有人认可自己很少被看到的一面，很快与TA亲近起来。",
       "options": [
         {
           "id": "A",
@@ -2127,7 +2127,7 @@
       ],
       "status": "valid",
       "semantic_group": "behavior_inconsistency",
-      "prompt": "过去一段时间，我曾因为一个人说得很真诚，而忽略过TA长期的言行不一。",
+      "prompt": "过去一段时间，我曾因为一个人说得很真诚，忽略过TA长期的言行不一。",
       "options": [
         {
           "id": "A",
@@ -2169,7 +2169,7 @@
       ],
       "status": "valid",
       "semantic_group": "boundary_request",
-      "prompt": "过去一段时间，我曾因为不想显得冷漠，而答应过其实不太想答应的请求。",
+      "prompt": "过去一段时间，我曾因为不想显得冷漠，答应过其实不太想答应的请求。",
       "options": [
         {
           "id": "A",
@@ -2253,7 +2253,7 @@
       ],
       "status": "valid",
       "semantic_group": "excusing_distance",
-      "prompt": "你喜欢的人最近总取消约定，也很少主动联系，说最近太忙。你会怎么想？",
+      "prompt": "你喜欢的人最近总取消约定，也很少主动联系，说是太忙。你会怎么想？",
       "options": [
         {
           "id": "A",
@@ -2271,7 +2271,7 @@
         },
         {
           "id": "C",
-          "text": "先信TA忙，一直这样再重新考虑。",
+          "text": "先信TA忙，一直这样再考虑。",
           "scores": {
             "rationalization": 1
           }
@@ -2306,7 +2306,7 @@
         },
         {
           "id": "B",
-          "text": "可能TA没有恶意，但我确实不舒服。",
+          "text": "TA可能没恶意，但我确实不舒服。",
           "scores": {
             "rationalization": 0
           }
@@ -2379,7 +2379,7 @@
       ],
       "status": "valid",
       "semantic_group": "conditional_warmth",
-      "prompt": "一个人很少主动联系你，却常在需要你帮助时格外热情。你心里更接近哪种反应？",
+      "prompt": "一个人很少主动联系你，却常在需要你帮助时格外热情。你更接近哪种反应？",
       "options": [
         {
           "id": "A",
@@ -2421,7 +2421,7 @@
       ],
       "status": "valid",
       "semantic_group": "delaying_exit",
-      "prompt": "你喜欢一个人，平时总是你主动找TA，TA很少主动，你也有点累，此时你更可能怎么做？",
+      "prompt": "你喜欢一个人，平时总是你主动找TA，TA很少主动，你也有点累。你更可能怎么做？",
       "options": [
         {
           "id": "A",
@@ -2505,7 +2505,7 @@
       ],
       "status": "valid",
       "semantic_group": "listening_interest",
-      "prompt": "一个人愿意听你聊很久，你更倾向于把这理解为：",
+      "prompt": "一个人愿意听你聊很久，你更倾向于怎么理解？",
       "options": [
         {
           "id": "A",
@@ -2547,7 +2547,7 @@
       ],
       "status": "valid",
       "semantic_group": "excusing_distance",
-      "prompt": "朋友喜欢一个人，但最近对方很少主动联系，且敷衍回复。朋友说：“TA只是不会表达。”你更倾向于怎么想？",
+      "prompt": "朋友喜欢的人最近很少主动联系，回复也敷衍。朋友说：“TA只是不会表达。”你更倾向于怎么想？",
       "options": [
         {
           "id": "A",
@@ -2607,7 +2607,7 @@
         },
         {
           "id": "C",
-          "text": "告诉TA今晚不行，等忙完了再帮。",
+          "text": "告诉TA今晚不行，忙完再帮。",
           "scores": {
             "boundaries": 2
           }
@@ -2871,7 +2871,7 @@
         },
         {
           "id": "D",
-          "text": "不想继续等了，我会提出结束关系。",
+          "text": "不想再等了，我会提出结束关系。",
           "scores": {
             "stopLoss": 3
           }
@@ -2941,7 +2941,7 @@
         },
         {
           "id": "B",
-          "text": "对方可能没准备好，再相处一阵就好了。",
+          "text": "可能没准备好，再相处一阵就好了。",
           "scores": {
             "calibration": 1
           }
@@ -3224,7 +3224,7 @@
       ],
       "status": "valid",
       "semantic_group": "explicit_rejection_exit",
-      "prompt": "TA明确说只想做朋友，你仍喜欢TA。接下来你更可能怎么做？",
+      "prompt": "TA明确说只想做朋友，你仍喜欢TA。你更可能怎么做？",
       "options": [
         {
           "id": "A",
@@ -3266,7 +3266,7 @@
       ],
       "status": "valid",
       "semantic_group": "emotion_changes_standards",
-      "prompt": "我认为当我非常喜欢一个人时，原本的判断标准可能会发生变化。",
+      "prompt": "我认为当我非常喜欢一个人时，原本的判断标准可能会变。",
       "options": [
         {
           "id": "A",
@@ -3434,7 +3434,7 @@
       ],
       "status": "valid",
       "semantic_group": "absence_of_experience",
-      "prompt": "我会把“我现在还没有遇到过这种情况”与“我以后不会这样”区分开。",
+      "prompt": "我会区分“我还没遇到过这种情况”和“我以后不会这样”。",
       "options": [
         {
           "id": "A",
@@ -3607,7 +3607,7 @@
       ],
       "status": "valid",
       "semantic_group": "external_feedback",
-      "prompt": "熟悉我的朋友，可能会看到一些平时我自己没注意到的关系模式。",
+      "prompt": "熟悉我的朋友，可能会看到一些我平时没注意到的关系模式。",
       "options": [
         {
           "id": "A",
