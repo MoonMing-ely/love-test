@@ -1,0 +1,11 @@
+# Local visual experiments and generated inspection output
+/.local-artifacts/
+/docs/previews/
+/docs/screenshots/
+
+# Logs and common local caches
+*.log
+__pycache__/
+.pytest_cache/
+.DS_Store
+Thumbs.db

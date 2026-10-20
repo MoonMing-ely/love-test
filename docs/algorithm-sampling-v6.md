@@ -1,6 +1,6 @@
 # 抽题V6：个人界限的最小修正
 
-2026-10-20。用户确认执行；已改本地，未提交或部署。计分版本仍为V1.6。
+2026-10-20。用户确认执行；本轮内容已随 `eda4e2f` 提交到 GitHub，未验证线上部署。计分版本仍为V1.6。
 
 ## 修改边界
 
@@ -34,4 +34,4 @@ minimumCount 是原内容覆盖表的通用字段，新抽题优先级、题池�
 - 工作区同期出现的 result-copy 测试不属于本轮修改：完整测试命令返回17通过、该文件失败；其子进程检查遇到EPERM，后续单独跳过该检查又遇到文案源与生成目录内容不同。相关文件未由本轮修改；不宣称整个工作区全部测试通过。构建器 --check 曾单独通过，但文案文件同期仍在变动。
 - 这是离线内容与工程检查，没有新增真人验证或真实浏览器操作验收。
 
-[审计摘要](algorithm-sampling-v6-audit.json)保留题库、画像和源码哈希及26画像结果。完整四组合对照本轮保存在 /tmp/love-minimal-v6-content-audit.json，可通过 scripts/audit-score-consistency.mjs 与修改前源码目录复算。
+[审计摘要](audits/algorithm-sampling-v6-audit.json)保留题库、画像和源码哈希及26画像结果。完整四组合对照本轮保存在 /tmp/love-minimal-v6-content-audit.json，可通过 scripts/audit-score-consistency.mjs 与修改前源码目录复算。

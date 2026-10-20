@@ -4,6 +4,8 @@ import vm from "node:vm";
 import { quizHarness, RESULT_KEY } from "./helpers/quiz-harness.mjs";
 
 const source = await readFile(new URL("../js/interactions/result.js", import.meta.url), "utf8");
+const catalogSource = await readFile(new URL("../js/result-copy/catalog.js", import.meta.url), "utf8");
+const selectorSource = await readFile(new URL("../js/result-copy/selector.js", import.meta.url), "utf8");
 const configSource = await readFile(new URL("../js/core-algorithm/algorithm-config.js", import.meta.url), "utf8");
 function element(tag = "div") {
   let text = "";
@@ -15,13 +17,17 @@ function element(tag = "div") {
     setAttribute(key, value) { this.attributes[key] = value; },
   };
 }
-function render(raw, storageFails = false) {
-  const nodes = Object.fromEntries([".result-frame", ".result-content", ".result-empty", "#result-title", "#result-summary", "#result-score", "#result-layers"]
+function render(raw, storageFails = false, loadCopy = true) {
+  const nodes = Object.fromEntries([".result-frame", ".result-content", ".result-empty", "#result-title", "#result-summary", "#result-score", "#result-layers", "#result-degree", "#result-direction", "#result-copy", "#result-closing", "#result-note", "#result-details"]
     .map((key) => [key, element()]));
   const context = { document: { querySelector: (key) => nodes[key], createElement: element }, sessionStorage: {
     getItem() { if (storageFails) throw new Error("storage unavailable"); return raw; },
   } };
   vm.runInNewContext(configSource, context);
+  if (loadCopy) {
+    vm.runInNewContext(catalogSource, context);
+    vm.runInNewContext(selectorSource, context);
+  }
   vm.runInNewContext(source, context);
   return nodes;
 }
@@ -32,8 +38,20 @@ const completed = render(JSON.stringify(record));
 assert.equal(completed[".result-frame"].dataset.resultState, "complete");
 assert.equal(completed[".result-content"].hidden, false);
 assert.equal(completed[".result-empty"].hidden, true);
-assert.equal(completed["#result-summary"].textContent, record.outcome.summary);
-assert.equal(completed["#result-score"].textContent, `${record.outcome.totalScore.toFixed(2)} / 100`);
+const copyContext = {};
+for (const script of [configSource, catalogSource, selectorSource]) vm.runInNewContext(script, copyContext);
+const expected = copyContext.ResultCopy.build(record);
+assert.equal(completed["#result-summary"].textContent, expected.opening);
+assert.equal(completed["#result-score"].textContent, expected.scoreText);
+assert.equal(completed["#result-degree"].textContent, expected.degreeText);
+assert.equal(completed["#result-direction"].textContent, expected.directionText);
+assert.equal(completed["#result-copy"].children.length, expected.paragraphs.length);
+assert.equal(completed["#result-copy"].textContent, expected.paragraphs.join(""));
+assert.equal(completed["#result-closing"].textContent, expected.closing);
+assert.equal(completed["#result-note"].textContent, expected.note);
+assert.equal(completed["#result-details"].hidden, false);
+assert.equal(completed[".result-frame"].dataset.copyState, expected.status);
+assert.doesNotMatch(completed["#result-summary"].textContent, /Stage|Path|Shape/u);
 assert.equal(completed["#result-score"].hidden, false);
 assert.equal(completed["#result-layers"].children.length, 6);
 assert.equal(completed["#result-layers"].children.map((child) => child.dataset.layer).join(), "1,2,3,4,5,6");
@@ -53,7 +71,7 @@ const zero = structuredClone(record);
 zero.outcome.totalScore = zero.layer6Integration.totalScore = 15;
 zero.layer6Integration.debug.evidenceScore = 0;
 zero.outcome.stage = zero.layer6Integration.stage = 1;
-assert.equal(render(JSON.stringify(zero))["#result-score"].textContent, "15.00 / 100");
+assert.equal(render(JSON.stringify(zero))["#result-score"].textContent, "15.00 分");
 const legacy = structuredClone(record);
 legacy.outcome.status = "scoring-placeholder";
 legacy.outcome.totalScore = null;
@@ -94,6 +112,9 @@ for (const change of [
   (r) => { r.outcome.totalScore = r.layer6Integration.totalScore = 0; },
   (r) => { delete r.layer6Integration.debug.evidenceScore; },
   (r) => { r.outcome.stage = 0; },
+  (r) => { r.outcome.stage = r.layer6Integration.stage = 4; },
+  (r) => { delete r.normalizedDimensions.traits.boundary; },
+  (r) => { r.normalizedDimensions.traits.recognition = "<script>bad</script>"; },
   (r) => { r.layer6Integration.totalScore += 1; },
   (r) => { delete r.layer6Integration; },
   (r) => { r.layer6Integration.debug = null; },
@@ -109,4 +130,36 @@ for (const raw of [null, "{broken", ...variants]) {
   assert.equal(nodes[".result-empty"].hidden, false);
 }
 assert.equal(render(JSON.stringify(record), true)[".result-frame"].dataset.resultState, "empty");
-console.log("Result page tests passed: six layers, score, zero/null, legacy and invalid records.");
+// 两位小数不能在临界点把显示分数推到另一档。
+for (const [value, stage, shown] of [[29.999, 1, "29.99 分"], [30, 2, "30.00 分"],
+  [49.999, 2, "49.99 分"], [50, 3, "50.00 分"], [69.999, 3, "69.99 分"], [70, 4, "70.00 分"]]) {
+  const boundary = structuredClone(record);
+  boundary.outcome.totalScore = boundary.layer6Integration.totalScore = value;
+  boundary.outcome.stage = boundary.layer6Integration.stage = stage;
+  const nodes = render(JSON.stringify(boundary));
+  assert.equal(nodes["#result-score"].textContent, shown);
+  assert.equal(nodes["#result-degree"].textContent, `受骗倾向：第 ${stage} 档（共 4 档）`);
+}
+const missingDimension = structuredClone(record);
+missingDimension.normalizedDimensions.traits.recognition = null;
+const missingCopy = render(JSON.stringify(missingDimension));
+assert.equal(missingCopy[".result-frame"].dataset.copyState, "fallback");
+assert.match(missingCopy["#result-copy"].textContent, /信息还不够/);
+assert.equal(missingCopy["#result-closing"].hidden, true);
+assert.equal(missingCopy["#result-score"].hidden, false);
+const noModule = render(JSON.stringify(record), false, false);
+assert.equal(noModule[".result-frame"].dataset.resultState, "complete");
+assert.equal(noModule[".result-frame"].dataset.copyState, "unavailable");
+assert.equal(noModule["#result-score"].hidden, false);
+assert.match(noModule["#result-summary"].textContent, /刷新页面重试/);
+assert.equal(noModule["#result-copy"].hidden, true);
+assert.equal(noModule["#result-closing"].hidden, true);
+
+const html = await readFile(new URL("../html/result.html", import.meta.url), "utf8");
+assert.match(html, /<details id="result-details" class="result-details" hidden>/u);
+assert.doesNotMatch(html, /<details[^>]*\sopen(?:[\s=>])/u);
+assert.match(html, /aria-controls="result-content"/u);
+assert.match(html, /id="result-content"/u);
+assert.ok(html.indexOf('id="result-copy"') < html.indexOf('id="result-closing"'));
+assert.ok(html.indexOf('id="result-closing"') < html.indexOf('id="result-details"'));
+console.log("Result page tests passed: real copy integration, stage boundaries, six-layer disclosure, legacy, missing modules and invalid records.");

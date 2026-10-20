@@ -8,7 +8,39 @@
   const summary = document.querySelector("#result-summary");
   const score = document.querySelector("#result-score");
   const layers = document.querySelector("#result-layers");
+  const degree = document.querySelector("#result-degree");
+  const direction = document.querySelector("#result-direction");
+  const copyBody = document.querySelector("#result-copy");
+  const closing = document.querySelector("#result-closing");
+  const note = document.querySelector("#result-note");
+  const details = document.querySelector("#result-details");
   const statuses = new Set(["scoring-placeholder", "scored", "insufficient_data"]);
+
+  function renderCopy(result) {
+    const copy = globalThis.ResultCopy?.build(result);
+    if (!copy || copy.status === "unavailable") {
+      if (copy && !["missing_dependency", "unsupported_algorithm"].includes(copy.reason)) {
+        throw new Error("结果解读所需记录无效。");
+      }
+      frame.dataset.copyState = "unavailable";
+      summary.textContent = copy?.message || "特点说明暂时无法加载，请刷新页面重试。";
+      return;
+    }
+    frame.dataset.copyState = copy.status;
+    score.textContent = copy.scoreText;
+    degree.textContent = copy.degreeText;
+    direction.textContent = copy.directionText;
+    summary.textContent = copy.opening;
+    for (const text of copy.paragraphs) {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      copyBody.append(paragraph);
+    }
+    closing.textContent = copy.closing;
+    note.textContent = copy.note;
+    degree.hidden = direction.hidden = copyBody.hidden = note.hidden = false;
+    closing.hidden = !copy.closing;
+  }
 
   function format(value) {
     if (value == null) return "暂无";
@@ -137,21 +169,26 @@
         if (sixth.status !== "complete" || !Number.isFinite(result.outcome.totalScore) ||
             result.outcome.totalScore < anchors[0].score || result.outcome.totalScore > anchors[anchors.length - 1].score ||
             result.outcome.totalScore !== sixth.totalScore || ![1, 2, 3, 4].includes(sixth.stage) ||
-            result.outcome.stage !== sixth.stage || !sixth.debug || sixth.debug.allPaths.length !== 4 ||
+            result.outcome.stage !== sixth.stage ||
+            sixth.stage !== [30, 50, 70].filter((bound) => result.outcome.totalScore >= bound).length + 1 ||
+            !sixth.debug || sixth.debug.allPaths.length !== 4 ||
             !Number.isFinite(sixth.debug.evidenceScore) || sixth.debug.evidenceScore < anchors[0].evidence ||
             sixth.debug.evidenceScore > anchors[anchors.length - 1].evidence) {
           throw new Error("最终分记录无效。");
         }
-        score.textContent = `${format(result.outcome.totalScore)} / 100`;
+        score.textContent = `${(Math.floor(result.outcome.totalScore * 100) / 100).toFixed(2)} 分`;
         score.hidden = false;
         frame.dataset.resultState = "complete";
+        renderCopy(result);
       } else {
         if (sixth.status !== "insufficient_data" || result.outcome.totalScore !== null || sixth.totalScore !== null) {
           throw new Error("数据不足记录无效。");
         }
         frame.dataset.resultState = "insufficient_data";
+        summary.textContent = "这次的信息还不够，请重新完成测试。";
       }
       renderLayers(result);
+      details.hidden = false;
     }
     content.hidden = false;
     empty.hidden = true;
@@ -159,5 +196,6 @@
     frame.dataset.resultState = "empty";
     content.hidden = true;
     empty.hidden = false;
+    for (const node of [score, degree, direction, copyBody, closing, note, details]) node.hidden = true;
   }
 })();

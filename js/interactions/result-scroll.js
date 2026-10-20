@@ -29,8 +29,9 @@
     sync();
   });
   content.addEventListener("scroll", sync, { passive: true });
+  document.querySelector("#result-details").addEventListener("toggle", layout);
   const observer = new ResizeObserver(layout);
-  for (const element of [frame, content, document.querySelector("#result-layers")]) observer.observe(element);
+  for (const element of [frame, content, document.querySelector("#result-copy"), document.querySelector("#result-layers")]) observer.observe(element);
   window.addEventListener("resize", layout);
   layout();
 })();

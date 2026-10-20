@@ -1,5 +1,6 @@
 # V1.6：分数含义与题组内容一致性
 
+> 本文保留 V1.6 发布时的审计记录；当前抽题已为 V6，运行接口以 [评分接口](scoring-interface.md) 和 [抽题 V6](algorithm-sampling-v6.md) 为准。
 日期：2026-10-20。本轮用户授权继续修改一致性。已写入本地工作区，未提交、发布或部署。
 
 ## 边界与结果
@@ -56,9 +57,9 @@ P1的独立严重度上限从30改为24，仍保留自身贡献及对P2/P3/P4的
 
 材料：
 
-- [候选比较](algorithm-calibration-v1.6-candidates.json)
-- [正式内容审计](algorithm-calibration-v1.6-content-audit.json)
-- [正式数值审计](algorithm-calibration-v1.6-numeric-audit.json)
+- [候选比较](audits/algorithm-calibration-v1.6-candidates.json)
+- [正式内容审计](audits/algorithm-calibration-v1.6-content-audit.json)
+- [正式数值审计](audits/algorithm-calibration-v1.6-numeric-audit.json)
 - `tests/fixtures/semantic-profiles.json`、`semantic-extended-profiles.json`、`semantic-holdout-profiles.json`：完整固定选项
 - [V1.5源码基线归档](fixtures/algorithm-v1.5-baseline.tar.gz)：仅供离线回放，不在运行时加载；V1.5当时未提交，不能冒用Git HEAD作为该版基线
 

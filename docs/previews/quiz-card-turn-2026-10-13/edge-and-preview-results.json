@@ -1,6 +1,0 @@
-{
-  "passed": true,
-  "preview": "play and reverse passed",
-  "storageFailure": "old card visible and answer preserved",
-  "missingAnimationAPI": "instant swap passed"
-}

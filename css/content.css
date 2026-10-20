@@ -614,6 +614,20 @@
 }
 
 .result-layers { margin-top: 32px; text-align: left; }
+.result-content .result-degree { margin-top: 12px; color: var(--ink); }
+.result-content .result-caption {
+  margin-top: 8px;
+  font-size: var(--type-size-caption);
+  line-height: var(--type-line-caption);
+}
+.result-content #result-summary { margin-top: 28px; color: var(--ink); text-align: left; }
+.result-copy { text-align: left; }
+.result-content .result-closing { margin-top: 28px; color: var(--ink); text-align: left; }
+.result-content #result-note { margin-top: 24px; }
+.result-details { margin-top: 28px; text-align: left; }
+.result-details > summary { color: #576176; cursor: pointer; font-size: var(--type-size-caption); padding: 12px 0; }
+.result-details > summary:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+.result-details .result-layers { margin-top: 16px; }
 .algorithm-layer + .algorithm-layer { margin-top: 32px; }
 .algorithm-layer h2 { margin: 0; font-size: var(--type-size-reading); line-height: var(--type-line-body); }
 .algorithm-layer .layer-scale { margin: 8px 0 12px; font-size: var(--type-size-caption); line-height: var(--type-line-caption); }

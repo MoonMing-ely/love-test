@@ -1,8 +1,0 @@
-{
-  "data/question-bank-source.md": true,
-  "data/questions.json": true,
-  "css/style.css": true,
-  "html/text.html": true,
-  "js/interactions/quiz-layout.js": true,
-  "js/interactions/quiz.js": true
-}
