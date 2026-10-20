@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  const VERSION = "1.1";
+  const VERSION = "1.3";
   const P1_SOURCES = Object.freeze([
     ["recognition", "high_recognition"],
     ["need", "high_need"],
@@ -45,27 +45,20 @@
   }
 
   function calculateP2(layer4) {
-    const core = Math.min(layer4.fuzzy.high_E, layer4.fuzzy.low_J);
-    const support = Math.max(
-      layer4.fuzzy.high_H,
-      layer4.fuzzy.high_J_hole,
-    );
-    const {
-      P2_SUPPORT_WEIGHT,
-      P2_JUDGMENT_WEIGHT,
-      P2_WEAK_JUDGMENT_WEIGHT,
-      P2_AVOIDANCE_WEIGHT,
-    } = config();
-    const relationship = core * (1 + P2_SUPPORT_WEIGHT * (1 - core) * support);
-    const judgment = P2_JUDGMENT_WEIGHT * layer4.fuzzy.low_J;
-    const weakJudgment = P2_WEAK_JUDGMENT_WEIGHT * layer4.fuzzy.low_J_weak;
+    const { P2_WEAK_SHARE, P2_SUPPORT_WEIGHT, P2_AVOIDANCE_WEIGHT } = config();
+    // 最弱项不能被其余判断能力平均掉；不再并列叠加多个判断风险分支。
+    const weakJudgment = layer4.fuzzy.low_J_weak;
+    const judgment = P2_WEAK_SHARE * weakJudgment + (1 - P2_WEAK_SHARE) * layer4.fuzzy.low_J;
+    const core = judgment;
+    const support = Math.max(layer4.fuzzy.high_E, layer4.fuzzy.high_H);
+    const supportedJudgment = core * (1 + P2_SUPPORT_WEIGHT * (1 - core) * support);
     const avoidance = P2_AVOIDANCE_WEIGHT * layer4.fuzzy.high_H;
-    const score = Math.max(relationship, judgment, weakJudgment, avoidance);
-    return { score: clamp(score), core, support, relationship, judgment, weakJudgment, avoidance };
+    return { score: clamp(Math.max(supportedJudgment, avoidance)), core, support, supportedJudgment, judgment, weakJudgment, avoidance };
   }
 
   function calculateP3(layer4) {
-    const core = Math.min(layer4.fuzzy.high_J, layer4.fuzzy.low_B);
+    // 行动困难由边界证据启动，不以“已经看清”为前提，避免 P2/P3 交接低谷。
+    const core = layer4.fuzzy.low_B;
     const support = layer4.fuzzy.high_E;
     const score =
       core * (1 + config().P3_SUPPORT_WEIGHT * (1 - core) * support);
@@ -79,10 +72,12 @@
     const second = Math.min(tWeak, fWeak);
     const {
       P4_FIRST_WEIGHT,
+      P4_STOPPING_WEIGHT,
       P4_SECOND_WEIGHT,
       P4_SUPPORT_WEIGHT,
     } = config();
-    const core = P4_FIRST_WEIGHT * first + P4_SECOND_WEIGHT * second;
+    // 保留短板，同时区分实际停止困难与心理上难分开。
+    const core = P4_FIRST_WEIGHT * first + P4_STOPPING_WEIGHT * tWeak + P4_SECOND_WEIGHT * second;
     const support = layer4.fuzzy.high_E;
     const score = core * (1 + P4_SUPPORT_WEIGHT * (1 - core) * support);
 
@@ -152,7 +147,7 @@
         low_J: layer4.fuzzy.low_J,
         core2: p2.core,
         support2: p2.support,
-        P2_relationship: p2.relationship,
+        P2_supported_judgment: p2.supportedJudgment,
         P2_judgment: p2.judgment,
         P2_weak_judgment: p2.weakJudgment,
         P2_avoidance: p2.avoidance,

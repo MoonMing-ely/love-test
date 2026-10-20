@@ -6,7 +6,7 @@ import { productionBank, seededRandom } from "./helpers/question-fixtures.mjs";
 const context = {};
 vm.runInNewContext(await readFile(new URL("../js/question-sampler.js", import.meta.url), "utf8"), context);
 const sampler = context.QuestionSampler;
-assert.equal(sampler.SELECTION_VERSION, 4);
+assert.equal(sampler.SELECTION_VERSION, 6);
 for (const key of ["recognition", "needed", "specialness", "scarcity"]) {
   assert.equal(sampler.MINIMUM[key], 2);
 }
@@ -45,6 +45,12 @@ for (let seed = 1; seed <= 1000; seed += 1) {
   assert.equal(result.debug.boundary_execution.question_count, concrete.length);
   assert.equal(result.debug.boundary_execution.capacity, concreteCapacity);
   assert.equal(result.debug.boundary_execution.total_capacity, totalCapacity);
+  for (const rule of sampler.CONTENT_COVERAGE) {
+    const coverage = result.debug.content_coverage[rule.id];
+    assert.ok(coverage.count >= (rule.minimumCount ?? 1), rule.id);
+    assert.ok(coverage.capacity >= rule.minimumShare * coverage.totalCapacity, rule.id);
+    assert.ok(coverage.capacity <= (rule.maximumShare ?? 1) * coverage.totalCapacity, rule.id);
+  }
   assert.ok(sampler.validateSelection(result.questions).valid);
   assert.equal(result.debug.selected_question_ids.join(","), ids.join(","));
   maximumAttempt = Math.max(maximumAttempt, result.debug.attempt_count);
@@ -53,7 +59,7 @@ for (let seed = 1; seed <= 1000; seed += 1) {
 assert.ok(signatures.size > 900, "随机性需要来自题组变化");
 assert.equal(JSON.stringify(bank), before);
 // 扩大到止损至少3题后曾耗尽100次尝试的种子：不得挤占稀缺维度必选来源的题型名额。
-for (const seed of [13942, 14931, 16106, 16877, 18019]) {
+for (const seed of [13942, 14931, 16106, 16877, 18019, 412158]) {
   const result = sampler.sampleStratified(bank.questions, 28, seededRandom(seed));
   assert.ok(sampler.validateSelection(result.questions).valid);
   for (const key of Object.keys(sampler.MINIMUM)) {
@@ -99,13 +105,18 @@ for (const [type, count] of Object.entries({ A: 24, B: 12, C: 6, D: 4 })) {
     });
   }
 }
-// 保留C/D共享组不可行的结构；边界只由两道明确的具体执行来源测量。
+// 保留C/D共享组不可行的结构；明确提供新版内容方面，容量检查应通过。
+const contentSources = { A01: ["unwanted_intimacy", "boundaries"], A02: ["boundary_request", "boundaries"],
+  A03: ["relationship_imbalance", "boundaries"], A04: ["private_disclosure_trust", "calibration"],
+  A06: ["trust_first_step", "calibration"], A05: ["apology_without_change", "evidence"],
+  A07: ["behavior_inconsistency", "evidence"], A08: ["pressure_to_commit", "boundaries"],
+  A09: ["overresponsibility", "boundaries"], A10: ["one_sided_maintenance", "boundaries"] };
 for (const question of impossible) {
-  if (["A01", "A02"].includes(question.id)) {
-    question.semantic_group = question.id === "A01" ? "unwanted_intimacy" : "boundary_request";
-  } else {
-    question.dimensions = question.dimensions.filter((key) => key !== "boundaries");
-    question.options.forEach((option) => { delete option.scores.boundaries; });
+  const source = contentSources[question.id];
+  if (source) question.semantic_group = source[0];
+  for (const key of ["boundaries", "calibration", "evidence"]) if (source?.[1] !== key) {
+    question.dimensions = question.dimensions.filter((dimension) => dimension !== key);
+    question.options.forEach((option) => { delete option.scores[key]; });
   }
 }
 assert.throws(() => sampler.sampleStratified(impossible, 28, seededRandom(1)), (e) => e.reason === "attempts_exhausted" && e.details.attempt_count === 100);
@@ -153,4 +164,30 @@ assert.throws(() => sampler.sampleStratified(shortExecution), (error) =>
   const result = sampler.validateSelection(questions);
   assert.equal(result.valid, false);
   assert.ok(result.errors.some((error) => error.includes("边界总容量的 50%")));
+}
+
+// 新内容规则同时用于新抽题与旧进度验证，不能恢复覆盖缺失的题组。
+for (const rule of sampler.CONTENT_COVERAGE) {
+  const missing = sample.questions.map((q) => rule.groups.includes(q.semantic_group) && q.dimensions.includes(rule.dimension)
+    ? { ...q, semantic_group: `unclassified_${q.id.toLowerCase()}` } : q);
+  const checked = sampler.validateSelection(missing);
+  assert.ok(!checked.valid && checked.errors.some((error) => error.includes(rule.id)), rule.id);
+  const pool = bank.questions.filter((q) => !(rule.groups.includes(q.semantic_group) && q.dimensions.includes(rule.dimension)));
+  assert.throws(() => sampler.sampleStratified(pool), (error) => error.reason === "pool_insufficient" &&
+    error.details.some((detail) => detail.startsWith(`${rule.id} `)));
+}
+
+// 单一个人界限来源不够；缺题时尽早失败，恢复时也拒绝同版本的旧单题组。
+{
+  const rule = sampler.CONTENT_COVERAGE.find((entry) => entry.id === "personal_boundary");
+  const sources = bank.questions.filter((q) => q.dimensions.includes(rule.dimension) && rule.groups.includes(q.semantic_group));
+  assert.equal(sources.length, 2);
+  const shortPool = bank.questions.filter((q) => q.id !== sources[0].id);
+  assert.throws(() => sampler.sampleStratified(shortPool), (error) =>
+    error.reason === "pool_insufficient" && error.details.includes("personal_boundary 1/2"));
+  const oneSource = sample.questions.map((q) => q.id === sources[0].id
+    ? { ...q, semantic_group: "unclassified_personal" } : q);
+  const checked = sampler.validateSelection(oneSource);
+  assert.equal(checked.debug.content_coverage.personal_boundary.count, 1);
+  assert.ok(!checked.valid && checked.errors.some((error) => error.includes("personal_boundary")));
 }

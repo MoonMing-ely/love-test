@@ -96,15 +96,13 @@
       ["Path · 主要位置", sixth.paths.map((path) => `${path.id} · ${path.label}`).join(" + ") || "None"]];
     for (const path of debug?.allPaths ?? []) {
       const selected = sixth.paths.find((item) => item.id === path.id);
-      sixthRows.push([`${path.id} · Match`, path.match], [`${path.id} · 平滑激活`, path.activation],
+      sixthRows.push([`${path.id} · Match`, path.match], [`${path.id} · 严重度上限`, path.ceiling],
         [`${path.id} · 严重度`, path.severity], [`${path.id} · 解释权重`, selected ? `${(selected.weight * 100).toFixed(2)}%` : "未入选"]);
     }
     sixthRows.push(["四条风险均值", debug?.mean], ["最大风险", debug?.max], ["最小风险", debug?.min], ["风险极差", debug?.spread],
-      ["基础严重度", debug?.baseSeverity], ["计分主体 PathSeverity", debug?.pathSeverity],
-      ["连续多路径增益（证据分）", debug?.shapeAdjustment], ["保护修正前证据分", debug?.preScore],
+      ["最强路径严重度", debug?.pathSeverity],
+      ["其余路径补充（证据分）", debug?.supplementarySeverity], ["保护修正前证据分", debug?.preScore],
       ["Protection 修正（证据分）", debug?.protectionAdjustment], ["映射前证据分", debug?.evidenceScore],
-      ["解释用 PathAnchor", sixth.diagnostics?.pathAnchor],
-      ["解释用 Depth", sixth.diagnostics?.depth], ["解释用深度修正", sixth.diagnostics?.depthAdjustment],
       ["最终分", sixth.totalScore], ["阶段", sixth.stage ? `Stage ${sixth.stage}` : null]);
     const anchors = AlgorithmConfig.LAYER6.SCORE_ANCHORS;
     section(6, "第六层 · 连续整合", `最终指数 ${anchors[0].score}～${anchors[anchors.length - 1].score}；版本 ${sixth.version}。证据分与最终指数采用不同标尺，指数不代表被骗概率。Path 权重仅用于解释。`, sixthRows);

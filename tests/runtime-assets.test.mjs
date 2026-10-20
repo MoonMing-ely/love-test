@@ -24,4 +24,5 @@ for (const page of ["text", "result"]) {
   }
 }
 assert.equal(releases.size, 1, "答题及结果页相关脚本须使用同一发布版本");
+assert.match([...releases][0], /runtime-v16-v6/u, "抽题V6不能复用抽题V5的缓存地址");
 console.log("答题和结果页计分资源使用同一版本URL，不复用旧无版本脚本缓存。");

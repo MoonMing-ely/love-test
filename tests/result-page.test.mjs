@@ -42,6 +42,8 @@ assert.match(displayed, /Capacity/);
 assert.match(displayed, /P2 · 判断偏移/);
 assert.match(displayed, /Protection 修正/);
 assert.match(displayed, /映射前证据分/);
+assert.match(displayed, /其余路径补充/);
+assert.doesNotMatch(displayed, /PathAnchor|Depth|平滑激活|连续多路径增益/);
 assert.match(displayed, /最终指数 15～85/);
 assert.match(displayed, /指数不代表被骗概率/);
 assert.match(displayed, /R · 关系经验暂无/);
@@ -62,7 +64,7 @@ assert.equal(old["#result-score"].hidden, true);
 assert.equal(old["#result-layers"].children.length, 0);
 assert.match(old["#result-summary"].textContent, /重测一次/);
 const previousAlgorithm = structuredClone(record);
-previousAlgorithm.layer6Integration.version = "1.3";
+previousAlgorithm.layer6Integration.version = "1.5";
 const previous = render(JSON.stringify(previousAlgorithm));
 assert.equal(previous[".result-frame"].dataset.resultState, "legacy");
 assert.equal(previous["#result-score"].hidden, true);
@@ -71,7 +73,7 @@ assert.match(previous["#result-summary"].textContent, /旧版算法.*重测一�
 const partial = structuredClone(record);
 partial.outcome.status = "insufficient_data";
 partial.outcome.totalScore = partial.outcome.stage = null;
-partial.layer6Integration = { version: "1.4", status: "insufficient_data", totalScore: null, stage: null,
+partial.layer6Integration = { version: "1.6", status: "insufficient_data", totalScore: null, stage: null,
   shape: null, shapeLabel: null, paths: [], diagnostics: null, debug: null };
 const incomplete = render(JSON.stringify(partial));
 assert.equal(incomplete[".result-frame"].dataset.resultState, "insufficient_data");

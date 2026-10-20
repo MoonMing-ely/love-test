@@ -1,0 +1,238 @@
+{
+  "purpose": "人工构造第四层输入，经当前正式第四至第六层计算的文案研究画像；非真人数据，非28题答卷，不验证文案选择或测量效度。",
+  "algorithmVersion": "1.4",
+  "date": "2026-10-17",
+  "profiles": [
+    {
+      "id": "stable",
+      "dimensions": {
+        "recognition": 0.3,
+        "need": 0.3,
+        "specialness": 0.3,
+        "scarcity": 0.3,
+        "calibration": 0.7,
+        "evidence": 0.7,
+        "manipulation": 0.7,
+        "rationalization": 0.3,
+        "boundary": 0.7,
+        "stop_loss": 0.7,
+        "differentiation": 0.7,
+        "metacognition": 0.7
+      },
+      "totalScore": 20.121180555555554,
+      "stage": 1,
+      "shape": "A",
+      "paths": [],
+      "mechanisms": [
+        0.1666666666666666,
+        0.17245370370370366,
+        0.1712962962962963,
+        0.1701388888888889
+      ]
+    },
+    {
+      "id": "sensitive-steady",
+      "dimensions": {
+        "recognition": 0.85,
+        "need": 0.3,
+        "specialness": 0.8,
+        "scarcity": 0.3,
+        "calibration": 0.7,
+        "evidence": 0.7,
+        "manipulation": 0.7,
+        "rationalization": 0.3,
+        "boundary": 0.7,
+        "stop_loss": 0.7,
+        "differentiation": 0.7,
+        "metacognition": 0.7
+      },
+      "totalScore": 44.4,
+      "stage": 2,
+      "shape": "F",
+      "paths": [
+        {
+          "id": "B",
+          "label": "关系价值入口"
+        }
+      ],
+      "mechanisms": [
+        1,
+        0.17245370370370391,
+        0.1834490740740741,
+        0.17925347222222224
+      ]
+    },
+    {
+      "id": "judgment",
+      "dimensions": {
+        "recognition": 0.75,
+        "need": 0.65,
+        "specialness": 0.75,
+        "scarcity": 0.6,
+        "calibration": 0.25,
+        "evidence": 0.2,
+        "manipulation": 0.3,
+        "rationalization": 0.75,
+        "boundary": 0.7,
+        "stop_loss": 0.7,
+        "differentiation": 0.7,
+        "metacognition": 0.7
+      },
+      "totalScore": 64.57932726896834,
+      "stage": 3,
+      "shape": "H",
+      "paths": [
+        {
+          "id": "B",
+          "label": "关系价值入口"
+        },
+        {
+          "id": "C",
+          "label": "判断盲区"
+        }
+      ],
+      "mechanisms": [
+        0.9166666666666667,
+        0.8474121093749999,
+        0.09574652777777774,
+        0.18359375000000003
+      ]
+    },
+    {
+      "id": "action",
+      "dimensions": {
+        "recognition": 0.3,
+        "need": 0.3,
+        "specialness": 0.3,
+        "scarcity": 0.3,
+        "calibration": 0.85,
+        "evidence": 0.85,
+        "manipulation": 0.85,
+        "rationalization": 0.3,
+        "boundary": 0.15,
+        "stop_loss": 0.7,
+        "differentiation": 0.7,
+        "metacognition": 0.7
+      },
+      "totalScore": 64.4,
+      "stage": 3,
+      "shape": "F",
+      "paths": [
+        {
+          "id": "D",
+          "label": "行动失守"
+        }
+      ],
+      "mechanisms": [
+        0.1666666666666666,
+        0.07499999999999997,
+        1,
+        0.1701388888888889
+      ]
+    },
+    {
+      "id": "exit",
+      "dimensions": {
+        "recognition": 0.3,
+        "need": 0.3,
+        "specialness": 0.3,
+        "scarcity": 0.3,
+        "calibration": 0.7,
+        "evidence": 0.7,
+        "manipulation": 0.7,
+        "rationalization": 0.3,
+        "boundary": 0.7,
+        "stop_loss": 0.15,
+        "differentiation": 0.2,
+        "metacognition": 0.7
+      },
+      "totalScore": 69.4,
+      "stage": 3,
+      "shape": "F",
+      "paths": [
+        {
+          "id": "E",
+          "label": "退出困难"
+        }
+      ],
+      "mechanisms": [
+        0.1666666666666666,
+        0.17245370370370366,
+        0.1712962962962963,
+        1
+      ]
+    },
+    {
+      "id": "multiple",
+      "dimensions": {
+        "recognition": 0.85,
+        "need": 0.8,
+        "specialness": 0.85,
+        "scarcity": 0.8,
+        "calibration": 0.2,
+        "evidence": 0.2,
+        "manipulation": 0.25,
+        "rationalization": 0.8,
+        "boundary": 0.2,
+        "stop_loss": 0.2,
+        "differentiation": 0.2,
+        "metacognition": 0.3
+      },
+      "totalScore": 83.28571428571428,
+      "stage": 4,
+      "shape": "H",
+      "paths": [
+        {
+          "id": "B",
+          "label": "关系价值入口"
+        },
+        {
+          "id": "E",
+          "label": "退出困难"
+        }
+      ],
+      "mechanisms": [
+        1,
+        0.9789737654320985,
+        0.033179012345679,
+        1
+      ]
+    },
+    {
+      "id": "flat",
+      "dimensions": {
+        "recognition": 0.5,
+        "need": 0.5,
+        "specialness": 0.5,
+        "scarcity": 0.5,
+        "calibration": 0.5,
+        "evidence": 0.5,
+        "manipulation": 0.5,
+        "rationalization": 0.5,
+        "boundary": 0.5,
+        "stop_loss": 0.5,
+        "differentiation": 0.5,
+        "metacognition": 0.5
+      },
+      "totalScore": 37.54094411635539,
+      "stage": 2,
+      "shape": "G",
+      "paths": [
+        {
+          "id": "C",
+          "label": "判断盲区"
+        },
+        {
+          "id": "D",
+          "label": "行动失守"
+        }
+      ],
+      "mechanisms": [
+        0.4999999999999999,
+        0.5312499999999999,
+        0.5249999999999999,
+        0.5187499999999999
+      ]
+    }
+  ]
+}

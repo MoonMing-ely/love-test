@@ -1,18 +1,13 @@
 (function (global) {
   "use strict";
 
-  const VERSION = "1.4";
+  const VERSION = "1.6";
   const SHAPE_LABELS = Object.freeze({
-    A: "整体稳定", F: "单点突出", G: "弥散中度", H: "多路径高风险",
+    A: "整体较低", F: "单项突出", G: "多项中等", H: "多项突出",
   });
 
   function clip(value, minimum = 0, maximum = 1) {
     return Math.min(maximum, Math.max(minimum, value));
-  }
-
-  function smooth(value, start, full) {
-    const t = clip((value - start) / (full - start));
-    return t * t * (3 - 2 * t);
   }
 
   function stageForScore(score) {
@@ -82,16 +77,13 @@
     const values = config.PATHS.map((path) => input[path.id]);
     const average = values.reduce((sum, value) => sum + value, 0) / 4;
     const sorted = [...values].sort((left, right) => right - left);
+    const maximumCeiling = Math.max(...config.PATHS.map((path) => path.ceiling));
     const allPaths = config.PATHS.map((path) => {
       const value = input[path.id];
-      const otherMean = (4 * average - value) / 3;
-      const prominence = value - otherMean;
-      const match = config.ABSOLUTE_WEIGHT * value +
-        (1 - config.ABSOLUTE_WEIGHT) * clip(0.5 + prominence);
-      const activation = smooth(value, path.threshold - config.ACTIVATION_BEFORE,
-        path.threshold + config.ACTIVATION_AFTER);
-      const severity = activation * (path.anchor + config.DEPTH_SCALE * (value - config.DEPTH_CENTER));
-      return { ...path, value, otherMean, prominence, match, activation, severity,
+      const severity = path.ceiling * value;
+      // 解释路径按实际严重度排序；标签与入选阈值不参与总分。
+      const match = severity / maximumCeiling;
+      return { ...path, value, match, severity,
         eligible: value >= path.threshold };
     });
     // 稳定排序保留配置中的 B/C/D/E 同分顺序；标签不参与计分分支。
@@ -104,16 +96,10 @@
     }
     const matchSquares = selected.reduce((sum, path) => sum + path.match ** 2, 0);
     const paths = selected.map((path) => ({ ...path, weight: path.match ** 2 / matchSquares }));
-    const pathAnchor = paths.length ? paths.reduce((sum, path) => sum + path.weight * path.anchor, 0) : null;
-    const depth = paths.length ? paths.reduce((sum, path) => sum + path.weight * path.value, 0) : null;
-
-    const baseSeverity = config.BASE_SCALE * average;
-    const pathSeverity = Math.max(baseSeverity, ...allPaths.map((path) => path.severity));
-    const moderateOverlap = smooth(sorted[2], ...config.MODERATE_RANGE);
-    const highOverlap = Math.max(smooth(sorted[2], ...config.HIGH_THREE_RANGE),
-      smooth(sorted[1], ...config.HIGH_TWO_RANGE));
-    const shapeAdjustment = config.MODERATE_GAIN * moderateOverlap + config.HIGH_GAIN * highOverlap;
-    const preScore = pathSeverity + shapeAdjustment;
+    const pathSeverity = Math.max(...allPaths.map((path) => path.severity));
+    const supplementarySeverity = config.SUPPLEMENTARY_WEIGHT *
+      (allPaths.reduce((sum, path) => sum + path.severity, 0) - pathSeverity);
+    const preScore = pathSeverity + supplementarySeverity;
     const protectionAdjustment = -config.PROTECTION_MAX * input.M *
       Math.min(1, preScore / config.PROTECTION_FULL_SCORE);
     const evidenceScore = clip(preScore + protectionAdjustment, 0, 100);
@@ -123,14 +109,12 @@
     return {
       ...base, status: "complete", totalScore, stage: stageForScore(totalScore),
       shape, shapeLabel: SHAPE_LABELS[shape] ?? null, paths,
-      // 原文混合锚点/深度仅解释标签，不覆盖连续严重度主体。
-      diagnostics: { pathAnchor, depth,
-        depthAdjustment: depth === null ? null : config.DEPTH_SCALE * (depth - config.DEPTH_CENTER) },
+      diagnostics: { maximumCeiling, supplementaryWeight: config.SUPPLEMENTARY_WEIGHT },
       debug: { input, mean: average, max: sorted[0], min: sorted[3],
-        spread: sorted[0] - sorted[3], sorted, allPaths, baseSeverity, pathSeverity,
-        moderateOverlap, highOverlap, shapeAdjustment, preScore, protectionAdjustment, evidenceScore },
+        spread: sorted[0] - sorted[3], sorted, allPaths, pathSeverity,
+        supplementarySeverity, preScore, protectionAdjustment, evidenceScore },
     };
   }
 
-  global.Layer6Integration = Object.freeze({ VERSION, calculate, smooth, stageForScore, scoreForEvidence });
+  global.Layer6Integration = Object.freeze({ VERSION, calculate, stageForScore, scoreForEvidence });
 })(typeof window === "undefined" ? globalThis : window);

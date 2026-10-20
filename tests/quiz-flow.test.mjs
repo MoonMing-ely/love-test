@@ -7,7 +7,7 @@ assert.equal(first.panel.dataset.loadState, "ready");
 assert.equal(first.counter.textContent, "QUESTION 1 / 28");
 assert.ok(first.prompt.textContent.length > 0);
 assert.ok(first.buttons.every((b) => !b.disabled));
-assert.equal(first.state().selectionVersion, 4);
+assert.equal(first.state().selectionVersion, 6);
 await first.answer();
 assert.equal(first.state().currentQuestionIndex, 1);
 assert.equal(first.counter.textContent, "QUESTION 2 / 28");
@@ -26,6 +26,8 @@ for (const corrupt of [
   { ...first.state(), selectionVersion: 1 },
   { ...first.state(), selectionVersion: 2 },
   { ...first.state(), selectionVersion: 3 },
+  { ...first.state(), selectionVersion: 4 },
+  { ...first.state(), selectionVersion: 5 },
   { ...first.state(), questionIds: Array(28).fill("A01") },
   { ...first.state(), answers: [{ ...first.state().answers[0], questionId: "A00" }] },
   { ...first.state(), answers: [{ ...first.state().answers[0], scores: { recognition: 999 } }] },
@@ -87,7 +89,7 @@ assert.equal(result.layer4Evidence.status, "complete");
 assert.equal(result.layer5Mechanisms.status, "complete");
 assert.equal(result.outcome.version, 3);
 assert.equal(result.layer6Integration.status, "complete");
-assert.equal(result.layer6Integration.version, "1.4");
+assert.equal(result.layer6Integration.version, "1.6");
 assert.equal(result.outcome.status, "scored");
 assert.equal(result.outcome.totalScore, result.layer6Integration.totalScore);
 assert.ok(Number.isFinite(result.outcome.totalScore));

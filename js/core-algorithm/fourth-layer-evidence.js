@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  const VERSION = "1.2";
+  const VERSION = "1.3";
   const REQUIRED_KEYS = Object.freeze([
     "recognition",
     "need",

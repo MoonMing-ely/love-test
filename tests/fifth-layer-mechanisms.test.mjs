@@ -1,356 +1,58 @@
-import { runnableBank } from "./helpers/question-fixtures.mjs";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-import vm from "node:vm";
+import { loadAlgorithm, scoreDimensions, stableDimensions, riskKeys, protectionKeys } from "./helpers/algorithm-harness.mjs";
+import { seededRandom } from "./helpers/question-fixtures.mjs";
 
-const sources = await Promise.all(
-  [
-    "../js/core-algorithm/dimension-vector.js",
-    "../js/core-algorithm/second-layer-normalizer.js",
-    "../js/question-sampler.js",
-    "../js/core-algorithm/third-layer-aggregator.js",
-    "../js/core-algorithm/algorithm-config.js",
-    "../js/core-algorithm/fourth-layer-evidence.js",
-    "../js/core-algorithm/fifth-layer-mechanisms.js",
-  ].map((path) => readFile(new URL(path, import.meta.url), "utf8")),
-);
-const context = {};
-sources.forEach((source) => vm.runInNewContext(source, context));
-const questionData = JSON.parse(
-  await readFile(new URL("../data/questions.json", import.meta.url), "utf8"),
-);
-
-function input(overrides = {}) {
-  return {
-    recognition: 0.2,
-    need: 0.2,
-    specialness: 0.2,
-    scarcity: 0.2,
-    calibration: 0.9,
-    evidence: 0.9,
-    manipulation: 0.9,
-    rationalization: 0.2,
-    boundary: 0.9,
-    stop_loss: 0.9,
-    differentiation: 0.9,
-    metacognition: 0.5,
-    ...overrides,
-  };
+const context = await loadAlgorithm();
+const neutral = Object.fromEntries(Object.keys(stableDimensions).map((key) => [key, riskKeys.includes(key) ? 0 : 1]));
+const calculate = (overrides = {}) => context.Layer5Mechanisms.calculate(context.Layer4Evidence.calculate({ ...neutral, ...overrides }));
+const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-10, `${actual} != ${expected}`);
+assert.equal(context.Layer5Mechanisms.VERSION, "1.3");
+assert.equal(calculate().P1_relation_value_amplification, 0);
+near(calculate({ recognition: 1 }).P1_relation_value_amplification, 0.8);
+assert.equal(calculate({ recognition: 1, need: 1 }).P1_relation_value_amplification, 1);
+// Judgment weakness and avoidance still count even without emotional amplification.
+near(calculate({ calibration: 0, evidence: 0, manipulation: 0 }).P2_judgment_shift, 1);
+near(calculate({ evidence: 0 }).P2_judgment_shift, 0.8);
+near(calculate({ rationalization: 1 }).P2_judgment_shift, 0.6);
+// Strong feeling cannot create action/exit failure when behavior is sound.
+const feeling = calculate({ recognition: 1, need: 1, specialness: 1, scarcity: 1 });
+assert.equal(feeling.P2_judgment_shift, 0);
+assert.equal(feeling.P3_action_failure, 0);
+assert.equal(feeling.P4_exit_difficulty, 0);
+// Weak boundaries remain visible at any judgment level; no P2/P3 handoff valley.
+for (const judgment of [0, 0.25, 0.5, 0.75, 1]) {
+  assert.equal(calculate({ boundary: 0, calibration: judgment, evidence: judgment, manipulation: judgment }).P3_action_failure, 1);
 }
-
-function calculate(overrides = {}) {
-  return context.Layer5Mechanisms.calculate(
-    context.Layer4Evidence.calculate(input(overrides)),
-  );
-}
-
-function close(actual, expected) {
-  assert.ok(Math.abs(actual - expected) < 1e-10, `${actual} != ${expected}`);
-}
-
-// P1 frozen boundary cases.
-assert.equal(
-  calculate({ recognition: 1 }).P1_relation_value_amplification,
-  0.8,
-);
-assert.equal(
-  calculate({ recognition: 1, need: 1 }).P1_relation_value_amplification,
-  1,
-);
-assert.equal(
-  calculate({ recognition: 0, need: 0, specialness: 0, scarcity: 0 })
-    .P1_relation_value_amplification,
-  0,
-);
-close(
-  calculate({ recognition: 0.50, need: 0.50, specialness: 0.50, scarcity: 0.50 })
-    .P1_relation_value_amplification,
-  0.5,
-);
-
-// P2 retains the original E/J channel and competes with three independent
-// risk signals. Avoidance is counted once, rather than supported by itself.
-close(
-  calculate({
-    recognition: 0.9,
-    need: 0.9,
-    specialness: 0.9,
-    scarcity: 0.9,
-    calibration: 0.9,
-    evidence: 0.9,
-    manipulation: 0.9,
-    rationalization: 1,
-  }).P2_judgment_shift,
-  0.45,
-);
-close(
-  calculate({
-    recognition: 0.9,
-    need: 0.9,
-    specialness: 0.9,
-    scarcity: 0.9,
-    calibration: 0.2,
-    evidence: 0.2,
-    manipulation: 0.2,
-  }).P2_judgment_shift,
-  1,
-);
-close(
-  calculate({
-    calibration: 0.2,
-    evidence: 0.2,
-    manipulation: 0.2,
-    rationalization: 1,
-  }).P2_judgment_shift,
-  0.8,
-);
-
-close(calculate({ evidence: 0.1 }).P2_judgment_shift, 0.5);
-close(calculate({ rationalization: 1 }).P2_judgment_shift, 0.45);
-close(calculate({ rationalization: 0.5 }).P2_judgment_shift, 0.225);
-close(calculate({ rationalization: 0.2 }).P2_judgment_shift, 0);
-// The old combined channel keeps its H support; the alternative H signal
-// competes with it and is never fed back into that multiplier.
-close(calculate({
-  recognition: 0.5, need: 0.5, specialness: 0.5, scarcity: 0.5,
-  calibration: 0.5, evidence: 0.5, manipulation: 0.5,
-  rationalization: 1,
-}).P2_judgment_shift, 0.5625);
-
-// Independent signals cannot weaken the old channel or introduce a new
-// reversal when a single judgment ability improves. The legacy J_hole
-// support can still have its existing direction exceptions.
-{
-  let state = 314159;
-  const random = () => {
-    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-    return state / 2 ** 32;
-  };
-  const oldP2 = (fourth) => {
-    const core = Math.min(fourth.fuzzy.high_E, fourth.fuzzy.low_J);
-    const support = Math.max(fourth.fuzzy.high_H, fourth.fuzzy.high_J_hole);
-    return core * (1 + 0.25 * (1 - core) * support);
-  };
-  assert.equal(context.Layer5Mechanisms.VERSION, "1.1");
-  for (let sample = 0; sample < 1000; sample += 1) {
-    const values = Object.fromEntries(Object.keys(input()).map((key) => [key, random()]));
-    const fourth = context.Layer4Evidence.calculate(values);
-    const current = context.Layer5Mechanisms.calculate(fourth);
-    assert.ok(current.P2_judgment_shift + 1e-12 >= oldP2(fourth));
-    for (const key of ["calibration", "evidence", "manipulation"]) {
-      const improvedFourth = context.Layer4Evidence.calculate({
-        ...values, [key]: Math.min(1, values[key] + 0.05),
-      });
-      const improved = context.Layer5Mechanisms.calculate(improvedFourth);
-      const legacyIncrease = oldP2(improvedFourth) - oldP2(fourth);
-      const currentIncrease = improved.P2_judgment_shift - current.P2_judgment_shift;
-      assert.ok(currentIncrease <= Math.max(0, legacyIncrease) + 1e-12);
-    }
+assert.equal(calculate({ boundary: 0, stop_loss: 0 }).P3_action_failure,
+  calculate({ boundary: 0, stop_loss: 1 }).P3_action_failure);
+// Being unable to stop weighs more than internal entanglement alone, without ignoring either.
+const stopping = calculate({ stop_loss: 0 });
+const entangled = calculate({ differentiation: 0 });
+near(stopping.P4_exit_difficulty, 0.8);
+near(entangled.P4_exit_difficulty, 0.5);
+assert.equal(calculate({ stop_loss: 0, differentiation: 0 }).P4_exit_difficulty, 1);
+assert.equal(calculate({ stop_loss: 0, boundary: 0 }).P4_exit_difficulty,
+  calculate({ stop_loss: 0, boundary: 1 }).P4_exit_difficulty);
+const lowM = calculate({ metacognition: 0 });
+const highM = calculate({ metacognition: 1 });
+for (const key of context.AlgorithmConfig.LAYER6.PATHS.map((path) => path.key)) assert.equal(lowM[key], highM[key]);
+assert.equal(lowM.protection.M, 0);
+assert.equal(highM.protection.M, 1);
+// Check individual dimensions, not merely the averaged J: the old J_hole support reversed direction.
+const random = seededRandom(314159);
+for (let sample = 0; sample < 1000; sample += 1) {
+  const values = Object.fromEntries(Object.keys(stableDimensions).map((key) => [key, random()]));
+  const before = scoreDimensions(context, values).totalScore;
+  for (const key of [...riskKeys, ...protectionKeys]) {
+    const next = { ...values, [key]: Math.min(1, values[key] + 0.01) };
+    const after = scoreDimensions(context, next).totalScore;
+    assert.ok(riskKeys.includes(key) ? after >= before - 1e-9 : after <= before + 1e-9, `${key} direction reversed`);
+    assert.ok(Math.abs(after - before) <= 1.1, `${key}: 1% input change affected score too much`);
   }
 }
-
-// P3 uses J/B and is independent from T.
-assert.equal(
-  calculate({ boundary: 0.1, stop_loss: 0.1 }).P3_action_failure,
-  1,
-);
-assert.equal(
-  calculate({
-    calibration: 0.1,
-    evidence: 0.1,
-    manipulation: 0.1,
-    boundary: 0.1,
-  }).P3_action_failure,
-  0,
-);
-assert.equal(calculate({ boundary: 0.9 }).P3_action_failure, 0);
-assert.equal(
-  calculate({ boundary: 0.1, stop_loss: 0 }).P3_action_failure,
-  calculate({ boundary: 0.1, stop_loss: 1 }).P3_action_failure,
-);
-
-// P4 uses T/F and is independent from B.
-assert.equal(
-  calculate({ stop_loss: 0, differentiation: 1 }).debug.core4,
-  0.8,
-);
-assert.equal(
-  calculate({ stop_loss: 0, differentiation: 0 }).debug.core4,
-  1,
-);
-assert.equal(calculate({ stop_loss: 1, differentiation: 1 }).P4_exit_difficulty, 0);
-assert.equal(
-  calculate({ boundary: 0, stop_loss: 0, differentiation: 1 }).debug.core4,
-  calculate({ boundary: 1, stop_loss: 0, differentiation: 1 }).debug.core4,
-);
-
-// M and self-consistency are protection outputs only.
-{
-  const lowM = calculate({ metacognition: 0 });
-  const highM = calculate({ metacognition: 1 });
-  assert.deepEqual(
-    [
-      lowM.P1_relation_value_amplification,
-      lowM.P2_judgment_shift,
-      lowM.P3_action_failure,
-      lowM.P4_exit_difficulty,
-    ],
-    [
-      highM.P1_relation_value_amplification,
-      highM.P2_judgment_shift,
-      highM.P3_action_failure,
-      highM.P4_exit_difficulty,
-    ],
-  );
-  assert.equal(lowM.protection.M, 0);
-  assert.equal(highM.protection.M, 1);
+for (const key of Object.keys(stableDimensions)) {
+  const result = calculate({ [key]: null });
+  assert.equal(result.status, "insufficient_data");
+  for (const path of context.AlgorithmConfig.LAYER6.PATHS) assert.equal(result[path.key], null);
 }
-
-// Integration profiles A-E from the frozen specification.
-{
-  const profileA = calculate({
-    recognition: 0.9,
-    need: 0.6,
-    specialness: 0.8,
-    scarcity: 0.7,
-    boundary: 0.9,
-    stop_loss: 0.9,
-    differentiation: 0.9,
-    metacognition: 0.8,
-  });
-  assert.ok(profileA.P1_relation_value_amplification > 0.8);
-  assert.equal(profileA.P2_judgment_shift, 0);
-  assert.equal(profileA.P3_action_failure, 0);
-  assert.equal(profileA.P4_exit_difficulty, 0);
-
-  const profileB = calculate({ boundary: 0.15, stop_loss: 0.8, differentiation: 0.8 });
-  assert.equal(profileB.P2_judgment_shift, 0);
-  assert.ok(profileB.P3_action_failure > 0.8);
-  assert.equal(profileB.P4_exit_difficulty, 0);
-
-  const profileC = calculate({
-    recognition: 0.9,
-    need: 0.9,
-    specialness: 0.9,
-    scarcity: 0.9,
-    calibration: 0.15,
-    evidence: 0.15,
-    manipulation: 0.15,
-    rationalization: 0.9,
-    boundary: 0.1,
-    stop_loss: 0.1,
-    differentiation: 0.1,
-  });
-  assert.ok(profileC.P1_relation_value_amplification > 0.8);
-  assert.ok(profileC.P2_judgment_shift > 0.8);
-  assert.equal(profileC.P3_action_failure, 0);
-  assert.ok(profileC.P4_exit_difficulty > 0.8);
-
-  const profileD = calculate({ stop_loss: 0.1, differentiation: 0.2 });
-  assert.equal(profileD.P1_relation_value_amplification, 0);
-  assert.equal(profileD.P2_judgment_shift, 0);
-  assert.equal(profileD.P3_action_failure, 0);
-  assert.ok(profileD.P4_exit_difficulty > 0.8);
-
-  const profileE = calculate({
-    recognition: 0.8,
-    need: 0.8,
-    specialness: 0.8,
-    scarcity: 0.8,
-    calibration: 0.8,
-    evidence: 0.8,
-    manipulation: 0.8,
-    boundary: 0.2,
-    stop_loss: 0.9,
-    differentiation: 0.9,
-  });
-  assert.ok(profileE.P1_relation_value_amplification > 0.8);
-  assert.equal(profileE.P2_judgment_shift, 0);
-  assert.ok(profileE.P3_action_failure > 0.8);
-  assert.equal(profileE.P4_exit_difficulty, 0);
-}
-
-// Frozen monotonic invariants over the transition region.
-for (let step = 0; step <= 10; step += 1) {
-  const value = step / 10;
-  const next = Math.min(1, value + 0.05);
-  const p2 = (judgment) =>
-    calculate({
-      recognition: 0.7,
-      need: 0.7,
-      specialness: 0.7,
-      scarcity: 0.7,
-      calibration: judgment,
-      evidence: judgment,
-      manipulation: judgment,
-    }).P2_judgment_shift;
-  const p3ByJ = (judgment) =>
-    calculate({
-      calibration: judgment,
-      evidence: judgment,
-      manipulation: judgment,
-      boundary: 0.1,
-    }).P3_action_failure;
-  const p3ByB = (boundary) => calculate({ boundary }).P3_action_failure;
-  const p4ByT = (stopLoss) => calculate({ stop_loss: stopLoss }).P4_exit_difficulty;
-  const p4ByF = (differentiation) =>
-    calculate({ differentiation }).P4_exit_difficulty;
-
-  assert.ok(p2(next) <= p2(value) + 1e-12, "J 上升时 P2 不得上升");
-  assert.ok(p3ByJ(next) + 1e-12 >= p3ByJ(value), "B 弱时 J 上升可增强 P3");
-  assert.ok(p3ByB(next) <= p3ByB(value) + 1e-12, "B 上升时 P3 不得上升");
-  assert.ok(p4ByT(next) <= p4ByT(value) + 1e-12, "T 上升时 P4 不得上升");
-  assert.ok(p4ByF(next) <= p4ByF(value) + 1e-12, "F 上升时 P4 不得上升");
-}
-
-{
-  const incomplete = context.Layer5Mechanisms.calculate(
-    context.Layer4Evidence.calculate(input({ manipulation: null })),
-  );
-  assert.equal(incomplete.status, "insufficient_data");
-  assert.equal(incomplete.P2_judgment_shift, null);
-}
-
-// 真实题库加独立测试操题跨越 Raw -> Layer 5；未确认题不会进入正式池。
-{
-  let randomState = 7;
-  const random = () => {
-    randomState = (randomState * 1664525 + 1013904223) % 2 ** 32;
-    return randomState / 2 ** 32;
-  };
-  const sample = context.QuestionSampler.sampleStratified(
-    runnableBank().questions,
-    28,
-    random,
-  );
-  const rawVector = context.DimensionVector.create();
-  sample.questions.forEach((question, index) => {
-    context.DimensionVector.addOption(
-      rawVector,
-      question.options[index % question.options.length].scores,
-      questionData.dimensions,
-    );
-  });
-  const normalized = context.DimensionNormalizer.normalize({
-    rawVector,
-    dimensions: questionData.dimensions,
-    questions: sample.questions,
-  });
-  const layer3 = context.HigherOrderStructure.aggregate(normalized);
-  const layer4 = context.Layer4Evidence.fromLayer3(layer3);
-  const layer5 = context.Layer5Mechanisms.calculate(layer4);
-
-  assert.equal(layer4.status, "complete");
-  assert.equal(layer5.status, "complete");
-  [
-    layer5.P1_relation_value_amplification,
-    layer5.P2_judgment_shift,
-    layer5.P3_action_failure,
-    layer5.P4_exit_difficulty,
-  ].forEach((value) => {
-    assert.ok(Number.isFinite(value));
-    assert.ok(value >= 0 && value <= 1);
-  });
-}
-
-console.log("Fifth-layer mechanism tests passed.");
+console.log("Layer 5: independent behavior evidence, asymmetric exit difficulty, 12000 dimension-direction checks.");
