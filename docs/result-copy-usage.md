@@ -83,7 +83,7 @@ const copy = ResultCopy.build(result);
 | --- | --- |
 | status、reason | 状态与开发核查原因 |
 | scoreText、stage | 分数文字与原档位 |
-| degreeText、directionText | 四档编号与统一方向说明 |
+| degreeText、directionText | 四档文字标签；directionText 为空 |
 | opening | 开头总述 |
 | paragraphs | 中间正文，优先整体渲染 |
 | closing | 结语；缺少测量信息时为空 |
@@ -115,7 +115,7 @@ const copy = ResultCopy.build(result);
 | 节点 | 内容 |
 | --- | --- |
 | result-score | 截断到两位小数的分数，单位“分”，移除原来的 /100 |
-| result-degree、result-direction | 四档编号与方向说明 |
+| result-degree、result-direction | 四档文字标签；方向说明隐藏 |
 | result-summary | 开头总述；异常时显示恢复提示 |
 | result-copy | 按 paragraphs 的顺序创建完整段落 |
 | result-closing | 温暖结语；为空时隐藏 |

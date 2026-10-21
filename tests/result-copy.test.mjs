@@ -124,7 +124,7 @@ test("分数截断与 Stage 临界值一致，文案不暗中改分", () => {
     const copy = build(input);
     const shown = Number.parseFloat(copy.scoreText);
     assert.equal(context.Layer6Integration.stageForScore(shown), stage);
-    assert.equal(copy.degreeText, `受骗倾向：第 ${stage} 档（共 4 档）`);
+    assert.equal(copy.degreeText, ["不容易被骗", "可能被骗", "容易被骗", "超容易被骗"][stage - 1]);
     assert.equal(input.outcome.totalScore, score);
   }
 });

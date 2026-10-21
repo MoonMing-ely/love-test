@@ -41,6 +41,7 @@ assert.equal(completed[".result-empty"].hidden, true);
 const copyContext = {};
 for (const script of [configSource, catalogSource, selectorSource]) vm.runInNewContext(script, copyContext);
 const expected = copyContext.ResultCopy.build(record);
+assert.equal(completed["#result-title"].textContent, "你的被骗指数是：");
 assert.equal(completed["#result-summary"].textContent, expected.opening);
 assert.equal(completed["#result-score"].textContent, expected.scoreText);
 assert.equal(completed["#result-degree"].textContent, expected.degreeText);
@@ -138,7 +139,7 @@ for (const [value, stage, shown] of [[29.999, 1, "29.99 分"], [30, 2, "30.00 �
   boundary.outcome.stage = boundary.layer6Integration.stage = stage;
   const nodes = render(JSON.stringify(boundary));
   assert.equal(nodes["#result-score"].textContent, shown);
-  assert.equal(nodes["#result-degree"].textContent, `受骗倾向：第 ${stage} 档（共 4 档）`);
+  assert.equal(nodes["#result-degree"].textContent, ["不容易被骗", "可能被骗", "容易被骗", "超容易被骗"][stage - 1]);
 }
 const missingDimension = structuredClone(record);
 missingDimension.normalizedDimensions.traits.recognition = null;

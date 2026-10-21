@@ -58,7 +58,7 @@
     const flat = catalog.examples.find((item) => item.id === "flat");
     const output = { copyVersion: catalog.copyVersion, status: "ready", reason: null,
       scoreText: `${(Math.floor(value * 100) / 100).toFixed(2)} 分`, stage: outcome.stage,
-      degreeText: `受骗倾向：第 ${outcome.stage} 档（共 4 档）`, directionText: catalog.directionText,
+      degreeText: catalog.stageLabels[outcome.stage - 1], directionText: catalog.directionText,
       type: null, opening: catalog.stageOpenings[outcome.stage - 1], paragraphs: [], sentences: [],
       closing: "", note: catalog.note, message: "", selectedIds: [], evidence: [], profileId: null };
     if (Object.values(dimensions).some((score) => score === null)) {

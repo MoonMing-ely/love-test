@@ -38,7 +38,8 @@
     }
     closing.textContent = copy.closing;
     note.textContent = copy.note;
-    degree.hidden = direction.hidden = copyBody.hidden = note.hidden = false;
+    degree.hidden = copyBody.hidden = note.hidden = false;
+    direction.hidden = !copy.directionText;
     closing.hidden = !copy.closing;
   }
 
@@ -179,6 +180,7 @@
         score.textContent = `${(Math.floor(result.outcome.totalScore * 100) / 100).toFixed(2)} 分`;
         score.hidden = false;
         frame.dataset.resultState = "complete";
+        title.textContent = globalThis.ResultCopyCatalog?.pageTitle || "你的被骗指数是：";
         renderCopy(result);
       } else {
         if (sixth.status !== "insufficient_data" || result.outcome.totalScore !== null || sixth.totalScore !== null) {
