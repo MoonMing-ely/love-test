@@ -755,7 +755,7 @@ html.is-page-transitioning-out body > .home {
 /* 横屏背景和卡片描边；文字规格由顶部的全站规则决定。 */
 @media (orientation: landscape) {
   :root {
-    --landscape-art: url("../assets/images/pastel-curves-rings-v2.png");
+    --landscape-art: url("/assets/images/pastel-curves-rings-v2.png");
   }
   .landscape-background {
     position: absolute;

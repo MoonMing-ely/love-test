@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  const page = document.querySelector(".result-page");
   const frame = document.querySelector(".result-frame");
   const content = document.querySelector(".result-content");
   const button = document.querySelector("#share-result");
@@ -24,31 +23,29 @@
 
   async function capture() {
     await document.fonts.ready;
-    const pageRect = page.getBoundingClientRect();
-    const frameRect = frame.getBoundingClientRect();
-    const contentTop = content.getBoundingClientRect().top - frameRect.top;
-    const bottomSpace = Math.max(24, Math.min(48, pageRect.width * 0.06));
-    const frameHeight = Math.ceil(contentTop + content.scrollHeight + bottomSpace);
-    const width = Math.ceil(pageRect.width);
-    const height = Math.ceil(frameRect.top - pageRect.top + frameHeight + bottomSpace);
-    // Bound both canvas area and longest side for long results on mobile browsers.
+    const contentWidth = content.getBoundingClientRect().width;
+    const style = getComputedStyle(content);
+    const originalPadding = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+    const sideSpace = 24;
+    const topSpace = 40;
+    const bottomSpace = 24;
+    const width = Math.ceil(contentWidth + sideSpace * 2);
+    const height = Math.ceil(content.scrollHeight - originalPadding + topSpace + bottomSpace);
+    // 截取完整内容节点，不把父页面的页眉、页脚和导航绘入图片。
     const scale = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(12000000 / (width * height)), 16384 / height);
-    return window.html2canvas(page, {
+    return window.html2canvas(content, {
       width, height, scale,
-      backgroundColor: getComputedStyle(page).getPropertyValue("--canvas").trim(), logging: false,
+      backgroundColor: "#ffffff", logging: false,
       scrollX: 0, scrollY: 0,
       onclone(clone) {
-        const clonedPage = clone.querySelector(".result-page");
-        const clonedFrame = clone.querySelector(".result-frame");
         const clonedContent = clone.querySelector(".result-content");
-        Object.assign(clonedPage.style, {
-          height: `${height}px`, minHeight: "0", paddingTop: `${frameRect.top - pageRect.top}px`,
-        });
-        Object.assign(clonedFrame.style, {
-          height: `${frameHeight}px`, minHeight: "0", maxHeight: "none", flexShrink: "0", transform: "none",
-        });
         Object.assign(clonedContent.style, {
-          top: `${contentTop}px`, bottom: "auto", height: "auto", maxHeight: "none", overflow: "visible",
+          position: "relative", left: "auto", top: "0", bottom: "auto", transform: "none",
+          width: `${width}px`, maxWidth: "none", height: "auto", minHeight: "0", maxHeight: "none",
+          margin: "0", paddingTop: `${topSpace}px`, paddingBottom: `${bottomSpace}px`,
+          paddingLeft: `${(parseFloat(style.paddingLeft) || 0) + sideSpace}px`,
+          paddingRight: `${(parseFloat(style.paddingRight) || 0) + sideSpace}px`,
+          boxSizing: "border-box", flexShrink: "0", overflow: "visible", outline: "none", background: "#ffffff",
         });
         clonedContent.scrollTop = 0;
         const freeze = clone.createElement("style");

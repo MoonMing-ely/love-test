@@ -15,7 +15,6 @@ vm.runInNewContext(catalogSource, context);
 vm.runInNewContext(selectorSource, context);
 const build = context.ResultCopy.build;
 const plain = (value) => JSON.parse(JSON.stringify(value));
-const han = (value) => (value.match(/[\u4e00-\u9fff]/gu) ?? []).length;
 
 function fromDimensions(dimensions = Object.fromEntries(source.dimensions.map(({ key }) => [key, 0.5]))) {
   const normalized = { traits: {}, special: {} };
@@ -44,7 +43,7 @@ test("浏览器文案目录与单一源一致且深度冻结", () => {
   assert.ok(Object.isFrozen(context.ResultCopyCatalog.examples[0].paragraphs));
 });
 
-test("七份样稿：当前算法计分、压缩约 20%、结语保持、证据逐项可核查", () => {
+test("七份样稿：当前算法计分、完整段落、证据逐项可核查", () => {
   for (const example of source.examples) {
     const input = freeze(fromDimensions(example.dimensions));
     const before = JSON.stringify(input);
@@ -54,8 +53,13 @@ test("七份样稿：当前算法计分、压缩约 20%、结语保持、证据�
     assert.deepEqual(plain(copy.paragraphs), example.paragraphs);
     assert.equal(copy.closing, example.closing);
     assert.equal(copy.type, null);
-    const reduction = 1 - han(copy.paragraphs.join("")) / example.baselineHan;
-    assert.ok(reduction >= 0.17 && reduction <= 0.23, `${example.id}: ${reduction}`);
+    assert.ok(copy.highlights.length <= 3);
+    for (const item of copy.highlights) {
+      const feature = source.features.find((feature) => feature.id === item.id);
+      assert.ok(copy.evidence.some((e) => e.key === feature.key && e.side === feature.side));
+    }
+    assert.equal(copy.abilities.length, 4);
+    for (const item of copy.abilities) assert.equal(item.value, example.dimensions[item.key]);
     assert.doesNotMatch(copy.paragraphs.join(""), /既有|又有|希望|愿你|你可以/u);
     for (const item of copy.evidence) {
       assert.equal(item.value, example.dimensions[item.key]);
@@ -66,8 +70,6 @@ test("七份样稿：当前算法计分、压缩约 20%、结语保持、证据�
     copy.paragraphs[0] = "测试调用者修改返回数据";
     assert.deepEqual(plain(build(input).paragraphs), example.paragraphs);
   }
-  assert.equal(source.examples.find((item) => item.id === "multiple").closing,
-    "希望你认真给出的喜欢能得到温柔的回应，让你慢慢相信，自己也可以被好好爱着。");
 });
 
 test("不按最近画像套全文；一般组合限制主题重复，并保留风险与保护", () => {
@@ -113,6 +115,8 @@ test("高低门槛与保护方向准确，中间值不制造特点", () => {
   assert.equal(neutral.status, "fallback");
   assert.equal(neutral.profileId, "flat");
   assert.deepEqual(plain(neutral.evidence), []);
+  assert.deepEqual(plain(neutral.highlights), []);
+  assert.ok(neutral.abilities.every((item) => item.value === 0.5 && item.description === "表现居中"));
 });
 
 test("分数截断与 Stage 临界值一致，文案不暗中改分", () => {
@@ -160,6 +164,8 @@ test("缺失、非法记录、旧版本、缺模块均明确回退，不把 null
   assert.equal(fallback.reason, "insufficient_dimensions");
   assert.equal(fallback.status, "fallback");
   assert.deepEqual(plain(fallback.evidence), []);
+  assert.deepEqual(plain(fallback.highlights), []);
+  assert.deepEqual(plain(fallback.abilities), []);
   assert.equal(fallback.closing, "");
   assert.ok(fallback.scoreText);
   const insufficient = structuredClone(valid);

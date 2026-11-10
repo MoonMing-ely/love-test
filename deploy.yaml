@@ -1,0 +1,19 @@
+version: 1
+
+defaults:
+  tag: private
+
+tags:
+  public:
+    - index.html
+    - assets/
+    - css/
+    - data/
+    - html/
+    - js/
+  private:
+    - data/question-bank-source.md
+
+target:
+  host: aliyun
+  path: /var/www/love-test/

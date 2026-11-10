@@ -8,7 +8,7 @@
   const optionButtons = Array.from(
     document.querySelectorAll("[data-option-index]"),
   );
-  const resultPage = quizPanel?.dataset.resultPage || "result.html";
+  const resultPage = quizPanel?.dataset.resultPage || "/html/result.html";
   const progressLabel = document.querySelector("#progress-label");
   const progressBar = document.querySelector("#quiz-progress");
   const previousButton = document.querySelector("#quiz-previous");
@@ -301,7 +301,7 @@
     setControlsDisabled(true);
     let phase = "load";
     try {
-      const response = await fetch("../data/questions.json", { cache: "no-store" });
+      const response = await fetch("/data/questions.json", { cache: "no-store" });
       if (!response.ok) throw new Error(`题库加载失败：HTTP ${response.status}`);
       const data = await response.json();
       phase = "data";
@@ -313,7 +313,9 @@
       if (params.get("restart") === "1") {
         useStorage("removeItem", QUIZ_STATE_KEY);
         useStorage("removeItem", QUIZ_RESULT_KEY);
-        window.history.replaceState({}, "", "text.html");
+        params.delete("restart");
+        const search = params.toString();
+        window.history.replaceState({}, "", `/html/text.html${search ? `?${search}` : ""}${window.location.hash || ""}`);
       } else {
         saved = readSavedState();
       }

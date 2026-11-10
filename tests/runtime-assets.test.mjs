@@ -14,14 +14,14 @@ for (const page of ["text", "result"]) {
     "scoring.js", "interactions/quiz.js",
   ] : ["core-algorithm/algorithm-config.js", "result-copy/catalog.js", "result-copy/selector.js", "interactions/result.js", "interactions/result-scroll.js"];
   if (page === "result") {
-    const position = (path) => sources.findIndex((source) => source.split("?")[0] === `../js/${path}`);
+    const position = (path) => sources.findIndex((source) => source.split("?")[0] === `/js/${path}`);
     for (const [first, second] of [["core-algorithm/algorithm-config.js", "result-copy/catalog.js"],
       ["result-copy/catalog.js", "result-copy/selector.js"], ["result-copy/selector.js", "interactions/result.js"]]) {
       assert.ok(position(first) < position(second), `${first}须在${second}之前加载`);
     }
   }
   for (const path of required) {
-    const urls = sources.filter((source) => source.split("?")[0] === `../js/${path}`);
+    const urls = sources.filter((source) => source.split("?")[0] === `/js/${path}`);
     assert.equal(urls.length, 1, `${page}: ${path}须加载一次`);
     const url = new URL(urls[0], "http://localhost/html/");
     const version = url.searchParams.get("v");

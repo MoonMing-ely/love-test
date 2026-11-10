@@ -1,7 +1,7 @@
 /* 题干自托管 MiSans，避免不同设备依赖各自安装的字体。 */
 @font-face {
   font-family: "MiSans Quiz";
-  src: url("../assets/fonts/MiSans-Regular.woff2") format("woff2");
+  src: url("/assets/fonts/MiSans-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -555,7 +555,7 @@
   line-height: var(--type-line-title);
 }
 
-.result-content h1 { font-size: calc(var(--type-size-title) * 0.9); }
+.result-content h1 { font-size: 1.0625rem; font-weight: 400; line-height: 1.5; color: #65758d; }
 
 .result-content p,
 .result-empty p {
@@ -570,7 +570,7 @@
 .result-content p { max-width: 46.2em; }
 
 .result-content {
-  width: min(calc(85.8% * var(--result-width-scale)), calc(748px * var(--result-width-scale)));
+  width: min(calc(90.09% * var(--result-width-scale)), calc(785.4px * var(--result-width-scale)));
   top: clamp(24px, 6%, 48px);
   bottom: calc(clamp(28px, 6%, 64px) + var(--result-action-height) + 20px);
   overflow-y: auto;
@@ -612,42 +612,187 @@
 .result-content .final-score {
   margin: 16px 0 0;
   color: var(--ink);
-  font-size: calc(var(--type-size-score) * 1.2);
+  font-size: clamp(2.25rem, 3vw, 2.75rem);
   font-weight: var(--type-weight-bold);
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 
-.result-layers { margin-top: 32px; text-align: left; }
 .result-content .result-degree {
   margin-top: 8.4px;
   font-size: calc(var(--type-size-body) * 1.2);
-  color: color-mix(in srgb, var(--blue-gray-strong) 60%, #174799);
+  /* html2canvas 1.4.1 不支持 color-mix/color()，保留等效 sRGB 配色。 */
+  color: #5480c8;
 }
 .result-content .result-caption {
   margin-top: 8px;
   font-size: var(--type-size-caption);
   line-height: var(--type-line-caption);
 }
-.result-content #result-summary { margin-top: 28px; color: color-mix(in srgb, var(--blue-gray-strong) 60%, #174799); text-align: left; }
+.result-content #result-summary { color: #3d608f; text-align: left; }
 .result-copy { text-align: left; }
 .result-content .result-copy p + p { margin-top: 0; }
-.result-copy p,
+.result-copy p { text-indent: 2em; }
 .result-content #result-summary,
-.result-content .result-closing { text-indent: 2em; }
-.result-content .result-closing { margin-top: 28px; color: #d97ba3; text-align: left; }
+.result-content .result-closing { text-indent: 0; }
+.result-content .result-closing { color: #b75b82; text-align: left; }
 .result-content #result-note { margin-top: 24px; }
-.result-details { margin-top: 28px; text-align: left; }
-.result-details > summary { color: #576176; cursor: pointer; font-size: var(--type-size-caption); padding: 12px 0; }
-.result-details > summary:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
-.result-details .result-layers { margin-top: 16px; }
-.algorithm-layer + .algorithm-layer { margin-top: 32px; }
-.algorithm-layer h2 { margin: 0; font-size: var(--type-size-reading); line-height: var(--type-line-body); }
-.algorithm-layer .layer-scale { margin: 8px 0 12px; font-size: var(--type-size-caption); line-height: var(--type-line-caption); }
-.algorithm-layer table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: var(--type-size-body); line-height: var(--type-line-body); }
-.algorithm-layer th, .algorithm-layer td { padding: 8px 0; border-bottom: calc(1px * var(--stroke-scale)) solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
-.algorithm-layer th { width: 62%; padding-right: 12px; font-weight: var(--type-weight-regular); text-align: left; }
-.algorithm-layer td { text-align: right; font-variant-numeric: tabular-nums; }
+/* 阅读页的轮廓：短结果、宽正文与安静的数据栏、窄结语。 */
+.result-header { --result-intro-width: 33.75rem; --result-summary-size: 1.125rem; padding: 8px 0 0; }
+.result-scoreline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 17px 0;
+  margin-top: 11.9px;
+}
+.result-scoreline .final-score,
+.result-scoreline .result-degree { margin: 0; }
+.result-scoreline .final-score { letter-spacing: -0.02em; }
+.result-scoreline .result-degree { font-size: var(--result-summary-size); font-weight: 500; }
+.result-content #result-summary {
+  max-width: var(--result-intro-width);
+  margin: 17px auto 0;
+  font-size: var(--result-summary-size);
+  line-height: 1.85;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+.result-highlights {
+  position: relative;
+  left: -4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: var(--result-intro-width);
+  padding: 0;
+  margin: 17px auto 0;
+  list-style: none;
+  text-align: center;
+}
+.result-highlights li {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #edf4ff;
+  color: #416392;
+  font-size: 0.89775rem;
+  line-height: 1.5;
+}
+.result-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 30.6px;
+  margin-top: 34px;
+  text-align: left;
+}
+.result-prose { min-width: 0; }
+.result-content .result-reading-title {
+  margin: 0 0 15.3px;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+.result-content .result-copy p {
+  margin: 0;
+  color: #465267;
+  font-size: 1rem;
+  line-height: 2;
+  letter-spacing: 0.015em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+.result-overview {
+  min-width: 0;
+  width: 95%;
+  margin-inline: auto;
+  padding-top: 20.4px;
+  border-top: 1px solid #e5ebf3;
+  text-align: left;
+}
+.result-content .result-overview h2 {
+  margin: 0;
+  color: #596e8b;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+.result-abilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 20.4px;
+}
+.result-ability {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #465267;
+}
+.result-ability-description { color: #65758d; font-size: 0.875rem; }
+.result-ability meter {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 5px;
+  margin-top: 3px;
+  border: 0;
+  border-radius: 99px;
+  background: #e9eff7;
+  appearance: none;
+}
+.result-ability meter::-webkit-meter-bar { border: 0; border-radius: 99px; background: #e9eff7; }
+.result-ability meter::-webkit-meter-optimum-value { border-radius: 99px; background: var(--blue-gray-strong); }
+.result-ability meter::-moz-meter-bar { border-radius: 99px; background: var(--blue-gray-strong); }
+.result-content .result-closing {
+  max-width: 30em;
+  margin: 37.4px auto 0;
+  padding-top: 20.4px;
+  border-top: 1px solid #f0dee6;
+  font-size: 1.0625rem;
+  line-height: 1.95;
+  text-wrap: pretty;
+}
+.result-content #result-note {
+  max-width: none;
+  margin: 23.8px 0 0;
+  color: var(--blue-gray);
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  text-align: right;
+}
+.result-highlights[hidden], .result-layout[hidden], .result-overview[hidden], .result-reading-title[hidden] { display: none; }
+@media (min-width: 900px) {
+  .result-content { width: min(96.6%, 1008px); padding-inline: 12px; }
+  .result-prose { width: min(100%, 36em); margin-inline: auto; }
+}
+@media (min-width: 900px) and (orientation: landscape) {
+  .result-header,
+  .result-layout {
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .result-layout { gap: 27.2px; }
+  .result-prose { width: 100%; }
+  .result-abilities { gap: 24px 40px; }
+  .result-ability { grid-template-columns: minmax(0, 1fr) auto; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .result-header { padding-top: 0; }
+  .result-content #result-summary { margin-top: 17px; }
+  .result-layout { margin-top: 23.8px; gap: 23.8px; }
+  .result-content .result-closing { margin-top: 27.2px; }
+}
+@media (max-width: 340px) {
+  .result-abilities { grid-template-columns: 1fr; }
+}
 
 .result-frame::before {
   display: none;
@@ -816,7 +961,6 @@ button.result-action {
   .quiz-footer { --quiz-progress-width-scale: calc(0.85 * 1.15); width: min(100%, calc(345.6px + var(--quiz-progress-label-width) + var(--quiz-progress-label-gap))); }
   .quiz-progress { max-width: 345.6px; }
   .content-surface::before { height: calc(0.65px * var(--stroke-scale)); }
-  .algorithm-layer th, .algorithm-layer td { border-bottom-width: calc(0.65px * var(--stroke-scale)); }
   .question-slot,
   .option-slot { border-width: var(--quiz-frame-stroke); }
 }

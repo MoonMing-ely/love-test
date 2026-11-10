@@ -16,8 +16,8 @@ controls.forEach((control) => {
 
   control.classList.toggle("is-active", isActive);
   control.href = isActive
-    ? sourcePage
-    : `about.html?view=${view}&from=${encodeURIComponent(sourcePage)}`;
+    ? (sourcePage === "index.html" ? "/index.html" : `/html/${sourcePage}`)
+    : `/html/about.html?view=${view}&from=${encodeURIComponent(sourcePage)}`;
   control.setAttribute("aria-current", isActive ? "page" : "false");
   const label = isActive ? "返回上一页" : view === "project" ? "关于作者" : "关于测试";
   control.setAttribute("aria-label", label);

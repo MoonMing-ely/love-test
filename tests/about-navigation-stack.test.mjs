@@ -92,7 +92,7 @@ assert.equal(
     "https://example.test/html/about.html?view=project&from=text.html",
     "https://example.test/html/text.html",
   ),
-  "about.html?view=project&from=text.html",
+  "/html/about.html?view=project&from=text.html",
 );
 assert.equal(
   normalizeRoute("https://example.test/outside.html", "https://example.test/html/text.html"),
@@ -102,7 +102,7 @@ assert.equal(
 const navigationStorage = createStorage();
 assert.equal(
   normalizeRoute("text.html?restart=1&mode=test#question", "https://example.test/html/text.html"),
-  "text.html?mode=test#question",
+  "/html/text.html?mode=test#question",
 );
 const openProject = createControl(
   "https://example.test/html/about.html?view=project&from=text.html",
@@ -145,7 +145,7 @@ bindPage(
 );
 assert.equal(
   resultToProject.href,
-  "about.html?view=project&from=text.html",
+  "/html/about.html?view=project&from=text.html",
 );
 resultToProject.click();
 
@@ -159,7 +159,7 @@ bindPage(
   "https://example.test/html/about.html?view=project&from=text.html",
   [projectToQuestion, createControl("about.html?view=result&from=text.html")],
 );
-assert.equal(projectToQuestion.href, "text.html");
+assert.equal(projectToQuestion.href, "/html/text.html");
 projectToQuestion.click();
 
 const emptiedStack = new NavigationStack(navigationStorage);
@@ -170,19 +170,46 @@ const restartStorage = createStorage();
 const restartedToProject = createControl("https://example.test/html/about.html?view=project&from=text.html");
 bindPage(restartStorage, "question", "https://example.test/html/text.html?restart=1", [restartedToProject]);
 restartedToProject.click();
-assert.equal(new NavigationStack(restartStorage).peek(), "text.html");
+assert.equal(new NavigationStack(restartStorage).peek(), "/html/text.html");
 const returnToRestartedQuiz = createControl("https://example.test/html/text.html", true);
 bindPage(restartStorage, "about", "https://example.test/html/about.html?view=project&from=text.html", [returnToRestartedQuiz]);
-assert.equal(returnToRestartedQuiz.href, "text.html");
+assert.equal(returnToRestartedQuiz.href, "/html/text.html");
 returnToRestartedQuiz.click();
-assert.equal(returnToRestartedQuiz.href, "text.html");
+assert.equal(returnToRestartedQuiz.href, "/html/text.html");
 
 // Already persisted navigation stacks must also be safe for return-animation preloads.
 const oldRestartStorage = createStorage(JSON.stringify(["text.html?restart=1"]));
 const oldReturn = createControl("https://example.test/html/text.html", true);
 bindPage(oldRestartStorage, "about", "https://example.test/html/about.html?view=result&from=text.html", [oldReturn]);
-assert.equal(oldReturn.href, "text.html");
+assert.equal(oldReturn.href, "/html/text.html");
 oldReturn.click();
-assert.equal(oldReturn.href, "text.html");
+assert.equal(oldReturn.href, "/html/text.html");
 
 console.log("About navigation stack tests passed.");
+
+// 首页已移动到网站根目录；存储的旧文件名也须转换为完整站内路径。
+for (const [route, expected] of [
+  ["https://example.test/", "/index.html"],
+  ["https://example.test/index.html?mode=test#top", "/index.html?mode=test#top"],
+  ["index.html", "/index.html"],
+  ["/html/text.html?restart=1&mode=test#question", "/html/text.html?mode=test#question"],
+  ["https://outside.test/html/text.html", null],
+]) {
+  assert.equal(normalizeRoute(route, "https://example.test/html/about.html"), expected);
+}
+for (const homeUrl of ["https://example.test/", "https://example.test/index.html"]) {
+  const storage = createStorage();
+  const open = createControl("https://example.test/html/about.html?view=project&from=index.html");
+  bindPage(storage, "start", homeUrl, [open]);
+  open.click();
+  assert.equal(new NavigationStack(storage).peek(), "/index.html");
+  const close = createControl("https://example.test/index.html", true);
+  bindPage(storage, "about", "https://example.test/html/about.html?view=project&from=index.html", [close]);
+  assert.equal(close.href, "/index.html");
+  close.click();
+  assert.equal(close.href, "/index.html");
+}
+const legacyHome = createStorage(JSON.stringify(["index.html"]));
+const legacyReturn = createControl("https://example.test/index.html", true);
+bindPage(legacyHome, "about", "https://example.test/html/about.html", [legacyReturn]);
+assert.equal(legacyReturn.href, "/index.html");

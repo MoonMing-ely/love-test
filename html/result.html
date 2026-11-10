@@ -3,34 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/js/interactions/mobile-viewport.js?v=20261110"></script>
     <meta name="theme-color" content="#ffffff" />
     <title>情感被骗指数测试结果</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/content.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/content.css?v=20261021-result-share-fix1" />
   </head>
   <body>
     <main class="home info-page result-page" data-page="result">
       <div class="landscape-background" aria-hidden="true"></div>
-      <nav class="top-actions" aria-label="结果页导航">
-        <a class="image-slot" href="about.html?view=project&amp;from=result.html" data-route="about-project" aria-label="查看关于这个测试"><span class="circle-icon circle-icon-feather" aria-hidden="true"></span></a>
-        <a class="image-slot" href="about.html?view=result&amp;from=result.html" data-route="about-result" aria-label="查看关于测试结果"><span class="circle-icon circle-icon-dots" aria-hidden="true"></span></a>
+      <nav class="top-actions" aria-label="结果页导航" data-html2canvas-ignore>
+        <a class="image-slot" href="/html/about.html?view=project&amp;from=result.html" data-route="about-project" aria-label="查看关于这个测试"><span class="circle-icon circle-icon-feather" aria-hidden="true"></span></a>
+        <a class="image-slot" href="/html/about.html?view=result&amp;from=result.html" data-route="about-result" aria-label="查看关于测试结果"><span class="circle-icon circle-icon-dots" aria-hidden="true"></span></a>
       </nav>
 
       <section class="content-frame result-frame" aria-label="测试结果区域">
         <div class="frame-side-glow" aria-hidden="true"></div>
         <div id="result-content" class="result-content" tabindex="0" aria-label="测试分数与结果解读" hidden>
-          <h1 id="result-title"></h1>
-          <p id="result-score" class="final-score" hidden></p>
-          <p id="result-degree" class="result-degree" hidden></p>
-          <p id="result-direction" class="result-caption" hidden></p>
-          <p id="result-summary"></p>
-          <div id="result-copy" class="result-copy" hidden></div>
+          <header class="result-header">
+            <h1 id="result-title"></h1>
+            <div class="result-scoreline">
+              <p id="result-score" class="final-score" hidden></p>
+              <p id="result-degree" class="result-degree" hidden></p>
+            </div>
+            <p id="result-direction" class="result-caption" hidden></p>
+            <p id="result-summary"></p>
+            <ul id="result-highlights" class="result-highlights" aria-label="你的主要特点" hidden></ul>
+          </header>
+          <div id="result-layout" class="result-layout" hidden>
+            <section class="result-prose" aria-labelledby="result-reading-title">
+              <h2 id="result-reading-title" class="result-reading-title" hidden>更了解自己的相处方式</h2>
+              <div id="result-copy" class="result-copy" hidden></div>
+            </section>
+            <section id="result-overview" class="result-overview" aria-labelledby="result-overview-title" hidden>
+              <h2 id="result-overview-title">你在相处中的表现</h2>
+              <div id="result-abilities" class="result-abilities"></div>
+            </section>
+          </div>
           <p id="result-closing" class="result-closing" hidden></p>
           <p id="result-note" class="result-caption" hidden></p>
-          <details id="result-details" class="result-details" hidden>
-            <summary>查看计算明细</summary>
-            <div id="result-layers" class="result-layers"></div>
-          </details>
         </div>
         <input class="result-scrollbar" id="result-scrollbar" type="range" min="0" max="0" value="0" step="1" aria-label="滚动测试结果" aria-orientation="vertical" aria-controls="result-content" data-html2canvas-ignore hidden />
         <div class="result-empty" hidden>
@@ -38,7 +49,7 @@
           <p>完成 28 道随机题目后，这里会显示你的结果解读。</p>
         </div>
         <div class="result-actions" data-html2canvas-ignore>
-          <a class="info-action result-action" href="text.html?restart=1">重测一次</a>
+          <a class="info-action result-action" href="/html/text.html?restart=1">重测一次</a>
           <button class="info-action result-action" id="share-result" type="button">分享结果</button>
         </div>
         <p id="share-status" class="share-status" role="status" data-html2canvas-ignore></p>
@@ -52,14 +63,14 @@
         <a class="info-action" id="save-result-image">保存</a>
       </div>
     </dialog>
-    <script src="../js/core-algorithm/algorithm-config.js?v=20261021-runtime-v16-v6-copy4"></script>
-    <script src="../js/result-copy/catalog.js?v=20261021-runtime-v16-v6-copy4"></script>
-    <script src="../js/result-copy/selector.js?v=20261021-runtime-v16-v6-copy4"></script>
-    <script src="../js/interactions/result.js?v=20261021-runtime-v16-v6-copy4"></script>
-    <script src="../js/interactions/result-scroll.js?v=20261021-runtime-v16-v6-copy4"></script>
-    <script src="../js/vendor/html2canvas-1.4.1.min.js"></script>
-    <script src="../js/interactions/result-share.js"></script>
-    <script src="../js/interactions/about-navigation-stack.js"></script>
-    <script src="../js/interactions/page-transition.js"></script>
+    <script src="/js/core-algorithm/algorithm-config.js?v=20261021-runtime-v16-v6-copy8"></script>
+    <script src="/js/result-copy/catalog.js?v=20261021-runtime-v16-v6-copy8"></script>
+    <script src="/js/result-copy/selector.js?v=20261021-runtime-v16-v6-copy8"></script>
+    <script src="/js/interactions/result.js?v=20261021-runtime-v16-v6-copy8"></script>
+    <script src="/js/interactions/result-scroll.js?v=20261021-runtime-v16-v6-copy8"></script>
+    <script src="/js/vendor/html2canvas-1.4.1.min.js"></script>
+    <script src="/js/interactions/result-share.js?v=20261021-share-white-margin-3"></script>
+    <script src="/js/interactions/about-navigation-stack.js?paths=20261110"></script>
+    <script src="/js/interactions/page-transition.js"></script>
   </body>
 </html>

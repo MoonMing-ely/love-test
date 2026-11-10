@@ -4,6 +4,7 @@ import { productionBank, runnableBank } from "./helpers/question-fixtures.mjs";
 
 const first = await quizHarness();
 assert.equal(first.panel.dataset.loadState, "ready");
+assert.deepEqual(first.fetches, ["/data/questions.json"]);
 assert.equal(first.counter.textContent, "QUESTION 1 / 28");
 assert.ok(first.prompt.textContent.length > 0);
 assert.ok(first.buttons.every((b) => !b.disabled));
@@ -50,6 +51,9 @@ assert.match(old.status.textContent, /失效/);
 const restart = await quizHarness({ storage: new Map([[STATE_KEY, saved], [RESULT_KEY, "old-result"]]), search: "?restart=1", seed: 91 });
 assert.equal(restart.state().currentQuestionIndex, 0);
 assert.equal(restart.counter.textContent, "QUESTION 1 / 28");
+assert.deepEqual(restart.historyUrls, ["/html/text.html"]);
+const restartWithQuery = await quizHarness({ search: "?restart=1&mode=test", hash: "#question" });
+assert.deepEqual(restartWithQuery.historyUrls, ["/html/text.html?mode=test#question"]);
 assert.notDeepEqual(restart.state().questionIds, first.state().questionIds);
 assert.equal(restart.storage.has(RESULT_KEY), false);
 const offline = await quizHarness({ storage: new Map([[STATE_KEY, saved]]), failFetch: true });
@@ -79,7 +83,7 @@ assert.match(midway.status.textContent, /存储设置/);
 
 const complete = await quizHarness();
 for (let i = 0; i < 28; i += 1) await complete.answer(i % 4);
-assert.equal(complete.context.location.href, "result.html");
+assert.equal(complete.context.location.href, "/html/result.html");
 assert.equal(complete.storage.has(STATE_KEY), false);
 const result = JSON.parse(complete.storage.get(RESULT_KEY));
 assert.equal(result.answers.length, 28);
@@ -110,12 +114,12 @@ for (const failedStage of ["result", "cleanup"]) {
   const broken = await quizHarness({ failStorage: (action, key) => failedStage === "result"
     ? action === "setItem" && key === RESULT_KEY : action === "removeItem" && key === STATE_KEY });
   for (let i = 0; i < 28; i += 1) await broken.answer();
-  assert.equal(broken.context.location.href, "text.html");
+  assert.equal(broken.context.location.href, "/html/text.html");
   assert.equal(broken.state().currentQuestionIndex, 28);
   assert.ok(broken.buttons.every((b) => b.disabled));
   assert.equal(broken.storage.has(RESULT_KEY), failedStage === "cleanup");
   const retry = await quizHarness({ storage: new Map(broken.storage) });
-  assert.equal(retry.context.location.href, "result.html");
+  assert.equal(retry.context.location.href, "/html/result.html");
   assert.equal(retry.storage.has(STATE_KEY), false);
 }
 

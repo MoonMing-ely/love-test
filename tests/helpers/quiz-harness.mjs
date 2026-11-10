@@ -20,8 +20,8 @@ function element(dataset = {}) {
 }
 
 export async function quizHarness({ data = runnableBank(), storage = new Map(), failStorage = () => false,
-  failFetch = false, seed = 7, search = "", protocol = "http:" } = {}) {
-  const panel = element({ resultPage: "result.html" });
+  failFetch = false, seed = 7, search = "", hash = "", protocol = "http:" } = {}) {
+  const panel = element({ resultPage: "/html/result.html" });
   const buttons = Array.from({ length: 4 }, () => element());
   const previous = element();
   const forward = element();
@@ -33,6 +33,8 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
   const progress = element();
   const progressBar = element();
   const errors = [];
+  const fetches = [];
+  const historyUrls = [];
   let storageCalls = 0;
   const math = Object.create(Math);
   math.random = seededRandom(seed);
@@ -46,8 +48,8 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
       },
       querySelectorAll() { return buttons; },
     },
-    fetch: async () => { if (failFetch) throw new Error("network error"); return { ok: true, json: async () => data }; },
-    location: { href: "text.html", search, protocol }, history: { replaceState() {} },
+    fetch: async (url) => { fetches.push(url); if (failFetch) throw new Error("network error"); return { ok: true, json: async () => data }; },
+    location: { href: "/html/text.html", search, hash, protocol }, history: { replaceState(_state, _title, url) { historyUrls.push(url); } },
     matchMedia: () => ({ matches: true }), setTimeout(callback) { callback(); },
     getComputedStyle: () => ({ minHeight: "200px" }),
     ResizeObserver: class { constructor(callback) { this.callback = callback; } observe() {} },
@@ -63,7 +65,7 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
   context.window = context;
   scripts.forEach((source) => vm.runInContext(source, context));
   for (let i = 0; i < 10; i += 1) await Promise.resolve();
-  return { context, storage, panel, buttons, previous, forward, slot, prompt, counter, status, progress, progressBar, errors,
+  return { context, storage, panel, buttons, previous, forward, slot, prompt, counter, status, progress, progressBar, errors, fetches, historyUrls,
     state() { return JSON.parse(storage.get(STATE_KEY)); },
     async answer(index = 0) { await buttons[index].click(); },
   };

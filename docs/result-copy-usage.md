@@ -1,8 +1,8 @@
 # 结果文案：维护与代码引用
 
-更新：2026-10-20。文案版本 `1.0`，支持当前算法 `1.6`。
+更新：2026-10-21。文案版本 `1.2`，支持当前算法 `1.6`。
 
-已正式接入 `html/result.html`。结果页显示分数、四档标识、开头总述、中间正文和结语；六层算法数据默认收在“查看计算明细”中。题库、评分和存储格式不变。
+已正式接入 `html/result.html`。结果页显示分数、四档标识、开头总述、中间正文和结语；已移除“查看计算明细”展示模块，原六层计算数据仍保存在结果记录中。题库、评分和存储格式不变。
 
 ## 1. 文件只各管一件事
 
@@ -13,9 +13,9 @@
 | [js/result-copy/catalog.js](../js/result-copy/catalog.js) | 自动生成的浏览器目录，加载后深度冻结 |
 | [js/result-copy/selector.js](../js/result-copy/selector.js) | 校验输入、选择文字，返回纯数据 |
 | [docs/result-copy-v1.md](result-copy-v1.md) | 供人阅读和审稿；局部组合、变体、类型候选不进入运行目录 |
-| [tests/result-copy.test.mjs](../tests/result-copy.test.mjs) | 检查匹配、边界、异常、压缩比例与真实答卷引用 |
-| [tests/result-page.test.mjs](../tests/result-page.test.mjs) | 检查实际页面脚本引用文案、状态、分数与明细 |
-| [tests/result-controls.test.mjs](../tests/result-controls.test.mjs) | 检查滚动、明细切换与分享调用链 |
+| [tests/result-copy.test.mjs](../tests/result-copy.test.mjs) | 检查匹配、边界、异常、证据匹配与真实答卷引用 |
+| [tests/result-page.test.mjs](../tests/result-page.test.mjs) | 检查实际页面脚本引用文案、状态、分数与提示 |
+| [tests/result-controls.test.mjs](../tests/result-controls.test.mjs) | 检查滚动范围变化与分享调用链 |
 
 修改文字时编辑 JSON，再执行：
 
@@ -27,7 +27,7 @@ node --test tests/result-copy.test.mjs
 
 不要直接修改生成的 `catalog.js`，或只修改 Markdown 中的十九条单项、七份完整样稿。生成检查会核对它们是否一致。Markdown 的说明、审稿依据和未采用素材仍直接在文档维护。
 
-七份正文相对上一版减少约 18%—19%，结语保留。JSON 中的 `baselineHan` 记录上一版中间正文汉字数，供压缩检查使用。构造画像用于软件测试，不代表真人验证。
+当前正文已完成扩写后的去重与完整句修订，结语改为较客观的温和祝愿。长度以表达完整、不重复为准，不再要求固定扩写比例；`previousBodyHan` 与 `baselineHan` 仅保留为历史长度记录。构造画像用于软件测试，不代表真人验证。
 
 ## 2. 怎么选择文字
 
@@ -85,6 +85,8 @@ const copy = ResultCopy.build(result);
 | scoreText、stage | 分数文字与原档位 |
 | degreeText、directionText | 四档文字标签；directionText 为空 |
 | opening | 开头总述 |
+| highlights | 最多三个有维度依据的特点；无突出特点时为空 |
+| abilities | 四项原始维度及表现文字；横条说明句已按用户要求移除 |
 | paragraphs | 中间正文，优先整体渲染 |
 | closing | 结语；缺少测量信息时为空 |
 | note、message | 共用说明与异常提示 |
@@ -120,15 +122,14 @@ const copy = ResultCopy.build(result);
 | result-copy | 按 paragraphs 的顺序创建完整段落 |
 | result-closing | 温暖结语；为空时隐藏 |
 | result-note | 共用说明，仅出现一次 |
-| result-details | 默认折叠的“查看计算明细”，保留原六层数据 |
 
 文字全部通过 `textContent` 插入，`sentences` 不再重复渲染。类型为 null 时不新增类型节点，也不显示待定名称。
 
 文案脚本未加载时保留已校验的原分数，提示刷新页面，不退回旧技术摘要。明确缺少测量信息时不编造个性描述；非法记录沿用原有空结果处理。
 
-滚动条的 `aria-controls` 改为整个 `result-content`。正文与明细均纳入滚动观察，展开或收起明细时重新同步范围。重测和导航入口保持原路径。
+滚动条的 `aria-controls` 改为整个 `result-content`。正文与整体解读区纳入滚动观察，尺寸变化时重新同步范围。重测和导航入口保持原路径。
 
-分享继续截取整个结果区：默认包含完整文案及收起的明细入口；用户展开明细后，截图也包含其内容。截图仅在克隆文档中展开滚动区，原页面滚动位置保持不变。图片在浏览器本地生成，不自动发送。
+分享继续截取整个结果区：包含完整文案和能力概览，不再包含算法明细。截图仅在克隆文档中展开滚动区，原页面滚动位置保持不变。图片在浏览器本地生成，不自动发送。
 
 ## 7. 验证范围
 
@@ -142,3 +143,9 @@ node --test tests/*.test.mjs
 ```
 
 若执行环境禁止子进程，使用 `node --test --test-isolation=none tests/*.test.mjs`，测试内容相同。本轮已验证页面脚本、滚动与分享的模拟调用链；当前浏览器工具未提供可用实例，尚未完成真实浏览器截图、排版目测或真实 PNG 导出检查。真人阅读效果、类型命名与最终视觉验收仍需单独确认。
+
+## 本轮结果页试用版
+
+排版已改为短结果概览与纯文字特点速览；各尺寸均先正文、后概览；横屏采用居中的单栏阅读区，能力概览按两列排列，避免长短栏高度差造成版面失衡。正文保持两字缩进与无段间空行，采用较舒展的行距和两端对齐；祝福使用更窄的独立收尾区域。速览标签从本次正文实际引用的证据中选择，优先兼顾风险与保护，不用总分推导人格。能力概览直接读取 evidence、boundaries、stopLoss、differentiation；不反向、不聚合、不改分。0.65／0.35 仅沿用文案编辑门槛，配文为较能做到／表现居中／较难做到，不是常模等级。缺维度时隐藏概览。
+
+页面保留已有本地长图分享和结果存储。真实浏览器排版与审美尚待验收。

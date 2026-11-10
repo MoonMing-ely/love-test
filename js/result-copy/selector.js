@@ -11,7 +11,7 @@
       return { copyVersion: catalog?.copyVersion ?? null, status: "unavailable", reason,
         scoreText: null, stage: null, degreeText: null, directionText: null,
         type: null, opening: "", paragraphs: [], sentences: [], closing: "", note: "",
-        message, selectedIds: [], evidence: [], profileId: null };
+        message, selectedIds: [], evidence: [], profileId: null, highlights: [], abilities: [] };
     }
 
     if (!input || typeof input !== "object") return unavailable("invalid_input");
@@ -60,7 +60,8 @@
       scoreText: `${(Math.floor(value * 100) / 100).toFixed(2)} 分`, stage: outcome.stage,
       degreeText: catalog.stageLabels[outcome.stage - 1], directionText: catalog.directionText,
       type: null, opening: catalog.stageOpenings[outcome.stage - 1], paragraphs: [], sentences: [],
-      closing: "", note: catalog.note, message: "", selectedIds: [], evidence: [], profileId: null };
+      closing: "", note: catalog.note, message: "", selectedIds: [], evidence: [], profileId: null,
+      highlights: [], abilities: [] };
     if (Object.values(dimensions).some((score) => score === null)) {
       return { ...output, status: "fallback", reason: "insufficient_dimensions",
         message: catalog.messages.missing, paragraphs: [catalog.messages.missing],
@@ -133,6 +134,23 @@
       output.selectedIds = ["body.flat", "closing.flat"];
     }
     output.sentences = output.paragraphs.flatMap((paragraph) => paragraph.match(/[^。！？]+[。！？]?/gu) ?? []);
+    const highlighted = output.evidence.map((item) => catalog.features.find((feature) =>
+      feature.key === item.key && feature.side === item.side)).filter(Boolean)
+      .sort((a, b) => distance(b.key) - distance(a.key));
+    const picked = [];
+    for (const role of ["risk", "protection"]) {
+      const feature = highlighted.find((item) => item.role === role);
+      if (feature) picked.push(feature);
+    }
+    for (const feature of highlighted) {
+      if (picked.length < 3 && !picked.includes(feature)) picked.push(feature);
+    }
+    output.highlights = picked.map((feature) => ({ id: feature.id, text: feature.label }));
+    output.abilities = catalog.overviewDimensions.map(({ key, label }) => ({
+      key, label, value: dimensions[key],
+      description: dimensions[key] >= catalog.thresholds.high ? "较能做到"
+        : dimensions[key] <= catalog.thresholds.low ? "较难做到" : "表现居中",
+    }));
     return output;
   }
 
