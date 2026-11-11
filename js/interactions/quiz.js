@@ -19,8 +19,7 @@
   const QUIZ_STATE_KEY = "deceptionIndexQuizStateV3";
   const QUIZ_RESULT_KEY = "deceptionIndexQuizResultV3";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const selectionLeadInDuration = reduceMotion.matches ? 50 : 110;
-  const selectionFeedbackDuration = reduceMotion.matches ? 110 : 276;
+  const selectionFeedbackDuration = 80;
 
   let questionBank = [];
   let dimensionDefinitions = [];
@@ -41,12 +40,11 @@
     stopQuestionAnimation();
     if (reduceMotion.matches || typeof questionSlot.animate !== "function") return;
     const leaving = phase === "out";
+    // 保留整张前卡抽出／归位的翻页感，底卡持续可见；只缩短动画时长。
     const edge = { transform: `translate(${14 * direction * (leaving ? -1 : 1)}px, ${leaving ? -3 : 3}px)`, opacity: 0 };
     const rest = { transform: "none", opacity: 1 };
-    // 前卡抽出／归位，底卡持续可见；不动画布局尺寸或累积持久样式。
     questionAnimation = questionSlot.animate(leaving ? [rest, edge] : [edge, rest], {
-      duration: leaving ? 160 : 220,
-      delay: leaving ? 90 : 0,
+      duration: leaving ? 70 : 110,
       easing: leaving ? "cubic-bezier(0.4, 0, 1, 1)" : "cubic-bezier(0.16, 1, 0.3, 1)",
       fill: leaving ? "forwards" : "none",
     });
@@ -170,6 +168,7 @@
     optionButtons.forEach((button, optionIndex) => {
       const option = question.options[optionIndex];
       button.classList.remove("is-selected");
+      button.classList.remove("is-pressing");
       button.textContent = option.text;
       button.dataset.option = option.id;
       button.setAttribute("aria-pressed", String(answers[currentQuestionIndex]?.option === option.id));
@@ -237,21 +236,22 @@
 
     isChangingQuestion = true;
     stopQuestionAnimation();
-    setControlsDisabled(true);
     const selectedButton = optionButtons[optionIndex];
-
-    await new Promise((resolve) => {
-      window.setTimeout(resolve, selectionLeadInDuration);
-    });
-
+    const keyboardFocus = selectedButton.matches?.(":focus-visible");
     selectedButton.classList.add("is-selected");
+    selectedButton.classList.remove("is-pressing");
     quizPanel.classList.add("is-answering");
-    animateQuestion("out");
+    setControlsDisabled(true);
+    selectedButton.setAttribute("aria-pressed", "true");
     selectedButton.setAttribute("aria-label", `${option.id}：${option.text}，已选择`);
 
     await new Promise((resolve) => {
       window.setTimeout(resolve, selectionFeedbackDuration);
     });
+
+    animateQuestion("out");
+    // 保持同一选中色至下一题更新，整张题卡翻页；减少动态效果时直接切换。
+    if (questionAnimation) await questionAnimation.finished.catch(() => {});
 
     try {
       const answer = {
@@ -272,7 +272,11 @@
       dimensionVector = next.dimensionVector;
       currentQuestionIndex = next.currentQuestionIndex;
       if (currentQuestionIndex >= questions.length) finishQuiz();
-      else renderQuestion(1);
+      else {
+        renderQuestion(1);
+        // 禁用按钮会移走焦点；键盘答题者在下一题仍落在同一选项位置。
+        if (keyboardFocus) selectedButton.focus?.({ preventScroll: true });
+      }
     } catch (error) {
       showError(error, "answer");
     }
@@ -332,6 +336,13 @@
   }
 
   optionButtons.forEach((button, optionIndex) => {
+    button.addEventListener("pointerdown", (event) => {
+      if (button.disabled || isChangingQuestion || !event.isPrimary || event.button !== 0) return;
+      button.classList.add("is-pressing");
+    });
+    for (const type of ["pointerup", "pointercancel", "pointerleave", "lostpointercapture"]) {
+      button.addEventListener(type, () => button.classList.remove("is-pressing"));
+    }
     button.addEventListener("click", () => selectOption(optionIndex));
   });
 

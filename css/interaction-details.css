@@ -1,0 +1,63 @@
+/* SVG 只替代可见背景，原有边框仍占位，原有布局及圆角尺度保持不变。 */
+.has-continuous-surface {
+  isolation: isolate;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+.info-action.has-continuous-surface,
+.option-slot.has-continuous-surface { position: relative; }
+/* 阴影与表面共用 SVG 轮廓，停用普通圆角的 box-shadow。 */
+.option-slot.has-continuous-surface,
+.primary-action.has-continuous-surface { box-shadow: none; }
+.home[data-page="start"] .primary-action.has-continuous-surface {
+  --continuous-shadow-color: color-mix(in srgb, var(--action-blue) 66.25%, color-mix(in srgb, var(--ink) 60%, #a84b70));
+  box-shadow: none;
+}
+.share-preview.has-continuous-dialog {
+  border-radius: 0;
+  background-image: var(--continuous-dialog-image) !important;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.continuous-surface {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+}
+.has-continuous-stack::before,
+.has-continuous-stack::after { visibility: hidden; }
+.continuous-far,
+.continuous-near {
+  z-index: 0;
+  --stack-fill: #cdd7e9;
+  filter: drop-shadow(0 5px 6px rgb(83 94 134 / 0.12)) blur(0.45px);
+  transform: translate(-3px, 8px) rotate(var(--stack-far-angle));
+  transition: transform 120ms var(--ease-out);
+}
+.continuous-near {
+  z-index: 1;
+  --stack-fill: #e2d5e6;
+  filter: drop-shadow(0 5px 6px rgb(83 94 134 / 0.12)) blur(0.25px);
+  transform: translate(3px, 4px) rotate(var(--stack-near-angle));
+}
+
+/* 自定义反馈接替浏览器的半透明蓝色触摸高亮，键盘焦点样式继续生效。 */
+:is(.option-slot, .info-action, .primary-action, .image-slot) {
+  -webkit-tap-highlight-color: transparent;
+}
+.option-slot { transition: box-shadow 80ms ease-out, color 80ms ease-out, transform 220ms var(--ease-out); }
+.option-slot:enabled:active { transform: none; }
+@media (hover: hover) and (pointer: fine) {
+  .info-action:hover {
+    --continuous-border: var(--blue-gray-strong);
+    --continuous-fill: var(--soft-pink);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .continuous-surface { transition: none; }
+}

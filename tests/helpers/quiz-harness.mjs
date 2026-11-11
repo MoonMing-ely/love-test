@@ -12,7 +12,12 @@ export const RESULT_KEY = "deceptionIndexQuizResultV3";
 function element(dataset = {}) {
   const listeners = new Map();
   const attributes = new Map();
-  return { dataset, disabled: false, textContent: "", classList: { add() {}, remove() {} }, setAttribute(key, value) { attributes.set(key, value); }, getAttribute(key) { return attributes.get(key); },
+  const classes = new Set();
+  return { dataset, disabled: false, textContent: "", classList: {
+    add(...names) { names.forEach(name => classes.add(name)); },
+    remove(...names) { names.forEach(name => classes.delete(name)); },
+    contains(name) { return classes.has(name); },
+  }, setAttribute(key, value) { attributes.set(key, value); }, getAttribute(key) { return attributes.get(key); },
     addEventListener(type, callback) { listeners.set(type, callback); },
     click() { if (!this.disabled) return listeners.get("click")?.(); },
     dispatch(type, event = {}) { return listeners.get(type)?.(event); },
@@ -20,7 +25,7 @@ function element(dataset = {}) {
 }
 
 export async function quizHarness({ data = runnableBank(), storage = new Map(), failStorage = () => false,
-  failFetch = false, seed = 7, search = "", hash = "", protocol = "http:" } = {}) {
+  failFetch = false, seed = 7, search = "", hash = "", protocol = "http:", timers } = {}) {
   const panel = element({ resultPage: "/html/result.html" });
   const buttons = Array.from({ length: 4 }, () => element());
   const previous = element();
@@ -50,7 +55,10 @@ export async function quizHarness({ data = runnableBank(), storage = new Map(), 
     },
     fetch: async (url) => { fetches.push(url); if (failFetch) throw new Error("network error"); return { ok: true, json: async () => data }; },
     location: { href: "/html/text.html", search, hash, protocol }, history: { replaceState(_state, _title, url) { historyUrls.push(url); } },
-    matchMedia: () => ({ matches: true }), setTimeout(callback) { callback(); },
+    matchMedia: () => ({ matches: true }), setTimeout(callback, duration) {
+      if (timers) timers.push({ callback, duration });
+      else callback();
+    },
     getComputedStyle: () => ({ minHeight: "200px" }),
     ResizeObserver: class { constructor(callback) { this.callback = callback; } observe() {} },
     addEventListener() {},

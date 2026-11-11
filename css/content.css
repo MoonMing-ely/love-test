@@ -278,7 +278,7 @@
   position: relative;
   isolation: isolate;
   border-radius: var(--quiz-question-radius);
-  transition: transform 180ms var(--ease-out);
+  transition: transform 120ms var(--ease-out);
 }
 
 .question-stack::before,
@@ -292,7 +292,7 @@
   filter: blur(0.45px);
   pointer-events: none;
   content: "";
-  transition: transform 180ms var(--ease-out);
+  transition: transform 120ms var(--ease-out);
 }
 
 .question-stack::before {
@@ -374,6 +374,7 @@
   width: calc(100% - (100% - min(87.4%, 22em)) * var(--question-inset-scale));
   margin: 0 auto;
   text-align: left;
+  line-height: calc(var(--type-line-body) * 0.9);
   text-wrap: wrap;
   /* 独立于原有微调，累计按题干卡片实际高度下移 2%。 */
   translate: 0 var(--question-prompt-offset, 0px);
@@ -442,8 +443,14 @@
 }
 
 .option-slot[aria-pressed="true"] {
-  --option-fill: #ffe1ec;
+  --option-fill: var(--blue-selection);
   --option-border-color: var(--blue-gray-strong);
+}
+
+/* 按下与确认共用一种蓝色；滑动取消由指针事件清理，不提前提交。 */
+.option-slot.is-pressing:enabled,
+.option-slot:enabled:focus-visible:active {
+  --option-fill: var(--blue-selection);
 }
 
 .quiz-navigation-button {
@@ -472,6 +479,15 @@
   stroke-width: calc(2.25px * var(--stroke-scale));
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+/* 参照 SF Symbols 的带杆箭头：单一实心轮廓，沿用原图标占位。 */
+#quiz-previous svg {
+  fill: currentColor;
+  /* 原轮廓主干厚 1.8：补描 0.36 后加粗 20%，再整体放大 10%。 */
+  stroke: currentColor;
+  stroke-width: 0.36px;
+  transform: scale(1.1);
+  transform-origin: center;
 }
 .quiz-navigation-button[hidden] { visibility: hidden; }
 .quiz-navigation-button:disabled { opacity: 0.45; cursor: default; transform: none; }
@@ -885,8 +901,11 @@ button.result-action {
 @media (hover: hover) and (pointer: fine) {
   .option-slot:enabled:hover {
     --option-border-color: var(--blue-gray-strong);
-    --option-fill: #ffe1ec;
     transform: translateY(-1px);
+  }
+
+  .option-slot:enabled:hover:where(:not(.is-pressing):not(:active):not([aria-pressed="true"])) {
+    --option-fill: #ffe1ec;
   }
 
   .info-action:hover {
@@ -897,7 +916,6 @@ button.result-action {
   }
 }
 
-.option-slot:active,
 .info-action:active {
   transform: translateY(1px) scale(0.985);
 }
