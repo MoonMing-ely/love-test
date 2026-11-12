@@ -37,7 +37,7 @@
   --stack-fill: #cdd7e9;
   filter: drop-shadow(0 5px 6px rgb(83 94 134 / 0.12)) blur(0.45px);
   transform: translate(-3px, 8px) rotate(var(--stack-far-angle));
-  transition: transform 120ms var(--ease-out);
+  transition: transform 260ms var(--quiz-motion-ease);
 }
 .continuous-near {
   z-index: 1;
@@ -50,7 +50,9 @@
 :is(.option-slot, .info-action, .primary-action, .image-slot) {
   -webkit-tap-highlight-color: transparent;
 }
-.option-slot { transition: box-shadow 80ms ease-out, color 80ms ease-out, transform 220ms var(--ease-out); }
+.option-slot { transition: box-shadow 80ms var(--quiz-motion-ease), color 80ms var(--quiz-motion-ease), transform 160ms var(--quiz-motion-ease); }
+.option-slot .continuous-shape { transition: fill 80ms var(--quiz-motion-ease); }
+.option-slot stop { transition: stop-color 80ms var(--quiz-motion-ease); }
 .option-slot:enabled:active { transform: none; }
 @media (hover: hover) and (pointer: fine) {
   .info-action:hover {
@@ -59,5 +61,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .continuous-surface { transition: none; }
+  .continuous-surface,
+  .option-slot .continuous-shape,
+  .option-slot stop { transition: none; }
 }
