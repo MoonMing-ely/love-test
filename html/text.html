@@ -6,15 +6,17 @@
     <script src="/js/interactions/mobile-viewport.js?v=20261110"></script>
     <meta name="theme-color" content="#ffffff" />
     <title>情感被骗指数测试题目</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/content.css?v=20261015-controls-6" />
+    <link rel="stylesheet" href="/css/style.css?v=20261112-about1" />
+    <link rel="stylesheet" href="/css/content.css?v=20261112-about1" />
+    <link rel="stylesheet" href="/css/interaction-details.css?v=20261112-selection-release1" />
+    <link rel="stylesheet" href="/css/about.css?v=20261112-about1" />
   </head>
   <body>
     <main class="home quiz-page" data-page="question">
       <div class="landscape-background" aria-hidden="true"></div>
       <header class="quiz-header">
         <nav class="quiz-question-nav" aria-label="题目导航">
-          <button class="image-slot quiz-navigation-button" id="quiz-previous" type="button" hidden disabled aria-label="上一题" data-tooltip="上一题"><span class="quiz-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 12H5m7-7-7 7 7 7" /></svg></span></button>
+          <button class="image-slot quiz-navigation-button" id="quiz-previous" type="button" hidden disabled aria-label="上一题" data-tooltip="上一题"><span class="quiz-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M19 11.1H7.2l5.4-5.4c.36-.36.36-.94 0-1.3s-.94-.36-1.3 0l-6.94 6.94c-.36.36-.36.96 0 1.32l6.94 6.94c.36.36.94.36 1.3 0s.36-.94 0-1.3l-5.4-5.4H19a.9.9 0 0 0 0-1.8Z" /></svg></span></button>
           <button class="image-slot quiz-navigation-button" id="quiz-forward" type="button" hidden disabled aria-label="下一题" data-tooltip="下一题"><span class="quiz-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></span></button>
         </nav>
         <nav class="top-actions" aria-label="快捷操作">
@@ -54,10 +56,10 @@
           <div class="quiz-divider" aria-hidden="true"></div>
 
           <div class="options-grid" role="group" aria-label="题目选项">
-            <button class="option-slot" type="button" data-option-index="0" aria-label="选项一"></button>
-            <button class="option-slot" type="button" data-option-index="1" aria-label="选项二"></button>
-            <button class="option-slot" type="button" data-option-index="2" aria-label="选项三"></button>
-            <button class="option-slot" type="button" data-option-index="3" aria-label="选项四"></button>
+            <button class="option-slot" type="button" data-option-index="0" aria-label="选项一"><span class="option-text"></span></button>
+            <button class="option-slot" type="button" data-option-index="1" aria-label="选项二"><span class="option-text"></span></button>
+            <button class="option-slot" type="button" data-option-index="2" aria-label="选项三"><span class="option-text"></span></button>
+            <button class="option-slot" type="button" data-option-index="3" aria-label="选项四"><span class="option-text"></span></button>
           </div>
 
           <p id="quiz-status" role="status" aria-live="polite"></p>
@@ -71,6 +73,8 @@
         </section>
       </section>
     </main>
+    <script src="/js/vendor/continuous-corners.js?v=20261110"></script>
+    <script src="/js/interactions/continuous-corners.js?v=20261111-feedback2"></script>
     <script src="/js/question-sampler.js?v=20261021-runtime-v16-v6-copy8"></script>
     <script src="/js/core-algorithm/dimension-vector.js?v=20261021-runtime-v16-v6-copy8"></script>
     <script src="/js/core-algorithm/second-layer-normalizer.js?v=20261021-runtime-v16-v6-copy8"></script>
@@ -80,9 +84,10 @@
     <script src="/js/core-algorithm/fifth-layer-mechanisms.js?v=20261021-runtime-v16-v6-copy8"></script>
     <script src="/js/core-algorithm/sixth-layer-integration.js?v=20261021-runtime-v16-v6-copy8"></script>
     <script src="/js/scoring.js?v=20261021-runtime-v16-v6-copy8"></script>
-    <script src="/js/interactions/quiz.js?v=20261021-runtime-v16-v6-copy8&amp;paths=20261110"></script>
+    <script src="/js/interactions/quiz-motion.js?v=20261112-rollback-small7"></script>
+    <script src="/js/interactions/quiz.js?v=20261021-runtime-v16-v6-copy8&amp;paths=20261110&amp;feedback=20261111-small7"></script>
     <script src="/js/interactions/quiz-layout.js"></script>
-    <script src="/js/interactions/about-navigation-stack.js?paths=20261110"></script>
-    <script src="/js/interactions/page-transition.js?v=20261015-controls-2"></script>
+    <script src="/js/interactions/about-view.js?v=20261112-about1"></script>
+    <script src="/js/interactions/about-overlay.js?v=20261112-about1"></script>
   </body>
 </html>

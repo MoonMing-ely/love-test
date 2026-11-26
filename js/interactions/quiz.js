@@ -8,6 +8,7 @@
   const optionButtons = Array.from(
     document.querySelectorAll("[data-option-index]"),
   );
+  const optionLabels = optionButtons.map(button => button.querySelector(".option-text"));
   const resultPage = quizPanel?.dataset.resultPage || "/html/result.html";
   const progressLabel = document.querySelector("#progress-label");
   const progressBar = document.querySelector("#quiz-progress");
@@ -18,9 +19,9 @@
   const SAMPLE_SIZE = 28;
   const QUIZ_STATE_KEY = "deceptionIndexQuizStateV3";
   const QUIZ_RESULT_KEY = "deceptionIndexQuizResultV3";
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const selectionLeadInDuration = reduceMotion.matches ? 50 : 110;
-  const selectionFeedbackDuration = reduceMotion.matches ? 110 : 276;
+  const motion = window.QuizMotion.create({
+    panel: quizPanel, card: questionSlot,
+  });
 
   let questionBank = [];
   let dimensionDefinitions = [];
@@ -30,31 +31,9 @@
   let dimensionVector = window.DimensionVector.create();
   let bankRevision = "";
   let isChangingQuestion = false;
-  let questionAnimation = null;
-
-  function stopQuestionAnimation() {
-    questionAnimation?.cancel();
-    questionAnimation = null;
-  }
-
-  function animateQuestion(phase, direction = 1) {
-    stopQuestionAnimation();
-    if (reduceMotion.matches || typeof questionSlot.animate !== "function") return;
-    const leaving = phase === "out";
-    const edge = { transform: `translate(${14 * direction * (leaving ? -1 : 1)}px, ${leaving ? -3 : 3}px)`, opacity: 0 };
-    const rest = { transform: "none", opacity: 1 };
-    // 前卡抽出／归位，底卡持续可见；不动画布局尺寸或累积持久样式。
-    questionAnimation = questionSlot.animate(leaving ? [rest, edge] : [edge, rest], {
-      duration: leaving ? 160 : 220,
-      delay: leaving ? 90 : 0,
-      easing: leaving ? "cubic-bezier(0.4, 0, 1, 1)" : "cubic-bezier(0.16, 1, 0.3, 1)",
-      fill: leaving ? "forwards" : "none",
-    });
-  }
-
-  reduceMotion.addEventListener?.("change", stopQuestionAnimation);
 
   function setControlsDisabled(disabled) {
+    quizPanel.dataset.busy = String(disabled);
     optionButtons.forEach((button) => {
       button.disabled = disabled;
     });
@@ -63,6 +42,7 @@
     const canJumpForward = currentQuestionIndex < answers.length && answers.length < questions.length;
     forwardButton.hidden = !canJumpForward;
     forwardButton.disabled = disabled || !canJumpForward;
+    if (!disabled) window.dispatchEvent?.(new Event("quiz:idle"));
   }
 
   function useStorage(action, key, value) {
@@ -76,7 +56,7 @@
   }
 
   function showError(error, phase) {
-    stopQuestionAnimation();
+    motion.cancel();
     setControlsDisabled(true);
     isChangingQuestion = true;
     quizPanel.classList.remove("is-answering");
@@ -92,6 +72,7 @@
     statusLabel.textContent = message;
     progressLabel.textContent = "—";
     console.error(error);
+    window.dispatchEvent?.(new Event("quiz:idle"));
   }
 
   function readSavedState() {
@@ -145,8 +126,7 @@
     if (saved) statusLabel.textContent = "原测试进度已失效，已为你重新生成问卷。";
   }
 
-  function renderQuestion(direction = 0) {
-    stopQuestionAnimation();
+  function renderQuestion() {
     const question = questions[currentQuestionIndex];
 
     if (!question) {
@@ -170,17 +150,16 @@
     optionButtons.forEach((button, optionIndex) => {
       const option = question.options[optionIndex];
       button.classList.remove("is-selected");
-      button.textContent = option.text;
+      button.classList.remove("is-pressing");
+      optionLabels[optionIndex].textContent = option.text;
       button.dataset.option = option.id;
       button.setAttribute("aria-pressed", String(answers[currentQuestionIndex]?.option === option.id));
       button.setAttribute("aria-label", `${option.id}：${option.text}`);
     });
 
-    isChangingQuestion = false;
-    setControlsDisabled(false);
+    setControlsDisabled(isChangingQuestion);
     // 各视口统一使用整页滚动，换题回到题干。
     window.scrollTo?.({ top: 0, behavior: "instant" });
-    if (direction) animateQuestion("in", direction);
   }
 
   function finishQuiz() {
@@ -236,57 +215,71 @@
     if (!option) return;
 
     isChangingQuestion = true;
-    stopQuestionAnimation();
-    setControlsDisabled(true);
     const selectedButton = optionButtons[optionIndex];
-
-    await new Promise((resolve) => {
-      window.setTimeout(resolve, selectionLeadInDuration);
-    });
-
+    const keyboardFocus = selectedButton.matches?.(":focus-visible");
     selectedButton.classList.add("is-selected");
+    selectedButton.classList.remove("is-pressing");
     quizPanel.classList.add("is-answering");
-    animateQuestion("out");
+    setControlsDisabled(true);
+    selectedButton.setAttribute("aria-pressed", "true");
     selectedButton.setAttribute("aria-label", `${option.id}：${option.text}，已选择`);
 
-    await new Promise((resolve) => {
-      window.setTimeout(resolve, selectionFeedbackDuration);
-    });
-
     try {
-      const answer = {
-        questionId: question.id,
-        option: option.id,
-        scores: { ...option.scores },
-      };
-      // 回看时替换该题答案，保留其他题；按完整答案重算，避免旧分数重复累计。
-      const nextAnswers = [...answers];
-      nextAnswers[currentQuestionIndex] = answer;
-      const next = {
-        answers: nextAnswers,
-        dimensionVector: window.DimensionVector.fromAnswers(nextAnswers, dimensionDefinitions),
-        currentQuestionIndex: currentQuestionIndex + 1,
-      };
-      saveState(next);
-      answers = next.answers;
-      dimensionVector = next.dimensionVector;
-      currentQuestionIndex = next.currentQuestionIndex;
-      if (currentQuestionIndex >= questions.length) finishQuiz();
-      else renderQuestion(1);
+      await motion.change(() => {
+        const answer = {
+          questionId: question.id,
+          option: option.id,
+          scores: { ...option.scores },
+        };
+        // 回看时替换该题答案，保留其他题；按完整答案重算，避免旧分数重复累计。
+        const nextAnswers = [...answers];
+        nextAnswers[currentQuestionIndex] = answer;
+        const next = {
+          answers: nextAnswers,
+          dimensionVector: window.DimensionVector.fromAnswers(nextAnswers, dimensionDefinitions),
+          currentQuestionIndex: currentQuestionIndex + 1,
+        };
+        saveState(next);
+        answers = next.answers;
+        dimensionVector = next.dimensionVector;
+        currentQuestionIndex = next.currentQuestionIndex;
+        if (currentQuestionIndex >= questions.length) {
+          finishQuiz();
+          return false;
+        }
+        renderQuestion();
+      }, 1, { confirmation: true });
+      if (currentQuestionIndex < questions.length) {
+        isChangingQuestion = false;
+        setControlsDisabled(false);
+        if (keyboardFocus) selectedButton.focus?.({ preventScroll: true });
+      }
     } catch (error) {
       showError(error, "answer");
     }
   }
 
-  function navigateToQuestion(index) {
+  async function navigateToQuestion(index) {
     if (isChangingQuestion || index < 0 || index >= questions.length || index > answers.length
       || index === currentQuestionIndex) return;
+    isChangingQuestion = true;
+    const focused = document.activeElement;
+    const keyboardFocus = focused?.matches?.(":focus-visible");
+    setControlsDisabled(true);
     try {
       const direction = Math.sign(index - currentQuestionIndex);
-      const next = { currentQuestionIndex: index, answers, dimensionVector };
-      saveState(next);
-      currentQuestionIndex = index;
-      renderQuestion(direction);
+      await motion.change(() => {
+        const next = { currentQuestionIndex: index, answers, dimensionVector };
+        saveState(next);
+        currentQuestionIndex = index;
+        renderQuestion();
+      }, direction);
+      isChangingQuestion = false;
+      setControlsDisabled(false);
+      if (keyboardFocus) {
+        const target = !focused.disabled && !focused.hidden ? focused : optionButtons[0];
+        target.focus?.({ preventScroll: true });
+      }
     } catch (error) {
       showError(error, "navigation");
     }
@@ -332,6 +325,13 @@
   }
 
   optionButtons.forEach((button, optionIndex) => {
+    button.addEventListener("pointerdown", (event) => {
+      if (button.disabled || isChangingQuestion || !event.isPrimary || event.button !== 0) return;
+      button.classList.add("is-pressing");
+    });
+    for (const type of ["pointerup", "pointercancel", "pointerleave", "lostpointercapture"]) {
+      button.addEventListener(type, () => button.classList.remove("is-pressing"));
+    }
     button.addEventListener("click", () => selectOption(optionIndex));
   });
 

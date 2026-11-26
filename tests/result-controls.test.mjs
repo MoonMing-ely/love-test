@@ -87,9 +87,18 @@ test("分享完整结果区：长正文、失败恢复、预览释放与空记�
         html2canvas: async (page, options) => {
           const clones = Object.fromEntries([".result-page", ".result-frame", ".result-content"].map((key) => [key, element()]));
           let injectedStyle = "";
-          options.onclone({ querySelector: (key) => clones[key], createElement: element,
-            head: { append(style) { injectedStyle = style.textContent; } } });
-          captures.push({ page, options, clones, injectedStyle });
+          const tracks = [];
+          const meters = [[0, 1, 0], [0, 1, 0.625], [0, 1, 1], [10, 20, 15]].map(([min, max, value]) => ({
+            min, max, value, replaceWith(track) { tracks.push(track); },
+          }));
+          clones[".result-content"].querySelectorAll = (selector) => {
+            assert.equal(selector, ".result-ability meter");
+            return meters;
+          };
+          options.onclone({ querySelector: (key) => clones[key], createElement: () => ({
+            ...element(), append(child) { this.child = child; },
+          }), head: { append(style) { injectedStyle = style.textContent; } } });
+          captures.push({ page, options, clones, injectedStyle, tracks });
           return { toBlob(callback) { callback({ type: "image/png" }); } };
         } } };
     vm.runInNewContext(shareSource, context);
@@ -112,6 +121,11 @@ test("分享完整结果区：长正文、失败恢复、预览释放与空记�
   assert.equal(captures[0].clones[".result-content"].style.outline, "none");
   assert.equal(captures[0].clones[".result-content"].style.overflow, "visible");
   assert.equal(captures[0].clones[".result-content"].scrollTop, 0);
+  assert.deepEqual(captures[0].tracks.map((track) => [
+    track.className, track.child.className, track.child.style.width,
+  ]), ["0%", "62.5%", "100%", "50%"].map((width) => [
+    "result-ability-track", "result-ability-fill", width,
+  ]));
   const resultHtml = await readFile(new URL("../html/result.html", import.meta.url), "utf8");
   assert.match(resultHtml, /<nav\b[^>]*class="top-actions"[^>]*data-html2canvas-ignore/u);
   assert.equal(nodes[".result-content"].scrollTop, 200);
