@@ -13,14 +13,6 @@
   --continuous-shadow-color: color-mix(in srgb, var(--action-blue) 66.25%, color-mix(in srgb, var(--ink) 60%, #a84b70));
   box-shadow: none;
 }
-.share-preview.has-continuous-dialog {
-  border-radius: 0;
-  background-image: var(--continuous-dialog-image) !important;
-  background-origin: border-box;
-  background-clip: border-box;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
 .continuous-surface {
   position: absolute;
   z-index: -1;
@@ -52,6 +44,14 @@
 }
 .option-slot { transition: box-shadow 80ms var(--quiz-motion-ease), color 80ms var(--quiz-motion-ease), transform 160ms var(--quiz-motion-ease); }
 .option-slot .continuous-shape { transition: fill 80ms var(--quiz-motion-ease); }
+.option-slot.is-selected:disabled .continuous-shape {
+  animation: quiz-selection-release 60ms var(--quiz-motion-ease) 80ms forwards;
+}
+/* 确认色先收回，题卡继续原有抽出／归位；文字与命中状态不参与动画。 */
+@keyframes quiz-selection-release {
+  from { fill: var(--blue-selection); }
+  to { fill: var(--surface); }
+}
 .option-slot stop { transition: stop-color 80ms var(--quiz-motion-ease); }
 .option-slot:enabled:active { transform: none; }
 @media (hover: hover) and (pointer: fine) {
@@ -64,4 +64,5 @@
   .continuous-surface,
   .option-slot .continuous-shape,
   .option-slot stop { transition: none; }
+  .option-slot.is-selected:disabled .continuous-shape { animation: none; }
 }

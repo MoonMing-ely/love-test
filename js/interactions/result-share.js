@@ -48,6 +48,18 @@
           boxSizing: "border-box", flexShrink: "0", overflow: "visible", outline: "none", background: "#ffffff",
         });
         clonedContent.scrollTop = 0;
+        // 截图库只绘制 meter 的轨道，截图副本需要显式绘制填充。
+        for (const meter of clonedContent.querySelectorAll(".result-ability meter")) {
+          const range = meter.max - meter.min;
+          const ratio = range > 0 ? (meter.value - meter.min) / range : 0;
+          const track = clone.createElement("div");
+          const fill = clone.createElement("div");
+          track.className = "result-ability-track";
+          fill.className = "result-ability-fill";
+          fill.style.width = `${ratio * 100}%`;
+          track.append(fill);
+          meter.replaceWith(track);
+        }
         const freeze = clone.createElement("style");
         freeze.textContent = "*, *::before, *::after { animation: none !important; transition: none !important; }";
         clone.head.append(freeze);

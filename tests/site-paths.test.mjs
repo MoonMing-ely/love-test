@@ -28,34 +28,16 @@ test("CSS 字体和图片从网站根目录加载", async () => {
   }
 });
 
-test("关于页的返回与切换链接保留来源参数并指向正确目录", async () => {
-  const source = await readFile(new URL("js/interactions/about.js", root), "utf8");
+test("关于页直达返回及切换使用根路径并限制来源", async () => {
+  const source = await readFile(new URL("js/interactions/about-view.js", root), "utf8");
+  const context = { URL, URLSearchParams };
+  vm.runInNewContext(source, context);
+  const api = context.AboutView;
   for (const from of ["index.html", "text.html", "result.html", "invalid.html"]) {
+    const expected = ["text.html", "result.html"].includes(from) ? `/html/${from}` : "/index.html";
+    assert.equal(api.fallback(`?from=${from}`), expected);
     for (const view of ["project", "result"]) {
-      const controls = ["project", "result"].map((view) => ({
-        dataset: { aboutView: view }, classList: { toggle() {} }, setAttribute() {},
-      }));
-      const frame = {
-        style: {}, cloneNode: () => ({ style: {}, removeAttribute() {}, remove() {},
-          getBoundingClientRect: () => ({ top: 0, height: 100 }) }),
-      };
-      const context = {
-        URLSearchParams,
-        window: { location: { search: `?view=${view}&from=${from}` }, addEventListener() {} },
-        document: { querySelectorAll: () => controls,
-          querySelector: (selector) => selector === ".about-frame" ? frame : {
-            append() {}, getBoundingClientRect: () => ({ top: 0 }),
-          } },
-        getComputedStyle: () => ({ paddingTop: "0", paddingBottom: "0", minHeight: "100",
-          getPropertyValue: () => "0.8" }),
-      };
-      vm.runInNewContext(source, context);
-      const expectedFrom = from === "invalid.html" ? "index.html" : from;
-      for (const control of controls) {
-        assert.equal(control.href, control.dataset.aboutView === view
-          ? expectedFrom === "index.html" ? "/index.html" : `/html/${expectedFrom}`
-          : `/html/about.html?view=${control.dataset.aboutView}&from=${expectedFrom}`);
-      }
+      assert.equal(api.route(view, expected), `/html/about.html?view=${view}&from=${expected.split("/").pop()}`);
     }
   }
 });

@@ -67,8 +67,6 @@
       stroke = "var(--action-blue)";
     } else if (kind === "action") {
       fill = "var(--continuous-fill, var(--surface))";
-    } else if (kind === "dialog") {
-      stroke = "#f3aec5";
     } else if (kind === "far" || kind === "near") {
       fill = "var(--stack-fill)";
       stroke = "color-mix(in srgb, #8598c0 60%, var(--stack-fill) 40%)";
@@ -96,8 +94,6 @@
 
   function update(element) {
     const record = records.get(element);
-    // 弹窗用背景绘制，不能把绝对定位节点伸进滚动区域。
-    if (record.kind === "dialog") element.classList.remove("has-continuous-dialog");
     const style = getComputedStyle(element);
     // CSS 尺寸不含变换；不能用动画中的 getBoundingClientRect() 反复重算轮廓。
     const width = parseFloat(style.width);
@@ -106,21 +102,9 @@
     const border = parseFloat(style.borderLeftWidth);
     if (!(width > 0 && height > 0) || !Number.isFinite(radius)) return;
     const key = [width, height, radius, border].join(":");
-    const missing = record.kind !== "dialog" && record.layers.some(svg => svg.parentNode !== element);
-    if (record.key === key && !missing) {
-      if (record.kind === "dialog") element.classList.add("has-continuous-dialog");
-      return;
-    }
+    const missing = record.layers.some(svg => svg.parentNode !== element);
+    if (record.key === key && !missing) return;
     record.key = key;
-    if (record.kind === "dialog") {
-      const svg = record.layers[0];
-      geometry(svg, width, height, radius, border);
-      svg.querySelector(".continuous-shape").style.fill = style.getPropertyValue("--surface").trim();
-      const source = new XMLSerializer().serializeToString(svg);
-      element.style.setProperty("--continuous-dialog-image", `url("data:image/svg+xml,${encodeURIComponent(source)}")`);
-      element.classList.add("has-continuous-surface", "has-continuous-dialog");
-      return;
-    }
     for (const svg of record.layers) {
       const stack = record.kind === "stack";
       const usedBorder = stack ? parseFloat(getComputedStyle(element, "::before").borderLeftWidth) : border;
@@ -146,9 +130,9 @@
   // 题目和分享按钮会用 textContent 更新文案，只补回被移除的装饰节点。
   const content = new MutationObserver(entries => entries.forEach(entry => {
     const record = records.get(entry.target);
-    if (record && record.kind !== "dialog" && record.layers.some(svg => svg.parentNode !== entry.target)) schedule(entry.target);
+    if (record && record.layers.some(svg => svg.parentNode !== entry.target)) schedule(entry.target);
   }));
-  for (const [selector, kind] of [[".option-slot", "option"], [".question-slot", "question"], [".question-stack", "stack"], [".primary-action", "primary"], [".info-action", "action"], [".share-preview", "dialog"]]) {
+  for (const [selector, kind] of [[".option-slot", "option"], [".question-slot", "question"], [".question-stack", "stack"], [".primary-action", "primary"], [".info-action", "action"]]) {
     for (const element of document.querySelectorAll(selector)) {
       records.set(element, { kind, layers: kind === "stack" ? [surface("far"), surface("near")] : [surface(kind)] });
       resize.observe(element, { box: "border-box" });

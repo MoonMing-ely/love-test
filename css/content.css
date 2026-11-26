@@ -497,21 +497,6 @@
   border-color: var(--question-border);
 }
 
-/* 同一条轮廓绘制竖直杆、左弯弧线和箭头，避免分件旋转错位。 */
-.about-page .image-slot.is-active .circle-icon::before {
-  top: 0.8px;
-  left: 0.8px;
-  width: 26px;
-  height: 26px;
-  border: 0;
-  border-radius: 0;
-  background: currentColor;
-  box-shadow: none;
-  clip-path: path("M 20.5 22 Q 19.7 22 19.7 21.2 L 19.7 16 Q 19.7 8.8 12.5 8.8 H 5.8 L 9.2 12.2 Q 9.8 12.8 9.2 13.4 Q 8.6 14 8 13.4 L 3.2 8.6 Q 2.6 8 3.2 7.4 L 8 2.6 Q 8.6 2 9.2 2.6 Q 9.8 3.2 9.2 3.8 L 5.8 7.2 H 12.5 Q 21.3 7.2 21.3 16 V 21.2 Q 21.3 22 20.5 22 Z");
-  transform: none;
-}
-.about-page .image-slot.is-active .circle-icon::after { display: none; }
-
 /* 提示独立于扩大后的点击区；靠视口两端对齐以免被裁切。 */
 .image-slot[data-tooltip]::before {
   position: absolute;
@@ -751,7 +736,7 @@
   color: #465267;
 }
 .result-ability-description { color: #65758d; font-size: 0.875rem; }
-.result-ability meter {
+.result-ability :is(meter, .result-ability-track) {
   grid-column: 1 / -1;
   width: 100%;
   height: 5px;
@@ -759,7 +744,12 @@
   border: 0;
   border-radius: 99px;
   background: #e9eff7;
-  appearance: none;
+}
+.result-ability meter { appearance: none; }
+.result-ability-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--blue-gray-strong);
 }
 .result-ability meter::-webkit-meter-bar { border: 0; border-radius: 99px; background: #e9eff7; }
 .result-ability meter::-webkit-meter-optimum-value { border-radius: 99px; background: var(--blue-gray-strong); }
@@ -848,22 +838,73 @@ button.result-action {
 }
 .share-preview {
   --preview-stroke: calc(clamp(2px, 0.26vw, 3px) * var(--stroke-scale));
+  --preview-frame-inset: 8px;
   width: min(92vw, 760px);
   max-height: 90svh;
-  padding: clamp(16px, 3vw, 28px);
+  padding: var(--preview-frame-inset);
   border: var(--preview-stroke) solid #f3aec5;
   border-radius: var(--radius-panel);
   background: var(--surface);
+  box-shadow: 0 12px 36px rgb(60 69 87 / 14%);
   color: var(--ink);
+  overflow: hidden;
+}
+.share-preview[open] { display: flex; flex-direction: column; }
+.share-preview::backdrop { background: rgb(60 69 87 / 55%); }
+
+.share-preview-body {
+  display: grid;
+  grid-template-rows: auto minmax(min(48px, 20svh), auto) auto;
+  min-height: 0;
+  padding: calc(clamp(16px, 3vw, 28px) - var(--preview-frame-inset));
+  gap: clamp(10px, 4.5svh, 20px);
   overflow-y: auto;
+}
+.share-preview p { margin: 0; }
+
+.share-preview-image {
+  --preview-scroll-inset: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 52svh;
+  padding: var(--preview-scroll-inset);
+  border: calc(var(--preview-stroke) * 0.7) solid var(--blue-gray);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+.share-preview-scroll {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--blue-gray-strong) transparent;
 }
-.share-preview::backdrop { background: rgb(60 69 87 / 55%); }
-.share-preview p { margin: 0 0 20px; }
-.share-preview-image { max-height: 52svh; overflow-y: auto; border: calc(var(--preview-stroke) * 0.7) solid var(--blue-gray); border-radius: var(--radius-control); }
+.share-preview-scroll:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
+}
+.share-preview-image::before,
+.share-preview-image::after {
+  position: absolute;
+  z-index: 1;
+  inset-inline: var(--preview-scroll-inset) calc(var(--preview-scroll-inset) + 14px);
+  height: clamp(8px, 2.8svh, 16px);
+  content: "";
+  pointer-events: none;
+}
+.share-preview-image::before {
+  inset-block-start: var(--preview-scroll-inset);
+  background: linear-gradient(to bottom, rgb(255 255 255 / 85%), transparent);
+}
+.share-preview-image::after {
+  inset-block-end: var(--preview-scroll-inset);
+  background: linear-gradient(to top, rgb(255 255 255 / 85%), transparent);
+}
 .share-preview-image img { display: block; width: 100%; height: auto; }
-.share-preview-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+
+.share-preview-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .share-preview-actions .info-action { width: 100%; padding: 0 12px; cursor: pointer; }
 #close-share-preview { color: #000000; }
 #save-result-image { color: #e173a1; }

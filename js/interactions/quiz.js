@@ -33,6 +33,7 @@
   let isChangingQuestion = false;
 
   function setControlsDisabled(disabled) {
+    quizPanel.dataset.busy = String(disabled);
     optionButtons.forEach((button) => {
       button.disabled = disabled;
     });
@@ -41,6 +42,7 @@
     const canJumpForward = currentQuestionIndex < answers.length && answers.length < questions.length;
     forwardButton.hidden = !canJumpForward;
     forwardButton.disabled = disabled || !canJumpForward;
+    if (!disabled) window.dispatchEvent?.(new Event("quiz:idle"));
   }
 
   function useStorage(action, key, value) {
@@ -70,6 +72,7 @@
     statusLabel.textContent = message;
     progressLabel.textContent = "—";
     console.error(error);
+    window.dispatchEvent?.(new Event("quiz:idle"));
   }
 
   function readSavedState() {
